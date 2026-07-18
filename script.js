@@ -52,3 +52,17 @@ document.querySelectorAll('.poll button').forEach((button) => {
     button.style.outline = '3px solid #ff137f';
   });
 });
+
+if (window.matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)').matches) {
+  document.querySelectorAll('.social-card').forEach((card) => {
+    card.addEventListener('pointermove', (event) => {
+      const rect = card.getBoundingClientRect();
+      const rotateX = ((event.clientY - rect.top) / rect.height - 0.5) * -4;
+      const rotateY = ((event.clientX - rect.left) / rect.width - 0.5) * 4;
+      card.style.transform = `translateY(-7px) perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+    card.addEventListener('pointerleave', () => {
+      card.style.transform = '';
+    });
+  });
+}
