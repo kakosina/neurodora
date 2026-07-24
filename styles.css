@@ -14,19 +14,44 @@
   --max: 1460px;
 }
 
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
 body {
   margin: 0;
   min-width: 320px;
   color: var(--ink);
   background: var(--paper);
   font-family: 'Manrope', sans-serif;
+  text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; height: auto; }
 button, a { -webkit-tap-highlight-color: transparent; }
+a:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 4px;
+}
+.skip-link {
+  position: fixed;
+  z-index: 200;
+  top: 12px;
+  left: 12px;
+  padding: 13px 18px;
+  color: var(--paper-light);
+  background: var(--ink);
+  border: 2px solid var(--gold);
+  border-radius: 8px;
+  font: 700 14px/1 'Oswald', sans-serif;
+  letter-spacing: .06em;
+  transform: translateY(calc(-100% - 20px));
+  transition: transform .18s ease;
+}
+.skip-link:focus { transform: translateY(0); }
 .visually-hidden {
   position: absolute !important;
   width: 1px !important;
@@ -150,34 +175,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
   mix-blend-mode: multiply;
   transform: rotate(-1deg);
 }
-.hero h1, .section-heading h2, .now-copy h2, .follow-section h2 {
+.section-heading h2, .now-copy h2, .follow-section h2 {
   margin: 0;
   font: 400 clamp(58px, 6.4vw, 106px)/.9 'Neucha', cursive;
   letter-spacing: -.025em;
   text-transform: uppercase;
 }
-.hero h1 {
-  width: max-content;
-  font-family: 'Balsamiq Sans', 'Shantell Sans', cursive;
-  font-weight: 700;
-  font-size: clamp(64px, 6.9vw, 113px);
-  line-height: .82;
-  letter-spacing: -.075em;
-  transform: rotate(-1deg);
-}
-.hero h1 em, .section-heading h2 em, .now-copy h2 em { color: var(--coral-deep); font-style: normal; }
-.hero h1 em { position: relative; color: var(--ink); }
-.hero h1 em::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: -10px;
-  bottom: -12px;
-  height: 17px;
-  background: url('assets/hero-coral-chalk-line-v2.webp') center / 100% 100% no-repeat;
-  mix-blend-mode: multiply;
-  transform: rotate(-1deg);
-}
+.section-heading h2 em, .now-copy h2 em { color: var(--coral-deep); font-style: normal; }
 .hero-lead { max-width: 600px; margin: 12px 0 28px; font-size: clamp(18px, 1.55vw, 25px); line-height: 1.45; }
 .follow-label { margin: 0 0 11px; color: var(--coral-deep); font: 700 16px/1 'Oswald', sans-serif; letter-spacing: .06em; }
 .social-row { display: flex; gap: 14px; flex-wrap: wrap; }
@@ -265,8 +269,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
   box-shadow: inset 0 0 12px rgba(255,255,255,.4);
   clip-path: polygon(2% 7%, 98% 0, 95% 94%, 0 100%);
 }
-.tape-top { top: -22px; left: 44%; transform: rotate(5deg); }
-.tape-side { right: -72px; bottom: 30px; transform: rotate(-83deg); }
 .dossier {
   position: absolute;
   z-index: 7;
@@ -610,7 +612,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .hero-art { min-height: 520px; }
   .hero-brush { top: -45px; left: -20%; width: 155%; height: 135%; }
   .hero-scene-photo { top: 40px; right: 0; width: 95%; padding: 10px 10px 35px; }
-  .hero-character { width: 1600px; height: auto; right: -20%; bottom: -345px; }
+  .hero-character { width: 1600px; height: auto; left: calc(50% - 820px); right: auto; bottom: -345px; }
   .dossier { right: 3px; bottom: 6px; width: min(390px, 78%); padding: 22px 125px 22px 25px; }
   .dossier strong { font-size: 21px; }
   .star-one { left: 0; top: 0; }
@@ -636,8 +638,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .hero-scene-photo { top: 34px; right: -2%; width: 97%; padding: 7px 7px 27px; transform: rotate(3deg); }
   .hero-character { width: 1050px; height: auto; left: calc(50% - 540px); right: auto; bottom: -170px; }
   .tape { width: 110px; height: 29px; }
-  .tape-top { top: -14px; }
-  .tape-side { right: -45px; }
   .dossier { width: 82%; right: 0; bottom: -8px; gap: 7px; padding: 15px 102px 18px 18px; }
   .dossier strong { font-size: 17px; }
   .dossier span { font-size: 11px; }
@@ -703,5 +703,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { transition-duration: .01ms !important; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
 }
