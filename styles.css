@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&family=Manrope:wght@400;600;700;800&family=Marck+Script&family=Neucha&family=Oswald:wght@500;600;700&family=Shantell+Sans:ital,wght@0,700;0,800;1,800&display=swap');
-
 :root {
   --paper: #fbf0df;
   --paper-light: #fff8ec;
@@ -27,7 +25,7 @@ body {
   overflow-x: hidden;
 }
 a { color: inherit; text-decoration: none; }
-img { display: block; max-width: 100%; }
+img { display: block; max-width: 100%; height: auto; }
 button, a { -webkit-tap-highlight-color: transparent; }
 .visually-hidden {
   position: absolute !important;
@@ -92,7 +90,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   right: 3px;
   bottom: 13px;
   height: 9px;
-  background: url('assets/hero-coral-chalk-stroke-v1.png') center / 100% 100% no-repeat;
+  background: url('assets/hero-coral-chalk-line-v2.webp') center / 100% 100% no-repeat;
   mix-blend-mode: multiply;
   transform: scaleX(0) rotate(-2deg);
   transition: transform .2s ease;
@@ -148,7 +146,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   bottom: -13px;
   width: 112%;
   height: 10px;
-  background: url('assets/hero-coral-chalk-stroke-v1.png') center / 100% 100% no-repeat;
+  background: url('assets/hero-coral-chalk-line-v2.webp') center / 100% 100% no-repeat;
   mix-blend-mode: multiply;
   transform: rotate(-1deg);
 }
@@ -176,7 +174,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   right: -10px;
   bottom: -12px;
   height: 17px;
-  background: url('assets/hero-coral-chalk-stroke-v1.png') center / 100% 100% no-repeat;
+  background: url('assets/hero-coral-chalk-line-v2.webp') center / 100% 100% no-repeat;
   mix-blend-mode: multiply;
   transform: rotate(-1deg);
 }
@@ -285,12 +283,12 @@ button, a { -webkit-tap-highlight-color: transparent; }
   transform: rotate(2deg);
 }
 .dossier strong { width: max-content; color: var(--coral-deep); font: 700 23px/1 'Shantell Sans', cursive; padding-bottom: 9px; position: relative; transform: rotate(-1deg); }
-.dossier strong::after { content: ''; position: absolute; left: 0; right: 0; bottom: -3px; height: 10px; background: url('assets/hero-coral-chalk-stroke-v1.png') center / 100% 100% no-repeat; mix-blend-mode: multiply; }
+.dossier strong::after { content: ''; position: absolute; left: 0; right: 0; bottom: -3px; height: 10px; background: url('assets/hero-coral-chalk-line-v2.webp') center / 100% 100% no-repeat; mix-blend-mode: multiply; }
 .dossier span { font: 600 15px/1.25 'Oswald', sans-serif; letter-spacing: .03em; }
 .dossier span b { margin-right: 7px; }
 .dossier i { position: absolute; right: 24px; bottom: 20px; color: var(--coral); font: 400 34px/1 'Neucha', cursive; }
 .dossier .dossier-portrait { position: absolute; right: 25px; top: 25px; width: 88px; height: 88px; overflow: hidden; border: 3px solid var(--ink); border-radius: 48% 52% 45% 55%; background: var(--coral); transform: rotate(4deg); }
-.dossier-portrait img { width: 310%; max-width: none; transform: translate(-39%, -3%); }
+.dossier-portrait img { width: 100%; height: 100%; max-width: 100%; object-fit: cover; }
 .doodle { position: absolute; z-index: 4; font: 400 64px/1 'Neucha', cursive; }
 .star-one { left: -76px; top: 70px; color: var(--gold); transform: rotate(-17deg); }
 .note-one { left: 32px; top: 48px; color: var(--teal); font-size: 48px; }
@@ -314,7 +312,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   left: -2%;
   width: 104%;
   height: 18px;
-  background: url('assets/hero-coral-chalk-stroke-v1.png') center / 100% 100% no-repeat;
+  background: url('assets/hero-coral-chalk-line-v2.webp') center / 100% 100% no-repeat;
   mix-blend-mode: multiply;
   clip-path: polygon(0 28%, 5% 52%, 11% 34%, 18% 62%, 26% 31%, 34% 56%, 42% 29%, 51% 61%, 60% 35%, 68% 58%, 77% 31%, 86% 60%, 94% 32%, 100% 49%, 100% 88%, 93% 69%, 85% 92%, 77% 66%, 68% 90%, 59% 68%, 50% 93%, 41% 65%, 32% 89%, 23% 66%, 14% 91%, 6% 67%, 0 84%);
 }
@@ -414,7 +412,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .stats-heading { max-width: 950px; }
 .stats-heading .eyebrow { color: #fff; }
 .stats-heading .eyebrow::after {
-  background: url('assets/hero-coral-chalk-stroke-v1.png') center / 100% 100% no-repeat;
+  background: url('assets/hero-coral-chalk-line-v2.webp') center / 100% 100% no-repeat;
   mix-blend-mode: normal;
   filter: brightness(0) invert(1);
   opacity: .92;
@@ -636,7 +634,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .hero-art { min-height: 390px; }
   .hero-brush { top: -25px; left: -24%; width: 163%; height: 135%; }
   .hero-scene-photo { top: 34px; right: -2%; width: 97%; padding: 7px 7px 27px; transform: rotate(3deg); }
-  .hero-character { width: 1050px; height: auto; right: -18%; bottom: -170px; }
+  .hero-character { width: 1050px; height: auto; left: calc(50% - 540px); right: auto; bottom: -170px; }
   .tape { width: 110px; height: 29px; }
   .tape-top { top: -14px; }
   .tape-side { right: -45px; }
