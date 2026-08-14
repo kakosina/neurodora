@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="theme-color" content="#a9dcf4" />
+    <meta
+      name="description"
+      content="Нейродора: Кьют-рок против всех — однокнопочная аниме-игра про воздушные поцелуи."
+    />
+    <title>Нейродора · Кьют-рок против всех</title>
+    <link rel="stylesheet" href="cute-game.css?v=approved-11" />
+  </head>
+  <body>
+    <main class="game-page">
+      <section id="stage" class="stage" aria-label="Игра Нейродора: Кьют-рок против всех">
+        <canvas
+          id="gameCanvas"
+          tabindex="0"
+          aria-label="Нейродора выпускает воздушные поцелуи по приближающимся персонажам"
+        ></canvas>
+
+        <div id="hud" class="hud hidden" aria-live="polite">
+          <div class="score"><small>СЧЁТ</small><b id="scoreValue">000000</b></div>
+          <div id="lives" class="lives" aria-label="Одна жизнь"><i>♥</i></div>
+        </div>
+
+        <div id="enemyBar" class="enemy-bar hidden" aria-label="Здоровье противника">
+          <b id="enemyName">НЕЙРОМИРОН</b>
+          <i><span id="enemyBarFill"></span></i>
+        </div>
+
+        <div id="levelCard" class="level-card hidden" aria-live="polite">
+          <strong id="levelTitle">НЕЙРОМИРОН</strong>
+          <p id="levelRule">SPACE — ПОЦЕЛУЙ</p>
+        </div>
+
+        <div id="quote" class="quote hidden" aria-live="polite">
+          <b id="quoteName">НЕЙРОМИРОН</b>
+          <span id="quoteText">Кьют-рок здесь не пройдёт.</span>
+        </div>
+
+        <section id="titleScreen" class="screen title-screen">
+          <div class="title-copy">
+            <h1>КЬЮТ-РОК<br /><em>ПРОТИВ</em><br />ВСЕХ</h1>
+            <div class="space-help"><kbd>SPACE</kbd></div>
+
+            <button id="startButton" class="main-button" type="button">ИГРАТЬ <b>♥</b></button>
+          </div>
+        </section>
+
+        <section id="novelOverlay" class="novel-overlay hidden" aria-live="polite">
+          <div class="novel-shade"></div>
+          <img id="novelLeft" class="novel-person left hidden" alt="" />
+          <img id="novelRight" class="novel-person right hidden" alt="" />
+          <button id="novelNext" class="novel-box" type="button">
+            <b id="novelSpeaker">РАССКАЗЧИК</b>
+            <span id="novelText">Кьют-рок против всех.</span>
+            <small>SPACE / КЛИК <i>▼</i></small>
+          </button>
+        </section>
+
+        <section id="resultScreen" class="screen result-screen hidden" aria-live="polite">
+          <div class="result-copy">
+            <p id="resultKicker">РЕЗУЛЬТАТ</p>
+            <h2 id="resultTitle">ПОБЕДА</h2>
+            <p id="resultText">КЬЮТ-РОК ПРОТИВ ВСЕХ — ПРОЙДЕНО.</p>
+            <div class="result-score"><small>СЧЁТ</small><b id="finalScore">0</b></div>
+            <button id="restartButton" class="main-button" type="button">ЗАНОВО <b>♥</b></button>
+          </div>
+        </section>
+
+        <button id="soundButton" class="sound-button" type="button" aria-label="Выключить звук">♪</button>
+        <button id="touchButton" class="touch-button hidden" type="button" aria-label="Воздушный поцелуй">
+          <b>♥</b><span>ПОЦЕЛУЙ</span>
+        </button>
+      </section>
+    </main>
+
+    <script src="cute-game.js?v=approved-11"></script>
+  </body>
+</html>
