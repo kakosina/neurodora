@@ -15,6 +15,25 @@
   };
   const WALK_SCROLL_SPEED_PER_VIEW = 0.065;
   const WALK_FRAME_DISTANCE = 14;
+  const SPRITE_FOOT_PADDING = 3;
+  const WALK_OPTICAL_OFFSETS = {
+    dora: [7.5, 5.5, 3, 5, 1.5, 6],
+    miron: [-3, 13, 0, 0.5, 13, -2],
+    slava: [-4.5, 0, 0.5, -14.5, 0, -0.5],
+    maybe: [6.5, 1.5, 17.5, 15.5, 3, 16.5],
+    morgen: [3, -0.5, 4, 4, -0.5, -0.5]
+  };
+  const CUTE_WIN_TIMING = {
+    approach: 1.45,
+    blend: 0.48,
+    total: 6.8
+  };
+  const INTERACTION_LAYOUT = {
+    miron: { dora: -101, enemy: 99 },
+    slava: { dora: -120, enemy: 118 },
+    maybe: { dora: -95, enemy: 96 },
+    morgen: { dora: -168, enemy: 30, ally: 185 }
+  };
   const canvas = document.querySelector('#gameCanvas');
   const ctx = canvas.getContext('2d', { alpha: false });
 
@@ -28,7 +47,6 @@
     enemyBarFill: document.querySelector('#enemyBarFill'),
     levelCard: document.querySelector('#levelCard'),
     levelTitle: document.querySelector('#levelTitle'),
-    levelRule: document.querySelector('#levelRule'),
     quote: document.querySelector('#quote'),
     quoteName: document.querySelector('#quoteName'),
     quoteText: document.querySelector('#quoteText'),
@@ -127,19 +145,24 @@
       prefix: 'miron',
       hp: 935,
       approach: 0.0195,
-      rule: 'SPACE — ПОЦЕЛУЙ',
       theme: 'miron',
       interactionScale: 1.06,
+      barks: [
+        { at: 0.72, text: 'Сердце без тезиса. Неразборчиво.' },
+        { at: 0.43, text: 'Mea… нет. Это просто анимация.' },
+        { at: 0.18, text: 'Почему аргумент тёплый?' }
+      ],
       pre: [
-        { speaker: 'НЕЙРОМИРОН', text: 'Amor vincit omnia. Сентенция красивая, но семантически изношенная.', left: 'dora-idle', right: 'miron-defiant' },
-        { speaker: 'НЕЙРОДОРА', text: 'Ты даже любовь превратил в сноску.', left: 'dora-wink', right: 'miron-defiant' },
-        { speaker: 'НЕЙРОМИРОН', text: 'Сноска — единственное место, где текст ещё честен.', left: 'dora-ready', right: 'miron-angry' }
+        { speaker: 'НЕЙРОМИРОН', text: 'In principio erat Verbum. В начале было Слово. У тебя пока сердечко без доказательной базы.', left: 'dora-idle', right: 'miron-defiant' },
+        { speaker: 'НЕЙРОДОРА', text: 'А у тебя к одному «привет» уже три тома комментариев.', left: 'dora-wink', right: 'miron-defiant' },
+        { speaker: 'НЕЙРОМИРОН', text: 'Дискурс требует точности.', left: 'dora-blink', right: 'miron-angry' },
+        { speaker: 'НЕЙРОДОРА', text: 'Ты просто боишься ответить без сноски.', left: 'dora-ready', right: 'miron-angry' }
       ],
       post: [
-        { speaker: 'НЕЙРОМИРОН', text: 'Аргумент… недопустимо убедителен.', left: 'dora-wink', right: 'miron-flustered' },
-        { speaker: 'НЕЙРОДОРА', text: 'Можно просто сказать: «мило».', left: 'dora-idle', right: 'miron-soft' },
-        { speaker: 'НЕЙРОМИРОН', text: 'Mile. Это наречие?', left: 'dora-blink', right: 'miron-kind' },
-        { speaker: 'НЕЙРОДОРА', text: 'Уже почти получилось.', left: 'dora-wink', right: 'miron-farewell' }
+        { speaker: 'НЕЙРОМИРОН', text: 'Mea culpa. Воротник действительно был крив.', left: 'dora-wink', right: 'miron-flustered' },
+        { speaker: 'НЕЙРОДОРА', text: 'Вот. Два слова — и ни одной лекции.', left: 'dora-idle', right: 'miron-soft' },
+        { speaker: 'НЕЙРОМИРОН', text: 'Три. Mea — тоже слово.', left: 'dora-blink', right: 'miron-kind' },
+        { speaker: 'НЕЙРОДОРА', text: 'Неисправим.', left: 'dora-wink', right: 'miron-farewell' }
       ]
     },
     {
@@ -147,18 +170,26 @@
       prefix: 'slava',
       hp: 1300,
       approach: 0.0215,
-      rule: 'SPACE — ПОЦЕЛУЙ',
       theme: 'slava',
       interactionScale: 1.04,
+      barks: [
+        { at: 0.72, text: 'Это не попадание, а цитата.' },
+        { at: 0.43, text: 'Румянец — часть декораций.' },
+        { at: 0.18, text: 'Я сейчас искренне… шучу.' }
+      ],
       pre: [
-        { speaker: 'НЕЙРОСЛАВА', text: 'Я заранее проиграл. Это концепт. Если выиграю — деконструкция.', left: 'dora-idle', right: 'slava-defiant' },
+        { speaker: 'НЕЙРОСЛАВА', text: 'Сразу договоримся: если злюсь — это персонаж. Если краснею — постирония. Если проиграю — перформанс.', left: 'dora-idle', right: 'slava-defiant' },
         { speaker: 'НЕЙРОДОРА', text: 'А если тебе просто понравится?', left: 'dora-blink', right: 'slava-angry' },
-        { speaker: 'НЕЙРОСЛАВА', text: 'Токсичная искренность. Запрещённый приём.', left: 'dora-ready', right: 'slava-defiant' }
+        { speaker: 'НЕЙРОСЛАВА', text: 'Клевета. Подам метаиск.', left: 'dora-wink', right: 'slava-defiant' },
+        { speaker: 'НЕЙРОДОРА', text: 'На кого?', left: 'dora-idle', right: 'slava-defiant' },
+        { speaker: 'НЕЙРОСЛАВА', text: 'На автора этой реплики. То есть на себя. Концептуально.', left: 'dora-ready', right: 'slava-angry' }
       ],
       post: [
-        { speaker: 'НЕЙРОСЛАВА', text: 'Я улыбаюсь иронически.', left: 'dora-idle', right: 'slava-flustered' },
-        { speaker: 'НЕЙРОДОРА', text: 'А щёки красные неиронически.', left: 'dora-wink', right: 'slava-soft' },
-        { speaker: 'НЕЙРОСЛАВА', text: 'Ладно. Второй уровень шутки временно закрыт.', left: 'dora-victory', right: 'slava-kind' }
+        { speaker: 'НЕЙРОСЛАВА', text: 'Кулачок был антибуллинг-диссом. Я защитил себя от твоей доброты.', left: 'dora-idle', right: 'slava-flustered' },
+        { speaker: 'НЕЙРОДОРА', text: 'Ты улыбнулся.', left: 'dora-wink', right: 'slava-soft' },
+        { speaker: 'НЕЙРОСЛАВА', text: 'Монтаж.', left: 'dora-idle', right: 'slava-defiant' },
+        { speaker: 'НЕЙРОДОРА', text: 'Мы в игре.', left: 'dora-blink', right: 'slava-soft' },
+        { speaker: 'НЕЙРОСЛАВА', text: 'Тем более. Нарисовали без согласия.', left: 'dora-victory', right: 'slava-kind' }
       ]
     },
     {
@@ -166,18 +197,27 @@
       prefix: 'maybe',
       hp: 1735,
       approach: 0.0142,
-      rule: 'НЕ ДАЙ ЕЙ ДОЙТИ',
       theme: 'maybe',
       interactionScale: 1.06,
+      barks: [
+        { at: 0.72, text: 'Не трогай укладку!' },
+        { at: 0.43, text: 'Это blush-фильтр, ясно?' },
+        { at: 0.18, text: 'Сердечки норм. Но не зазнавайся.' }
+      ],
       pre: [
-        { speaker: 'НЕЙРОМЭЙБИ', text: 'Мой лук дороже твоего саундчека, самооценка — платиновая.', left: 'dora-idle', right: 'maybe-defiant' },
-        { speaker: 'НЕЙРОДОРА', text: 'А бантик всё равно криво.', left: 'dora-wink', right: 'maybe-angry' },
-        { speaker: 'НЕЙРОМЭЙБИ', text: 'Это асимметрия власти.', left: 'dora-ready', right: 'maybe-defiant' }
+        { speaker: 'НЕЙРОМЭЙБИ', text: 'Добро пожаловать в Мэйбилэнд. Здесь я — икона, ты — фон.', left: 'dora-idle', right: 'maybe-defiant' },
+        { speaker: 'НЕЙРОДОРА', text: 'А бантик почему криво?', left: 'dora-wink', right: 'maybe-angry' },
+        { speaker: 'НЕЙРОМЭЙБИ', text: 'Это авторская асимметрия. Ты такой мерч не потянешь.', left: 'dora-blink', right: 'maybe-defiant' },
+        { speaker: 'НЕЙРОДОРА', text: 'Зато дотянусь поправить.', left: 'dora-ready', right: 'maybe-angry' },
+        { speaker: 'НЕЙРОМЭЙБИ', text: 'Попробуй — получишь дисс быстрее, чем ответ в директ.', left: 'dora-ready', right: 'maybe-defiant' }
       ],
       post: [
-        { speaker: 'НЕЙРОМЭЙБИ', text: 'Не гладь меня. …Ещё два раза.', left: 'dora-idle', right: 'maybe-flustered' },
-        { speaker: 'НЕЙРОДОРА', text: 'Считаю только до четырёх.', left: 'dora-wink', right: 'maybe-kind' },
-        { speaker: 'НЕЙРОМЭЙБИ', text: 'Ладно. Но в финале я стою рядом, не сзади.', left: 'dora-victory', right: 'maybe-victory' }
+        { speaker: 'НЕЙРОМЭЙБИ', text: 'Убери руку. Я не котик.', left: 'dora-idle', right: 'maybe-flustered' },
+        { speaker: 'НЕЙРОДОРА', text: 'Убрала.', left: 'dora-blink', right: 'maybe-kind' },
+        { speaker: 'НЕЙРОМЭЙБИ', text: '…Я не сказала совсем.', left: 'dora-wink', right: 'maybe-flustered' },
+        { speaker: 'НЕЙРОДОРА', text: 'Сколько?', left: 'dora-idle', right: 'maybe-kind' },
+        { speaker: 'НЕЙРОМЭЙБИ', text: 'Четыре. И никому. Это лимитированный контент.', left: 'dora-victory', right: 'maybe-victory' },
+        { speaker: 'НЕЙРОДОРА', text: 'VIP-доступ получен.', left: 'dora-wink', right: 'maybe-kind' }
       ]
     },
     {
@@ -185,19 +225,28 @@
       prefix: 'morgen',
       hp: 2535,
       approach: 0.0218,
-      rule: 'ДОРА + МЭЙБИ',
       theme: 'morgen',
       interactionScale: 1.13,
+      barks: [
+        { at: 0.72, text: 'Сердце? Сколько оно стоит?' },
+        { at: 0.43, text: 'Эй, это портит злой ракурс.' },
+        { at: 0.18, text: 'Снимайте. Это неожиданно хайпово.' }
+      ],
       pre: [
-        { speaker: 'НЕЙРОМОРГЕН', text: 'Цепь, машина, припев. Полная комплектация.', left: 'dora-idle', right: 'morgen-defiant' },
-        { speaker: 'НЕЙРОМЭЙБИ', text: 'А характер в неё не вошёл?', left: 'maybe-defiant', right: 'morgen-angry' },
-        { speaker: 'НЕЙРОМОРГЕН', text: 'Характер — дополнительная опция.', left: 'maybe-angry', right: 'morgen-defiant' },
-        { speaker: 'НЕЙРОДОРА', text: 'Тогда поставим базовую: не хмуриться.', left: 'dora-ready', right: 'morgen-angry' }
+        { speaker: 'НЕЙРОМОРГЕН', text: 'На мне комплект: цепь, часы, машина, уверенность — всё deluxe.', left: 'dora-idle', right: 'morgen-defiant' },
+        { speaker: 'НЕЙРОМЭЙБИ', text: 'Уверенность тоже напрокат?', left: 'maybe-defiant', right: 'morgen-angry' },
+        { speaker: 'НЕЙРОМОРГЕН', text: 'Хейт монетизируется. Спасибо за вклад.', left: 'maybe-angry', right: 'morgen-defiant' },
+        { speaker: 'НЕЙРОДОРА', text: 'А улыбка в комплекте?', left: 'dora-blink', right: 'morgen-angry' },
+        { speaker: 'НЕЙРОМОРГЕН', text: 'Не в базовой комплектации.', left: 'dora-ready', right: 'morgen-defiant' },
+        { speaker: 'НЕЙРОМЭЙБИ', text: 'Сейчас взломаем подписку.', left: 'maybe-defiant', right: 'morgen-angry' }
       ],
       post: [
-        { speaker: 'НЕЙРОМОРГЕН', text: 'Только никому: я вообще-то люблю дачу и огурчики.', left: 'maybe-kind', right: 'morgen-flustered' },
-        { speaker: 'НЕЙРОМЭЙБИ', text: 'Поздно. Это уже сторис.', left: 'maybe-victory', right: 'morgen-soft' },
-        { speaker: 'НЕЙРОДОРА', text: 'Улыбнись. Без фильтра.', left: 'dora-wink', right: 'morgen-kind' }
+        { speaker: 'НЕЙРОМОРГЕН', text: 'Фото не выкладывать. У меня по контракту лицо дороже кадра.', left: 'maybe-kind', right: 'morgen-flustered' },
+        { speaker: 'НЕЙРОМЭЙБИ', text: 'Уже в сторис.', left: 'maybe-victory', right: 'morgen-soft' },
+        { speaker: 'НЕЙРОМОРГЕН', text: 'Тогда подпиши: «без фильтра».', left: 'maybe-kind', right: 'morgen-kind' },
+        { speaker: 'НЕЙРОДОРА', text: 'И «любит огурчики».', left: 'dora-wink', right: 'morgen-flustered' },
+        { speaker: 'НЕЙРОМОРГЕН', text: 'Это premium-инфа.', left: 'dora-idle', right: 'morgen-soft' },
+        { speaker: 'НЕЙРОМЭЙБИ', text: 'Теперь public.', left: 'maybe-victory', right: 'morgen-kind' }
       ]
     }
   ];
@@ -248,19 +297,19 @@
   const PROLOGUE = [
     {
       speaker: 'РАССКАЗЧИК',
-      text: 'В старой папке осталась песня, записанная на проводные наушники. За окном шёл дождь.',
+      text: 'В папке «2018_не_удалять» лежала демка: голос в айфон, реверб и дождь по стеклу.',
       left: null,
       right: 'dora-idle'
     },
     {
       speaker: 'НЕЙРОДОРА',
-      text: 'Я тогда думала: если мне не отвечают, значит, со мной что-то не так.',
+      text: 'Я её не открывала. Боялась снова услышать, как жду чужого «привет».',
       left: null,
       right: 'dora-flustered'
     },
     {
       speaker: 'НЕЙРОДОРА',
-      text: 'Теперь знаю: иногда сердечко просто надо отправить первой.',
+      text: 'Сегодня отправлю первой. Если что — скажу, что тестировала игру.',
       left: null,
       right: 'dora-ready'
     }
@@ -269,19 +318,37 @@
   const EPILOGUE = [
     {
       speaker: 'РАССКАЗЧИК',
-      text: 'Утро не стало идеальным. Просто никто больше не делал вид, что ему не нужно сердечко.',
+      text: 'Утро застало их на том же поле. Только теперь никто не делал вид, что не ждёт сообщения.',
       left: 'dora-victory',
       right: 'maybe-kind'
     },
     {
       speaker: 'НЕЙРОМЭЙБИ',
-      text: 'Это всё?',
+      text: 'Я всё ещё не котик.',
       left: 'dora-victory',
       right: 'maybe-kind'
     },
     {
+      speaker: 'НЕЙРОСЛАВА',
+      text: 'А я всё ещё участвовал постиронически.',
+      left: 'slava-kind',
+      right: 'dora-wink'
+    },
+    {
+      speaker: 'НЕЙРОМИРОН',
+      text: 'Термин употреблён неточно.',
+      left: 'miron-kind',
+      right: 'slava-flustered'
+    },
+    {
+      speaker: 'НЕЙРОМОРГЕН',
+      text: 'Групповой чат монетизируем?',
+      left: 'maybe-kind',
+      right: 'morgen-kind'
+    },
+    {
       speaker: 'НЕЙРОДОРА',
-      text: 'Нет. Теперь можно отправить песню тому, кто тоже ждёт ответа.',
+      text: 'Тихо. Я отправляю демку.',
       left: 'dora-victory',
       right: 'maybe-kind'
     }
@@ -302,6 +369,8 @@
     score: 0,
     lives: MAX_LIVES,
     hitCount: 0,
+    barkIndex: 0,
+    quoteTime: 0,
     enemy: null,
     allyJoined: false,
     kissReady: false,
@@ -314,6 +383,7 @@
     novelScenes: [],
     novelIndex: 0,
     novelDone: null,
+    cuteWinStart: null,
     starting: false,
     muted: false
   };
@@ -366,7 +436,7 @@
     // All poses share a 500px safety frame. Leave visible breathing room around
     // raised hands, recoil and the widest walk frames at every aspect ratio.
     const heightScale = view.h / 900 * 0.68;
-    const widthScale = view.w / 900 * 0.72;
+    const widthScale = view.w / 900 * 0.86;
     return clamp(Math.min(heightScale, widthScale), 0.16, 0.75);
   }
 
@@ -519,6 +589,8 @@
     game.score = 0;
     game.lives = MAX_LIVES;
     game.hitCount = 0;
+    game.barkIndex = 0;
+    game.quoteTime = 0;
     game.enemy = null;
     game.allyJoined = false;
     game.kissReady = false;
@@ -528,6 +600,7 @@
     game.allyAction = 'idle';
     game.allyActionTime = 0;
     game.allyRecoil = 0;
+    game.cuteWinStart = null;
     updateHud();
   }
 
@@ -558,6 +631,9 @@
     game.levelIndex = index;
     game.battleTime = 0;
     game.hitCount = 0;
+    game.barkIndex = 0;
+    game.quoteTime = 0;
+    game.cuteWinStart = null;
     game.doraAction = 'idle';
     game.allyAction = 'idle';
     game.enemy = {
@@ -583,7 +659,6 @@
     game.phase = 'levelIntro';
     game.phaseTime = 0;
     ui.levelTitle.textContent = level.name;
-    ui.levelRule.textContent = level.rule;
     show(ui.levelCard);
     tone(440, 0.12, 'triangle', 0.018, 0);
     tone(660, 0.16, 'triangle', 0.018, 0.08);
@@ -608,6 +683,14 @@
       const ratio = clamp(game.enemy.hp / game.enemy.maxHp, 0, 1);
       ui.enemyBarFill.style.width = String(ratio * 100) + '%';
     }
+  }
+
+  function showBattleBark(text) {
+    const level = LEVELS[game.levelIndex];
+    ui.quoteName.textContent = level.name;
+    ui.quoteText.textContent = text;
+    game.quoteTime = 1.75;
+    show(ui.quote);
   }
 
   function readyKiss() {
@@ -763,8 +846,13 @@
   function startCuteWin() {
     game.phase = 'cuteWin';
     game.phaseTime = 0;
-    game.doraAction = 'victory';
-    game.allyAction = 'victory';
+    game.doraAction = 'walk';
+    game.allyAction = 'walk';
+    game.cuteWinStart = {
+      dora: getDoraX(),
+      ally: getAllyX(),
+      enemy: game.enemy ? game.enemy.x : getEnemyStartX()
+    };
     shots.length = 0;
     hide(ui.enemyBar);
     hide(ui.quote);
@@ -907,6 +995,12 @@
     enemy.walkDistance += travel;
     updateShots(dt);
 
+    const bark = level.barks[game.barkIndex];
+    if (bark && enemy.hp / enemy.maxHp <= bark.at) {
+      showBattleBark(bark.text);
+      game.barkIndex += 1;
+    }
+
     const contactX = getDoraX() + 108 * getScale();
     if (enemy.x <= contactX) enemyReachedDora();
   }
@@ -916,6 +1010,10 @@
     game.phaseTime += dt;
     updateActions(dt);
     updateParticles(dt);
+    if (game.quoteTime > 0) {
+      game.quoteTime = Math.max(0, game.quoteTime - dt);
+      if (game.quoteTime === 0) hide(ui.quote);
+    }
 
     if (game.phase === 'levelIntro' && game.phaseTime > 1.75) {
       beginBattle();
@@ -939,7 +1037,7 @@
       if (game.phaseTime > 0.9) startCuteWin();
     } else if (game.phase === 'cuteWin') {
       game.dayMix = clamp(game.dayMix + dt * 0.55, 0, 1);
-      if (game.phaseTime > 4.8) {
+      if (game.phaseTime > CUTE_WIN_TIMING.total) {
         const post = LEVELS[game.levelIndex].post;
         game.phase = 'storyPause';
         game.enemy = null;
@@ -1208,6 +1306,12 @@
     return prefix + '-walk-' + String((Math.floor(distance / WALK_FRAME_DISTANCE) % 6) + 1);
   }
 
+  function spriteOpticalOffset(key) {
+    const match = key && key.match(/^(dora|miron|slava|maybe|morgen)-walk-([1-6])$/);
+    if (!match) return 0;
+    return WALK_OPTICAL_OFFSETS[match[1]][Number(match[2]) - 1];
+  }
+
   function currentDoraSprite() {
     if (game.phase === 'walk') return walkFrame('dora', game.worldOffset);
     if (game.phase === 'hurt') return game.phaseTime < 0.36 ? 'dora-hit' : 'dora-defeat';
@@ -1262,11 +1366,17 @@
     const height = image.naturalHeight;
     ctx.save();
     ctx.globalAlpha = opts.alpha == null ? 1 : opts.alpha;
-    ctx.translate(x, ground + (opts.y || 0));
+    const opticalOffset = spriteOpticalOffset(key);
+    // Every approved gameplay frame carries the same 3 px transparent safety
+    // strip below the shoes. Compensating it here makes the visible soles, not
+    // the PNG rectangle, touch the ground line. The per-frame optical offset
+    // removes the generated walk-cycle's sideways jitter without flattening
+    // its natural head-and-shoulder bounce.
+    ctx.translate(x, ground + SPRITE_FOOT_PADDING * displayScale + (opts.y || 0));
     ctx.scale(opts.flipX ? -1 : 1, stretchY);
     ctx.drawImage(
       image,
-      -width * displayScale / 2,
+      (-width / 2 - opticalOffset) * displayScale,
       -height * displayScale,
       width * displayScale,
       height * displayScale
@@ -1363,26 +1473,27 @@
     }
   }
 
-  function drawSeparateActors(alpha, positions) {
+  function drawSeparateActors(alpha, positions, renderOptions) {
     const scale = getScale();
     const ground = getGround();
     const actorAlpha = alpha == null ? 1 : alpha;
+    const render = renderOptions || {};
     const actorPositions = positions || {
       enemy: game.enemy ? game.enemy.x : getEnemyStartX(),
       ally: getAllyX(),
       dora: getDoraX()
     };
-    const breathing = game.phase === 'battle' && game.doraAction === 'idle'
+    const breathing = !render.doraSprite && game.phase === 'battle' && game.doraAction === 'idle'
       ? 1 + Math.sin(game.totalTime * 2.8) * 0.004
       : 1;
 
     if (game.enemy) {
       const enemyPrefix = LEVELS[game.levelIndex].prefix;
       drawActor(
-        currentEnemySprite(),
+        render.enemySprite || currentEnemySprite(),
         actorPositions.enemy,
         ground,
-        scale,
+        scale * (render.enemyScale || 1),
         {
           alpha: game.enemy.alpha * actorAlpha,
           // Maybe's approved sheet faces right for her later ally role. As an
@@ -1396,10 +1507,10 @@
 
     if (game.allyJoined && game.levelIndex >= 2) {
       drawActor(
-        currentAllySprite(),
+        render.allySprite || currentAllySprite(),
         actorPositions.ally - game.allyRecoil,
         ground,
-        scale,
+        scale * (render.allyScale || 1),
         {
           stretchY: game.phase === 'battle' ? 1 + Math.sin(game.totalTime * 2.6 + 1) * 0.003 : 1,
           flipX: game.allyAction === 'kiss',
@@ -1408,12 +1519,12 @@
       );
     }
 
-    const doraSprite = currentDoraSprite();
+    const doraSprite = render.doraSprite || currentDoraSprite();
     drawActor(
       doraSprite,
       actorPositions.dora - game.doraRecoil,
       ground,
-      scale,
+      scale * (render.doraScale || 1),
       {
         stretchY: breathing,
         alpha: actorAlpha,
@@ -1423,35 +1534,51 @@
   }
 
   function getInteractionFrame() {
-    // The first half-second is a covered scene swap. Start the actual mini
-    // animation only after the old and new compositions can no longer be seen
-    // on top of each other.
-    const time = Math.max(0, game.phaseTime - 0.5);
-    if (time < 0.58) return 1;
-    if (time < 1.18) return 2;
-    if (time < 1.82) return 3;
-    if (time < 2.5) return 4;
-    if (time < 3.28) return 5;
+    const time = Math.max(0, game.phaseTime - CUTE_WIN_TIMING.approach - CUTE_WIN_TIMING.blend);
+    if (time < 0.46) return 1;
+    if (time < 0.92) return 2;
+    if (time < 1.38) return 3;
+    if (time < 1.84) return 4;
+    if (time < 2.3) return 5;
     return 6;
   }
 
-  function drawCuteWinVeil() {
-    const time = game.phaseTime;
-    let alpha = 0;
-    if (time < 0.22) alpha = smoothstep(time / 0.22);
-    else if (time < 0.5) alpha = 1 - smoothstep((time - 0.22) / 0.28);
-    if (alpha <= 0) return;
-    ctx.save();
-    ctx.globalAlpha = alpha;
-    ctx.fillStyle = '#fff0f6';
-    ctx.fillRect(0, 0, view.w, view.h);
-    ctx.restore();
+  function getInteractionPositions() {
+    const level = LEVELS[game.levelIndex];
+    const layout = INTERACTION_LAYOUT[level.prefix];
+    const interactionScale = getScale() * getInteractionUniformScale(level.prefix);
+    const center = view.w * 0.5;
+    return {
+      dora: center + layout.dora * interactionScale,
+      enemy: center + layout.enemy * interactionScale,
+      ally: layout.ally == null ? getAllyX() : center + layout.ally * interactionScale
+    };
+  }
+
+  function getInteractionUniformScale(prefix) {
+    const level = LEVELS.find((item) => item.prefix === prefix) || LEVELS[game.levelIndex];
+    const image = SPRITES[prefix + '-interaction-1'];
+    const width = image && image.naturalWidth ? image.naturalWidth : (prefix === 'morgen' ? 980 : 720);
+    const height = image && image.naturalHeight ? image.naturalHeight : 520;
+    const baseScale = Math.max(0.001, getScale());
+    const sideRoom = Math.max(8, view.w * 0.025);
+    const topRoom = Math.max(8, view.h * 0.035);
+    const widthFit = (view.w - sideRoom * 2) / (width * baseScale);
+    const heightFit = (getGround() - topRoom) / (height * baseScale);
+    return Math.max(0.5, Math.min(level.interactionScale, widthFit, heightFit));
+  }
+
+  function drawCuteWinAccent() {
+    const local = (game.phaseTime - CUTE_WIN_TIMING.approach + 0.08) / 0.86;
+    if (local <= 0 || local >= 1) return;
+    const alpha = Math.sin(local * Math.PI) * 0.78;
+    const lift = smoothstep(local) * view.h * 0.035;
     drawHeart(
       view.w * 0.5,
-      view.h * 0.47,
-      Math.max(18, getScale() * 36),
+      view.h * 0.42 - lift,
+      Math.max(12, getScale() * 25),
       '#ff6d9a',
-      alpha * 0.94
+      alpha
     );
   }
 
@@ -1461,9 +1588,46 @@
       const ground = getGround();
       const level = LEVELS[game.levelIndex];
       const prefix = level.prefix;
+      const targets = getInteractionPositions();
+      const starts = game.cuteWinStart || {
+        dora: getDoraX(),
+        ally: getAllyX(),
+        enemy: game.enemy ? game.enemy.x : getEnemyStartX()
+      };
+      const approach = smoothstep(game.phaseTime / CUTE_WIN_TIMING.approach);
+      const positions = {
+        dora: lerp(starts.dora, targets.dora, approach),
+        ally: lerp(starts.ally, targets.ally, approach),
+        enemy: lerp(starts.enemy, targets.enemy, approach)
+      };
+      const stride = approach * 250;
+      const approachSprites = {
+        doraSprite: walkFrame('dora', stride),
+        // The opponent has already lost the battle: Dora walks to them while
+        // they keep the readable defeated expression until the interaction.
+        enemySprite: prefix + '-defeated',
+        allySprite: walkFrame('maybe', stride * 1.04)
+      };
+      const interactionUniformScale = getInteractionUniformScale(prefix);
 
-      if (game.phaseTime < 0.22) {
-        drawSeparateActors(1);
+      if (game.phaseTime < CUTE_WIN_TIMING.approach) {
+        drawSeparateActors(1, positions, approachSprites);
+      } else if (game.phaseTime < CUTE_WIN_TIMING.approach + CUTE_WIN_TIMING.blend) {
+        const blend = smoothstep(
+          (game.phaseTime - CUTE_WIN_TIMING.approach) / CUTE_WIN_TIMING.blend
+        );
+        drawSeparateActors(1 - blend, targets, approachSprites);
+        drawActor(
+          prefix + '-interaction-1',
+          view.w * 0.5,
+          ground,
+          scale,
+          {
+            alpha: blend,
+            uniformScale: interactionUniformScale * lerp(0.97, 1, blend),
+            flipX: prefix === 'miron' || prefix === 'slava'
+          }
+        );
       } else {
         drawActor(
           prefix + '-interaction-' + String(getInteractionFrame()),
@@ -1471,12 +1635,12 @@
           ground,
           scale,
           {
-            uniformScale: level.interactionScale,
+            uniformScale: interactionUniformScale,
             flipX: prefix === 'miron' || prefix === 'slava'
           }
         );
       }
-      drawCuteWinVeil();
+      drawCuteWinAccent();
       return;
     }
     drawSeparateActors(1);
@@ -1594,6 +1758,8 @@
     getEnemyStartX,
     getScale,
     getGround,
+    getInteractionUniformScale,
+    spriteOpticalOffset,
     mixHex,
     backdropState,
     getView: () => ({ ...view })
