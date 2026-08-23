@@ -2,7 +2,19 @@
   'use strict';
 
   const ROOT_V3 = 'assets/game-approved-v3/';
-  const PLAY_SPEED = 2.5;
+  const ROOT_V02 = 'assets/game-v02/';
+  const ROOT_DIALOGUE = 'assets/game-dialogue-v01/';
+  const MAX_LIVES = 3;
+  const ENEMY_SPEED_MULTIPLIER = 2.5;
+  const HEART_SPEED_PER_VIEW = 0.38;
+  const KISS_MOUTH_ANCHORS = {
+    dora: { x: 68, y: 350 },
+    // Maybe's source sprite is mirrored at draw time, so her mouth sits only
+    // slightly to the right of the sprite centre after the flip.
+    maybe: { x: 14, y: 334 }
+  };
+  const WALK_SCROLL_SPEED_PER_VIEW = 0.065;
+  const WALK_FRAME_DISTANCE = 14;
   const canvas = document.querySelector('#gameCanvas');
   const ctx = canvas.getContext('2d', { alpha: false });
 
@@ -33,9 +45,12 @@
     resultTitle: document.querySelector('#resultTitle'),
     resultText: document.querySelector('#resultText'),
     finalScore: document.querySelector('#finalScore'),
+    resultCast: document.querySelector('#resultCast'),
+    telegram: document.querySelector('#resultTelegram'),
     restart: document.querySelector('#restartButton'),
     sound: document.querySelector('#soundButton'),
-    touch: document.querySelector('#touchButton')
+    touch: document.querySelector('#touchButton'),
+    music: document.querySelector('#backgroundMusic')
   };
 
   const SPRITE_PATHS = {};
@@ -59,6 +74,12 @@
     for (let frame = 1; frame <= 4; frame += 1) {
       const key = character + '-cute-win-' + String(frame);
       SPRITE_PATHS[key] = ROOT_V3 + key + '.png';
+    }
+  });
+  ['miron', 'slava', 'maybe', 'morgen'].forEach((character) => {
+    for (let frame = 1; frame <= 6; frame += 1) {
+      const key = character + '-interaction-' + String(frame);
+      SPRITE_PATHS[key] = ROOT_V02 + key + '.png';
     }
   });
   ['miron', 'slava', 'morgen'].forEach((character) => {
@@ -85,6 +106,20 @@
       image.src = path;
     });
   });
+  const PORTRAITS = {};
+  Object.keys(SPRITE_PATHS)
+    .filter((key) => !key.includes('-walk-') && !key.includes('-interaction-') &&
+      !key.includes('-cute-win-') && !key.includes('dora-maybe-pat-'))
+    .forEach((key) => {
+      const image = new Image();
+      image.decoding = 'async';
+      PORTRAITS[key] = image;
+      imagePromises.push(new Promise((resolve) => {
+        image.onload = resolve;
+        image.onerror = resolve;
+        image.src = ROOT_DIALOGUE + key + '.png';
+      }));
+    });
 
   const LEVELS = [
     {
@@ -93,13 +128,18 @@
       hp: 935,
       approach: 0.0195,
       rule: 'SPACE — ПОЦЕЛУЙ',
+      theme: 'miron',
+      interactionScale: 1.06,
       pre: [
-        { speaker: 'НЕЙРОМИРОН', text: 'Этот город у меня под подошвой.', left: 'dora-idle', right: 'miron-defiant' },
-        { speaker: 'НЕЙРОДОРА', text: 'Смотри под ноги: там уже сердечко.', left: 'dora-ready', right: 'miron-angry' }
+        { speaker: 'НЕЙРОМИРОН', text: 'Amor vincit omnia. Сентенция красивая, но семантически изношенная.', left: 'dora-idle', right: 'miron-defiant' },
+        { speaker: 'НЕЙРОДОРА', text: 'Ты даже любовь превратил в сноску.', left: 'dora-wink', right: 'miron-defiant' },
+        { speaker: 'НЕЙРОМИРОН', text: 'Сноска — единственное место, где текст ещё честен.', left: 'dora-ready', right: 'miron-angry' }
       ],
       post: [
-        { speaker: 'НЕЙРОМИРОН', text: 'Ладно. Этот раунд твой.', left: 'dora-wink', right: 'miron-defeated' },
-        { speaker: 'НЕЙРОДОРА', text: 'Дальше.', left: 'dora-ready', right: 'miron-kind' }
+        { speaker: 'НЕЙРОМИРОН', text: 'Аргумент… недопустимо убедителен.', left: 'dora-wink', right: 'miron-flustered' },
+        { speaker: 'НЕЙРОДОРА', text: 'Можно просто сказать: «мило».', left: 'dora-idle', right: 'miron-soft' },
+        { speaker: 'НЕЙРОМИРОН', text: 'Mile. Это наречие?', left: 'dora-blink', right: 'miron-kind' },
+        { speaker: 'НЕЙРОДОРА', text: 'Уже почти получилось.', left: 'dora-wink', right: 'miron-farewell' }
       ]
     },
     {
@@ -107,29 +147,37 @@
       prefix: 'slava',
       hp: 1300,
       approach: 0.0215,
-      rule: 'ТРЕТИЙ УДАР ×2',
+      rule: 'SPACE — ПОЦЕЛУЙ',
+      theme: 'slava',
+      interactionScale: 1.04,
       pre: [
-        { speaker: 'НЕЙРОСЛАВА', text: 'Здесь только «Грустные танцы».', left: 'dora-idle', right: 'slava-defiant' },
-        { speaker: 'НЕЙРОДОРА', text: 'Тогда попаду в ритм.', left: 'dora-ready', right: 'slava-angry' }
+        { speaker: 'НЕЙРОСЛАВА', text: 'Я заранее проиграл. Это концепт. Если выиграю — деконструкция.', left: 'dora-idle', right: 'slava-defiant' },
+        { speaker: 'НЕЙРОДОРА', text: 'А если тебе просто понравится?', left: 'dora-blink', right: 'slava-angry' },
+        { speaker: 'НЕЙРОСЛАВА', text: 'Токсичная искренность. Запрещённый приём.', left: 'dora-ready', right: 'slava-defiant' }
       ],
       post: [
-        { speaker: 'НЕЙРОСЛАВА', text: 'Раунд окончен.', left: 'dora-wink', right: 'slava-defeated' },
-        { speaker: 'НЕЙРОДОРА', text: 'Дальше.', left: 'dora-ready', right: 'slava-kind' }
+        { speaker: 'НЕЙРОСЛАВА', text: 'Я улыбаюсь иронически.', left: 'dora-idle', right: 'slava-flustered' },
+        { speaker: 'НЕЙРОДОРА', text: 'А щёки красные неиронически.', left: 'dora-wink', right: 'slava-soft' },
+        { speaker: 'НЕЙРОСЛАВА', text: 'Ладно. Второй уровень шутки временно закрыт.', left: 'dora-victory', right: 'slava-kind' }
       ]
     },
     {
       name: 'НЕЙРОМЭЙБИ',
       prefix: 'maybe',
       hp: 1735,
-      approach: 0.0105,
+      approach: 0.0142,
       rule: 'НЕ ДАЙ ЕЙ ДОЙТИ',
+      theme: 'maybe',
+      interactionScale: 1.06,
       pre: [
-        { speaker: 'НЕЙРОМЭЙБИ', text: 'Я не отдам тебе «Аскорбинку»!', left: 'dora-idle', right: 'maybe-defiant' },
-        { speaker: 'НЕЙРОДОРА', text: 'Тогда попробуй сердечко.', left: 'dora-kiss-ready', right: 'maybe-angry' }
+        { speaker: 'НЕЙРОМЭЙБИ', text: 'Мой лук дороже твоего саундчека, самооценка — платиновая.', left: 'dora-idle', right: 'maybe-defiant' },
+        { speaker: 'НЕЙРОДОРА', text: 'А бантик всё равно криво.', left: 'dora-wink', right: 'maybe-angry' },
+        { speaker: 'НЕЙРОМЭЙБИ', text: 'Это асимметрия власти.', left: 'dora-ready', right: 'maybe-defiant' }
       ],
       post: [
-        { speaker: 'НЕЙРОМЭЙБИ', text: 'Ладно. Сыграем «Барбисайз» вдвоём.', left: 'dora-wink', right: 'maybe-defeated' },
-        { speaker: 'НЕЙРОДОРА', text: 'Идёт.', left: 'dora-victory', right: 'maybe-kind' }
+        { speaker: 'НЕЙРОМЭЙБИ', text: 'Не гладь меня. …Ещё два раза.', left: 'dora-idle', right: 'maybe-flustered' },
+        { speaker: 'НЕЙРОДОРА', text: 'Считаю только до четырёх.', left: 'dora-wink', right: 'maybe-kind' },
+        { speaker: 'НЕЙРОМЭЙБИ', text: 'Ладно. Но в финале я стою рядом, не сзади.', left: 'dora-victory', right: 'maybe-victory' }
       ]
     },
     {
@@ -138,28 +186,81 @@
       hp: 2535,
       approach: 0.0218,
       rule: 'ДОРА + МЭЙБИ',
+      theme: 'morgen',
+      interactionScale: 1.13,
       pre: [
-        { speaker: 'НЕЙРОМОРГЕН', text: 'Мой Cadillac уже ждёт.', left: 'dora-idle', right: 'morgen-defiant' },
-        { speaker: 'НЕЙРОМЭЙБИ', text: 'Мы не уезжаем.', left: 'maybe-defiant', right: 'morgen-angry' },
-        { speaker: 'НЕЙРОДОРА', text: 'Последний раунд.', left: 'dora-ready', right: 'morgen-angry' }
+        { speaker: 'НЕЙРОМОРГЕН', text: 'Цепь, машина, припев. Полная комплектация.', left: 'dora-idle', right: 'morgen-defiant' },
+        { speaker: 'НЕЙРОМЭЙБИ', text: 'А характер в неё не вошёл?', left: 'maybe-defiant', right: 'morgen-angry' },
+        { speaker: 'НЕЙРОМОРГЕН', text: 'Характер — дополнительная опция.', left: 'maybe-angry', right: 'morgen-defiant' },
+        { speaker: 'НЕЙРОДОРА', text: 'Тогда поставим базовую: не хмуриться.', left: 'dora-ready', right: 'morgen-angry' }
       ],
       post: [
-        { speaker: 'НЕЙРОМОРГЕН', text: 'Это была «Последняя любовь»?', left: 'maybe-kind', right: 'morgen-defeated' },
-        { speaker: 'НЕЙРОДОРА', text: 'Нет. Просто поцелуй.', left: 'dora-wink', right: 'morgen-kind' }
+        { speaker: 'НЕЙРОМОРГЕН', text: 'Только никому: я вообще-то люблю дачу и огурчики.', left: 'maybe-kind', right: 'morgen-flustered' },
+        { speaker: 'НЕЙРОМЭЙБИ', text: 'Поздно. Это уже сторис.', left: 'maybe-victory', right: 'morgen-soft' },
+        { speaker: 'НЕЙРОДОРА', text: 'Улыбнись. Без фильтра.', left: 'dora-wink', right: 'morgen-kind' }
       ]
     }
   ];
 
+  const THEMES = {
+    miron: {
+      hostile: {
+        skyTop: '#18142d', skyBottom: '#9b493b', cloud: '#756978',
+        hills: '#271b2b', bushes: '#4b2e3d', ground: '#5d3740', grass: '#2d1c2a'
+      },
+      healed: {
+        skyTop: '#51477c', skyBottom: '#f3a66f', cloud: '#f9e0d2',
+        hills: '#5d435a', bushes: '#86505c', ground: '#bc7765', grass: '#65404d'
+      }
+    },
+    slava: {
+      hostile: {
+        skyTop: '#474b5c', skyBottom: '#9295a1', cloud: '#c4c3c8',
+        hills: '#464653', bushes: '#565a63', ground: '#666b70', grass: '#3e4249'
+      },
+      healed: {
+        skyTop: '#76718c', skyBottom: '#c8a8b1', cloud: '#eee2e1',
+        hills: '#656174', bushes: '#777080', ground: '#93808a', grass: '#595361'
+      }
+    },
+    maybe: {
+      hostile: {
+        skyTop: '#33275d', skyBottom: '#c64c91', cloud: '#baa5d0',
+        hills: '#49356b', bushes: '#6f3f77', ground: '#7d4779', grass: '#482b57'
+      },
+      healed: {
+        skyTop: '#7779cf', skyBottom: '#f2a9ca', cloud: '#fff0f8',
+        hills: '#846db0', bushes: '#b56ca0', ground: '#d387ad', grass: '#745080'
+      }
+    },
+    morgen: {
+      hostile: {
+        skyTop: '#11172b', skyBottom: '#64512a', cloud: '#82795f',
+        hills: '#312d24', bushes: '#51452d', ground: '#5f4d29', grass: '#352d21'
+      },
+      healed: {
+        skyTop: '#35507a', skyBottom: '#e8b44a', cloud: '#fff0c8',
+        hills: '#7d6031', bushes: '#a47a32', ground: '#c8953b', grass: '#71511f'
+      }
+    }
+  };
+
   const PROLOGUE = [
     {
-      speaker: 'НЕЙРОДОРА',
-      text: '«Дождик за окном» закончился. Пора идти.',
+      speaker: 'РАССКАЗЧИК',
+      text: 'В старой папке осталась песня, записанная на проводные наушники. За окном шёл дождь.',
       left: null,
       right: 'dora-idle'
     },
     {
       speaker: 'НЕЙРОДОРА',
-      text: 'Кьют-рок против всех.',
+      text: 'Я тогда думала: если мне не отвечают, значит, со мной что-то не так.',
+      left: null,
+      right: 'dora-flustered'
+    },
+    {
+      speaker: 'НЕЙРОДОРА',
+      text: 'Теперь знаю: иногда сердечко просто надо отправить первой.',
       left: null,
       right: 'dora-ready'
     }
@@ -167,20 +268,20 @@
 
   const EPILOGUE = [
     {
-      speaker: 'НЕЙРОДОРА',
-      text: 'Всё. Финал.',
+      speaker: 'РАССКАЗЧИК',
+      text: 'Утро не стало идеальным. Просто никто больше не делал вид, что ему не нужно сердечко.',
       left: 'dora-victory',
       right: 'maybe-kind'
     },
     {
       speaker: 'НЕЙРОМЭЙБИ',
-      text: 'Заново?',
+      text: 'Это всё?',
       left: 'dora-victory',
       right: 'maybe-kind'
     },
     {
       speaker: 'НЕЙРОДОРА',
-      text: 'Конечно.',
+      text: 'Нет. Теперь можно отправить песню тому, кто тоже ждёт ответа.',
       left: 'dora-victory',
       right: 'maybe-kind'
     }
@@ -196,10 +297,10 @@
     totalTime: 0,
     battleTime: 0,
     worldOffset: 0,
-    dayMix: 0.04,
+    dayMix: 0,
     levelIndex: 0,
     score: 0,
-    lives: 1,
+    lives: MAX_LIVES,
     hitCount: 0,
     enemy: null,
     allyJoined: false,
@@ -233,19 +334,28 @@
     return Math.max(min, Math.min(max, value));
   }
 
+  function smoothstep(value) {
+    const amount = clamp(value, 0, 1);
+    return amount * amount * (3 - 2 * amount);
+  }
+
   function lerp(a, b, amount) {
     return a + (b - a) * amount;
   }
 
+  function colorChannels(value) {
+    if (value.startsWith('#')) {
+      const parsed = parseInt(value.slice(1), 16);
+      return [(parsed >> 16) & 255, (parsed >> 8) & 255, parsed & 255];
+    }
+    const match = value.match(/rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)/i);
+    if (match) return [Number(match[1]), Number(match[2]), Number(match[3])];
+    throw new Error('Unsupported colour: ' + value);
+  }
+
   function mixHex(a, b, amount) {
-    const av = parseInt(a.slice(1), 16);
-    const bv = parseInt(b.slice(1), 16);
-    const ar = (av >> 16) & 255;
-    const ag = (av >> 8) & 255;
-    const ab = av & 255;
-    const br = (bv >> 16) & 255;
-    const bg = (bv >> 8) & 255;
-    const bb = bv & 255;
+    const [ar, ag, ab] = colorChannels(a);
+    const [br, bg, bb] = colorChannels(b);
     return 'rgb(' +
       Math.round(lerp(ar, br, amount)) + ',' +
       Math.round(lerp(ag, bg, amount)) + ',' +
@@ -253,40 +363,53 @@
   }
 
   function getScale() {
-    // Every source frame is 500px square. Keep a permanent camera safety area
-    // above expressive poses instead of letting them touch the canvas edge.
-    const heightScale = view.h / 900 * 0.74;
-    const widthScale = view.w / 900 * 0.8;
-    return clamp(Math.min(heightScale, widthScale), 0.28, 0.82);
+    // All poses share a 500px safety frame. Leave visible breathing room around
+    // raised hands, recoil and the widest walk frames at every aspect ratio.
+    const heightScale = view.h / 900 * 0.68;
+    const widthScale = view.w / 900 * 0.72;
+    return clamp(Math.min(heightScale, widthScale), 0.16, 0.75);
   }
 
   function getGround() {
     return view.h * 0.945;
   }
 
+  function getActorEdgePadding() {
+    return 250 * getScale() + Math.max(8, Math.min(24, view.w * 0.018));
+  }
+
+  function getEnemyStartX() {
+    const edgePadding = getActorEdgePadding();
+    return Math.max(edgePadding, Math.min(view.w * 0.82, view.w - edgePadding));
+  }
+
   function getDoraX() {
     const scale = getScale();
-    const safeMargin = 260 * scale;
+    const safeMargin = getActorEdgePadding();
     if (game.levelIndex === 3) {
-      return Math.max(safeMargin, getAllyX() + 340 * scale, view.w * 0.285);
+      // The duet must read as two friends sharing one side, without their
+      // silhouettes merging into a single sprite.
+      return Math.max(safeMargin, getAllyX() + 175 * scale, view.w * 0.19);
     }
     return Math.max(safeMargin, view.w * 0.185);
   }
 
   function getAllyX() {
-    return Math.max(225 * getScale(), view.w * 0.115);
+    return Math.max(getActorEdgePadding(), view.w * 0.115);
   }
 
   function resizeCanvas() {
     const rect = canvas.getBoundingClientRect();
     const oldWidth = view.w;
-    view.w = Math.max(320, rect.width || 1600);
-    view.h = Math.max(180, rect.height || 900);
+    // Never render to a larger logical minimum and squeeze it back down with
+    // CSS: that distorted every sprite on narrow tablets and phones.
+    view.w = Math.max(1, rect.width || 1600);
+    view.h = Math.max(1, rect.height || 900);
     view.dpr = Math.min(2, window.devicePixelRatio || 1);
     canvas.width = Math.round(view.w * view.dpr);
     canvas.height = Math.round(view.h * view.dpr);
     if (game.enemy && oldWidth > 0) {
-      game.enemy.x *= view.w / oldWidth;
+      game.enemy.x = Math.min(getEnemyStartX(), game.enemy.x * view.w / oldWidth);
     }
   }
 
@@ -298,6 +421,18 @@
     }
     if (audioContext && audioContext.state === 'suspended') audioContext.resume();
     return audioContext;
+  }
+
+  function syncBackgroundMusic() {
+    if (!ui.music) return;
+    ui.music.volume = 0.24;
+    ui.music.muted = game.muted;
+    if (game.muted) {
+      ui.music.pause();
+      return;
+    }
+    const playing = ui.music.play();
+    if (playing && typeof playing.catch === 'function') playing.catch(() => {});
   }
 
   function tone(frequency, duration, type, volume, delay) {
@@ -322,9 +457,8 @@
     tone(820, 0.16, 'sine', 0.022, 0.045);
   }
 
-  function hitSound(echo) {
-    tone(echo ? 990 : 760, 0.08, 'triangle', 0.018, 0);
-    if (echo) tone(1230, 0.12, 'sine', 0.014, 0.07);
+  function hitSound() {
+    tone(760, 0.08, 'triangle', 0.018, 0);
   }
 
   function setPortrait(element, key) {
@@ -333,7 +467,10 @@
       element.removeAttribute('src');
       return;
     }
-    element.src = SPRITES[key].src;
+    const portrait = PORTRAITS[key];
+    element.src = portrait && portrait.complete && portrait.naturalWidth
+      ? portrait.src
+      : SPRITES[key].src;
     show(element);
   }
 
@@ -377,10 +514,10 @@
     game.totalTime = 0;
     game.battleTime = 0;
     game.worldOffset = 0;
-    game.dayMix = 0.04;
+    game.dayMix = 0;
     game.levelIndex = 0;
     game.score = 0;
-    game.lives = 1;
+    game.lives = MAX_LIVES;
     game.hitCount = 0;
     game.enemy = null;
     game.allyJoined = false;
@@ -397,6 +534,8 @@
   async function startStory() {
     if (game.starting) return;
     game.starting = true;
+    // Start from the user's click/keypress so mobile autoplay policies allow it.
+    syncBackgroundMusic();
     await Promise.all(imagePromises);
     ready = true;
     resetRun();
@@ -422,7 +561,7 @@
     game.doraAction = 'idle';
     game.allyAction = 'idle';
     game.enemy = {
-      x: view.w * 0.82,
+      x: getEnemyStartX(),
       hp: level.hp,
       maxHp: level.hp,
       hitTime: 0,
@@ -431,7 +570,7 @@
       state: 'defiant'
     };
     shots.length = 0;
-    game.dayMix = Math.min(game.dayMix, 0.12);
+    game.dayMix = 0;
     ui.enemyName.textContent = level.name;
     updateHud();
     show(ui.hud);
@@ -513,11 +652,10 @@
     if (!game.enemy) return;
     const scale = getScale();
     const ground = getGround();
-    // Anchors are the lips in the horizontally flipped kiss frames.
-    const sourceX = source === 'maybe'
-      ? getAllyX() + 42 * scale
-      : getDoraX() + 22 * scale;
-    const sourceY = ground - (source === 'maybe' ? 322 : 334) * scale;
+    // Anchors follow the actual lips in the approved, right-facing kiss poses.
+    const mouth = KISS_MOUTH_ANCHORS[source];
+    const sourceX = (source === 'maybe' ? getAllyX() : getDoraX()) + mouth.x * scale;
+    const sourceY = ground - mouth.y * scale;
     const targetY = ground - 305 * scale;
     shots.push({
       source,
@@ -526,13 +664,16 @@
       startY: sourceY,
       targetY,
       y: sourceY,
-      speed: view.w * 0.68 * PLAY_SPEED,
+      // Heart flight deliberately ignores the enemy-speed multiplier. It must
+      // flutter across the screen instead of teleporting after a quick tap.
+      speed: view.w * HEART_SPEED_PER_VIEW,
       damage: kiss.damage,
       push: kiss.push,
       delay: delay || 0,
       age: 0,
-      phase: Math.random() * Math.PI * 2,
-      amplitude: 8.5 * scale,
+      phase: 0,
+      amplitude: clamp(view.h * 0.028, 14, 26),
+      size: clamp(Math.min(view.w, view.h) * 0.021, 14, 22),
       color: source === 'maybe' ? '#a866e8' : '#ff678e'
     });
     for (let i = 0; i < 3; i += 1) {
@@ -553,33 +694,16 @@
   function heartImpact(shot) {
     if (game.phase !== 'battle' || !game.enemy) return;
     const enemy = game.enemy;
-    let damage = shot.damage;
-    let push = shot.push;
+    const damage = shot.damage;
+    const push = shot.push;
     game.hitCount += 1;
-    const echo = game.levelIndex === 1 && game.hitCount % 3 === 0;
-    if (echo) {
-      damage += 18;
-      push += 3.5;
-      particles.push({
-        type: 'text',
-        text: 'эхо ♥',
-        x: enemy.x,
-        y: shot.y - 38,
-        vx: 0,
-        vy: -24,
-        age: 0,
-        life: 0.7,
-        color: '#fff08a',
-        size: 17
-      });
-    }
 
     enemy.hp = Math.max(0, enemy.hp - damage);
     enemy.hitTime = 0.16;
-    enemy.x = Math.min(view.w * 0.86, enemy.x + push * getScale());
+    enemy.x = Math.min(getEnemyStartX(), enemy.x + push * getScale());
     game.score += Math.round(damage * 24);
     updateHud();
-    hitSound(echo);
+    hitSound();
 
     for (let i = 0; i < 6; i += 1) {
       particles.push({
@@ -639,13 +763,15 @@
   function startCuteWin() {
     game.phase = 'cuteWin';
     game.phaseTime = 0;
-    game.enemy = null;
+    game.doraAction = 'victory';
+    game.allyAction = 'victory';
     shots.length = 0;
     hide(ui.enemyBar);
     hide(ui.quote);
   }
 
   function finishLevelStory() {
+    game.enemy = null;
     if (game.levelIndex === LEVELS.length - 1) {
       game.dayMix = 1;
       startNovel(EPILOGUE, () => showResult(true));
@@ -666,10 +792,14 @@
     hide(ui.quote);
     hide(ui.novel);
     ui.result.classList.toggle('loss', !won);
+    ui.resultCast.src = won
+      ? ROOT_V3 + 'dora-maybe-pat-4.png'
+      : ROOT_V3 + 'dora-defeat.png';
     if (won) {
       ui.resultKicker.textContent = 'РЕЗУЛЬТАТ';
       ui.resultTitle.textContent = 'ПОБЕДА';
       ui.resultText.textContent = 'КЬЮТ-РОК ПРОТИВ ВСЕХ — ПРОЙДЕНО.';
+      show(ui.telegram);
       tone(660, 0.2, 'sine', 0.025, 0);
       tone(880, 0.25, 'sine', 0.025, 0.16);
       tone(1100, 0.35, 'sine', 0.02, 0.34);
@@ -677,6 +807,7 @@
       ui.resultKicker.textContent = 'РЕЗУЛЬТАТ';
       ui.resultTitle.textContent = 'ПОРАЖЕНИЕ';
       ui.resultText.textContent = 'ПОПРОБУЙ ЕЩЁ РАЗ.';
+      hide(ui.telegram);
     }
     ui.finalScore.textContent = String(Math.round(game.score));
     show(ui.result);
@@ -698,7 +829,11 @@
       const distance = Math.max(1, enemy.x - shot.startX);
       const progress = clamp((shot.x - shot.startX) / distance, 0, 1);
       const baseY = lerp(shot.startY, shot.targetY, progress);
-      shot.y = baseY + Math.sin(shot.age * 10.5 + shot.phase) * shot.amplitude;
+      const flutterIn = clamp(shot.age / 0.22, 0, 1);
+      const changingAmplitude = shot.amplitude * (0.82 + Math.sin(shot.age * 1.35) * 0.18);
+      const primaryFlutter = Math.sin(shot.age * 4.05) * changingAmplitude;
+      const softSway = Math.sin(shot.age * 2.15) * shot.amplitude * 0.18;
+      shot.y = baseY + (primaryFlutter + softSway) * flutterIn;
 
       // The heart reaches the character centre, not the edge of the sprite canvas.
       if (shot.x >= enemy.x - 4 * scale) {
@@ -762,12 +897,12 @@
       speedFactor += Math.max(0, Math.sin(game.battleTime * 3.2)) * 0.22;
     } else if (game.levelIndex === 2) {
       const dash = game.battleTime % 6.2;
-      if (dash > 5.55) speedFactor = 1.55;
+      if (dash > 5.4) speedFactor = 1.65;
     } else if (game.levelIndex === 3 && enemy.hp / enemy.maxHp < 0.5) {
       speedFactor = 1.34;
     }
 
-    const travel = view.w * level.approach * speedFactor * PLAY_SPEED * dt;
+    const travel = view.w * level.approach * speedFactor * ENEMY_SPEED_MULTIPLIER * dt;
     enemy.x -= travel;
     enemy.walkDistance += travel;
     updateShots(dt);
@@ -791,7 +926,7 @@
         if (game.lives <= 0) {
           showResult(false);
         } else {
-          game.enemy.x = view.w * 0.8;
+          game.enemy.x = getEnemyStartX();
           game.enemy.state = 'walk';
           game.doraAction = 'idle';
           game.allyAction = 'kind';
@@ -801,21 +936,18 @@
       }
     } else if (game.phase === 'enemyDefeated') {
       game.dayMix = clamp(game.dayMix + dt * 0.9, 0, 1);
-      if (game.phaseTime > 0.78) startCuteWin();
+      if (game.phaseTime > 0.9) startCuteWin();
     } else if (game.phase === 'cuteWin') {
       game.dayMix = clamp(game.dayMix + dt * 0.55, 0, 1);
-      if (game.phaseTime > 2.4) {
+      if (game.phaseTime > 4.8) {
         const post = LEVELS[game.levelIndex].post;
         game.phase = 'storyPause';
+        game.enemy = null;
         startNovel(post, finishLevelStory);
       }
     } else if (game.phase === 'walk') {
-      game.worldOffset += view.w * 0.045 * PLAY_SPEED * dt;
-      const fadeStart = 1.65;
-      if (game.phaseTime > fadeStart) {
-        const amount = clamp((game.phaseTime - fadeStart) / 1.6, 0, 1);
-        game.dayMix = lerp(1, 0.06, amount);
-      }
+      // Challenge speed must not accelerate Dora's feet or the scenery.
+      game.worldOffset += view.w * WALK_SCROLL_SPEED_PER_VIEW * dt;
       if (game.phaseTime > 3.35) {
         prepareLevel(game.levelIndex + 1);
       }
@@ -826,10 +958,50 @@
     return ((base - offset) % width + width) % width;
   }
 
-  function drawCloud(x, y, scale, alpha) {
+  function themePalette(index, healed) {
+    const key = LEVELS[index] ? LEVELS[index].theme : 'miron';
+    const theme = THEMES[key];
+    const palette = {};
+    Object.keys(theme.hostile).forEach((name) => {
+      palette[name] = mixHex(theme.hostile[name], theme.healed[name], healed);
+    });
+    return { key, palette };
+  }
+
+  function mixPalette(first, second, amount) {
+    const palette = {};
+    Object.keys(first).forEach((name) => {
+      palette[name] = mixHex(first[name], second[name], amount);
+    });
+    return palette;
+  }
+
+  function backdropState() {
+    const current = themePalette(game.levelIndex, game.dayMix);
+    if (game.phase !== 'walk' || game.levelIndex >= LEVELS.length - 1) {
+      return {
+        palette: current.palette,
+        currentKey: current.key,
+        nextKey: null,
+        transition: 0,
+        healed: game.dayMix
+      };
+    }
+    const transition = smoothstep((game.phaseTime - 0.85) / 2.2);
+    const next = themePalette(game.levelIndex + 1, 0);
+    return {
+      palette: mixPalette(current.palette, next.palette, transition),
+      currentKey: current.key,
+      nextKey: next.key,
+      transition,
+      healed: lerp(game.dayMix, 0, transition)
+    };
+  }
+
+  function drawCloud(x, y, scale, alpha, color) {
     ctx.save();
     ctx.globalAlpha = alpha;
-    ctx.fillStyle = mixHex('#cbd6e8', '#ffffff', game.dayMix);
+    ctx.fillStyle = color;
     ctx.beginPath();
     ctx.ellipse(x, y, 92 * scale, 29 * scale, 0, 0, Math.PI * 2);
     ctx.ellipse(x - 55 * scale, y + 8 * scale, 57 * scale, 22 * scale, 0, 0, Math.PI * 2);
@@ -839,43 +1011,128 @@
     ctx.restore();
   }
 
+  function drawThemeLandmarks(key, alpha, healed) {
+    if (alpha <= 0) return;
+    const offset = game.worldOffset * 0.18;
+    ctx.save();
+    ctx.globalAlpha = alpha;
+
+    if (key === 'miron') {
+      ctx.fillStyle = mixHex('#1c1422', '#5b3d50', healed);
+      for (let i = -1; i < 9; i += 1) {
+        const x = i * (view.w / 7) - (offset % (view.w / 7));
+        const base = view.h * 0.76;
+        const peak = base - view.h * (0.12 + (i % 3 + 3) % 3 * 0.035);
+        ctx.beginPath();
+        ctx.moveTo(x - view.w * 0.1, base);
+        ctx.lineTo(x, peak);
+        ctx.lineTo(x + view.w * 0.1, base);
+        ctx.closePath();
+        ctx.fill();
+      }
+      ctx.fillStyle = mixHex('#140f1c', '#684551', healed);
+      [0.16, 0.42, 0.72, 0.9].forEach((ratio, index) => {
+        const x = ratio * view.w - (offset * 0.4 % view.w);
+        const base = view.h * 0.75;
+        const height = view.h * (0.13 + index % 2 * 0.04);
+        ctx.fillRect(x - 5, base - height, 10, height);
+        ctx.beginPath();
+        ctx.moveTo(x - 15, base - height);
+        ctx.lineTo(x, base - height - 25);
+        ctx.lineTo(x + 15, base - height);
+        ctx.closePath();
+        ctx.fill();
+      });
+    } else if (key === 'slava') {
+      ctx.fillStyle = mixHex('#3b3c47', '#625b6c', healed);
+      const blockWidth = Math.max(90, view.w * 0.11);
+      for (let i = -1; i < Math.ceil(view.w / blockWidth) + 2; i += 1) {
+        const x = i * blockWidth - (offset % blockWidth);
+        const top = view.h * (0.57 + (i % 3 + 3) % 3 * 0.045);
+        ctx.fillRect(x, top, blockWidth - 7, view.h * 0.78 - top);
+        ctx.fillStyle = mixHex('#757683', '#a8899a', healed);
+        for (let row = 0; row < 2; row += 1) {
+          ctx.fillRect(x + 18 + row * 35, top + 18, 12, 9);
+        }
+        ctx.fillStyle = mixHex('#3b3c47', '#625b6c', healed);
+      }
+      ctx.save();
+      ctx.translate(view.w * 0.72, view.h * 0.58);
+      ctx.rotate(-0.045);
+      ctx.fillStyle = mixHex('#777985', '#ad879c', healed);
+      ctx.fillRect(-62, -24, 124, 48);
+      ctx.fillStyle = '#ddd4db';
+      ctx.fillRect(-4, 24, 8, 72);
+      ctx.restore();
+    } else if (key === 'maybe') {
+      ctx.strokeStyle = mixHex('#4a3768', '#8e5b91', healed);
+      ctx.lineWidth = Math.max(2, view.h / 330);
+      const fenceY = view.h * 0.7;
+      ctx.beginPath();
+      ctx.moveTo(0, fenceY);
+      ctx.lineTo(view.w, fenceY);
+      for (let x = -(offset % 62); x < view.w + 62; x += 62) {
+        ctx.moveTo(x, fenceY - 62);
+        ctx.lineTo(x, fenceY + 58);
+      }
+      ctx.stroke();
+      ctx.fillStyle = mixHex('#674071', '#bc73a8', healed);
+      for (let i = 0; i < 8; i += 1) {
+        const x = wrapped(i * 213 + 40, view.w + 180, offset) - 70;
+        ctx.beginPath();
+        ctx.arc(x, fenceY - 55 - (i % 2) * 20, 10 + (i % 3) * 3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    } else if (key === 'morgen') {
+      ctx.fillStyle = mixHex('#3c321f', '#9e7630', healed);
+      for (let i = -1; i < 7; i += 1) {
+        const width = view.w * 0.23;
+        const x = i * width - (offset % width);
+        const base = view.h * 0.78;
+        const peak = base - view.h * (0.2 + (i % 3 + 3) % 3 * 0.045);
+        ctx.beginPath();
+        ctx.moveTo(x - width * 0.7, base);
+        ctx.lineTo(x, peak);
+        ctx.lineTo(x + width * 0.72, base);
+        ctx.closePath();
+        ctx.fill();
+        ctx.fillStyle = mixHex('#675027', '#d7a33e', healed);
+        ctx.beginPath();
+        ctx.moveTo(x, peak);
+        ctx.lineTo(x + width * 0.22, base);
+        ctx.lineTo(x + width * 0.72, base);
+        ctx.closePath();
+        ctx.fill();
+        ctx.fillStyle = mixHex('#3c321f', '#9e7630', healed);
+      }
+      ctx.fillStyle = mixHex('#b28738', '#ffe19a', healed);
+      ctx.beginPath();
+      ctx.arc(view.w * 0.82, view.h * 0.16, view.h * 0.045, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.restore();
+  }
+
   function drawBackground() {
-    const day = game.dayMix;
-    const skyTop = mixHex('#17254e', '#9fd8f1', day);
-    const skyBottom = mixHex('#445178', '#d9eff8', day);
+    const state = backdropState();
+    const palette = state.palette;
     const gradient = ctx.createLinearGradient(0, 0, 0, view.h);
-    gradient.addColorStop(0, skyTop);
-    gradient.addColorStop(1, skyBottom);
+    gradient.addColorStop(0, palette.skyTop);
+    gradient.addColorStop(1, palette.skyBottom);
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, view.w, view.h);
 
-    if (day < 0.7) {
-      ctx.save();
-      ctx.globalAlpha = (0.7 - day) / 0.7;
-      ctx.fillStyle = '#fff7c9';
-      ctx.beginPath();
-      ctx.arc(view.w * 0.82, view.h * 0.16, view.h * 0.044, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.fillStyle = '#ffffff';
-      for (let i = 0; i < 14; i += 1) {
-        const x = ((i * 137 + 61) % 997) / 997 * view.w;
-        const y = (0.055 + ((i * 71) % 330) / 1000) * view.h;
-        const radius = i % 4 === 0 ? 1.7 : 1.05;
-        ctx.beginPath();
-        ctx.arc(x, y, radius, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      ctx.restore();
-    }
+    drawThemeLandmarks(state.currentKey, 1 - state.transition, game.dayMix);
+    if (state.nextKey) drawThemeLandmarks(state.nextKey, state.transition, 0);
 
     const cloudOffset = game.worldOffset * 0.09;
     const cloudPeriod = view.w + 560;
-    drawCloud(wrapped(view.w * 0.08, cloudPeriod, cloudOffset) - 200, view.h * 0.19, view.h / 900, 0.82);
-    drawCloud(wrapped(view.w * 0.48, cloudPeriod, cloudOffset) - 120, view.h * 0.29, view.h / 1150, 0.74);
-    drawCloud(wrapped(view.w * 0.83, cloudPeriod, cloudOffset) - 80, view.h * 0.2, view.h / 980, 0.8);
+    drawCloud(wrapped(view.w * 0.08, cloudPeriod, cloudOffset) - 200, view.h * 0.19, view.h / 900, 0.68, palette.cloud);
+    drawCloud(wrapped(view.w * 0.48, cloudPeriod, cloudOffset) - 120, view.h * 0.29, view.h / 1150, 0.58, palette.cloud);
+    drawCloud(wrapped(view.w * 0.83, cloudPeriod, cloudOffset) - 80, view.h * 0.2, view.h / 980, 0.64, palette.cloud);
 
     const hillOffset = game.worldOffset * 0.32;
-    ctx.fillStyle = mixHex('#223c55', '#63aa56', day);
+    ctx.fillStyle = palette.hills;
     ctx.beginPath();
     ctx.moveTo(0, view.h * 0.77);
     for (let x = -100; x <= view.w + 140; x += 120) {
@@ -888,7 +1145,7 @@
     ctx.closePath();
     ctx.fill();
 
-    ctx.fillStyle = mixHex('#2e5a43', '#45a63d', day);
+    ctx.fillStyle = palette.bushes;
     const bushOffset = game.worldOffset * 0.55;
     for (let i = -2; i < Math.ceil(view.w / 70) + 4; i += 1) {
       const x = i * 72 - (bushOffset % 72);
@@ -902,12 +1159,12 @@
       ctx.fill();
     }
 
-    ctx.fillStyle = mixHex('#31533d', '#8bcf22', day);
+    ctx.fillStyle = palette.ground;
     ctx.fillRect(0, view.h * 0.79, view.w, view.h * 0.21);
 
-    if (day > 0.35) {
+    if (state.healed > 0.35) {
       ctx.save();
-      ctx.globalAlpha = clamp((day - 0.35) / 0.65, 0, 1);
+      ctx.globalAlpha = clamp((state.healed - 0.35) / 0.65, 0, 1);
       const flowerOffset = game.worldOffset * 0.85;
       for (let i = 0; i < 13; i += 1) {
         const x = wrapped(i * 157 + 80, view.w + 160, flowerOffset) - 60;
@@ -928,11 +1185,11 @@
   }
 
   function drawForegroundGrass() {
-    const day = game.dayMix;
+    const palette = backdropState().palette;
     const offset = game.worldOffset * 1.05;
     ctx.save();
     ctx.lineCap = 'round';
-    ctx.strokeStyle = mixHex('#1f483a', '#4b991e', day);
+    ctx.strokeStyle = palette.grass;
     ctx.lineWidth = Math.max(1.3, view.h / 650);
     const base = view.h * 0.965;
     for (let i = -4; i < Math.ceil(view.w / 18) + 8; i += 1) {
@@ -948,14 +1205,14 @@
   }
 
   function walkFrame(prefix, distance) {
-    return prefix + '-walk-' + String((Math.floor(distance / 12) % 6) + 1);
+    return prefix + '-walk-' + String((Math.floor(distance / WALK_FRAME_DISTANCE) % 6) + 1);
   }
 
   function currentDoraSprite() {
     if (game.phase === 'walk') return walkFrame('dora', game.worldOffset);
     if (game.phase === 'hurt') return game.phaseTime < 0.36 ? 'dora-hit' : 'dora-defeat';
     if (game.phase === 'enemyDefeated') {
-      return game.phaseTime > 1.15 ? 'dora-victory' : 'dora-wink';
+      return game.phaseTime > 0.48 ? 'dora-victory' : 'dora-wink';
     }
     if (game.phase === 'levelIntro') return 'dora-ready';
     if (game.doraAction === 'kiss-ready') return 'dora-kiss-ready';
@@ -999,6 +1256,7 @@
     const image = SPRITES[key];
     if (!image || !image.complete || image.naturalWidth === 0) return;
     const opts = options || {};
+    const displayScale = scale * (opts.uniformScale || 1);
     const stretchY = opts.stretchY || 1;
     const width = image.naturalWidth;
     const height = image.naturalHeight;
@@ -1008,10 +1266,10 @@
     ctx.scale(opts.flipX ? -1 : 1, stretchY);
     ctx.drawImage(
       image,
-      -width * scale / 2,
-      -height * scale,
-      width * scale,
-      height * scale
+      -width * displayScale / 2,
+      -height * displayScale,
+      width * displayScale,
+      height * displayScale
     );
     ctx.restore();
   }
@@ -1055,25 +1313,25 @@
   }
 
   function drawShots() {
-    const scale = getScale();
     for (const shot of shots) {
       if (shot.delay > 0) continue;
-      for (let trail = 1; trail <= 3; trail += 1) {
+      for (let trail = 1; trail <= 2; trail += 1) {
         ctx.save();
-        ctx.globalAlpha = 0.34 / trail;
-        ctx.fillStyle = trail % 2 ? '#fff8fb' : shot.color;
+        ctx.globalAlpha = 0.22 / trail;
+        ctx.fillStyle = trail === 1 ? '#fff8fb' : shot.color;
         ctx.beginPath();
         ctx.arc(
-          shot.x - trail * 10 * scale,
-          shot.y + Math.sin(shot.age * 12 + trail) * 3 * scale,
-          (4.2 - trail * 0.7) * scale,
+          shot.x - trail * shot.size * 0.72,
+          shot.y + Math.sin(shot.age * 4.05 - trail * 0.7) * shot.size * 0.18,
+          shot.size * (0.20 - trail * 0.045),
           0,
           Math.PI * 2
         );
         ctx.fill();
         ctx.restore();
       }
-      drawHeart(shot.x, shot.y, 12.5 * scale, shot.color, 1);
+      const breathe = 1 + Math.sin(shot.age * 3.1) * 0.045;
+      drawHeart(shot.x, shot.y, shot.size * breathe, shot.color, 1);
     }
   }
 
@@ -1105,24 +1363,15 @@
     }
   }
 
-  function drawActors() {
+  function drawSeparateActors(alpha, positions) {
     const scale = getScale();
     const ground = getGround();
-    if (game.phase === 'cuteWin') {
-      const frame = Math.min(4, Math.floor(game.phaseTime / 0.44) + 1);
-      const prefix = LEVELS[game.levelIndex].prefix;
-      const key = prefix === 'maybe'
-        ? 'dora-maybe-pat-' + String(frame)
-        : prefix + '-cute-win-' + String(frame);
-      drawActor(
-        key,
-        view.w * 0.5,
-        ground,
-        scale
-      );
-      return;
-    }
-
+    const actorAlpha = alpha == null ? 1 : alpha;
+    const actorPositions = positions || {
+      enemy: game.enemy ? game.enemy.x : getEnemyStartX(),
+      ally: getAllyX(),
+      dora: getDoraX()
+    };
     const breathing = game.phase === 'battle' && game.doraAction === 'idle'
       ? 1 + Math.sin(game.totalTime * 2.8) * 0.004
       : 1;
@@ -1131,11 +1380,11 @@
       const enemyPrefix = LEVELS[game.levelIndex].prefix;
       drawActor(
         currentEnemySprite(),
-        game.enemy.x,
+        actorPositions.enemy,
         ground,
         scale,
         {
-          alpha: game.enemy.alpha,
+          alpha: game.enemy.alpha * actorAlpha,
           // Maybe's approved sheet faces right for her later ally role. As an
           // opponent she approaches Dora from the right and must face left.
           flipX: enemyPrefix === 'maybe'
@@ -1143,17 +1392,18 @@
       );
     }
 
-    drawShots();
+    if (actorAlpha > 0.7) drawShots();
 
     if (game.allyJoined && game.levelIndex >= 2) {
       drawActor(
         currentAllySprite(),
-        getAllyX() - game.allyRecoil,
+        actorPositions.ally - game.allyRecoil,
         ground,
         scale,
         {
           stretchY: game.phase === 'battle' ? 1 + Math.sin(game.totalTime * 2.6 + 1) * 0.003 : 1,
-          flipX: game.allyAction === 'kiss'
+          flipX: game.allyAction === 'kiss',
+          alpha: actorAlpha
         }
       );
     }
@@ -1161,15 +1411,75 @@
     const doraSprite = currentDoraSprite();
     drawActor(
       doraSprite,
-      getDoraX() - game.doraRecoil,
+      actorPositions.dora - game.doraRecoil,
       ground,
       scale,
       {
         stretchY: breathing,
-        flipX: doraSprite === 'dora-kiss-ready' ||
-          doraSprite === 'dora-kiss-1' || doraSprite === 'dora-kiss-2'
+        alpha: actorAlpha,
+        flipX: false
       }
     );
+  }
+
+  function getInteractionFrame() {
+    // The first half-second is a covered scene swap. Start the actual mini
+    // animation only after the old and new compositions can no longer be seen
+    // on top of each other.
+    const time = Math.max(0, game.phaseTime - 0.5);
+    if (time < 0.58) return 1;
+    if (time < 1.18) return 2;
+    if (time < 1.82) return 3;
+    if (time < 2.5) return 4;
+    if (time < 3.28) return 5;
+    return 6;
+  }
+
+  function drawCuteWinVeil() {
+    const time = game.phaseTime;
+    let alpha = 0;
+    if (time < 0.22) alpha = smoothstep(time / 0.22);
+    else if (time < 0.5) alpha = 1 - smoothstep((time - 0.22) / 0.28);
+    if (alpha <= 0) return;
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.fillStyle = '#fff0f6';
+    ctx.fillRect(0, 0, view.w, view.h);
+    ctx.restore();
+    drawHeart(
+      view.w * 0.5,
+      view.h * 0.47,
+      Math.max(18, getScale() * 36),
+      '#ff6d9a',
+      alpha * 0.94
+    );
+  }
+
+  function drawActors() {
+    if (game.phase === 'cuteWin') {
+      const scale = getScale();
+      const ground = getGround();
+      const level = LEVELS[game.levelIndex];
+      const prefix = level.prefix;
+
+      if (game.phaseTime < 0.22) {
+        drawSeparateActors(1);
+      } else {
+        drawActor(
+          prefix + '-interaction-' + String(getInteractionFrame()),
+          view.w * 0.5,
+          ground,
+          scale,
+          {
+            uniformScale: level.interactionScale,
+            flipX: prefix === 'miron' || prefix === 'slava'
+          }
+        );
+      }
+      drawCuteWinVeil();
+      return;
+    }
+    drawSeparateActors(1);
   }
 
   function draw() {
@@ -1193,11 +1503,11 @@
   }
 
   ui.start.disabled = true;
-  ui.start.innerHTML = 'ЗАГРУЖАЕМ <b>♥</b>';
+  ui.start.innerHTML = '<span>ЗАГРУЖАЕМ</span><b>♥</b>';
   Promise.all(imagePromises).then(() => {
     ready = true;
     ui.start.disabled = false;
-    ui.start.innerHTML = 'ИГРАТЬ <b>♥</b>';
+    ui.start.innerHTML = '<span>ИГРАТЬ</span><b>♥</b>';
   });
 
   ui.start.addEventListener('click', startStory);
@@ -1207,9 +1517,15 @@
     game.muted = !game.muted;
     ui.sound.textContent = game.muted ? '×' : '♪';
     ui.sound.setAttribute('aria-label', game.muted ? 'Включить звук' : 'Выключить звук');
+    syncBackgroundMusic();
     if (!game.muted) tone(660, 0.08, 'sine', 0.018, 0);
   });
   window.addEventListener('keydown', (event) => {
+    if (game.phase === 'title' && (event.code === 'Enter' || event.code === 'Space')) {
+      event.preventDefault();
+      if (!event.repeat) startStory();
+      return;
+    }
     if (event.code !== 'Space') return;
     event.preventDefault();
     if (game.phase === 'battle') {
@@ -1217,8 +1533,7 @@
       return;
     }
     if (event.repeat) return;
-    if (game.phase === 'title') startStory();
-    else if (game.phase === 'novel') advanceNovel();
+    if (game.phase === 'novel') advanceNovel();
     else if (game.phase === 'result') startStory();
   });
 
@@ -1259,22 +1574,28 @@
     shots,
     particles,
     startStory,
+    syncBackgroundMusic,
     prepareLevel,
     beginBattle,
     readyKiss,
     releaseKiss,
     fireKiss,
+    showResult,
     advanceNovel,
     update,
     draw,
+    resizeCanvas,
     currentDoraSprite,
     currentAllySprite,
     currentEnemySprite,
     getEnemy: () => game.enemy,
     getDoraX,
     getAllyX,
+    getEnemyStartX,
     getScale,
     getGround,
+    mixHex,
+    backdropState,
     getView: () => ({ ...view })
   };
 })();
