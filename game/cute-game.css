@@ -201,36 +201,6 @@ button {
   from { opacity: 0; transform: translate(-50%, 10px) scale(0.94); }
 }
 
-.quote {
-  position: absolute;
-  z-index: 12;
-  left: 50%;
-  bottom: 20.5%;
-  max-width: min(68%, 650px);
-  padding: 8px 14px;
-  display: flex;
-  gap: 10px;
-  align-items: baseline;
-  transform: translateX(-50%);
-  border: 2px solid #2c3340;
-  border-radius: 5px;
-  background: rgba(255, 251, 248, 0.93);
-  box-shadow: 5px 5px 0 rgba(51, 62, 74, 0.2);
-  pointer-events: none;
-}
-
-.quote b {
-  flex: 0 0 auto;
-  color: var(--pink);
-  font-size: clamp(8px, 0.82vw, 12px);
-  letter-spacing: 0.08em;
-}
-
-.quote span {
-  font-size: clamp(9px, 1vw, 15px);
-  font-weight: 800;
-}
-
 .screen,
 .novel-overlay {
   position: absolute;
@@ -975,9 +945,6 @@ button {
     display: grid !important;
   }
 
-  .quote {
-    bottom: 24%;
-  }
 }
 
 @media (max-aspect-ratio: 4 / 3) {
@@ -1163,11 +1130,6 @@ button {
   .level-card {
     top: 22%;
     min-width: 84%;
-  }
-
-  .quote {
-    bottom: 23%;
-    max-width: 88%;
   }
 
   .novel-person {
