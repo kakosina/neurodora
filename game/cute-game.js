@@ -23,17 +23,7 @@
     maybe: [6.5, 1.5, 17.5, 15.5, 3, 16.5],
     morgen: [3, -0.5, 4, 4, -0.5, -0.5]
   };
-  const CUTE_WIN_TIMING = {
-    approach: 1.45,
-    blend: 0.48,
-    total: 6.8
-  };
-  const INTERACTION_LAYOUT = {
-    miron: { dora: -101, enemy: 99 },
-    slava: { dora: -120, enemy: 118 },
-    maybe: { dora: -95, enemy: 96 },
-    morgen: { dora: -168, enemy: 30, ally: 185 }
-  };
+  const CUTE_WIN_DURATION = 5.05;
   const canvas = document.querySelector('#gameCanvas');
   const ctx = canvas.getContext('2d', { alpha: false });
 
@@ -47,9 +37,6 @@
     enemyBarFill: document.querySelector('#enemyBarFill'),
     levelCard: document.querySelector('#levelCard'),
     levelTitle: document.querySelector('#levelTitle'),
-    quote: document.querySelector('#quote'),
-    quoteName: document.querySelector('#quoteName'),
-    quoteText: document.querySelector('#quoteText'),
     title: document.querySelector('#titleScreen'),
     start: document.querySelector('#startButton'),
     novel: document.querySelector('#novelOverlay'),
@@ -147,11 +134,6 @@
       approach: 0.0195,
       theme: 'miron',
       interactionScale: 1.06,
-      barks: [
-        { at: 0.72, text: 'Сердце без тезиса. Неразборчиво.' },
-        { at: 0.43, text: 'Mea… нет. Это просто анимация.' },
-        { at: 0.18, text: 'Почему аргумент тёплый?' }
-      ],
       pre: [
         { speaker: 'НЕЙРОМИРОН', text: 'In principio erat Verbum. В начале было Слово. У тебя пока сердечко без доказательной базы.', left: 'dora-idle', right: 'miron-defiant' },
         { speaker: 'НЕЙРОДОРА', text: 'А у тебя к одному «привет» уже три тома комментариев.', left: 'dora-wink', right: 'miron-defiant' },
@@ -172,11 +154,6 @@
       approach: 0.0215,
       theme: 'slava',
       interactionScale: 1.04,
-      barks: [
-        { at: 0.72, text: 'Это не попадание, а цитата.' },
-        { at: 0.43, text: 'Румянец — часть декораций.' },
-        { at: 0.18, text: 'Я сейчас искренне… шучу.' }
-      ],
       pre: [
         { speaker: 'НЕЙРОСЛАВА', text: 'Сразу договоримся: если злюсь — это персонаж. Если краснею — постирония. Если проиграю — перформанс.', left: 'dora-idle', right: 'slava-defiant' },
         { speaker: 'НЕЙРОДОРА', text: 'А если тебе просто понравится?', left: 'dora-blink', right: 'slava-angry' },
@@ -199,11 +176,6 @@
       approach: 0.0142,
       theme: 'maybe',
       interactionScale: 1.06,
-      barks: [
-        { at: 0.72, text: 'Не трогай укладку!' },
-        { at: 0.43, text: 'Это blush-фильтр, ясно?' },
-        { at: 0.18, text: 'Сердечки норм. Но не зазнавайся.' }
-      ],
       pre: [
         { speaker: 'НЕЙРОМЭЙБИ', text: 'Добро пожаловать в Мэйбилэнд. Здесь я — икона, ты — фон.', left: 'dora-idle', right: 'maybe-defiant' },
         { speaker: 'НЕЙРОДОРА', text: 'А бантик почему криво?', left: 'dora-wink', right: 'maybe-angry' },
@@ -227,11 +199,6 @@
       approach: 0.0218,
       theme: 'morgen',
       interactionScale: 1.13,
-      barks: [
-        { at: 0.72, text: 'Сердце? Сколько оно стоит?' },
-        { at: 0.43, text: 'Эй, это портит злой ракурс.' },
-        { at: 0.18, text: 'Снимайте. Это неожиданно хайпово.' }
-      ],
       pre: [
         { speaker: 'НЕЙРОМОРГЕН', text: 'На мне комплект: цепь, часы, машина, уверенность — всё deluxe.', left: 'dora-idle', right: 'morgen-defiant' },
         { speaker: 'НЕЙРОМЭЙБИ', text: 'Уверенность тоже напрокат?', left: 'maybe-defiant', right: 'morgen-angry' },
@@ -369,8 +336,6 @@
     score: 0,
     lives: MAX_LIVES,
     hitCount: 0,
-    barkIndex: 0,
-    quoteTime: 0,
     enemy: null,
     allyJoined: false,
     kissReady: false,
@@ -383,7 +348,6 @@
     novelScenes: [],
     novelIndex: 0,
     novelDone: null,
-    cuteWinStart: null,
     starting: false,
     muted: false
   };
@@ -589,8 +553,6 @@
     game.score = 0;
     game.lives = MAX_LIVES;
     game.hitCount = 0;
-    game.barkIndex = 0;
-    game.quoteTime = 0;
     game.enemy = null;
     game.allyJoined = false;
     game.kissReady = false;
@@ -600,7 +562,6 @@
     game.allyAction = 'idle';
     game.allyActionTime = 0;
     game.allyRecoil = 0;
-    game.cuteWinStart = null;
     updateHud();
   }
 
@@ -618,7 +579,6 @@
     hide(ui.hud);
     hide(ui.enemyBar);
     hide(ui.levelCard);
-    hide(ui.quote);
     show(ui.sound);
     canvas.focus();
     ensureAudio();
@@ -631,9 +591,6 @@
     game.levelIndex = index;
     game.battleTime = 0;
     game.hitCount = 0;
-    game.barkIndex = 0;
-    game.quoteTime = 0;
-    game.cuteWinStart = null;
     game.doraAction = 'idle';
     game.allyAction = 'idle';
     game.enemy = {
@@ -683,14 +640,6 @@
       const ratio = clamp(game.enemy.hp / game.enemy.maxHp, 0, 1);
       ui.enemyBarFill.style.width = String(ratio * 100) + '%';
     }
-  }
-
-  function showBattleBark(text) {
-    const level = LEVELS[game.levelIndex];
-    ui.quoteName.textContent = level.name;
-    ui.quoteText.textContent = text;
-    game.quoteTime = 1.75;
-    show(ui.quote);
   }
 
   function readyKiss() {
@@ -814,7 +763,6 @@
     game.enemy.state = 'defeated';
     game.enemy.alpha = 1;
     shots.length = 0;
-    hide(ui.quote);
     tone(660, 0.18, 'sine', 0.025, 0);
     tone(880, 0.25, 'sine', 0.025, 0.14);
     tone(1100, 0.3, 'sine', 0.018, 0.28);
@@ -840,22 +788,15 @@
     game.allyAction = 'walk';
     game.enemy = null;
     hide(ui.enemyBar);
-    hide(ui.quote);
   }
 
   function startCuteWin() {
     game.phase = 'cuteWin';
     game.phaseTime = 0;
-    game.doraAction = 'walk';
-    game.allyAction = 'walk';
-    game.cuteWinStart = {
-      dora: getDoraX(),
-      ally: getAllyX(),
-      enemy: game.enemy ? game.enemy.x : getEnemyStartX()
-    };
+    game.doraAction = 'victory';
+    game.allyAction = 'kind';
     shots.length = 0;
     hide(ui.enemyBar);
-    hide(ui.quote);
   }
 
   function finishLevelStory() {
@@ -877,7 +818,6 @@
     hide(ui.hud);
     hide(ui.enemyBar);
     hide(ui.levelCard);
-    hide(ui.quote);
     hide(ui.novel);
     ui.result.classList.toggle('loss', !won);
     ui.resultCast.src = won
@@ -995,12 +935,6 @@
     enemy.walkDistance += travel;
     updateShots(dt);
 
-    const bark = level.barks[game.barkIndex];
-    if (bark && enemy.hp / enemy.maxHp <= bark.at) {
-      showBattleBark(bark.text);
-      game.barkIndex += 1;
-    }
-
     const contactX = getDoraX() + 108 * getScale();
     if (enemy.x <= contactX) enemyReachedDora();
   }
@@ -1010,11 +944,6 @@
     game.phaseTime += dt;
     updateActions(dt);
     updateParticles(dt);
-    if (game.quoteTime > 0) {
-      game.quoteTime = Math.max(0, game.quoteTime - dt);
-      if (game.quoteTime === 0) hide(ui.quote);
-    }
-
     if (game.phase === 'levelIntro' && game.phaseTime > 1.75) {
       beginBattle();
     } else if (game.phase === 'battle') {
@@ -1037,7 +966,7 @@
       if (game.phaseTime > 0.9) startCuteWin();
     } else if (game.phase === 'cuteWin') {
       game.dayMix = clamp(game.dayMix + dt * 0.55, 0, 1);
-      if (game.phaseTime > CUTE_WIN_TIMING.total) {
+      if (game.phaseTime > CUTE_WIN_DURATION) {
         const post = LEVELS[game.levelIndex].post;
         game.phase = 'storyPause';
         game.enemy = null;
@@ -1534,25 +1463,13 @@
   }
 
   function getInteractionFrame() {
-    const time = Math.max(0, game.phaseTime - CUTE_WIN_TIMING.approach - CUTE_WIN_TIMING.blend);
+    const time = Math.max(0, game.phaseTime);
     if (time < 0.46) return 1;
     if (time < 0.92) return 2;
     if (time < 1.38) return 3;
     if (time < 1.84) return 4;
     if (time < 2.3) return 5;
     return 6;
-  }
-
-  function getInteractionPositions() {
-    const level = LEVELS[game.levelIndex];
-    const layout = INTERACTION_LAYOUT[level.prefix];
-    const interactionScale = getScale() * getInteractionUniformScale(level.prefix);
-    const center = view.w * 0.5;
-    return {
-      dora: center + layout.dora * interactionScale,
-      enemy: center + layout.enemy * interactionScale,
-      ally: layout.ally == null ? getAllyX() : center + layout.ally * interactionScale
-    };
   }
 
   function getInteractionUniformScale(prefix) {
@@ -1568,79 +1485,22 @@
     return Math.max(0.5, Math.min(level.interactionScale, widthFit, heightFit));
   }
 
-  function drawCuteWinAccent() {
-    const local = (game.phaseTime - CUTE_WIN_TIMING.approach + 0.08) / 0.86;
-    if (local <= 0 || local >= 1) return;
-    const alpha = Math.sin(local * Math.PI) * 0.78;
-    const lift = smoothstep(local) * view.h * 0.035;
-    drawHeart(
-      view.w * 0.5,
-      view.h * 0.42 - lift,
-      Math.max(12, getScale() * 25),
-      '#ff6d9a',
-      alpha
-    );
-  }
-
   function drawActors() {
     if (game.phase === 'cuteWin') {
       const scale = getScale();
       const ground = getGround();
       const level = LEVELS[game.levelIndex];
       const prefix = level.prefix;
-      const targets = getInteractionPositions();
-      const starts = game.cuteWinStart || {
-        dora: getDoraX(),
-        ally: getAllyX(),
-        enemy: game.enemy ? game.enemy.x : getEnemyStartX()
-      };
-      const approach = smoothstep(game.phaseTime / CUTE_WIN_TIMING.approach);
-      const positions = {
-        dora: lerp(starts.dora, targets.dora, approach),
-        ally: lerp(starts.ally, targets.ally, approach),
-        enemy: lerp(starts.enemy, targets.enemy, approach)
-      };
-      const stride = approach * 250;
-      const approachSprites = {
-        doraSprite: walkFrame('dora', stride),
-        // The opponent has already lost the battle: Dora walks to them while
-        // they keep the readable defeated expression until the interaction.
-        enemySprite: prefix + '-defeated',
-        allySprite: walkFrame('maybe', stride * 1.04)
-      };
-      const interactionUniformScale = getInteractionUniformScale(prefix);
-
-      if (game.phaseTime < CUTE_WIN_TIMING.approach) {
-        drawSeparateActors(1, positions, approachSprites);
-      } else if (game.phaseTime < CUTE_WIN_TIMING.approach + CUTE_WIN_TIMING.blend) {
-        const blend = smoothstep(
-          (game.phaseTime - CUTE_WIN_TIMING.approach) / CUTE_WIN_TIMING.blend
-        );
-        drawSeparateActors(1 - blend, targets, approachSprites);
-        drawActor(
-          prefix + '-interaction-1',
-          view.w * 0.5,
-          ground,
-          scale,
-          {
-            alpha: blend,
-            uniformScale: interactionUniformScale * lerp(0.97, 1, blend),
-            flipX: prefix === 'miron' || prefix === 'slava'
-          }
-        );
-      } else {
-        drawActor(
-          prefix + '-interaction-' + String(getInteractionFrame()),
-          view.w * 0.5,
-          ground,
-          scale,
-          {
-            uniformScale: interactionUniformScale,
-            flipX: prefix === 'miron' || prefix === 'slava'
-          }
-        );
-      }
-      drawCuteWinAccent();
+      drawActor(
+        prefix + '-interaction-' + String(getInteractionFrame()),
+        view.w * 0.5,
+        ground,
+        scale,
+        {
+          uniformScale: getInteractionUniformScale(prefix),
+          flipX: prefix === 'miron' || prefix === 'slava'
+        }
+      );
       return;
     }
     drawSeparateActors(1);
