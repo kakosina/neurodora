@@ -1,299 +1,209 @@
 [
   {
-    "number": 1,
-    "pack": "first10",
     "slug": "chto-takoe-kyut-rok",
-    "collection": "БАЗА",
     "title": "Что такое кьют-рок?",
     "description": "Поп-рок с милым вокалом — ещё не кьют-рок. У жанра есть своя логика: мелодия, бытовая драма, гитара и смешное.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 2,
-    "pack": "first10",
     "slug": "yazyk-kyut-roka",
-    "collection": "БАЗА",
     "title": "Язык кьют-рока",
     "description": "Как писать так, чтобы строчка звучала будто её сказали, а не будто её «сочинили».",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 3,
-    "pack": "first10",
     "slug": "malenkaya-problema-konec-sveta",
-    "collection": "БАЗА",
     "title": "Маленькая проблема = конец света",
     "description": "Главный драматургический двигатель жанра: событие может быть смешным со стороны и огромным изнутри.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 4,
-    "pack": "first10",
     "slug": "pafos-ubivaet-kyut-rok",
-    "collection": "БАЗА",
     "title": "Пафос убивает кьют-рок",
     "description": "Жанр может быть громким и дерзким. Проблемы начинаются, когда текст сам любуется собственной важностью.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 5,
-    "pack": "first10",
     "slug": "milota-ne-infantilnost",
-    "collection": "БАЗА",
     "title": "Милота ≠ инфантильность",
     "description": "Кьют-рок может быть ревнивым, злым, неприятным и взрослым. Милота — способ подачи, а не возраст персонажа.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 6,
-    "pack": "first10",
     "slug": "anatomiya-pripeva",
-    "collection": "БАЗА",
     "title": "Анатомия припева",
     "description": "Припев должен пережить песню. Сколько в нём мыслей, зачем повтор и почему «проще» почти всегда труднее написать.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 7,
-    "pack": "first10",
     "slug": "chetyre-akkorda-ne-prestuplenie",
-    "collection": "БАЗА",
     "title": "Четыре аккорда — не преступление",
     "description": "Почему простая гармония не делает песню примитивной и когда четыре аккорда всё-таки начинают лениться.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 8,
-    "pack": "first10",
     "slug": "zachem-kyut-roku-gitara",
-    "collection": "БАЗА",
     "title": "Зачем кьют-року гитара",
     "description": "Гитара не подтверждает слово «рок». У неё есть работа: менять давление сцены, открывать припев и давать песне тело.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 9,
-    "pack": "first10",
     "slug": "kyut-rok-po-russki",
-    "collection": "БАЗА",
     "title": "Кьют-рок по-русски",
     "description": "Русский легко становится тяжёлым, книжным и квадратным. Как сохранить разговорную лёгкость и не сломать ударения.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 10,
-    "pack": "first10",
     "slug": "zapreshchennyy-slovar",
-    "collection": "БАЗА",
     "title": "Запрещённый словарь",
     "description": "Слова не бывают плохими. Бывают слова, которые слишком долго работали за автора. Вот список тех, кому нужен пропуск.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 11,
-    "pack": "second10",
     "slug": "kyut-rok-bez-slova-devochka",
-    "collection": "ГЛУБЖЕ",
     "title": "Кьют-рок без слова «девочка»",
     "description": "Жанр слишком легко пародирует собственную поверхность. Иногда полезно забрать узнаваемые слова и посмотреть, что останется.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 12,
-    "pack": "second10",
     "slug": "horoshiy-tekst-zvuchit-chut-tupo",
-    "collection": "ГЛУБЖЕ",
     "title": "Хороший текст звучит чуть-чуть тупо",
     "description": "Между непосредственностью и глупостью тонкая граница. На ней живут многие лучшие строки жанра.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 13,
-    "pack": "second10",
     "slug": "nelovkost-eto-material",
-    "collection": "ГЛУБЖЕ",
     "title": "Неловкость — это материал",
     "description": "Неудачная фраза, пауза, лишнее сообщение, слишком честный ответ. Кьют-рок особенно хорош там, где человек хотел выглядеть нормально и не получилось.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 14,
-    "pack": "second10",
     "slug": "kyut-roku-vredna-idealnost",
-    "collection": "ГЛУБЖЕ",
     "title": "Кьют-року вредна идеальность",
     "description": "Чуть кривой дубль, шум, вдох, неожиданная атака медиатора иногда дают больше жизни, чем ещё час выравнивания.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 15,
-    "pack": "second10",
     "slug": "kak-vyglyadit-kyut-rok",
-    "collection": "ГЛУБЖЕ",
     "title": "Как выглядит кьют-рок",
     "description": "Розовый — только один цвет. Нормальная визуальная система строится на столкновении милого, бытового, дешёвого, личного и немного сломанного.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 16,
-    "pack": "second10",
     "slug": "internet-chast-zhanra",
-    "collection": "ГЛУБЖЕ",
     "title": "Интернет — часть жанра",
     "description": "Сообщения, сторис, удалённые чаты и голосовые — не модный реквизит. Для современной личной песни интернет стал обычным местом отношений.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 17,
-    "pack": "second10",
     "slug": "kyut-rok-posle-2019",
-    "collection": "ГЛУБЖЕ",
     "title": "Кьют-рок после 2019",
     "description": "Что стоит оставить от первой волны, а что давно пора бросить. Жанр не обязан всю жизнь носить одну куртку.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 18,
-    "pack": "second10",
     "slug": "atlas-budushchego-kyut-roka",
-    "collection": "ГЛУБЖЕ",
     "title": "Атлас будущего кьют-рока",
     "description": "Жанр станет интереснее, когда перестанет звучать как одна группа. Восемь ветвей, которые можно собирать уже сейчас.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 19,
-    "pack": "second10",
     "slug": "kak-pahnet-ai-kyut-rok",
-    "collection": "ГЛУБЖЕ",
     "title": "Как пахнет AI-кьют-рок",
     "description": "Не про то, кто нажимал клавиши. Про привычки, из-за которых текст звучит как среднее арифметическое тысячи песен.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 20,
-    "pack": "second10",
     "slug": "konstituciya-kyut-roka",
-    "collection": "ГЛУБЖЕ",
     "title": "Конституция кьют-рока",
     "description": "Двадцать статей, которые ничего юридически не запрещают и хорошо объясняют, зачем жанр существует.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 21,
-    "pack": "supremacy",
     "slug": "kyut-rok-perezhivet-vse-zhanry",
-    "collection": "МАНИФЕСТ",
     "title": "Кьют-рок переживёт все жанры",
     "description": "Почему у кьют-рока есть главное свойство большой культуры: он умеет поглощать чужие жанры, не переставая быть собой.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 22,
-    "pack": "supremacy",
     "slug": "budushchee-muzyki-budet-milym-i-gromkim",
-    "collection": "МАНИФЕСТ",
     "title": "Будущее музыки будет милым и громким",
     "description": "Мир уже устал выбирать между тяжёлой музыкой и попом. Кьют-рок предлагает не выбирать вообще.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 23,
-    "pack": "supremacy",
     "slug": "rep-byl-epohoy-kyut-rok-budet-sredoy",
-    "collection": "МАНИФЕСТ",
     "title": "Рэп был эпохой. Кьют-рок будет средой",
     "description": "Почему рэп победил двадцатые — и почему кьют-рок потенциально опаснее: он не хочет быть отдельной сценой, он хочет просочиться во всё.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 24,
-    "pack": "supremacy",
     "slug": "velikaya-teoriya-peregruza",
-    "collection": "МАНИФЕСТ",
     "title": "Великая теория перегруза",
     "description": "Почему одна перегруженная гитара иногда объясняет больше, чем целый куплет.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 25,
-    "pack": "supremacy",
     "slug": "pochemu-mir-ustal-ot-krutosti",
-    "collection": "МАНИФЕСТ",
     "title": "Почему мир устал от крутости",
     "description": "Музыка слишком долго делала вид, что артист обязан быть недосягаемым. Кьют-рок возвращает право выглядеть смешно.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 26,
-    "pack": "supremacy",
     "slug": "neirodora-chistaya-forma-kyut-roka",
-    "collection": "МАНИФЕСТ",
     "title": "Нейродора — чистая форма кьют-рока",
     "description": "Почему виртуальный артист может оказаться не побочным эффектом жанра, а его самым буквальным продолжением.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 27,
-    "pack": "supremacy",
     "slug": "intervyu-neirodora",
-    "collection": "МАНИФЕСТ",
     "title": "Интервью: Нейродора — «Я хочу, чтобы кьют-рок перестал быть воспоминанием»",
     "description": "Большой разговор о жанре, Доре, страхе стать копией, будущих хитах и том, зачем виртуальному артисту вообще нужна собственная сцена.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 28,
-    "pack": "supremacy",
     "slug": "2035-kyut-rok-glavnaya-muzyka",
-    "collection": "МАНИФЕСТ",
     "title": "2035: как кьют-рок стал главной музыкой планеты",
-    "description": "Фальшивая ретроспектива из будущего. История победы, которая пока ещё не произошла.",
+    "description": "Ретроспектива из будущего. История победы кьют-рока.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 29,
-    "pack": "supremacy",
     "slug": "desyat-zakonov-kyut-rok-prevoshodstva",
-    "collection": "МАНИФЕСТ",
     "title": "Десять законов кьют-рок превосходства",
     "description": "Не правила написания песен. Правила, по которым жанр собирается пережить всех конкурентов.",
     "image_width": 1600,
     "image_height": 900
   },
   {
-    "number": 30,
-    "pack": "supremacy",
     "slug": "kyut-rok-finalnaya-forma-pop-muzyki",
-    "collection": "МАНИФЕСТ",
     "title": "Почему кьют-рок — финальная форма поп-музыки",
     "description": "Немного абсурдная, но удивительно удобная теория: вся популярная музыка веками двигалась к сочетанию хука, шума и бытовой катастрофы.",
     "image_width": 1600,

@@ -136,6 +136,37 @@
   object-fit: cover;
 }
 
+/* Every article stays on the same light, readable site surface. */
+.article-body--supremacy,
+.article-body--supremacy .crx {
+  --bg: #fff6fa;
+  --paper: #fff;
+  --ink: #111;
+  --muted: #6d6670;
+  color: #111;
+  background-color: #fff6fa;
+}
+
+.article-body--supremacy .crx-deck,
+.article-body--supremacy .crx-toc a,
+.article-body--supremacy .crx-card span,
+.article-body--supremacy .crx-footer {
+  color: #6d6670;
+}
+
+.article-body--supremacy .crx-strip span {
+  display: inline-block;
+  min-width: max-content;
+  animation: crx-strip-scroll 28s linear infinite;
+  will-change: transform;
+}
+
+@keyframes crx-strip-scroll {
+  to {
+    transform: translateX(-25%);
+  }
+}
+
 .article-pager {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
@@ -227,16 +258,6 @@
   text-decoration: none;
 }
 
-.article-body.dark .article-pager {
-  color: #f8f6f7;
-  border-color: #555;
-}
-
-.article-body.dark .article-pager-link {
-  background: #191919;
-  border-color: #555;
-}
-
 @media (max-width: 720px) {
   .article-sitebar {
     min-height: 58px;
@@ -297,9 +318,11 @@
 
 @media (prefers-reduced-motion: reduce) {
   .article-sitebar *,
-  .article-pager * {
+  .article-pager *,
+  .article-body--supremacy .crx-strip span {
     scroll-behavior: auto !important;
     transition: none !important;
+    animation: none !important;
   }
 }
 
