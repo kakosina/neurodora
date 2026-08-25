@@ -119,14 +119,16 @@
   outline-offset: 4px;
 }
 
-.article-body--ology .cr-toc,
-.article-body--supremacy .crx-toc {
-  top: 92px;
-}
-
 .article-body--ology .cr-page,
 .article-body--supremacy .crx {
   overflow: clip;
+}
+
+.article-body--ology .cr-layout,
+.article-body--supremacy .crx-layout {
+  grid-template-columns: minmax(0, 760px);
+  gap: 0;
+  justify-content: center;
 }
 
 .article-body--ology .cr-figure img,

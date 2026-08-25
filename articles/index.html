@@ -18,283 +18,254 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⭐</text></svg>" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Neucha&amp;family=Oswald:wght@600;700&amp;display=swap" />
-    <link rel="stylesheet" href="library.css?v=2" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Neucha&amp;family=Oswald:wght@600;700&amp;family=Shantell+Sans:wght@700;800&amp;display=swap" />
+    <link rel="stylesheet" href="library.css?v=3" />
   </head>
   <body>
     <a class="library-skip" href="#library">К СТАТЬЯМ</a>
-    <header class="library-sitebar">
-      <a class="library-brand" href="/" aria-label="Нейродора — на главную"><span>Нейро</span><b>Дора</b></a>
-      <nav aria-label="Навигация по сайту"><a href="/">ГЛАВНАЯ</a><a class="active" href="/articles/">ЧИТАТЬ</a><a href="/game/">ИГРАТЬ</a><a href="https://t.me/neurodora" target="_blank" rel="noopener noreferrer">ТЕЛЕГРАМ ↗</a></nav>
+    <header class="site-header">
+      <a class="brand" href="/#top" aria-label="Нейродора — на главную"><span>Нейро</span><b>Дора</b></a>
+      <nav aria-label="Главная навигация">
+        <a href="/#top">ГЛАВНАЯ</a>
+        <a href="/#about">СМОТРЕТЬ</a>
+        <a href="/#now">СЛУШАТЬ</a>
+        <a class="active" href="/articles/">ЧИТАТЬ</a>
+        <a href="/game/">ИГРАТЬ</a>
+        <a href="/#follow">ДРУЖИТЬ</a>
+      </nav>
+      <a class="header-telegram" href="https://t.me/neurodora" target="_blank" rel="noopener noreferrer" aria-label="Телеграм Нейродоры">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M27.7 5.2 23.6 25c-.3 1.4-1.1 1.7-2.3 1.1l-6.2-4.6-3 2.9c-.3.3-.6.6-1.3.6l.4-6.3L22.7 8.3c.5-.4-.1-.7-.7-.3L7.8 17l-6.1-1.9c-1.3-.4-1.4-1.3.3-1.9L25.9 4c1.1-.4 2.1.3 1.8 1.2Z" /></svg>
+      </a>
     </header>
     <main id="library">
       <section class="library-hero">
         <div class="library-hero-copy">
-          <p class="library-kicker">30 СТАТЕЙ · НИКАКОЙ ПРАВИЛЬНОЙ ОЧЕРЕДИ</p>
           <h1>КЬЮТ-<em>РОКОЛОГИЯ</em></h1>
-          <p>тут все мои статьи о кьют-роке. без полок и уровней: выбирай любую фотку и читай, куда сердечко потянулось ♡</p>
-          <div class="library-hero-actions"><a href="#all-articles">СМОТРЕТЬ ВСЕ <span>↓</span></a><a href="/game/">А ПОТОМ ИГРАТЬ <span>↗</span></a></div>
+          <p>мои статьи о кьют-роке ♡</p>
           <i class="doodle-heart" aria-hidden="true">♡</i><i class="doodle-star" aria-hidden="true">☆</i>
         </div>
-        <div class="library-hero-note" aria-hidden="true"><span>фотки</span><b>в полном<br />беспорядке</b><i>↘</i></div>
-      </section>
-
-      <section class="library-tools" aria-label="Поиск по статьям">
-        <label for="article-search"><span>⌕</span><input id="article-search" type="search" placeholder="найти статью, слово или настроение…" autocomplete="off" /></label>
-        <p><b id="article-count">30</b> СТАТЕЙ</p>
       </section>
 
       <section class="article-collage" id="all-articles" aria-label="Все статьи">
         <a class="article-photo-card" href="chto-takoe-kyut-rok/"
           style="--turn:-3.4deg;--shift:-12px;--drop:0px"
-          data-doodle="♡"
-          data-search="что такое кьют-рок? поп-рок с милым вокалом — ещё не кьют-рок. у жанра есть своя логика: мелодия, бытовая драма, гитара и смешное.">
+          data-doodle="♡">
           <figure>
             <img src="assets/chto-takoe-kyut-rok.webp" width="1600" height="900" loading="eager" decoding="async" alt="" />
             <figcaption><h2>Что такое кьют-рок?</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="horoshiy-tekst-zvuchit-chut-tupo/"
-          style="--turn:2.2deg;--shift:18px;--drop:28px"
-          data-doodle="☆"
-          data-search="хороший текст звучит чуть-чуть тупо между непосредственностью и глупостью тонкая граница. на ней живут многие лучшие строки жанра.">
+          style="--turn:2.2deg;--shift:18px;--drop:14px"
+          data-doodle="☆">
           <figure>
             <img src="assets/horoshiy-tekst-zvuchit-chut-tupo.webp" width="1600" height="900" loading="eager" decoding="async" alt="" />
             <figcaption><h2>Хороший текст звучит чуть-чуть тупо</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="rep-byl-epohoy-kyut-rok-budet-sredoy/"
-          style="--turn:-1.1deg;--shift:3px;--drop:10px"
-          data-doodle="♫"
-          data-search="рэп был эпохой. кьют-рок будет средой почему рэп победил двадцатые — и почему кьют-рок потенциально опаснее: он не хочет быть отдельной сценой, он хочет просочиться во всё.">
+          style="--turn:-1.1deg;--shift:3px;--drop:5px"
+          data-doodle="♫">
           <figure>
             <img src="assets/rep-byl-epohoy-kyut-rok-budet-sredoy.webp" width="1600" height="900" loading="eager" decoding="async" alt="" />
             <figcaption><h2>Рэп был эпохой. Кьют-рок будет средой</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="pafos-ubivaet-kyut-rok/"
-          style="--turn:3.7deg;--shift:-20px;--drop:42px"
-          data-doodle="✦"
-          data-search="пафос убивает кьют-рок жанр может быть громким и дерзким. проблемы начинаются, когда текст сам любуется собственной важностью.">
+          style="--turn:3.7deg;--shift:-20px;--drop:19px"
+          data-doodle="✦">
           <figure>
             <img src="assets/pafos-ubivaet-kyut-rok.webp" width="1600" height="900" loading="eager" decoding="async" alt="" />
             <figcaption><h2>Пафос убивает кьют-рок</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="kak-vyglyadit-kyut-rok/"
-          style="--turn:-2.5deg;--shift:14px;--drop:14px"
-          data-doodle="♡"
-          data-search="как выглядит кьют-рок розовый — только один цвет. нормальная визуальная система строится на столкновении милого, бытового, дешёвого, личного и немного сломанного.">
+          style="--turn:-2.5deg;--shift:14px;--drop:8px"
+          data-doodle="♡">
           <figure>
             <img src="assets/kak-vyglyadit-kyut-rok.webp" width="1600" height="900" loading="lazy" decoding="async" alt="" />
             <figcaption><h2>Как выглядит кьют-рок</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="neirodora-chistaya-forma-kyut-roka/"
-          style="--turn:1.4deg;--shift:-6px;--drop:4px"
-          data-doodle="♪"
-          data-search="нейродора — чистая форма кьют-рока почему виртуальный артист может оказаться не побочным эффектом жанра, а его самым буквальным продолжением.">
+          style="--turn:1.4deg;--shift:-6px;--drop:2px"
+          data-doodle="♪">
           <figure>
             <img src="assets/neirodora-chistaya-forma-kyut-roka.webp" width="1600" height="900" loading="lazy" decoding="async" alt="" />
             <figcaption><h2>Нейродора — чистая форма кьют-рока</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="chetyre-akkorda-ne-prestuplenie/"
-          style="--turn:-4.1deg;--shift:21px;--drop:34px"
-          data-doodle="♡"
-          data-search="четыре аккорда — не преступление почему простая гармония не делает песню примитивной и когда четыре аккорда всё-таки начинают лениться.">
+          style="--turn:-4.1deg;--shift:21px;--drop:16px"
+          data-doodle="♡">
           <figure>
             <img src="assets/chetyre-akkorda-ne-prestuplenie.webp" width="1600" height="900" loading="lazy" decoding="async" alt="" />
             <figcaption><h2>Четыре аккорда — не преступление</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="atlas-budushchego-kyut-roka/"
-          style="--turn:2.9deg;--shift:-14px;--drop:18px"
-          data-doodle="☆"
-          data-search="атлас будущего кьют-рока жанр станет интереснее, когда перестанет звучать как одна группа. восемь ветвей, которые можно собирать уже сейчас.">
+          style="--turn:2.9deg;--shift:-14px;--drop:9px"
+          data-doodle="☆">
           <figure>
             <img src="assets/atlas-budushchego-kyut-roka.webp" width="1600" height="900" loading="lazy" decoding="async" alt="" />
             <figcaption><h2>Атлас будущего кьют-рока</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="desyat-zakonov-kyut-rok-prevoshodstva/"
-          style="--turn:-1.8deg;--shift:8px;--drop:48px"
-          data-doodle="♫"
-          data-search="десять законов кьют-рок превосходства не правила написания песен. правила, по которым жанр собирается пережить всех конкурентов.">
+          style="--turn:-1.8deg;--shift:8px;--drop:22px"
+          data-doodle="♫">
           <figure>
             <img src="assets/desyat-zakonov-kyut-rok-prevoshodstva.webp" width="1600" height="900" loading="lazy" decoding="async" alt="" />
             <figcaption><h2>Десять законов кьют-рок превосходства</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="zapreshchennyy-slovar/"
-          style="--turn:4.0deg;--shift:-2px;--drop:8px"
-          data-doodle="✦"
-          data-search="запрещённый словарь слова не бывают плохими. бывают слова, которые слишком долго работали за автора. вот список тех, кому нужен пропуск.">
+          style="--turn:4.0deg;--shift:-2px;--drop:4px"
+          data-doodle="✦">
           <figure>
             <img src="assets/zapreshchennyy-slovar.webp" width="1600" height="900" loading="lazy" decoding="async" alt="" />
             <figcaption><h2>Запрещённый словарь</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="kyut-rok-perezhivet-vse-zhanry/"
           style="--turn:-3.4deg;--shift:-12px;--drop:0px"
-          data-doodle="♡"
-          data-search="кьют-рок переживёт все жанры почему у кьют-рока есть главное свойство большой культуры: он умеет поглощать чужие жанры, не переставая быть собой.">
+          data-doodle="♡">
           <figure>
             <img src="assets/kyut-rok-perezhivet-vse-zhanry.webp" width="1600" height="900" loading="lazy" decoding="async" alt="" />
             <figcaption><h2>Кьют-рок переживёт все жанры</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="yazyk-kyut-roka/"
-          style="--turn:2.2deg;--shift:18px;--drop:28px"
-          data-doodle="♪"
-          data-search="язык кьют-рока как писать так, чтобы строчка звучала будто её сказали, а не будто её «сочинили».">
+          style="--turn:2.2deg;--shift:18px;--drop:14px"
+          data-doodle="♪">
           <figure>
             <img src="assets/yazyk-kyut-roka.webp" width="1600" height="900" loading="lazy" decoding="async" alt="" />
             <figcaption><h2>Язык кьют-рока</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="nelovkost-eto-material/"
-          style="--turn:-1.1deg;--shift:3px;--drop:10px"
-          data-doodle="♡"
-          data-search="неловкость — это материал неудачная фраза, пауза, лишнее сообщение, слишком честный ответ. кьют-рок особенно хорош там, где человек хотел выглядеть нормально и не получилось.">
+          style="--turn:-1.1deg;--shift:3px;--drop:5px"
+          data-doodle="♡">
           <figure>
             <img src="assets/nelovkost-eto-material.webp" width="1600" height="900" loading="lazy" decoding="async" alt="" />
             <figcaption><h2>Неловкость — это материал</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="velikaya-teoriya-peregruza/"
-          style="--turn:3.7deg;--shift:-20px;--drop:42px"
-          data-doodle="☆"
-          data-search="великая теория перегруза почему одна перегруженная гитара иногда объясняет больше, чем целый куплет.">
+          style="--turn:3.7deg;--shift:-20px;--drop:19px"
+          data-doodle="☆">
           <figure>
             <img src="assets/velikaya-teoriya-peregruza.webp" width="1600" height="900" loading="lazy" decoding="async" alt="" />
             <figcaption><h2>Великая теория перегруза</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="milota-ne-infantilnost/"
-          style="--turn:-2.5deg;--shift:14px;--drop:14px"
-          data-doodle="♫"
-          data-search="милота ≠ инфантильность кьют-рок может быть ревнивым, злым, неприятным и взрослым. милота — способ подачи, а не возраст персонажа.">
+          style="--turn:-2.5deg;--shift:14px;--drop:8px"
+          data-doodle="♫">
           <figure>
             <img src="assets/milota-ne-infantilnost.webp" width="1600" height="900" loading="lazy" decoding="async" alt="" />
             <figcaption><h2>Милота ≠ инфантильность</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="internet-chast-zhanra/"
-          style="--turn:1.4deg;--shift:-6px;--drop:4px"
-          data-doodle="✦"
-          data-search="интернет — часть жанра сообщения, сторис, удалённые чаты и голосовые — не модный реквизит. для современной личной песни интернет стал обычным местом отношений.">
+          style="--turn:1.4deg;--shift:-6px;--drop:2px"
+          data-doodle="✦">
           <figure>
             <img src="assets/internet-chast-zhanra.webp" width="1600" height="900" loading="lazy" decoding="async" alt="" />
             <figcaption><h2>Интернет — часть жанра</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="intervyu-neirodora/"
-          style="--turn:-4.1deg;--shift:21px;--drop:34px"
-          data-doodle="♡"
-          data-search="интервью: нейродора — «я хочу, чтобы кьют-рок перестал быть воспоминанием» большой разговор о жанре, доре, страхе стать копией, будущих хитах и том, зачем виртуальному артисту вообще нужна собственная сцена.">
+          style="--turn:-4.1deg;--shift:21px;--drop:16px"
+          data-doodle="♡">
           <figure>
             <img src="assets/intervyu-neirodora.webp" width="1600" height="900" loading="lazy" decoding="async" alt="" />
             <figcaption><h2>Интервью: Нейродора — «Я хочу, чтобы кьют-рок перестал быть воспоминанием»</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="zachem-kyut-roku-gitara/"
-          style="--turn:2.9deg;--shift:-14px;--drop:18px"
-          data-doodle="♪"
-          data-search="зачем кьют-року гитара гитара не подтверждает слово «рок». у неё есть работа: менять давление сцены, открывать припев и давать песне тело.">
+          style="--turn:2.9deg;--shift:-14px;--drop:9px"
+          data-doodle="♪">
           <figure>
             <img src="assets/zachem-kyut-roku-gitara.webp" width="1600" height="900" loading="lazy" decoding="async" alt="" />
             <figcaption><h2>Зачем кьют-року гитара</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="kak-pahnet-ai-kyut-rok/"
-          style="--turn:-1.8deg;--shift:8px;--drop:48px"
-          data-doodle="♡"
-          data-search="как пахнет ai-кьют-рок не про то, кто нажимал клавиши. про привычки, из-за которых текст звучит как среднее арифметическое тысячи песен.">
+          style="--turn:-1.8deg;--shift:8px;--drop:22px"
+          data-doodle="♡">
           <figure>
             <img src="assets/kak-pahnet-ai-kyut-rok.webp" width="1600" height="900" loading="lazy" decoding="async" alt="" />
             <figcaption><h2>Как пахнет AI-кьют-рок</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="kyut-rok-finalnaya-forma-pop-muzyki/"
-          style="--turn:4.0deg;--shift:-2px;--drop:8px"
-          data-doodle="☆"
-          data-search="почему кьют-рок — финальная форма поп-музыки немного абсурдная, но удивительно удобная теория: вся популярная музыка веками двигалась к сочетанию хука, шума и бытовой катастрофы.">
+          style="--turn:4.0deg;--shift:-2px;--drop:4px"
+          data-doodle="☆">
           <figure>
             <img src="assets/kyut-rok-finalnaya-forma-pop-muzyki.webp" width="1600" height="900" loading="lazy" decoding="async" alt="" />
             <figcaption><h2>Почему кьют-рок — финальная форма поп-музыки</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="kyut-rok-bez-slova-devochka/"
           style="--turn:-3.4deg;--shift:-12px;--drop:0px"
-          data-doodle="♫"
-          data-search="кьют-рок без слова «девочка» жанр слишком легко пародирует собственную поверхность. иногда полезно забрать узнаваемые слова и посмотреть, что останется.">
+          data-doodle="♫">
           <figure>
             <img src="assets/kyut-rok-bez-slova-devochka.webp" width="1600" height="900" loading="lazy" decoding="async" alt="" />
             <figcaption><h2>Кьют-рок без слова «девочка»</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="budushchee-muzyki-budet-milym-i-gromkim/"
-          style="--turn:2.2deg;--shift:18px;--drop:28px"
-          data-doodle="✦"
-          data-search="будущее музыки будет милым и громким мир уже устал выбирать между тяжёлой музыкой и попом. кьют-рок предлагает не выбирать вообще.">
+          style="--turn:2.2deg;--shift:18px;--drop:14px"
+          data-doodle="✦">
           <figure>
             <img src="assets/budushchee-muzyki-budet-milym-i-gromkim.webp" width="1600" height="900" loading="lazy" decoding="async" alt="" />
             <figcaption><h2>Будущее музыки будет милым и громким</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="malenkaya-problema-konec-sveta/"
-          style="--turn:-1.1deg;--shift:3px;--drop:10px"
-          data-doodle="♡"
-          data-search="маленькая проблема = конец света главный драматургический двигатель жанра: событие может быть смешным со стороны и огромным изнутри.">
+          style="--turn:-1.1deg;--shift:3px;--drop:5px"
+          data-doodle="♡">
           <figure>
             <img src="assets/malenkaya-problema-konec-sveta.webp" width="1600" height="900" loading="lazy" decoding="async" alt="" />
             <figcaption><h2>Маленькая проблема = конец света</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="kyut-roku-vredna-idealnost/"
-          style="--turn:3.7deg;--shift:-20px;--drop:42px"
-          data-doodle="♪"
-          data-search="кьют-року вредна идеальность чуть кривой дубль, шум, вдох, неожиданная атака медиатора иногда дают больше жизни, чем ещё час выравнивания.">
+          style="--turn:3.7deg;--shift:-20px;--drop:19px"
+          data-doodle="♪">
           <figure>
             <img src="assets/kyut-roku-vredna-idealnost.webp" width="1600" height="900" loading="lazy" decoding="async" alt="" />
             <figcaption><h2>Кьют-року вредна идеальность</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="pochemu-mir-ustal-ot-krutosti/"
-          style="--turn:-2.5deg;--shift:14px;--drop:14px"
-          data-doodle="♡"
-          data-search="почему мир устал от крутости музыка слишком долго делала вид, что артист обязан быть недосягаемым. кьют-рок возвращает право выглядеть смешно.">
+          style="--turn:-2.5deg;--shift:14px;--drop:8px"
+          data-doodle="♡">
           <figure>
             <img src="assets/pochemu-mir-ustal-ot-krutosti.webp" width="1600" height="900" loading="lazy" decoding="async" alt="" />
             <figcaption><h2>Почему мир устал от крутости</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="anatomiya-pripeva/"
-          style="--turn:1.4deg;--shift:-6px;--drop:4px"
-          data-doodle="☆"
-          data-search="анатомия припева припев должен пережить песню. сколько в нём мыслей, зачем повтор и почему «проще» почти всегда труднее написать.">
+          style="--turn:1.4deg;--shift:-6px;--drop:2px"
+          data-doodle="☆">
           <figure>
             <img src="assets/anatomiya-pripeva.webp" width="1600" height="900" loading="lazy" decoding="async" alt="" />
             <figcaption><h2>Анатомия припева</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="kyut-rok-posle-2019/"
-          style="--turn:-4.1deg;--shift:21px;--drop:34px"
-          data-doodle="♫"
-          data-search="кьют-рок после 2019 что стоит оставить от первой волны, а что давно пора бросить. жанр не обязан всю жизнь носить одну куртку.">
+          style="--turn:-4.1deg;--shift:21px;--drop:16px"
+          data-doodle="♫">
           <figure>
             <img src="assets/kyut-rok-posle-2019.webp" width="1600" height="900" loading="lazy" decoding="async" alt="" />
             <figcaption><h2>Кьют-рок после 2019</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="2035-kyut-rok-glavnaya-muzyka/"
-          style="--turn:2.9deg;--shift:-14px;--drop:18px"
-          data-doodle="✦"
-          data-search="2035: как кьют-рок стал главной музыкой планеты ретроспектива из будущего. история победы кьют-рока.">
+          style="--turn:2.9deg;--shift:-14px;--drop:9px"
+          data-doodle="✦">
           <figure>
             <img src="assets/2035-kyut-rok-glavnaya-muzyka.webp" width="1600" height="900" loading="lazy" decoding="async" alt="" />
             <figcaption><h2>2035: как кьют-рок стал главной музыкой планеты</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="kyut-rok-po-russki/"
-          style="--turn:-1.8deg;--shift:8px;--drop:48px"
-          data-doodle="♡"
-          data-search="кьют-рок по-русски русский легко становится тяжёлым, книжным и квадратным. как сохранить разговорную лёгкость и не сломать ударения.">
+          style="--turn:-1.8deg;--shift:8px;--drop:22px"
+          data-doodle="♡">
           <figure>
             <img src="assets/kyut-rok-po-russki.webp" width="1600" height="900" loading="lazy" decoding="async" alt="" />
             <figcaption><h2>Кьют-рок по-русски</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a><a class="article-photo-card" href="konstituciya-kyut-roka/"
-          style="--turn:4.0deg;--shift:-2px;--drop:8px"
-          data-doodle="♪"
-          data-search="конституция кьют-рока двадцать статей, которые ничего юридически не запрещают и хорошо объясняют, зачем жанр существует.">
+          style="--turn:4.0deg;--shift:-2px;--drop:4px"
+          data-doodle="♪">
           <figure>
             <img src="assets/konstituciya-kyut-roka.webp" width="1600" height="900" loading="lazy" decoding="async" alt="" />
             <figcaption><h2>Конституция кьют-рока</h2><span>ЧИТАТЬ →</span></figcaption>
           </figure>
         </a>
       </section>
-      <p class="library-empty" id="library-empty" hidden>ничего не нашлось :( попробуй слово попроще</p>
 
       <section class="library-cta">
         <span aria-hidden="true">♫</span><div><small>ДОЧИТАЛА ДО КОНЦА?</small><h2>ТЕПЕРЬ МОЖНО<br />СДЕЛАТЬ ПОГРОМЧЕ.</h2></div><a href="https://www.youtube.com/@neurodora" target="_blank" rel="noopener noreferrer">СЛУШАТЬ НЕЙРОДОРУ ↗</a>
       </section>
     </main>
     <footer class="library-footer"><a href="/">НЕЙРОДОРА</a><p>КЬЮТ-РОК РУЛИТ · 2026</p><a href="#library">НАВЕРХ ↑</a></footer>
-    <script src="library.js?v=2" defer></script>
+    <script src="library.js?v=3" defer></script>
     <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"ce1213c7e62e4829ac111b234aa64707"}'></script>
   </body>
 </html>
