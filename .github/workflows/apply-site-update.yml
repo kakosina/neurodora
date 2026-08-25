@@ -1,0 +1,42 @@
+name: Apply Neurodora site update
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - neurodora-site-update.tgz
+      - .github/workflows/apply-site-update.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apply-neurodora-site-update
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    if: github.repository == 'kakosina/neurodora' && github.actor == 'kakosina'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the current site
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Apply the verified site package
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f neurodora-site-update.tgz
+          tar -xzf neurodora-site-update.tgz
+          rm neurodora-site-update.tgz
+          rm .github/workflows/apply-site-update.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --check
+          git commit -m "Launch Cuterockology article library"
+          git push origin HEAD:main
