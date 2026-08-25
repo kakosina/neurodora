@@ -6,7 +6,9 @@
   const ROOT_DIALOGUE = 'assets/game-dialogue-v01/';
   const MAX_LIVES = 3;
   const ENEMY_SPEED_MULTIPLIER = 2.5;
-  const HEART_SPEED_PER_VIEW = 0.38;
+  const BATTLE_REFERENCE_SPAN = 0.59;
+  const HEART_TRAVEL_SECONDS = 1.6;
+  const KISS_RECOIL_DISTANCE = 18;
   const KISS_MOUTH_ANCHORS = {
     dora: { x: 68, y: 350 },
     // Maybe's source sprite is mirrored at draw time, so her mouth sits only
@@ -54,7 +56,6 @@
     telegram: document.querySelector('#resultTelegram'),
     restart: document.querySelector('#restartButton'),
     sound: document.querySelector('#soundButton'),
-    touch: document.querySelector('#touchButton'),
     music: document.querySelector('#backgroundMusic')
   };
 
@@ -341,10 +342,8 @@
     kissReady: false,
     doraAction: 'idle',
     doraActionTime: 0,
-    doraRecoil: 0,
     allyAction: 'idle',
     allyActionTime: 0,
-    allyRecoil: 0,
     novelScenes: [],
     novelIndex: 0,
     novelDone: null,
@@ -355,6 +354,7 @@
   let audioContext = null;
   let ready = false;
   let lastFrame = performance.now();
+  let activeKissPointerId = null;
 
   function show(element) {
     element.classList.remove('hidden');
@@ -432,9 +432,21 @@
     return Math.max(getActorEdgePadding(), view.w * 0.115);
   }
 
+  function getContactX() {
+    return getDoraX() + 108 * getScale();
+  }
+
+  function getBattleSpan() {
+    return Math.max(1, getEnemyStartX() - getContactX());
+  }
+
   function resizeCanvas() {
     const rect = canvas.getBoundingClientRect();
-    const oldWidth = view.w;
+    const oldStartX = getEnemyStartX();
+    const oldSpan = getBattleSpan();
+    const enemyProgress = game.enemy
+      ? clamp((oldStartX - game.enemy.x) / oldSpan, 0, 1)
+      : 0;
     // Never render to a larger logical minimum and squeeze it back down with
     // CSS: that distorted every sprite on narrow tablets and phones.
     view.w = Math.max(1, rect.width || 1600);
@@ -442,8 +454,10 @@
     view.dpr = Math.min(2, window.devicePixelRatio || 1);
     canvas.width = Math.round(view.w * view.dpr);
     canvas.height = Math.round(view.h * view.dpr);
-    if (game.enemy && oldWidth > 0) {
-      game.enemy.x = Math.min(getEnemyStartX(), game.enemy.x * view.w / oldWidth);
+    if (game.enemy) {
+      // Preserve the opponent's progress through the lane, not raw pixels.
+      // Rotating a phone or resizing a window must not shorten the battle.
+      game.enemy.x = getEnemyStartX() - getBattleSpan() * enemyProgress;
     }
   }
 
@@ -558,10 +572,9 @@
     game.kissReady = false;
     game.doraAction = 'idle';
     game.doraActionTime = 0;
-    game.doraRecoil = 0;
     game.allyAction = 'idle';
     game.allyActionTime = 0;
-    game.allyRecoil = 0;
+    activeKissPointerId = null;
     updateHud();
   }
 
@@ -659,19 +672,26 @@
     if (game.phase === 'battle') fireKiss();
   }
 
+  function cancelKiss() {
+    game.kissReady = false;
+    if (game.phase !== 'battle') return;
+    game.doraAction = 'idle';
+    game.doraActionTime = 0;
+    game.allyAction = 'kind';
+    game.allyActionTime = 0;
+  }
+
   function fireKiss() {
     if (game.phase !== 'battle') return;
     const kiss = { damage: 25, push: 2.2 };
     game.doraAction = 'kiss1';
     game.doraActionTime = 0;
-    game.doraRecoil = 8;
     spawnKiss('dora', kiss, 0);
     kissSound();
 
     if (game.levelIndex === 3 && game.allyJoined) {
       game.allyAction = 'kiss';
       game.allyActionTime = 0;
-      game.allyRecoil = 8;
       spawnKiss('maybe', {
         damage: 18,
         push: 1.4,
@@ -696,9 +716,9 @@
       startY: sourceY,
       targetY,
       y: sourceY,
-      // Heart flight deliberately ignores the enemy-speed multiplier. It must
-      // flutter across the screen instead of teleporting after a quick tap.
-      speed: view.w * HEART_SPEED_PER_VIEW,
+      // Each heart takes the same time to cross its full lane on every screen.
+      // A narrow phone compresses the drawing, not the gameplay timing.
+      speed: Math.max(1, getEnemyStartX() - sourceX) / HEART_TRAVEL_SECONDS,
       damage: kiss.damage,
       push: kiss.push,
       delay: delay || 0,
@@ -887,8 +907,6 @@
   }
 
   function updateActions(dt) {
-    game.doraRecoil += (0 - game.doraRecoil) * Math.min(1, dt * 16);
-    game.allyRecoil += (0 - game.allyRecoil) * Math.min(1, dt * 16);
     game.doraActionTime += dt;
     game.allyActionTime += dt;
 
@@ -930,13 +948,15 @@
       speedFactor = 1.34;
     }
 
-    const travel = view.w * level.approach * speedFactor * ENEMY_SPEED_MULTIPLIER * dt;
+    // Move through a fixed fraction of the playable lane per second. The lane
+    // is shorter on narrow screens because actors need safe edge padding.
+    const travel = getBattleSpan() * level.approach * speedFactor *
+      ENEMY_SPEED_MULTIPLIER / BATTLE_REFERENCE_SPAN * dt;
     enemy.x -= travel;
     enemy.walkDistance += travel;
     updateShots(dt);
 
-    const contactX = getDoraX() + 108 * getScale();
-    if (enemy.x <= contactX) enemyReachedDora();
+    if (enemy.x <= getContactX()) enemyReachedDora();
   }
 
   function update(dt) {
@@ -1402,6 +1422,21 @@
     }
   }
 
+  function getKissRecoilOffset(action, actionTime, strength) {
+    const distance = KISS_RECOIL_DISTANCE * getScale() * (strength || 1);
+    if (action === 'kiss2') {
+      return distance * smoothstep(actionTime / 0.07);
+    }
+    if (action === 'recoil') {
+      return distance * (1 - smoothstep(actionTime / 0.09));
+    }
+    if (action === 'kiss') {
+      const progress = clamp(actionTime / 0.16, 0, 1);
+      return distance * 0.78 * Math.sin(progress * Math.PI);
+    }
+    return 0;
+  }
+
   function drawSeparateActors(alpha, positions, renderOptions) {
     const scale = getScale();
     const ground = getGround();
@@ -1437,7 +1472,7 @@
     if (game.allyJoined && game.levelIndex >= 2) {
       drawActor(
         render.allySprite || currentAllySprite(),
-        actorPositions.ally - game.allyRecoil,
+        actorPositions.ally - getKissRecoilOffset(game.allyAction, game.allyActionTime, 0.8),
         ground,
         scale * (render.allyScale || 1),
         {
@@ -1451,7 +1486,7 @@
     const doraSprite = render.doraSprite || currentDoraSprite();
     drawActor(
       doraSprite,
-      actorPositions.dora - game.doraRecoil,
+      actorPositions.dora - getKissRecoilOffset(game.doraAction, game.doraActionTime, 1),
       ground,
       scale * (render.doraScale || 1),
       {
@@ -1567,26 +1602,27 @@
     releaseKiss();
   });
 
-  ui.touch.addEventListener('pointerdown', (event) => {
+  canvas.addEventListener('pointerdown', (event) => {
+    if (game.phase !== 'battle' || activeKissPointerId !== null) return;
     event.preventDefault();
-    ui.touch.setPointerCapture(event.pointerId);
+    activeKissPointerId = event.pointerId;
+    if (typeof canvas.setPointerCapture === 'function') {
+      canvas.setPointerCapture(event.pointerId);
+    }
     readyKiss();
   });
-  ui.touch.addEventListener('pointerup', (event) => {
+  canvas.addEventListener('pointerup', (event) => {
+    if (event.pointerId !== activeKissPointerId) return;
     event.preventDefault();
+    activeKissPointerId = null;
     releaseKiss();
   });
-  ui.touch.addEventListener('pointercancel', () => {
-    game.kissReady = false;
-    if (game.phase === 'battle') {
-      game.doraAction = 'idle';
-      game.doraActionTime = 0;
-      game.allyAction = 'kind';
-      game.allyActionTime = 0;
-    }
+  canvas.addEventListener('pointercancel', (event) => {
+    if (event.pointerId !== activeKissPointerId) return;
+    activeKissPointerId = null;
+    cancelKiss();
   });
 
-  if (window.matchMedia('(pointer: coarse)').matches) show(ui.touch);
   window.addEventListener('resize', resizeCanvas);
   resizeCanvas();
   requestAnimationFrame(frame);
@@ -1603,6 +1639,7 @@
     beginBattle,
     readyKiss,
     releaseKiss,
+    cancelKiss,
     fireKiss,
     showResult,
     advanceNovel,
@@ -1616,6 +1653,8 @@
     getDoraX,
     getAllyX,
     getEnemyStartX,
+    getContactX,
+    getBattleSpan,
     getScale,
     getGround,
     getInteractionUniformScale,
