@@ -525,6 +525,51 @@ button {
   filter: saturate(0.55);
 }
 
+.title-links {
+  position: absolute;
+  z-index: 44;
+  right: calc(1.4% + clamp(42px, 4vw, 58px));
+  bottom: 2%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(7px, 0.7vw, 11px);
+  max-width: 52%;
+}
+
+.title-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: clamp(6px, 0.55vw, 9px) clamp(9px, 0.85vw, 14px);
+  border: 2px solid #3b3046;
+  border-radius: 999px;
+  color: #3b3046;
+  font-size: clamp(8px, 0.72vw, 11px);
+  font-weight: 1000;
+  letter-spacing: 0.07em;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 3px 0 rgba(85, 57, 102, 0.2);
+  transition: transform 120ms ease, background 120ms ease, box-shadow 120ms ease;
+}
+
+.title-links a b {
+  color: #ed4d8c;
+  font-size: 1.2em;
+  line-height: 1;
+}
+
+.title-links a:hover,
+.title-links a:focus-visible {
+  transform: translateY(2px);
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(85, 57, 102, 0.2);
+}
+
 .sound-button {
   position: absolute;
   z-index: 45;
@@ -1047,6 +1092,12 @@ button {
   .start-button {
     min-width: min(78vw, 330px);
     margin-top: 12px;
+  }
+
+  .title-links {
+    right: calc(3% + clamp(38px, 11vw, 52px));
+    bottom: max(2%, env(safe-area-inset-bottom));
+    max-width: 72%;
   }
 
   .title-cast {
