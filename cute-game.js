@@ -1,13 +1,16 @@
 (() => {
   'use strict';
 
-  const ROOT_V3 = '/assets/game-approved-v3/';
-  const ROOT_V02 = '/assets/game-v02/';
-  const ROOT_DIALOGUE = '/assets/game-dialogue-v01/';
+  // Relative roots keep the standalone game working from a local file, the
+  // site root and the itch.io archive. game/index.html supplies a base URL.
+  const ROOT_V3 = 'assets/game-approved-v3/';
+  const ROOT_V02 = 'assets/game-v02/';
+  const ROOT_DIALOGUE = 'assets/game-dialogue-v01/';
   const MAX_LIVES = 3;
   const ENEMY_SPEED_MULTIPLIER = 2.5;
   const BATTLE_REFERENCE_SPAN = 0.59;
   const HEART_TRAVEL_SECONDS = 1.6;
+  const MUSIC_VOLUME = 0.34;
   const KISS_RECOIL_DISTANCE = 18;
   const KISS_MOUTH_ANCHORS = {
     dora: { x: 68, y: 350 },
@@ -26,6 +29,15 @@
     morgen: [3, -0.5, 4, 4, -0.5, -0.5]
   };
   const CUTE_WIN_DURATION = 5.05;
+  const DIALOGUE_SPEAKER_THEMES = {
+    'НЕЙРОДОРА': 'dora',
+    'НЕЙРОМИРОН': 'miron',
+    'НЕЙРОСЛАВА': 'slava',
+    'НЕЙРОМЭЙБИ': 'maybe',
+    'НЕЙРОМОРГЕН': 'morgen',
+    'РАССКАЗЧИК': 'narrator'
+  };
+  const DIALOGUE_CHARACTERS = new Set(['dora', 'miron', 'slava', 'maybe', 'morgen']);
   const canvas = document.querySelector('#gameCanvas');
   const ctx = canvas.getContext('2d', { alpha: false });
 
@@ -504,7 +516,7 @@
 
   function syncBackgroundMusic() {
     if (!ui.music) return;
-    ui.music.volume = 0.24;
+    ui.music.volume = MUSIC_VOLUME;
     ui.music.muted = game.muted;
     if (game.muted) {
       ui.music.pause();
@@ -545,9 +557,13 @@
       hide(element);
       element.removeAttribute('src');
       delete element.dataset.portraitKey;
+      delete element.dataset.character;
+      element.classList.remove('dim');
       return;
     }
     element.dataset.portraitKey = key;
+    const character = key.split('-')[0];
+    element.dataset.character = DIALOGUE_CHARACTERS.has(character) ? character : 'narrator';
     const portrait = PORTRAITS[key];
     element.src = portrait && portrait.complete && portrait.naturalWidth
       ? portrait.src
@@ -575,10 +591,19 @@
   function renderNovelScene() {
     const scene = game.novelScenes[game.novelIndex];
     if (!scene) return;
+    const speakerTheme = DIALOGUE_SPEAKER_THEMES[scene.speaker] || 'narrator';
+    ui.novel.dataset.speaker = speakerTheme;
     ui.novelSpeaker.textContent = scene.speaker;
     ui.novelText.textContent = scene.text;
     setPortrait(ui.novelLeft, scene.left);
     setPortrait(ui.novelRight, scene.right);
+    [ui.novelLeft, ui.novelRight].forEach((portrait) => {
+      const isSomeoneSpeaking = speakerTheme !== 'narrator';
+      portrait.classList.toggle(
+        'dim',
+        isSomeoneSpeaking && portrait.dataset.character !== speakerTheme
+      );
+    });
   }
 
   function advanceNovel() {
@@ -1691,6 +1716,8 @@
     if (document.hidden) {
       activeKissPointerId = null;
       cancelKiss();
+    } else if (!game.muted && game.phase !== 'title') {
+      syncBackgroundMusic();
     }
   });
 

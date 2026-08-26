@@ -588,6 +588,45 @@ button {
 
 .novel-overlay {
   overflow: hidden;
+  --novel-accent: #ef5f98;
+  --novel-accent-dark: #9f315e;
+  --novel-accent-shadow: rgba(159, 49, 94, 0.28);
+}
+
+.novel-overlay[data-speaker="dora"] {
+  --novel-accent: #ef5f98;
+  --novel-accent-dark: #9f315e;
+  --novel-accent-shadow: rgba(159, 49, 94, 0.28);
+}
+
+.novel-overlay[data-speaker="miron"] {
+  --novel-accent: #7568de;
+  --novel-accent-dark: #40377f;
+  --novel-accent-shadow: rgba(64, 55, 127, 0.28);
+}
+
+.novel-overlay[data-speaker="slava"] {
+  --novel-accent: #3eae83;
+  --novel-accent-dark: #1e674e;
+  --novel-accent-shadow: rgba(30, 103, 78, 0.28);
+}
+
+.novel-overlay[data-speaker="maybe"] {
+  --novel-accent: #3f7bd9;
+  --novel-accent-dark: #254b91;
+  --novel-accent-shadow: rgba(37, 75, 145, 0.28);
+}
+
+.novel-overlay[data-speaker="morgen"] {
+  --novel-accent: #dc9130;
+  --novel-accent-dark: #80501a;
+  --novel-accent-shadow: rgba(128, 80, 26, 0.3);
+}
+
+.novel-overlay[data-speaker="narrator"] {
+  --novel-accent: #667187;
+  --novel-accent-dark: #364055;
+  --novel-accent-shadow: rgba(54, 64, 85, 0.26);
 }
 
 .novel-overlay:not(.hidden) {
@@ -606,6 +645,7 @@ button {
 }
 
 .novel-person {
+  --portrait-accent: rgba(239, 95, 152, 0.58);
   position: absolute;
   z-index: 2;
   bottom: calc(22.5% - 6px);
@@ -615,8 +655,30 @@ button {
   padding: 0;
   object-fit: contain;
   object-position: center bottom;
-  filter: none;
+  filter:
+    drop-shadow(0 2px 0 var(--portrait-accent))
+    drop-shadow(0 10px 16px rgba(28, 32, 49, 0.22));
   transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.novel-person[data-character="dora"] {
+  --portrait-accent: rgba(239, 95, 152, 0.58);
+}
+
+.novel-person[data-character="miron"] {
+  --portrait-accent: rgba(117, 104, 222, 0.58);
+}
+
+.novel-person[data-character="slava"] {
+  --portrait-accent: rgba(62, 174, 131, 0.58);
+}
+
+.novel-person[data-character="maybe"] {
+  --portrait-accent: rgba(63, 123, 217, 0.58);
+}
+
+.novel-person[data-character="morgen"] {
+  --portrait-accent: rgba(220, 145, 48, 0.62);
 }
 
 .novel-person.left {
@@ -628,9 +690,8 @@ button {
 }
 
 .novel-person.dim {
-  opacity: 0.56;
-  filter: grayscale(0.2) brightness(0.88);
-  transform: scale(0.97);
+  opacity: 0.58;
+  filter: grayscale(0.2) brightness(0.88) drop-shadow(0 8px 12px rgba(28, 32, 49, 0.18));
 }
 
 .novel-box {
@@ -644,11 +705,11 @@ button {
   display: grid;
   grid-template-rows: auto 1fr auto;
   gap: 5px;
-  border: 3px solid #303744;
+  border: 3px solid var(--novel-accent-dark);
   border-radius: 6px;
   text-align: left;
   background: rgba(255, 252, 249, 0.97);
-  box-shadow: 8px 8px 0 rgba(36, 42, 62, 0.28);
+  box-shadow: 8px 8px 0 var(--novel-accent-shadow);
   cursor: pointer;
 }
 
@@ -658,7 +719,7 @@ button {
   color: white;
   font-size: clamp(9px, 0.9vw, 13px);
   letter-spacing: 0.08em;
-  background: var(--pink);
+  background: var(--novel-accent);
 }
 
 .novel-box > span {
@@ -676,7 +737,7 @@ button {
 }
 
 .novel-box i {
-  color: var(--pink);
+  color: var(--novel-accent);
   font-style: normal;
   animation: next-bob 700ms ease-in-out infinite alternate;
 }
