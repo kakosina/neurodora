@@ -1,9 +1,9 @@
 (() => {
   'use strict';
 
-  const ROOT_V3 = 'assets/game-approved-v3/';
-  const ROOT_V02 = 'assets/game-v02/';
-  const ROOT_DIALOGUE = 'assets/game-dialogue-v01/';
+  const ROOT_V3 = '/assets/game-approved-v3/';
+  const ROOT_V02 = '/assets/game-v02/';
+  const ROOT_DIALOGUE = '/assets/game-dialogue-v01/';
   const MAX_LIVES = 3;
   const ENEMY_SPEED_MULTIPLIER = 2.5;
   const BATTLE_REFERENCE_SPAN = 0.59;
@@ -16,7 +16,7 @@
     maybe: { x: 14, y: 334 }
   };
   const WALK_SCROLL_SPEED_PER_VIEW = 0.065;
-  const WALK_FRAME_DISTANCE = 14;
+  const WALK_FRAMES_PER_SECOND = 8;
   const SPRITE_FOOT_PADDING = 3;
   const WALK_OPTICAL_OFFSETS = {
     dora: [7.5, 5.5, 3, 5, 1.5, 6],
@@ -102,7 +102,7 @@
     });
 
   const SPRITES = {};
-  const imagePromises = Object.entries(SPRITE_PATHS).map(([key, path]) => {
+  const spritePromises = Object.entries(SPRITE_PATHS).map(([key, path]) => {
     const image = new Image();
     image.decoding = 'async';
     SPRITES[key] = image;
@@ -112,20 +112,36 @@
       image.src = path;
     });
   });
+  const spritesReady = Promise.all(spritePromises);
   const PORTRAITS = {};
-  Object.keys(SPRITE_PATHS)
+  const PORTRAIT_KEYS = new Set(Object.keys(SPRITE_PATHS)
     .filter((key) => !key.includes('-walk-') && !key.includes('-interaction-') &&
-      !key.includes('-cute-win-') && !key.includes('dora-maybe-pat-'))
-    .forEach((key) => {
-      const image = new Image();
-      image.decoding = 'async';
-      PORTRAITS[key] = image;
-      imagePromises.push(new Promise((resolve) => {
-        image.onload = resolve;
-        image.onerror = resolve;
-        image.src = ROOT_DIALOGUE + key + '.png';
-      }));
+      !key.includes('-cute-win-') && !key.includes('dora-maybe-pat-')));
+  const portraitPromises = new Map();
+
+  function loadPortrait(key) {
+    if (!PORTRAIT_KEYS.has(key)) return Promise.resolve(null);
+    if (portraitPromises.has(key)) return portraitPromises.get(key);
+    const image = new Image();
+    image.decoding = 'async';
+    PORTRAITS[key] = image;
+    const promise = new Promise((resolve) => {
+      image.onload = () => resolve(image);
+      image.onerror = () => resolve(null);
+      image.src = ROOT_DIALOGUE + key + '.png';
     });
+    portraitPromises.set(key, promise);
+    return promise;
+  }
+
+  function preloadPortraits(scenes) {
+    const keys = new Set();
+    scenes.forEach((scene) => {
+      if (scene.left) keys.add(scene.left);
+      if (scene.right) keys.add(scene.right);
+    });
+    return Promise.all([...keys].map(loadPortrait));
+  }
 
   const LEVELS = [
     {
@@ -355,6 +371,8 @@
   let ready = false;
   let lastFrame = performance.now();
   let activeKissPointerId = null;
+  let resizeFrame = null;
+  const colorChannelCache = new Map();
 
   function show(element) {
     element.classList.remove('hidden');
@@ -378,13 +396,18 @@
   }
 
   function colorChannels(value) {
+    if (colorChannelCache.has(value)) return colorChannelCache.get(value);
+    let channels;
     if (value.startsWith('#')) {
       const parsed = parseInt(value.slice(1), 16);
-      return [(parsed >> 16) & 255, (parsed >> 8) & 255, parsed & 255];
+      channels = [(parsed >> 16) & 255, (parsed >> 8) & 255, parsed & 255];
+    } else {
+      const match = value.match(/rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)/i);
+      if (!match) throw new Error('Unsupported colour: ' + value);
+      channels = [Number(match[1]), Number(match[2]), Number(match[3])];
     }
-    const match = value.match(/rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)/i);
-    if (match) return [Number(match[1]), Number(match[2]), Number(match[3])];
-    throw new Error('Unsupported colour: ' + value);
+    colorChannelCache.set(value, channels);
+    return channels;
   }
 
   function mixHex(a, b, amount) {
@@ -461,6 +484,14 @@
     }
   }
 
+  function scheduleResize() {
+    if (resizeFrame !== null) return;
+    resizeFrame = requestAnimationFrame(() => {
+      resizeFrame = null;
+      resizeCanvas();
+    });
+  }
+
   function ensureAudio() {
     if (game.muted) return null;
     if (!audioContext) {
@@ -513,13 +544,18 @@
     if (!key || !SPRITES[key]) {
       hide(element);
       element.removeAttribute('src');
+      delete element.dataset.portraitKey;
       return;
     }
+    element.dataset.portraitKey = key;
     const portrait = PORTRAITS[key];
     element.src = portrait && portrait.complete && portrait.naturalWidth
       ? portrait.src
       : SPRITES[key].src;
     show(element);
+    loadPortrait(key).then((loaded) => {
+      if (loaded && element.dataset.portraitKey === key) element.src = loaded.src;
+    });
   }
 
   function startNovel(scenes, done) {
@@ -529,6 +565,10 @@
     game.novelIndex = 0;
     game.novelDone = done;
     show(ui.novel);
+    // Load only the portraits for the current scene group. Gameplay sprites
+    // are available immediately as a fallback, so a slow network never blocks
+    // dialogue and future levels no longer inflate the initial download.
+    preloadPortraits(scenes);
     renderNovelScene();
   }
 
@@ -583,7 +623,7 @@
     game.starting = true;
     // Start from the user's click/keypress so mobile autoplay policies allow it.
     syncBackgroundMusic();
-    await Promise.all(imagePromises);
+    await Promise.all([spritesReady, preloadPortraits(PROLOGUE)]);
     ready = true;
     resetRun();
     hide(ui.title);
@@ -601,6 +641,7 @@
 
   function prepareLevel(index) {
     const level = LEVELS[index];
+    preloadPortraits(level.pre.concat(level.post));
     game.levelIndex = index;
     game.battleTime = 0;
     game.hitCount = 0;
@@ -611,7 +652,7 @@
       hp: level.hp,
       maxHp: level.hp,
       hitTime: 0,
-      walkDistance: 0,
+      walkTime: 0,
       alpha: 1,
       state: 'defiant'
     };
@@ -953,7 +994,9 @@
     const travel = getBattleSpan() * level.approach * speedFactor *
       ENEMY_SPEED_MULTIPLIER / BATTLE_REFERENCE_SPAN * dt;
     enemy.x -= travel;
-    enemy.walkDistance += travel;
+    // Animation cadence is time-based, so the same walk cycle is shown on a
+    // phone and a desktop. Dashes still speed the feet up naturally.
+    enemy.walkTime += dt * speedFactor;
     updateShots(dt);
 
     if (enemy.x <= getContactX()) enemyReachedDora();
@@ -1160,8 +1203,7 @@
     ctx.restore();
   }
 
-  function drawBackground() {
-    const state = backdropState();
+  function drawBackground(state) {
     const palette = state.palette;
     const gradient = ctx.createLinearGradient(0, 0, 0, view.h);
     gradient.addColorStop(0, palette.skyTop);
@@ -1231,8 +1273,8 @@
     }
   }
 
-  function drawForegroundGrass() {
-    const palette = backdropState().palette;
+  function drawForegroundGrass(state) {
+    const palette = state.palette;
     const offset = game.worldOffset * 1.05;
     ctx.save();
     ctx.lineCap = 'round';
@@ -1251,8 +1293,8 @@
     ctx.restore();
   }
 
-  function walkFrame(prefix, distance) {
-    return prefix + '-walk-' + String((Math.floor(distance / WALK_FRAME_DISTANCE) % 6) + 1);
+  function walkFrame(prefix, elapsedSeconds) {
+    return prefix + '-walk-' + String((Math.floor(elapsedSeconds * WALK_FRAMES_PER_SECOND) % 6) + 1);
   }
 
   function spriteOpticalOffset(key) {
@@ -1262,7 +1304,7 @@
   }
 
   function currentDoraSprite() {
-    if (game.phase === 'walk') return walkFrame('dora', game.worldOffset);
+    if (game.phase === 'walk') return walkFrame('dora', game.phaseTime);
     if (game.phase === 'hurt') return game.phaseTime < 0.36 ? 'dora-hit' : 'dora-defeat';
     if (game.phase === 'enemyDefeated') {
       return game.phaseTime > 0.48 ? 'dora-victory' : 'dora-wink';
@@ -1280,7 +1322,11 @@
   }
 
   function currentAllySprite() {
-    if (game.phase === 'walk') return walkFrame('maybe', game.worldOffset);
+    if (game.phase === 'walk') {
+      // Half a cycle apart reads as two friends walking together rather than
+      // one duplicated animation.
+      return walkFrame('maybe', game.phaseTime + 3 / WALK_FRAMES_PER_SECOND);
+    }
     if (game.phase === 'hurt') return 'maybe-defeated';
     if (game.allyAction === 'kiss-ready') return 'maybe-flustered';
     if (game.allyAction === 'kiss') return 'maybe-kiss';
@@ -1302,7 +1348,7 @@
       return prefix + '-flustered';
     }
     if (game.phase === 'levelIntro' || game.phase === 'novel') return prefix + '-defiant';
-    return walkFrame(prefix, game.enemy.walkDistance);
+    return walkFrame(prefix, game.enemy.walkTime);
   }
 
   function drawActor(key, x, ground, scale, options) {
@@ -1542,11 +1588,15 @@
   }
 
   function draw() {
+    // Title and result screens are opaque DOM layers. Avoid doing a full
+    // canvas scene render behind them on every animation frame.
+    if (game.phase === 'title' || game.phase === 'result') return;
     ctx.setTransform(view.dpr, 0, 0, view.dpr, 0, 0);
     ctx.imageSmoothingEnabled = true;
     ctx.clearRect(0, 0, view.w, view.h);
-    drawBackground();
-    drawForegroundGrass();
+    const state = backdropState();
+    drawBackground(state);
+    drawForegroundGrass(state);
     if (ready && game.phase !== 'title' && game.phase !== 'result' && game.phase !== 'novel') {
       drawActors();
       drawParticles();
@@ -1554,6 +1604,11 @@
   }
 
   function frame(now) {
+    if (document.hidden) {
+      lastFrame = now;
+      requestAnimationFrame(frame);
+      return;
+    }
     const dt = Math.min(0.034, Math.max(0, (now - lastFrame) / 1000));
     lastFrame = now;
     update(dt);
@@ -1563,7 +1618,7 @@
 
   ui.start.disabled = true;
   ui.start.innerHTML = '<span>ЗАГРУЖАЕМ</span><b>♥</b>';
-  Promise.all(imagePromises).then(() => {
+  Promise.all([spritesReady, preloadPortraits(PROLOGUE)]).then(() => {
     ready = true;
     ui.start.disabled = false;
     ui.start.innerHTML = '<span>ИГРАТЬ</span><b>♥</b>';
@@ -1622,8 +1677,28 @@
     activeKissPointerId = null;
     cancelKiss();
   });
+  canvas.addEventListener('lostpointercapture', (event) => {
+    if (event.pointerId !== activeKissPointerId) return;
+    activeKissPointerId = null;
+    cancelKiss();
+  });
+  window.addEventListener('blur', () => {
+    activeKissPointerId = null;
+    cancelKiss();
+  });
+  document.addEventListener('visibilitychange', () => {
+    lastFrame = performance.now();
+    if (document.hidden) {
+      activeKissPointerId = null;
+      cancelKiss();
+    }
+  });
 
-  window.addEventListener('resize', resizeCanvas);
+  window.addEventListener('resize', scheduleResize, { passive: true });
+  if (typeof ResizeObserver === 'function') {
+    const stageResizeObserver = new ResizeObserver(scheduleResize);
+    stageResizeObserver.observe(ui.stage);
+  }
   resizeCanvas();
   requestAnimationFrame(frame);
 
@@ -1661,6 +1736,8 @@
     spriteOpticalOffset,
     mixHex,
     backdropState,
+    preloadPortraits,
+    getLoadedPortraitCount: () => portraitPromises.size,
     getView: () => ({ ...view })
   };
 })();
