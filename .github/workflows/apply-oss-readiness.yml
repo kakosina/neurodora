@@ -25,6 +25,7 @@ jobs:
           PAYLOAD
           tar -xzf /tmp/neurodora-oss-readiness.tgz -C .
           make check
+          rm -f .github/workflows/ci.yml
           rm -f .github/workflows/apply-oss-readiness.yml
 
       - name: Commit the validated repository structure
