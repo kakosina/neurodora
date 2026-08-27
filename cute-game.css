@@ -316,28 +316,15 @@ button {
 .title-cast {
   position: absolute;
   z-index: 3;
-  right: 1%;
-  bottom: 2.5%;
-  width: 56%;
-  height: 88%;
+  right: 20%;
+  bottom: 1%;
+  width: 60%;
+  height: 60%;
   display: block;
   filter: drop-shadow(0 10px 0 rgba(61, 103, 56, 0.12));
-  transform-origin: 54% 88%;
-  animation: title-cast-breathe 5.2s ease-in-out infinite;
+  transform-origin: 50% 92%;
+  animation: title-cast-ready 4.8s ease-in-out infinite;
   pointer-events: none;
-}
-
-.title-cast::after {
-  content: "♥";
-  position: absolute;
-  top: 28%;
-  right: 11%;
-  color: #ff6b9f;
-  font-size: clamp(16px, 2.1vw, 34px);
-  line-height: 1;
-  opacity: 0;
-  filter: drop-shadow(0 2px 0 rgba(255, 255, 255, 0.92));
-  animation: title-cast-heart 5.2s ease-in-out infinite;
 }
 
 .title-cast-frame {
@@ -350,15 +337,9 @@ button {
   object-position: center bottom;
 }
 
-@keyframes title-cast-breathe {
+@keyframes title-cast-ready {
   0%, 100% { transform: translateY(0) rotate(0); }
-  48% { transform: translateY(-2px) rotate(-0.06deg); }
-}
-
-@keyframes title-cast-heart {
-  0%, 30%, 100% { opacity: 0; transform: translateY(6px) scale(0.72) rotate(-9deg); }
-  44%, 62% { opacity: 0.86; transform: translateY(0) scale(1) rotate(4deg); }
-  78% { opacity: 0; transform: translateY(-9px) scale(0.9) rotate(8deg); }
+  50% { transform: translateY(-3px) rotate(-0.08deg); }
 }
 
 .screen-cast {
@@ -368,14 +349,17 @@ button {
 .title-copy {
   position: absolute;
   z-index: 5;
-  top: max(8.5%, env(safe-area-inset-top));
-  left: 5.2%;
-  width: 47%;
+  top: max(3%, env(safe-area-inset-top));
+  left: 5%;
+  width: 90%;
+  display: grid;
+  justify-items: center;
+  text-align: center;
 }
 
 .beta-tag {
   width: max-content;
-  margin: 0 0 clamp(9px, 1vw, 15px);
+  margin: 0 auto clamp(8px, 0.8vw, 12px);
   padding: 4px 9px;
   border: 2px solid #303744;
   border-radius: 4px;
@@ -388,11 +372,11 @@ button {
 
 .title-copy h1 {
   display: grid;
-  justify-items: start;
+  justify-items: center;
   gap: 0.025em;
   margin: 0;
   font-family: "Arial Rounded MT Bold", "Trebuchet MS", system-ui, sans-serif;
-  font-size: clamp(48px, 6.2vw, 104px);
+  font-size: clamp(44px, 5.4vw, 88px);
   font-weight: 900;
   letter-spacing: -0.055em;
   line-height: 0.8;
@@ -453,7 +437,7 @@ button {
 .start-button {
   position: relative;
   min-width: clamp(205px, 19vw, 292px);
-  margin-top: clamp(22px, 2.5vw, 40px);
+  margin-top: clamp(14px, 1.6vw, 24px);
   padding: clamp(12px, 1.15vw, 17px) clamp(20px, 2vw, 30px);
   overflow: hidden;
   border: 2px solid #3b3046;
@@ -526,16 +510,16 @@ button {
 }
 
 .title-links {
-  position: absolute;
+  position: static;
   z-index: 44;
-  right: calc(1.4% + clamp(42px, 4vw, 58px));
-  bottom: 2%;
+  width: 100%;
+  margin-top: clamp(11px, 1vw, 15px);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   gap: clamp(7px, 0.7vw, 11px);
-  max-width: 52%;
+  max-width: 100%;
 }
 
 .title-links a {
@@ -903,17 +887,11 @@ button {
 .result-copy h2 {
   margin: 0;
   font-family: "Arial Rounded MT Bold", "Arial Black", system-ui, sans-serif;
-  font-size: clamp(49px, 6.5vw, 108px);
+  font-size: clamp(46px, 6vw, 96px);
   font-weight: 1000;
-  letter-spacing: -0.055em;
-  line-height: 0.88;
-  background: linear-gradient(180deg, #ff7bad, #ef4e91);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: clamp(1.5px, 0.14vw, 2.5px) #3b3046;
-  paint-order: stroke fill;
-  filter: drop-shadow(0 5px 0 rgba(255, 255, 255, 0.92));
+  letter-spacing: -0.045em;
+  line-height: 0.94;
+  color: #303744;
 }
 
 .result-copy > p:not(:first-child) {
@@ -947,14 +925,38 @@ button {
   font-variant-numeric: tabular-nums;
 }
 
-.result-copy .main-button {
-  border-radius: 14px;
+.result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: clamp(10px, 1vw, 14px);
+}
+
+.result-actions .main-button,
+.result-actions .telegram-button {
+  min-width: 0;
+  min-height: clamp(42px, 4vw, 54px);
+  margin: 0;
+  border-radius: 12px;
+}
+
+.result-actions .main-button {
+  padding: clamp(9px, 1.05vw, 14px) clamp(14px, 1.7vw, 24px);
+  color: #303744;
+  font-size: clamp(10px, 1vw, 15px);
+  background: #fff;
+  box-shadow: 5px 5px 0 #303744;
+}
+
+.result-actions .main-button:hover,
+.result-actions .main-button:focus-visible {
+  box-shadow: 3px 3px 0 #303744;
 }
 
 .telegram-button {
   width: max-content;
   max-width: 100%;
-  margin: 0 0 clamp(12px, 1.4vw, 20px);
+  margin: 0;
   padding: clamp(9px, 1.05vw, 14px) clamp(14px, 1.7vw, 24px);
   display: flex;
   align-items: center;
@@ -1013,9 +1015,8 @@ button {
 .result-screen.loss .result-copy > p:first-child { background: #756d8c; }
 
 .result-screen.loss .result-copy h2 {
-  background: linear-gradient(180deg, #d6cdea, #948aa9);
-  -webkit-background-clip: text;
-  background-clip: text;
+  color: #706a83;
+  background: none;
 }
 
 @media (max-aspect-ratio: 4 / 3) {
@@ -1041,21 +1042,21 @@ button {
   }
 
   .title-copy {
-    top: max(6%, env(safe-area-inset-top));
+    top: max(3%, env(safe-area-inset-top));
     bottom: auto;
     left: 4%;
-    width: 48%;
+    width: 92%;
   }
 
   .title-copy h1 {
-    font-size: clamp(40px, 7.8vw, 82px);
+    font-size: clamp(38px, 7.2vw, 72px);
   }
 
   .title-cast {
-    right: -1%;
-    bottom: 2%;
-    width: 61%;
-    height: 78%;
+    right: 10%;
+    bottom: 1.5%;
+    width: 80%;
+    height: 60%;
   }
 
   .result-copy {
@@ -1121,9 +1122,9 @@ button {
   }
 
   .title-links {
-    right: calc(3% + clamp(38px, 11vw, 52px));
-    bottom: max(2%, env(safe-area-inset-bottom));
-    max-width: 72%;
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
   }
 
   .title-cast {
@@ -1159,15 +1160,19 @@ button {
   }
 
   .result-score,
-  .telegram-button,
-  .result-copy .main-button {
+  .result-actions {
     margin-right: auto;
     margin-left: auto;
   }
 
-  .telegram-button,
-  .result-copy .main-button {
+  .result-actions {
     width: min(100%, 330px);
+    justify-content: center;
+  }
+
+  .result-actions .telegram-button,
+  .result-actions .main-button {
+    width: 100%;
   }
 
   .result-cast {

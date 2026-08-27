@@ -16,8 +16,8 @@
     <meta property="og:image" content="https://neurodora.com/assets/game-approved-v3/dora-maybe-pat-4.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <title>Нейродора · Кьют-рок против всех</title>
-    <link rel="preload" as="image" href="assets/game-approved-v3/dora-maybe-pat-4.webp" type="image/webp" />
-    <link rel="stylesheet" href="cute-game.css?v=beta-0.1.16" />
+    <link rel="preload" as="image" href="assets/game-approved-v3/dora-maybe-duel-title-v1.webp" type="image/webp" />
+    <link rel="stylesheet" href="cute-game.css?v=beta-0.1.20" />
   </head>
   <body>
     <main class="game-page">
@@ -50,7 +50,7 @@
           <div id="titleCast" class="title-cast" aria-hidden="true">
             <img
               class="title-cast-frame"
-              src="assets/game-approved-v3/dora-maybe-pat-4.webp"
+              src="assets/game-approved-v3/dora-maybe-duel-title-v1.webp"
               alt=""
             />
           </div>
@@ -64,15 +64,15 @@
             <button id="startButton" class="main-button start-button" type="button">
               <span>ИГРАТЬ</span><b>♥</b>
             </button>
+            <nav class="title-links" aria-label="Ссылки Нейродоры">
+              <a href="https://neurodora.com/" target="_blank" rel="noopener noreferrer">
+                ОСНОВНОЙ САЙТ <b>↗</b>
+              </a>
+              <a href="https://t.me/neurodora" target="_blank" rel="noopener noreferrer">
+                TELEGRAM <b>↗</b>
+              </a>
+            </nav>
           </div>
-          <nav class="title-links" aria-label="Ссылки Нейродоры">
-            <a href="https://neurodora.com/" target="_blank" rel="noopener noreferrer">
-              ОСНОВНОЙ САЙТ <b>↗</b>
-            </a>
-            <a href="https://t.me/neurodora" target="_blank" rel="noopener noreferrer">
-              TELEGRAM <b>↗</b>
-            </a>
-          </nav>
         </section>
 
         <section id="novelOverlay" class="novel-overlay hidden" aria-live="polite">
@@ -80,7 +80,7 @@
           <img id="novelLeft" class="novel-person left hidden" alt="" />
           <img id="novelRight" class="novel-person right hidden" alt="" />
           <button id="novelNext" class="novel-box" type="button">
-            <b id="novelSpeaker">РАССКАЗЧИК</b>
+            <b id="novelSpeaker">НЕЙРОДОРА</b>
             <span id="novelText">Кьют-рок против всех.</span>
             <small>SPACE / КЛИК <i>▼</i></small>
           </button>
@@ -98,18 +98,20 @@
             aria-hidden="true"
           />
           <div class="result-copy">
-            <p id="resultKicker">РЕЗУЛЬТАТ</p>
+            <p id="resultKicker">КЬЮТ-РОК ПРОТИВ ВСЕХ</p>
             <h2 id="resultTitle">ПОБЕДА</h2>
-            <p id="resultText">КЬЮТ-РОК ПРОТИВ ВСЕХ — ПРОЙДЕНО.</p>
+            <p id="resultText">ИГРА ПРОЙДЕНА.</p>
             <div class="result-score"><small>СЧЁТ</small><b id="finalScore">0</b></div>
-            <a
-              id="resultTelegram"
-              class="telegram-button"
-              href="https://t.me/neurodora"
-              target="_blank"
-              rel="noopener noreferrer"
-            >ПОДПИСАТЬСЯ В TELEGRAM <b>↗</b></a>
-            <button id="restartButton" class="main-button" type="button">ЗАНОВО <b>♥</b></button>
+            <div class="result-actions">
+              <a
+                id="resultTelegram"
+                class="telegram-button"
+                href="https://t.me/neurodora"
+                target="_blank"
+                rel="noopener noreferrer"
+              >TELEGRAM <b>↗</b></a>
+              <button id="restartButton" class="main-button" type="button">НА ГЛАВНУЮ</button>
+            </div>
           </div>
         </section>
 
@@ -123,7 +125,7 @@
       </section>
     </main>
 
-    <script src="cute-game.js?v=beta-0.1.16"></script>
+    <script src="cute-game.js?v=beta-0.1.20"></script>
     <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"ce1213c7e62e4829ac111b234aa64707"}'></script>
   </body>
 </html>

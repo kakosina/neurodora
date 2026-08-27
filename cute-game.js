@@ -34,8 +34,7 @@
     'НЕЙРОМИРОН': 'miron',
     'НЕЙРОСЛАВА': 'slava',
     'НЕЙРОМЭЙБИ': 'maybe',
-    'НЕЙРОМОРГЕН': 'morgen',
-    'РАССКАЗЧИК': 'narrator'
+    'НЕЙРОМОРГЕН': 'morgen'
   };
   const DIALOGUE_CHARACTERS = new Set(['dora', 'miron', 'slava', 'maybe', 'morgen']);
   const canvas = document.querySelector('#gameCanvas');
@@ -164,16 +163,17 @@
       theme: 'miron',
       interactionScale: 1.06,
       pre: [
-        { speaker: 'НЕЙРОМИРОН', text: 'In principio erat Verbum. В начале было Слово. У тебя пока сердечко без доказательной базы.', left: 'dora-idle', right: 'miron-defiant' },
-        { speaker: 'НЕЙРОДОРА', text: 'А у тебя к одному «привет» уже три тома комментариев.', left: 'dora-wink', right: 'miron-defiant' },
-        { speaker: 'НЕЙРОМИРОН', text: 'Дискурс требует точности.', left: 'dora-blink', right: 'miron-angry' },
-        { speaker: 'НЕЙРОДОРА', text: 'Ты просто боишься ответить без сноски.', left: 'dora-ready', right: 'miron-angry' }
+        { speaker: 'НЕЙРОМИРОН', text: 'Сердечко — не аргумент. Это подмена тезиса.', left: 'dora-idle', right: 'miron-defiant' },
+        { speaker: 'НЕЙРОДОРА', text: 'А ты уже споришь.', left: 'dora-wink', right: 'miron-defiant' },
+        { speaker: 'НЕЙРОМИРОН', text: 'Я уточняю формулировку.', left: 'dora-blink', right: 'miron-angry' },
+        { speaker: 'НЕЙРОДОРА', text: 'Тогда подойди поближе.', left: 'dora-ready', right: 'miron-angry' }
       ],
       post: [
-        { speaker: 'НЕЙРОМИРОН', text: 'Mea culpa. Воротник действительно был крив.', left: 'dora-wink', right: 'miron-flustered' },
-        { speaker: 'НЕЙРОДОРА', text: 'Вот. Два слова — и ни одной лекции.', left: 'dora-idle', right: 'miron-soft' },
-        { speaker: 'НЕЙРОМИРОН', text: 'Три. Mea — тоже слово.', left: 'dora-blink', right: 'miron-kind' },
-        { speaker: 'НЕЙРОДОРА', text: 'Неисправим.', left: 'dora-wink', right: 'miron-farewell' }
+        { speaker: 'НЕЙРОМИРОН', text: 'Воротник и правда был крив.', left: 'dora-wink', right: 'miron-flustered' },
+        { speaker: 'НЕЙРОДОРА', text: 'Я же говорила.', left: 'dora-idle', right: 'miron-soft' },
+        { speaker: 'НЕЙРОМИРОН', text: 'Ты ничего не говорила.', left: 'dora-blink', right: 'miron-kind' },
+        { speaker: 'НЕЙРОДОРА', text: 'Зато поправила.', left: 'dora-wink', right: 'miron-farewell' },
+        { speaker: 'НЕЙРОМИРОН', text: 'Убедительно.', left: 'dora-wink', right: 'miron-farewell' }
       ]
     },
     {
@@ -184,18 +184,19 @@
       theme: 'slava',
       interactionScale: 1.04,
       pre: [
-        { speaker: 'НЕЙРОСЛАВА', text: 'Сразу договоримся: если злюсь — это персонаж. Если краснею — постирония. Если проиграю — перформанс.', left: 'dora-idle', right: 'slava-defiant' },
-        { speaker: 'НЕЙРОДОРА', text: 'А если тебе просто понравится?', left: 'dora-blink', right: 'slava-angry' },
-        { speaker: 'НЕЙРОСЛАВА', text: 'Клевета. Подам метаиск.', left: 'dora-wink', right: 'slava-defiant' },
-        { speaker: 'НЕЙРОДОРА', text: 'На кого?', left: 'dora-idle', right: 'slava-defiant' },
-        { speaker: 'НЕЙРОСЛАВА', text: 'На автора этой реплики. То есть на себя. Концептуально.', left: 'dora-ready', right: 'slava-angry' }
+        { speaker: 'НЕЙРОСЛАВА', text: 'Мне уже не нравится.', left: 'dora-idle', right: 'slava-defiant' },
+        { speaker: 'НЕЙРОДОРА', text: 'Я ещё ничего не сделала.', left: 'dora-blink', right: 'slava-angry' },
+        { speaker: 'НЕЙРОСЛАВА', text: 'Вот. И как-то тревожно.', left: 'dora-wink', right: 'slava-defiant' },
+        { speaker: 'НЕЙРОДОРА', text: 'Могу начать.', left: 'dora-idle', right: 'slava-defiant' },
+        { speaker: 'НЕЙРОСЛАВА', text: 'Теперь ещё хуже.', left: 'dora-ready', right: 'slava-angry' },
+        { speaker: 'НЕЙРОСЛАВА', text: 'Ладно. Если понравится — это постирония.', left: 'dora-ready', right: 'slava-defiant' }
       ],
       post: [
-        { speaker: 'НЕЙРОСЛАВА', text: 'Кулачок был антибуллинг-диссом. Я защитил себя от твоей доброты.', left: 'dora-idle', right: 'slava-flustered' },
-        { speaker: 'НЕЙРОДОРА', text: 'Ты улыбнулся.', left: 'dora-wink', right: 'slava-soft' },
-        { speaker: 'НЕЙРОСЛАВА', text: 'Монтаж.', left: 'dora-idle', right: 'slava-defiant' },
-        { speaker: 'НЕЙРОДОРА', text: 'Мы в игре.', left: 'dora-blink', right: 'slava-soft' },
-        { speaker: 'НЕЙРОСЛАВА', text: 'Тем более. Нарисовали без согласия.', left: 'dora-victory', right: 'slava-kind' }
+        { speaker: 'НЕЙРОСЛАВА', text: 'Кулачок был случайный.', left: 'dora-idle', right: 'slava-flustered' },
+        { speaker: 'НЕЙРОДОРА', text: 'Конечно.', left: 'dora-wink', right: 'slava-soft' },
+        { speaker: 'НЕЙРОСЛАВА', text: 'И улыбка тоже.', left: 'dora-idle', right: 'slava-defiant' },
+        { speaker: 'НЕЙРОДОРА', text: 'Её я не видела.', left: 'dora-blink', right: 'slava-soft' },
+        { speaker: 'НЕЙРОСЛАВА', text: 'Вот и договорились.', left: 'dora-victory', right: 'slava-kind' }
       ]
     },
     {
@@ -206,19 +207,22 @@
       theme: 'maybe',
       interactionScale: 1.06,
       pre: [
-        { speaker: 'НЕЙРОМЭЙБИ', text: 'Добро пожаловать в Мэйбилэнд. Здесь я — икона, ты — фон.', left: 'dora-idle', right: 'maybe-defiant' },
-        { speaker: 'НЕЙРОДОРА', text: 'А бантик почему криво?', left: 'dora-wink', right: 'maybe-angry' },
-        { speaker: 'НЕЙРОМЭЙБИ', text: 'Это авторская асимметрия. Ты такой мерч не потянешь.', left: 'dora-blink', right: 'maybe-defiant' },
-        { speaker: 'НЕЙРОДОРА', text: 'Зато дотянусь поправить.', left: 'dora-ready', right: 'maybe-angry' },
-        { speaker: 'НЕЙРОМЭЙБИ', text: 'Попробуй — получишь дисс быстрее, чем ответ в директ.', left: 'dora-ready', right: 'maybe-defiant' }
+        { speaker: 'НЕЙРОМЭЙБИ', text: 'Добро пожаловать в Мэйбилэнд. Ненадолго.', left: 'dora-idle', right: 'maybe-defiant' },
+        { speaker: 'НЕЙРОДОРА', text: 'Я только бантик поправлю.', left: 'dora-wink', right: 'maybe-angry' },
+        { speaker: 'НЕЙРОМЭЙБИ', text: 'Не трогай бантик.', left: 'dora-blink', right: 'maybe-defiant' },
+        { speaker: 'НЕЙРОДОРА', text: 'Он криво.', left: 'dora-ready', right: 'maybe-angry' },
+        { speaker: 'НЕЙРОМЭЙБИ', text: 'Подойдёшь — пожалеешь.', left: 'dora-ready', right: 'maybe-defiant' }
       ],
       post: [
-        { speaker: 'НЕЙРОМЭЙБИ', text: 'Убери руку. Я не котик.', left: 'dora-idle', right: 'maybe-flustered' },
+        { speaker: 'НЕЙРОМЭЙБИ', text: 'Убери руку. Я не маленькая.', left: 'dora-idle', right: 'maybe-flustered' },
         { speaker: 'НЕЙРОДОРА', text: 'Убрала.', left: 'dora-blink', right: 'maybe-kind' },
-        { speaker: 'НЕЙРОМЭЙБИ', text: '…Я не сказала совсем.', left: 'dora-wink', right: 'maybe-flustered' },
-        { speaker: 'НЕЙРОДОРА', text: 'Сколько?', left: 'dora-idle', right: 'maybe-kind' },
-        { speaker: 'НЕЙРОМЭЙБИ', text: 'Четыре. И никому. Это лимитированный контент.', left: 'dora-victory', right: 'maybe-victory' },
-        { speaker: 'НЕЙРОДОРА', text: 'VIP-доступ получен.', left: 'dora-wink', right: 'maybe-kind' }
+        { speaker: 'НЕЙРОМЭЙБИ', text: '…Не так резко.', left: 'dora-wink', right: 'maybe-flustered' },
+        { speaker: 'НЕЙРОДОРА', text: 'Ещё раз?', left: 'dora-idle', right: 'maybe-kind' },
+        { speaker: 'НЕЙРОМЭЙБИ', text: 'Один раз. И никому.', left: 'dora-victory', right: 'maybe-victory' },
+        { speaker: 'НЕЙРОДОРА', text: 'Договорились.', left: 'dora-wink', right: 'maybe-kind' },
+        { speaker: 'НЕЙРОМЭЙБИ', text: 'И дальше я с тобой.', left: 'dora-idle', right: 'maybe-kind' },
+        { speaker: 'НЕЙРОДОРА', text: 'Это тоже секрет?', left: 'dora-wink', right: 'maybe-flustered' },
+        { speaker: 'НЕЙРОМЭЙБИ', text: 'Пока да.', left: 'dora-victory', right: 'maybe-victory' }
       ]
     },
     {
@@ -229,20 +233,19 @@
       theme: 'morgen',
       interactionScale: 1.13,
       pre: [
-        { speaker: 'НЕЙРОМОРГЕН', text: 'На мне комплект: цепь, часы, машина, уверенность — всё deluxe.', left: 'dora-idle', right: 'morgen-defiant' },
-        { speaker: 'НЕЙРОМЭЙБИ', text: 'Уверенность тоже напрокат?', left: 'maybe-defiant', right: 'morgen-angry' },
-        { speaker: 'НЕЙРОМОРГЕН', text: 'Хейт монетизируется. Спасибо за вклад.', left: 'maybe-angry', right: 'morgen-defiant' },
-        { speaker: 'НЕЙРОДОРА', text: 'А улыбка в комплекте?', left: 'dora-blink', right: 'morgen-angry' },
-        { speaker: 'НЕЙРОМОРГЕН', text: 'Не в базовой комплектации.', left: 'dora-ready', right: 'morgen-defiant' },
-        { speaker: 'НЕЙРОМЭЙБИ', text: 'Сейчас взломаем подписку.', left: 'maybe-defiant', right: 'morgen-angry' }
+        { speaker: 'НЕЙРОМОРГЕН', text: 'Вы вдвоём? Дорогой состав.', left: 'dora-idle', right: 'morgen-defiant' },
+        { speaker: 'НЕЙРОМЭЙБИ', text: 'А тебя никто не спрашивал.', left: 'maybe-defiant', right: 'morgen-angry' },
+        { speaker: 'НЕЙРОМОРГЕН', text: 'Я так не договаривался. По очереди.', left: 'maybe-angry', right: 'morgen-defiant' },
+        { speaker: 'НЕЙРОДОРА', text: 'Не получится.', left: 'dora-blink', right: 'morgen-angry' },
+        { speaker: 'НЕЙРОМОРГЕН', text: 'Понял. Будет громко.', left: 'dora-ready', right: 'morgen-defiant' }
       ],
       post: [
-        { speaker: 'НЕЙРОМОРГЕН', text: 'Фото не выкладывать. У меня по контракту лицо дороже кадра.', left: 'maybe-kind', right: 'morgen-flustered' },
-        { speaker: 'НЕЙРОМЭЙБИ', text: 'Уже в сторис.', left: 'maybe-victory', right: 'morgen-soft' },
-        { speaker: 'НЕЙРОМОРГЕН', text: 'Тогда подпиши: «без фильтра».', left: 'maybe-kind', right: 'morgen-kind' },
-        { speaker: 'НЕЙРОДОРА', text: 'И «любит огурчики».', left: 'dora-wink', right: 'morgen-flustered' },
-        { speaker: 'НЕЙРОМОРГЕН', text: 'Это premium-инфа.', left: 'dora-idle', right: 'morgen-soft' },
-        { speaker: 'НЕЙРОМЭЙБИ', text: 'Теперь public.', left: 'maybe-victory', right: 'morgen-kind' }
+        { speaker: 'НЕЙРОМОРГЕН', text: 'Фото не выкладывайте.', left: 'maybe-kind', right: 'morgen-flustered' },
+        { speaker: 'НЕЙРОМЭЙБИ', text: 'Поздно.', left: 'maybe-victory', right: 'morgen-soft' },
+        { speaker: 'НЕЙРОМОРГЕН', text: 'Хоть нормальное?', left: 'maybe-kind', right: 'morgen-kind' },
+        { speaker: 'НЕЙРОДОРА', text: 'Ты там улыбаешься.', left: 'dora-wink', right: 'morgen-flustered' },
+        { speaker: 'НЕЙРОМОРГЕН', text: 'Тогда выкладывайте.', left: 'dora-idle', right: 'morgen-soft' },
+        { speaker: 'НЕЙРОМЭЙБИ', text: 'Вот и договорились.', left: 'maybe-victory', right: 'morgen-kind' }
       ]
     }
   ];
@@ -292,20 +295,20 @@
 
   const PROLOGUE = [
     {
-      speaker: 'РАССКАЗЧИК',
-      text: 'В папке «2018_не_удалять» лежала демка: голос в айфон, реверб и дождь по стеклу.',
+      speaker: 'НЕЙРОДОРА',
+      text: 'Говорят, я слишком милая для драки.',
       left: null,
       right: 'dora-idle'
     },
     {
       speaker: 'НЕЙРОДОРА',
-      text: 'Я её не открывала. Боялась снова услышать, как жду чужого «привет».',
+      text: 'Я и не собираюсь драться.',
       left: null,
-      right: 'dora-flustered'
+      right: 'dora-wink'
     },
     {
       speaker: 'НЕЙРОДОРА',
-      text: 'Сегодня отправлю первой. Если что — скажу, что тестировала игру.',
+      text: 'У меня другой способ.',
       left: null,
       right: 'dora-ready'
     }
@@ -313,39 +316,45 @@
 
   const EPILOGUE = [
     {
-      speaker: 'РАССКАЗЧИК',
-      text: 'Утро застало их на том же поле. Только теперь никто не делал вид, что не ждёт сообщения.',
-      left: 'dora-victory',
-      right: 'maybe-kind'
-    },
-    {
-      speaker: 'НЕЙРОМЭЙБИ',
-      text: 'Я всё ещё не котик.',
+      speaker: 'НЕЙРОДОРА',
+      text: 'Ну что. Ещё кто-нибудь против кьют-рока?',
       left: 'dora-victory',
       right: 'maybe-kind'
     },
     {
       speaker: 'НЕЙРОСЛАВА',
-      text: 'А я всё ещё участвовал постиронически.',
-      left: 'slava-kind',
-      right: 'dora-wink'
+      text: 'Я временно воздержусь.',
+      left: 'dora-victory',
+      right: 'slava-kind'
     },
     {
       speaker: 'НЕЙРОМИРОН',
-      text: 'Термин употреблён неточно.',
+      text: 'Это называется «передумал».',
+      left: 'miron-kind',
+      right: 'slava-flustered'
+    },
+    {
+      speaker: 'НЕЙРОСЛАВА',
+      text: 'Не порти момент.',
       left: 'miron-kind',
       right: 'slava-flustered'
     },
     {
       speaker: 'НЕЙРОМОРГЕН',
-      text: 'Групповой чат монетизируем?',
+      text: 'Ближе встаньте. Фото сделаем.',
       left: 'maybe-kind',
       right: 'morgen-kind'
     },
     {
-      speaker: 'НЕЙРОДОРА',
-      text: 'Тихо. Я отправляю демку.',
+      speaker: 'НЕЙРОМЭЙБИ',
+      text: 'Дора, ты со мной.',
       left: 'dora-victory',
+      right: 'maybe-victory'
+    },
+    {
+      speaker: 'НЕЙРОДОРА',
+      text: 'Я и не уходила.',
+      left: 'dora-wink',
       right: 'maybe-kind'
     }
   ];
@@ -639,8 +648,26 @@
     game.doraActionTime = 0;
     game.allyAction = 'idle';
     game.allyActionTime = 0;
+    game.novelScenes = [];
+    game.novelIndex = 0;
+    game.novelDone = null;
     activeKissPointerId = null;
     updateHud();
+  }
+
+  function returnToTitle() {
+    resetRun();
+    game.phase = 'title';
+    game.starting = false;
+    hide(ui.result);
+    hide(ui.novel);
+    hide(ui.hud);
+    hide(ui.enemyBar);
+    hide(ui.levelCard);
+    ui.result.classList.remove('loss');
+    show(ui.title);
+    show(ui.sound);
+    ui.start.focus();
   }
 
   async function startStory() {
@@ -910,15 +937,15 @@
       ? ROOT_V3 + 'dora-maybe-pat-4.webp'
       : ROOT_V3 + 'dora-defeat.webp';
     if (won) {
-      ui.resultKicker.textContent = 'РЕЗУЛЬТАТ';
+      ui.resultKicker.textContent = 'КЬЮТ-РОК ПРОТИВ ВСЕХ';
       ui.resultTitle.textContent = 'ПОБЕДА';
-      ui.resultText.textContent = 'КЬЮТ-РОК ПРОТИВ ВСЕХ — ПРОЙДЕНО.';
+      ui.resultText.textContent = 'ИГРА ПРОЙДЕНА.';
       show(ui.telegram);
       tone(660, 0.2, 'sine', 0.025, 0);
       tone(880, 0.25, 'sine', 0.025, 0.16);
       tone(1100, 0.35, 'sine', 0.02, 0.34);
     } else {
-      ui.resultKicker.textContent = 'РЕЗУЛЬТАТ';
+      ui.resultKicker.textContent = 'ИГРА ОКОНЧЕНА';
       ui.resultTitle.textContent = 'ПОРАЖЕНИЕ';
       ui.resultText.textContent = 'ПОПРОБУЙ ЕЩЁ РАЗ.';
       hide(ui.telegram);
@@ -1650,7 +1677,7 @@
   });
 
   ui.start.addEventListener('click', startStory);
-  ui.restart.addEventListener('click', startStory);
+  ui.restart.addEventListener('click', returnToTitle);
   ui.novelNext.addEventListener('click', advanceNovel);
   ui.sound.addEventListener('click', () => {
     game.muted = !game.muted;
@@ -1673,7 +1700,7 @@
     }
     if (event.repeat) return;
     if (game.phase === 'novel') advanceNovel();
-    else if (game.phase === 'result') startStory();
+    else if (game.phase === 'result') returnToTitle();
   });
 
   window.addEventListener('keyup', (event) => {
@@ -1736,6 +1763,7 @@
     shots,
     particles,
     startStory,
+    returnToTitle,
     syncBackgroundMusic,
     prepareLevel,
     beginBattle,
