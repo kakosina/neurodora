@@ -404,7 +404,10 @@
   };
 
   let audioContext = null;
-  const soundPools = new Map();
+  const soundBuffers = new Map();
+  const soundBufferPromises = new Map();
+  const soundOutputs = new Map();
+  const activeSoundSources = new Set();
   let ready = false;
   let lastFrame = performance.now();
   let activeKissPointerId = null;
@@ -551,42 +554,70 @@
     if (playing && typeof playing.catch === 'function') playing.catch(() => {});
   }
 
-  function getSoundPool(name) {
-    if (soundPools.has(name)) return soundPools.get(name);
+  function getSoundOutput(name, audio) {
+    if (soundOutputs.has(name)) return soundOutputs.get(name);
     const config = SOUND_EFFECTS[name];
-    const AudioCtor = window.Audio;
-    if (!config || !AudioCtor) return null;
-    const pool = {
-      cursor: 0,
-      voices: Array.from({ length: config.voices }, () => {
-        const voice = new AudioCtor(config.src);
-        voice.preload = 'auto';
-        voice.volume = config.volume;
-        return voice;
+    if (!config || !audio) return null;
+    const output = audio.createGain();
+    output.gain.setValueAtTime(config.volume, audio.currentTime);
+    output.connect(audio.destination);
+    soundOutputs.set(name, output);
+    return output;
+  }
+
+  function loadSoundBuffer(name) {
+    if (soundBuffers.has(name)) return Promise.resolve(soundBuffers.get(name));
+    if (soundBufferPromises.has(name)) return soundBufferPromises.get(name);
+    const config = SOUND_EFFECTS[name];
+    const audio = ensureAudio();
+    if (!config || !audio || typeof fetch !== 'function') return Promise.resolve(null);
+    const loading = fetch(config.src)
+      .then((response) => {
+        if (!response.ok) throw new Error('Cannot load sound: ' + name);
+        return response.arrayBuffer();
       })
-    };
-    soundPools.set(name, pool);
-    return pool;
+      .then((bytes) => audio.decodeAudioData(bytes))
+      .then((buffer) => {
+        soundBuffers.set(name, buffer);
+        getSoundOutput(name, audio);
+        return buffer;
+      })
+      .catch(() => null);
+    soundBufferPromises.set(name, loading);
+    return loading;
+  }
+
+  function preloadSoundEffects() {
+    return Promise.all(Object.keys(SOUND_EFFECTS).map(loadSoundBuffer));
   }
 
   function playSample(name) {
     if (game.muted) return;
-    const pool = getSoundPool(name);
-    if (!pool || pool.voices.length === 0) return;
-    const voice = pool.voices[pool.cursor];
-    pool.cursor = (pool.cursor + 1) % pool.voices.length;
-    voice.currentTime = 0;
-    const playing = voice.play();
-    if (playing && typeof playing.catch === 'function') playing.catch(() => {});
+    const audio = ensureAudio();
+    const buffer = soundBuffers.get(name);
+    const output = getSoundOutput(name, audio);
+    if (!audio || !buffer || !output) {
+      // Decode once in the background, but do not queue a stale effect.
+      loadSoundBuffer(name);
+      return;
+    }
+    const source = audio.createBufferSource();
+    source.buffer = buffer;
+    source.connect(output);
+    activeSoundSources.add(source);
+    source.onended = () => activeSoundSources.delete(source);
+    source.start();
   }
 
   function stopSoundSamples() {
-    soundPools.forEach((pool) => {
-      pool.voices.forEach((voice) => {
-        voice.pause();
-        voice.currentTime = 0;
-      });
+    activeSoundSources.forEach((source) => {
+      try {
+        source.stop();
+      } catch (error) {
+        // A source may have completed between iteration and stop().
+      }
     });
+    activeSoundSources.clear();
   }
 
   function tone(frequency, duration, type, volume, delay) {
@@ -729,7 +760,7 @@
     game.starting = true;
     // Start from the user's click/keypress so mobile autoplay policies allow it.
     syncBackgroundMusic();
-    await Promise.all([spritesReady, preloadPortraits(PROLOGUE)]);
+    await Promise.all([spritesReady, preloadPortraits(PROLOGUE), preloadSoundEffects()]);
     ready = true;
     resetRun();
     hide(ui.title);
@@ -1750,7 +1781,10 @@
     ui.sound.textContent = game.muted ? '×' : '♪';
     ui.sound.setAttribute('aria-label', game.muted ? 'Включить звук' : 'Выключить звук');
     syncBackgroundMusic();
-    if (!game.muted) tone(660, 0.08, 'sine', 0.018, 0);
+    if (!game.muted) {
+      preloadSoundEffects();
+      tone(660, 0.08, 'sine', 0.018, 0);
+    }
   });
   window.addEventListener('keydown', (event) => {
     if (game.phase === 'title' && (event.code === 'Enter' || event.code === 'Space')) {
@@ -1852,7 +1886,9 @@
     getContactX,
     getBattleSpan,
     calculateSpeedBonus,
-    getSoundPool,
+    preloadSoundEffects,
+    getDecodedSoundCount: () => soundBuffers.size,
+    getActiveSoundCount: () => activeSoundSources.size,
     getScale,
     getGround,
     getInteractionUniformScale,
