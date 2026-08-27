@@ -39,19 +39,23 @@
 }
 
 .site-legal-footer__wordmark {
-  display: inline-block;
+  display: inline-flex;
+  align-items: baseline;
+  width: max-content;
   color: #ee5e66;
-  font: 800 31px/1 "Shantell Sans", Neucha, cursive;
-  letter-spacing: -2px;
-  transform: rotate(-1deg);
+  font: 800 34px/1 "Shantell Sans", Neucha, cursive;
+  letter-spacing: -3px;
+  transform: rotate(-2deg);
+  text-shadow: 1px 1px 0 rgb(255 255 255 / 16%);
 }
 
-.site-legal-footer__identity p {
-  margin: 14px 0 0;
-  color: rgb(251 240 223 / 62%);
-  font-size: 10px;
+.site-legal-footer__wordmark span {
+  transform: translateY(-2px);
+}
+
+.site-legal-footer__wordmark b {
   font-weight: 800;
-  letter-spacing: 0.12em;
+  transform: translateY(3px) rotate(2deg);
 }
 
 .site-legal-footer__nav {
