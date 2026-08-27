@@ -1,0 +1,32 @@
+name: Apply footer cleanup
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - neurodora-footer-cleanup-20260827.tgz
+      - .github/workflows/apply-footer-cleanup-20260827.yml
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify and apply update
+        run: |
+          echo "06916f214d2dae0e61dff3e70f1eeb914358c8813173ad570acab2b7d3d0c090  neurodora-footer-cleanup-20260827.tgz" | sha256sum --check --status
+          tar -xzf neurodora-footer-cleanup-20260827.tgz
+          ! grep -R "НЕКОММЕРЧЕСКИЙ AI-ПРОЕКТ\|НЕОФИЦИАЛЬНЫЙ НЕЗАВИСИМЫЙ ПРОЕКТ" index.html articles privacy terms
+          grep -q '<span>Нейро</span><b>Дора</b>' index.html
+          rm neurodora-footer-cleanup-20260827.tgz
+          rm .github/workflows/apply-footer-cleanup-20260827.yml
+      - name: Commit update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Clean up footer branding"
+          git push
