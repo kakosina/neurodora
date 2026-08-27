@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security report
+    url: https://github.com/kakosina/neurodora/security/policy
+    about: Read the private reporting instructions before disclosing a vulnerability.
+  - name: Private rights or provenance concern
+    url: https://t.me/neurodora
+    about: Contact the maintainer privately about copyright, identity, or unpublished media.

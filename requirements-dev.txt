@@ -1,0 +1,2 @@
+# Optional dependencies for article and media tooling.
+Pillow>=10.0,<13

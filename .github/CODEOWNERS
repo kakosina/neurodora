@@ -1,0 +1,8 @@
+# Default ownership. Add component owners as the maintainer team grows.
+* @kakosina
+
+/.github/ @kakosina
+/docs/ @kakosina
+/scripts/ @kakosina
+/articles/ @kakosina
+/game/ @kakosina

@@ -1,0 +1,55 @@
+name: Feature request
+description: Propose a focused improvement to the open-source implementation.
+title: "[Feature] "
+body:
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Target surface
+      options:
+        - Main website
+        - Article library or publishing pipeline
+        - Browser game
+        - Accessibility or performance
+        - Developer tooling or CI
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Describe the user or maintainer problem before describing a solution.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: Explain the smallest useful implementation.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Accessibility, performance, and maintenance impact
+      description: Note new dependencies, network requests, content inputs, or operational work.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: rights
+    attributes:
+      label: Media and identity
+      options:
+        - label: I understand that new artwork, music, likeness material, or editorial content requires a separate rights review.
+          required: true
