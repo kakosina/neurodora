@@ -10,7 +10,13 @@
   const ENEMY_SPEED_MULTIPLIER = 2.5;
   const BATTLE_REFERENCE_SPAN = 0.59;
   const HEART_TRAVEL_SECONDS = 1.6;
-  const MUSIC_VOLUME = 0.34;
+  const MUSIC_VOLUME = 0.17;
+  const SOUND_EFFECTS = {
+    // These tiny user-supplied MP3s are embedded losslessly so a rapid first
+    // kiss never waits on another request, including local and itch builds.
+    kiss: { src: 'data:audio/mpeg;base64,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', voices: 6, volume: 0.78 },
+    hit: { src: 'data:audio/mpeg;base64,SUQzAwAAAAAAKFRTU0UAAAAUAAADTEFNRTMuMTAxIChiZXRhIDIpAAAAAAAAAAAAAAD/+5BkAAATEAlGEekwoiRgGJkYQQEOraMbFYKAAJqA4kaYMAAAVlARFCaZ1hsVisNk4oCCBBAwghAeHh4eGAAAAAAeHpw8MAADwAPDw8Pf/AAQHh78z4AAACMw/x+H8EYD+vzfwAd5/n9f+AB//0PW4AADoH9fgZx3+Hh5+AAI8AH9H28AAACte6QAAgTg+H0lFZmnKOd5d9Vn1O/b5d/lP///r1d3+X/1g+CL6sAARYUCzRPhnK7F+yuvEq8ufCIteh+VP4wWExwqURKKoZDGEsX+xTjSmOiuMc7EstSKp0JOc7tWjlVGNmVFtZ3s+WcxzvTbZXq7qrKaYdZ7VQ01umut2Mi3LMrLsdn9b5St65lLR6GqQY9kFjIKi4wj6LpAdPYgCYsYotjV000aF99ZhaK/1f1e6r/6W8D0b/Xt2bfWwpR1rWqJcjIZP2bTWWO1yO2zQ0jA4RGsQADjBnqA5MEqLUDF0rzTyTNhYICV4DnJAq5QROtyxMbWGB2VNwdtQRYgqRUMpyhtuEobxpmThtNlNWSqkkHJBQzr7wuQw/D/+5JkLQAGz2ZV7mcEBCegCo/BAACORO9FvaWAIL8G48ueMADT7RKlvY1GsRSUWbcvk85T47/Km1VxgSgjEjllK9s3D7v0jlw7Ur2aX9ymkuxeWSiKdlc/G5+UQ/NYuXlKNWs8v39qtUsYQ/f5LMNyiWP/MWtZ3aSxhnN3Z791u1pdUpdf3O3/87/4Z9sbxtSmUd1bln42952LGufvXd87z8fuZGhAYOggqOqw7D8fgAAAAAOBAITKgUOOrDzEuFy4+1DvNpMCbyQveMATIAEdaZZSQoFR9U1ZzROFTpg1ltLSMiyOHANWzPcrCwRW5m4CQ/I5q5FJcdyrDy5w9ap6XXult3zUOlGOKh7v3Q7movlsf3zMXUsu7c5zYmvnqL5a6/4mnNNoIiUFXi1K6KyktKo3Sy2NRvX/tUsusNzFcwR06VS9+NeDCYi3FuLeGjFgR2Y1UoGAhE+jt06Xfb+j/+vp7P/0///0fod//XWFABJUZysCn8mczlXLOnyRWmFKkJRWDmiQZtwiGEQ8Cl8nhbg50SJkkQ6Cno3ISws8llba//uSZBoAg4I7SkNmHCAl4Pi5CGYICjxLCGek0AC6Ap1YwwwQn5VDVfI1aUtWJs+3/6qsqo5UqpeRltVjHDVWyaGvhngqdiIiRCZNPyUs+d1hrTW6g9wrsBUsOAwNCICmAAAZWmSAECQUvOTbRKJJdffld6lo9/NP/j1R/Fv+v//zu3///8sAACXAN4wzoR6UPIhIkwfokJAC7mAb5+Is9iAjJJAXtAhoUkRUCAiakpqSiywyAgkLEXN4s3t/FhZr/1N/2oULCxoKxZr8WQ+oW+v//4qLaxTrCErABMJ4AC0FopBaKioZc17NbDISFRXxUi5grATYr/62/1t/r//+r//4qLUBUUVMQU1FMy4xMDEgKGJldGEgMilVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVQ==', voices: 10, volume: 0.72 }
+  };
   const KISS_RECOIL_DISTANCE = 18;
   const KISS_MOUTH_ANCHORS = {
     dora: { x: 68, y: 350 },
@@ -160,6 +166,8 @@
       prefix: 'miron',
       hp: 935,
       approach: 0.0195,
+      speedPar: 11,
+      speedBonus: 4500,
       theme: 'miron',
       interactionScale: 1.06,
       pre: [
@@ -181,6 +189,8 @@
       prefix: 'slava',
       hp: 1300,
       approach: 0.0215,
+      speedPar: 14,
+      speedBonus: 6500,
       theme: 'slava',
       interactionScale: 1.04,
       pre: [
@@ -204,6 +214,8 @@
       prefix: 'maybe',
       hp: 1735,
       approach: 0.0142,
+      speedPar: 18,
+      speedBonus: 9000,
       theme: 'maybe',
       interactionScale: 1.06,
       pre: [
@@ -230,6 +242,8 @@
       prefix: 'morgen',
       hp: 2535,
       approach: 0.0218,
+      speedPar: 16,
+      speedBonus: 12000,
       theme: 'morgen',
       interactionScale: 1.13,
       pre: [
@@ -372,6 +386,7 @@
     dayMix: 0,
     levelIndex: 0,
     score: 0,
+    lastSpeedBonus: 0,
     lives: MAX_LIVES,
     hitCount: 0,
     enemy: null,
@@ -389,6 +404,7 @@
   };
 
   let audioContext = null;
+  const soundPools = new Map();
   let ready = false;
   let lastFrame = performance.now();
   let activeKissPointerId = null;
@@ -535,6 +551,44 @@
     if (playing && typeof playing.catch === 'function') playing.catch(() => {});
   }
 
+  function getSoundPool(name) {
+    if (soundPools.has(name)) return soundPools.get(name);
+    const config = SOUND_EFFECTS[name];
+    const AudioCtor = window.Audio;
+    if (!config || !AudioCtor) return null;
+    const pool = {
+      cursor: 0,
+      voices: Array.from({ length: config.voices }, () => {
+        const voice = new AudioCtor(config.src);
+        voice.preload = 'auto';
+        voice.volume = config.volume;
+        return voice;
+      })
+    };
+    soundPools.set(name, pool);
+    return pool;
+  }
+
+  function playSample(name) {
+    if (game.muted) return;
+    const pool = getSoundPool(name);
+    if (!pool || pool.voices.length === 0) return;
+    const voice = pool.voices[pool.cursor];
+    pool.cursor = (pool.cursor + 1) % pool.voices.length;
+    voice.currentTime = 0;
+    const playing = voice.play();
+    if (playing && typeof playing.catch === 'function') playing.catch(() => {});
+  }
+
+  function stopSoundSamples() {
+    soundPools.forEach((pool) => {
+      pool.voices.forEach((voice) => {
+        voice.pause();
+        voice.currentTime = 0;
+      });
+    });
+  }
+
   function tone(frequency, duration, type, volume, delay) {
     const audio = ensureAudio();
     if (!audio) return;
@@ -553,12 +607,11 @@
   }
 
   function kissSound() {
-    tone(610, 0.12, 'sine', 0.035, 0);
-    tone(820, 0.16, 'sine', 0.022, 0.045);
+    playSample('kiss');
   }
 
   function hitSound() {
-    tone(760, 0.08, 'triangle', 0.018, 0);
+    playSample('hit');
   }
 
   function setPortrait(element, key) {
@@ -639,6 +692,7 @@
     game.dayMix = 0;
     game.levelIndex = 0;
     game.score = 0;
+    game.lastSpeedBonus = 0;
     game.lives = MAX_LIVES;
     game.hitCount = 0;
     game.enemy = null;
@@ -789,7 +843,6 @@
         damage: 18,
         push: 1.4,
       }, 0.055);
-      tone(880, 0.13, 'sine', 0.018, 0.055);
     }
   }
 
@@ -867,8 +920,20 @@
     if (enemy.hp <= 0) defeatEnemy();
   }
 
+  function calculateSpeedBonus(level, battleSeconds) {
+    const elapsed = Math.max(1, Number.isFinite(battleSeconds) ? battleSeconds : level.speedPar);
+    // A par-time finish earns the listed bonus. Faster play can double it;
+    // slower play still earns a smaller, continuously decreasing amount.
+    const pace = clamp(level.speedPar / elapsed, 0.25, 2);
+    return Math.round(level.speedBonus * pace);
+  }
+
   function defeatEnemy() {
     if (game.phase !== 'battle') return;
+    const level = LEVELS[game.levelIndex];
+    game.lastSpeedBonus = calculateSpeedBonus(level, game.battleTime);
+    game.score += game.lastSpeedBonus;
+    updateHud();
     game.phase = 'enemyDefeated';
     game.phaseTime = 0;
     game.doraAction = 'wink';
@@ -1681,6 +1746,7 @@
   ui.novelNext.addEventListener('click', advanceNovel);
   ui.sound.addEventListener('click', () => {
     game.muted = !game.muted;
+    if (game.muted) stopSoundSamples();
     ui.sound.textContent = game.muted ? '×' : '♪';
     ui.sound.setAttribute('aria-label', game.muted ? 'Включить звук' : 'Выключить звук');
     syncBackgroundMusic();
@@ -1785,6 +1851,8 @@
     getEnemyStartX,
     getContactX,
     getBattleSpan,
+    calculateSpeedBonus,
+    getSoundPool,
     getScale,
     getGround,
     getInteractionUniformScale,
