@@ -17,6 +17,8 @@ The public experience is in Russian. Technical documentation and contribution gu
 | Main experience | [neurodora.com](https://neurodora.com/) | Semantic HTML and responsive CSS |
 | Browser game | [neurodora.com/game](https://neurodora.com/game/) | Canvas 2D, DOM overlays, Web Audio |
 | Article library | [neurodora.com/articles](https://neurodora.com/articles/) | Generated static HTML, JSON index, WebP media |
+| AI atelier | [neurodora.com/atelier/](https://neurodora.com/atelier/) | Static illustrated catalogue; protected contact endpoint |
+| Song lyrics | [neurodora.com/music/nado-tolko-podozhdat/](https://neurodora.com/music/nado-tolko-podozhdat/) | Three complete author-provided song pages |
 | Community | [Telegram](https://t.me/neurodora) | Project updates and feedback |
 | Music/video | [YouTube](https://www.youtube.com/@neurodora) | Public releases |
 
@@ -134,7 +136,7 @@ Neurodora is intentionally static:
                  ▼           ▼           ▼
               landing     articles    Canvas game
 
-There is no application server in the request path. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for component boundaries, runtime behavior, content flow, and extension points.
+Pages are served as static files. The Atelier contact form separately calls a Cloudflare Worker for Turnstile verification and delivery to the owner in Telegram. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for component boundaries, runtime behavior, content flow, and extension points.
 
 ## Development
 

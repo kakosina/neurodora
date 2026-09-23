@@ -1,0 +1,57 @@
+/* A little piece of the Atelier's clothbound book, made with CSS and SVG grain. */
+.site-header{grid-template-columns:260px minmax(0,1fr) auto}
+.baseline-header-links{display:flex;align-items:center;justify-content:flex-end;gap:14px}
+.baseline-header-links .header-telegram{flex:none}
+.baseline-atelier-link{
+ --foil-x:50%;--foil-y:50%;position:relative;isolation:isolate;display:inline-flex;
+ align-items:center;justify-content:center;flex:none;gap:11px;width:148px;min-height:48px;padding:12px 17px;
+ color:#ecd79f;background:#173e32;border:1px solid #aa8b4a;border-radius:4px 6px 6px 4px;
+ box-shadow:inset 4px 0 3px #0b241bbf,inset 6px 0 0 #70875a4d,inset 0 1px 0 #dae2b22b,inset 0 -2px 3px #031c17a6,0 3px 0 #123026,0 4px 0 #967746,0 6px 10px #3b352326;
+ text-shadow:0 1px 1px #061f13;transition:transform .25s ease,box-shadow .3s ease,color .25s ease;
+}
+.baseline-atelier-link::before{
+ content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='.24'/%3E%3C/svg%3E"),radial-gradient(ellipse at var(--foil-x) var(--foil-y),#78936542,transparent 70%),linear-gradient(110deg,#15362b,#315541 50%,#163a30);
+ background-size:82px 82px,100% 100%,100% 100%;
+}
+.baseline-atelier-link::after{content:"";position:absolute;inset:5px 5px 5px 8px;border:1px solid #bda66772;border-radius:1px 3px 3px 1px;box-shadow:inset 0 0 0 1px #102d269c;pointer-events:none;transition:border-color .25s ease}
+.baseline-atelier-link .atelier-book{position:relative;z-index:2;flex:none;width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.45;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 1px 0 #061b14)}
+.atelier-label{position:relative;z-index:2;display:block;font:600 14px/1 Georgia,'Times New Roman',serif;letter-spacing:.11em;white-space:nowrap}
+.atelier-sheen{position:absolute;inset:1px;z-index:3;border-radius:inherit;overflow:hidden;pointer-events:none}
+.atelier-sheen::after{content:"";position:absolute;inset:-40% -25%;background:linear-gradient(110deg,transparent 30%,#f9e7ae09 41%,#fff5cf9c 49%,#fdf1be2b 54%,transparent 65%);transform:translateX(-115%);mix-blend-mode:screen;pointer-events:none}
+.atelier-magic{position:absolute;inset:0;pointer-events:none;z-index:4}
+.atelier-magic i{position:absolute;display:block;width:12px;height:12px;opacity:0;background:#fff5c3;clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);filter:drop-shadow(0 0 4px #d5b875);transform:scale(.2) rotate(-25deg)}
+.atelier-magic i:nth-child(1){left:15%;top:-6px;--spark-delay:80ms}
+.atelier-magic i:nth-child(2){right:-5px;top:21%;width:15px;height:15px;--spark-delay:230ms}
+.atelier-magic i:nth-child(3){right:23%;bottom:-7px;width:9px;height:9px;--spark-delay:370ms}
+.atelier-magic i:nth-child(4){left:-4px;bottom:17%;width:7px;height:7px;--spark-delay:170ms}
+.baseline-atelier-link:focus-visible{outline:3px solid #b98630;outline-offset:6px;color:#fff3c8;box-shadow:inset 4px 0 3px #0b241bbf,inset 6px 0 0 #a8b27455,0 3px 0 #123026,0 4px 0 #bda667,0 5px 22px #c4a15d66}
+.baseline-atelier-link:focus-visible::after{border-color:#ebd8a3c9}
+.baseline-atelier-link:focus-visible .atelier-sheen::after{animation:atelier-foil 1.05s ease-out both}
+.baseline-atelier-link:focus-visible .atelier-magic i{animation:atelier-spark 1.05s var(--spark-delay) ease-out both}
+@media(hover:hover) and (pointer:fine){
+ .baseline-atelier-link:hover{color:#fff3c8;transform:translateY(-2px) rotate(-.5deg);box-shadow:inset 4px 0 3px #0b241bbf,inset 6px 0 0 #a8b27455,inset 0 1px 0 #e8ddaf66,0 4px 0 #123026,0 5px 0 #bda667,0 7px 20px #bb99534f}
+ .baseline-atelier-link:hover::after{border-color:#ebd8a3c9}
+ .baseline-atelier-link:hover .atelier-sheen::after{animation:atelier-foil 1.05s ease-out both}
+ .baseline-atelier-link:hover .atelier-magic i{animation:atelier-spark 1.05s var(--spark-delay) ease-out both}
+}
+.baseline-atelier-link:active{transform:translateY(2px);color:#fff3c8;box-shadow:inset 4px 0 3px #0b241bbf,inset 6px 0 0 #a8b27455,0 1px 0 #123026,0 2px 0 #bda667,0 3px 12px #b39a6550}
+@keyframes atelier-foil{0%{transform:translateX(-115%)}100%{transform:translateX(115%)}}
+@keyframes atelier-spark{0%,100%{opacity:0;transform:scale(.2) rotate(-25deg)}35%{opacity:1;transform:scale(1) rotate(0)}70%{opacity:.65;transform:scale(.7) rotate(25deg)}}
+@media(max-width:1180px){.site-header{grid-template-columns:210px minmax(0,1fr) auto}.baseline-header-links{gap:11px}.baseline-atelier-link{width:140px;padding-inline:14px}}
+@media(min-width:881px) and (max-width:960px){.site-header nav{gap:10px}}
+@media(max-width:880px){.site-header{grid-template-columns:minmax(0,1fr) auto;gap:16px}.baseline-header-links{gap:12px}.baseline-atelier-link{width:140px}}
+@media(max-width:480px){
+ .site-header{padding-inline:12px;gap:7px}.site-header .brand{font-size:clamp(25px,6.7vw,30px);letter-spacing:-2.2px}
+ .baseline-header-links{gap:7px}.baseline-header-links .header-telegram{width:35px}.baseline-header-links .header-telegram svg{width:23px;height:23px}
+ .baseline-atelier-link{width:116px;min-height:44px;gap:7px;padding:10px 11px 10px 13px}
+ .baseline-atelier-link .atelier-book{width:18px;height:18px}.atelier-label{font-size:12px;letter-spacing:.08em}
+ .nf-header{gap:14px}.nf-header .brand{font-size:27px}
+}
+@media(prefers-reduced-motion:reduce){
+ .baseline-atelier-link,.baseline-atelier-link::after{transition:none!important}
+ .baseline-atelier-link:hover,.baseline-atelier-link:active{transform:none}
+ .baseline-atelier-link .atelier-sheen::after,.baseline-atelier-link .atelier-magic i{animation:none!important}
+ .baseline-atelier-link:is(:hover,:focus-visible) .atelier-sheen::after{transform:translateX(0);opacity:.3}
+ .baseline-atelier-link:is(:hover,:focus-visible) .atelier-magic i:nth-child(2){opacity:1;transform:scale(.75)}
+}
