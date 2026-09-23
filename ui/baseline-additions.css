@@ -2,25 +2,7 @@
 .ribbon-icons svg{display:block;width:32px;height:32px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
 .ribbon-icons>span:nth-child(n){color:#323235;background:#fffdf5;border:1.5px solid #3a3836;border-radius:8px;box-shadow:2px 3px 0 #cbb59a;transform:none}
 .ribbon-icons>span:nth-child(2),.ribbon-icons>span:nth-child(4){background:#e5f0ec}
-.site-header{grid-template-columns:260px minmax(0,1fr) 166px}
-.baseline-header-links{display:flex;align-items:center;justify-content:flex-end;gap:12px}
-.baseline-header-links .header-telegram{flex:none}
-.baseline-atelier-link{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:42px;padding:9px 10px;color:var(--ink);background:var(--paper-light);border:2px solid var(--ink);border-radius:6px 9px 5px 8px;box-shadow:3px 4px 0 #20212026;font:700 14px/1 'Oswald',sans-serif}
-.baseline-atelier-link svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.baseline-atelier-link:hover{background:var(--paper-deep)}
 
-/* Switch the first block before the two-column composition becomes tight. */
-@media(min-width:881px) and (max-width:1600px){
- .hero{display:flex;flex-direction:column;align-items:stretch;min-height:0;gap:34px;padding-block:42px 0}
- .hero-copy{width:100%;max-width:720px;margin-inline:auto;padding-inline:9px}
- .hero-title-wordmark{width:min(670px,112%);margin-left:-18px}
- .hero-art{width:100%;max-width:820px;min-height:600px;margin-inline:auto}
- .hero-brush{top:-25px;left:-8%;width:119%;height:112%}
- .hero-scene-photo{top:40px;right:0;width:95%;padding:10px 10px 35px}
- .hero-character{width:1600px;height:auto;left:calc(50% - 820px);right:auto;bottom:-300px}
- .dossier{right:3px;bottom:6px;width:430px;padding:27px 135px 30px 35px}
- .star-one{left:0;top:0}.note-one{left:8%;top:20px}
-}
 
 .baseline-tracks{padding-bottom:115px}
 .baseline-tracks .section-heading{margin-bottom:40px}
@@ -36,12 +18,12 @@
 .baseline-track-actions .future-play span{font-size:14px}
 .baseline-text-link{font-size:13px;font-weight:700;text-decoration:underline;text-underline-offset:5px;padding-block:10px}
 .baseline-text-link:hover{color:var(--coral-deep)}
-.baseline-game{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:65px;align-items:center}
-.baseline-game-copy{min-width:0}.baseline-game-copy h2{font-size:clamp(48px,4.5vw,74px)}
-.baseline-game-copy>p:not(.eyebrow){font-size:19px;line-height:1.65;margin:28px 0;max-width:35ch}
-.baseline-game-picture{display:block;min-width:0;padding:11px;background:var(--paper-light);border:2px solid var(--ink);border-radius:17px 5px 19px 7px;box-shadow:var(--shadow)}
-.baseline-game-picture img{display:block;width:100%;height:auto;border-radius:7px 2px 10px 3px}
-.baseline-game .future-play{min-height:49px;font-size:17px;padding-inline:22px}
+
+
+
+
+
+
 
 .baseline-song{max-width:1160px;padding-block:35px 90px}
 .baseline-back{display:inline-block;color:var(--coral-deep);font:25px/1.3 'Neucha',cursive;padding-block:10px}
@@ -58,18 +40,16 @@
 .baseline-lyrics .lyric-stanza{margin:0 0 27px;font-size:17px;line-height:1.85;overflow-wrap:break-word}
 #copy-status{font-size:13px;color:var(--coral-deep);min-height:20px;margin:20px 0 0}
 
-@media(max-width:1180px){.site-header{grid-template-columns:210px minmax(0,1fr) 166px}.baseline-track-grid{gap:20px}.baseline-track-copy{padding:21px 18px 25px}.baseline-track h3{font-size:30px;min-height:68px}.baseline-game{gap:38px}}
+@media(max-width:1180px){.baseline-track-grid{gap:20px}.baseline-track-copy{padding:21px 18px 25px}.baseline-track h3{font-size:30px;min-height:68px}}
 @media(max-width:1060px){.site-header nav{gap:16px}}
 @media(max-width:880px){
- .site-header{grid-template-columns:minmax(0,1fr) auto;gap:16px}.baseline-header-links{gap:10px}
  .baseline-track-grid{grid-template-columns:minmax(0,1fr);gap:23px}.baseline-track{display:grid;grid-template-columns:minmax(0,.38fr) minmax(0,.62fr);align-items:center}.baseline-track-cover{border-bottom:0;border-right:1px solid var(--line);padding:12px}.baseline-track h3{min-height:0;font-size:34px;margin:13px 0 21px}.baseline-track-copy{padding:22px 25px}.baseline-tracks{padding-bottom:85px}
- .baseline-game{grid-template-columns:minmax(0,1fr);gap:35px}.baseline-game-picture{max-width:750px;justify-self:center}.baseline-game-copy{max-width:710px}.baseline-game-copy h2{font-size:64px}
+
  .baseline-song-header{grid-template-columns:minmax(0,1fr);gap:35px}.baseline-song-header>img{max-width:470px;justify-self:center}.baseline-song-header h1{font-size:62px}
 }
 @media(max-width:600px){
- .baseline-header-links{gap:6px}.baseline-atelier-link{min-height:36px;width:34px;padding:5px;border-width:1.5px;box-shadow:2px 3px 0 #20212026}.baseline-atelier-link span{display:none}.baseline-atelier-link svg{width:22px;height:22px}
  .ribbon-icons svg{width:26px;height:26px;stroke-width:1.8}
  .baseline-tracks .section-heading{margin-bottom:30px}.baseline-track-grid{gap:19px}.baseline-track{grid-template-columns:96px minmax(0,1fr);align-items:start;border-radius:9px 4px 12px 5px}.baseline-track-cover{padding:8px;border:0}.baseline-track-copy{padding:14px 13px 18px 4px}.baseline-track h3{font-size:26px;line-height:1.15;margin:9px 0 14px}.baseline-track-copy>small{font-size:10px}.baseline-track-actions{gap:5px 12px}.baseline-track-actions .future-play{padding:8px 10px;min-height:38px;font-size:12px;gap:8px}.baseline-track-actions .future-play span{font-size:12px}.baseline-text-link{font-size:12px}.baseline-tracks{padding-bottom:70px}
- .baseline-game-copy h2{font-size:clamp(43px,12vw,62px)}.baseline-game-copy>p:not(.eyebrow){font-size:17px;margin:25px 0}.baseline-game-picture{padding:7px}.baseline-game .future-play{font-size:15px}
+
  .baseline-song{padding-top:22px}.baseline-song-header{padding-block:28px 45px}.baseline-song-header .eyebrow{font-size:17px}.baseline-song-header h1{font-size:clamp(39px,11vw,59px);margin:28px 0}.baseline-song-header>img{max-width:350px}.baseline-lyrics{padding:28px 22px}.baseline-lyrics-heading{display:block}.baseline-lyrics h2{font-size:32px}.baseline-lyrics button{margin-top:13px}.baseline-lyrics .lyric-stanza{font-size:16px;line-height:1.8}
 }
