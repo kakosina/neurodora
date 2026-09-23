@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="theme-color" content="#a9dcf4" />
+    <meta name="description" content="Neurodora: Cute Rock vs. Everyone — a one-button anime game about blowing kisses." />
+    <link rel="canonical" href="https://neurodora.com/en/game/" />
+    <meta property="og:title" content="Neurodora · Cute Rock vs. Everyone" />
+    <meta property="og:description" content="A one-button anime game about blowing kisses and the power of cute rock." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://neurodora.com/en/game/" />
+    <meta property="og:image" content="https://neurodora.com/assets/game-approved-v3/dora-maybe-pat-4.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Neurodora · Cute Rock vs. Everyone</title>
+    <base href="/" />
+    <link rel="preload" as="image" href="/assets/game-approved-v3/dora-maybe-duel-title-v1.webp" type="image/webp" />
+    <link rel="stylesheet" href="/cute-game.css?v=beta-0.1.22" />
+  <link rel="stylesheet" href="/ui/language.css?v=20260923-en1" />
+<script defer src="/ui/language.js?v=20260923-en1"></script>
+<link rel="alternate" hreflang="ru" href="https://neurodora.com/game/" />
+<link rel="alternate" hreflang="en" href="https://neurodora.com/en/game/" />
+<link rel="alternate" hreflang="x-default" href="https://neurodora.com/game/" />
+</head>
+  <body><a class="site-language game-language" data-language-link href="/game/" lang="ru" hreflang="ru" aria-label="Читать по-русски">RU</a>
+    <main class="game-page">
+      <section id="stage" class="stage" aria-label="Neurodora: Cute Rock vs. Everyone game">
+        <canvas id="gameCanvas" tabindex="0" aria-label="Neurodora blows kisses at approaching characters"></canvas>
+
+        <div id="hud" class="hud hidden" aria-live="polite">
+          <div class="score"><small>SCORE</small><b id="scoreValue">000000</b></div>
+          <div id="lives" class="lives" aria-label="Three lives"><i>♥</i><i>♥</i><i>♥</i></div>
+        </div>
+
+        <div id="enemyBar" class="enemy-bar hidden" aria-label="Opponent’s health">
+          <b id="enemyName">NEUROMIRON</b>
+          <i><span id="enemyBarFill"></span></i>
+        </div>
+
+        <div id="levelCard" class="level-card hidden" aria-live="polite">
+          <strong id="levelTitle">NEUROMIRON</strong>
+        </div>
+
+        <section id="titleScreen" class="screen title-screen">
+          <div class="title-clouds" aria-hidden="true">
+            <i></i><i></i><i></i><i></i>
+          </div>
+          <div class="title-meadow" aria-hidden="true"></div>
+          <div id="titleCast" class="title-cast" aria-hidden="true">
+            <img class="title-cast-frame" src="/assets/game-approved-v3/dora-maybe-duel-title-v1.webp" alt="" />
+          </div>
+          <div class="title-copy">
+            <p class="beta-tag">v0.1 beta</p>
+            <h1 aria-label="Cute Rock vs. Everyone">
+              <span class="title-logo-main">CUTE ROCK</span>
+              <span class="title-logo-vs">VS.</span>
+              <span class="title-logo-all">EVERYONE</span>
+            </h1>
+            <button id="startButton" class="main-button start-button" type="button">
+              <span>PLAY</span><b>♥</b>
+            </button>
+            <nav class="title-links" aria-label="Neurodora’s links">
+              <a href="/en/" target="_blank" rel="noopener noreferrer">
+                MAIN SITE <b>↗</b>
+              </a>
+              <a href="https://t.me/neurodora" target="_blank" rel="noopener noreferrer">
+                TELEGRAM <b>↗</b>
+              </a>
+            </nav>
+          </div>
+        </section>
+
+        <section id="novelOverlay" class="novel-overlay hidden" aria-live="polite">
+          <div class="novel-shade"></div>
+          <img id="novelLeft" class="novel-person left hidden" alt="" />
+          <img id="novelRight" class="novel-person right hidden" alt="" />
+          <button id="novelNext" class="novel-box" type="button">
+            <b id="novelSpeaker">NEURODORA</b>
+            <span id="novelText">Cute Rock vs. Everyone.</span>
+            <small>SPACE / CLICK <i>▼</i></small>
+          </button>
+        </section>
+
+        <section id="resultScreen" class="screen result-screen hidden" aria-live="polite">
+          <div class="result-clouds" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="result-meadow" aria-hidden="true"></div>
+          <div class="result-decor" aria-hidden="true"><i>♥</i><i>✦</i><i>♥</i><i>✦</i></div>
+          <img id="resultCast" class="screen-cast result-cast" src="/assets/game-approved-v3/dora-maybe-pat-4.webp" alt="" aria-hidden="true" />
+          <div class="result-copy">
+            <p id="resultKicker">CUTE ROCK VS. EVERYONE</p>
+            <h2 id="resultTitle">VICTORY</h2>
+            <p id="resultText">GAME COMPLETE.</p>
+            <div class="result-score"><small>SCORE</small><b id="finalScore">0</b></div>
+            <div class="result-actions">
+              <a id="resultTelegram" class="telegram-button" href="https://t.me/neurodora" target="_blank" rel="noopener noreferrer">TELEGRAM <b>↗</b></a>
+              <button id="restartButton" class="main-button" type="button">BACK TO HOME</button>
+            </div>
+          </div>
+        </section>
+
+        <button id="soundButton" class="sound-button" type="button" aria-label="Mute sound">♪</button>
+        <audio id="backgroundMusic" src="/assets/audio/kute-rock-instrumental.m4a" preload="auto" loop></audio>
+      </section>
+    </main>
+
+    <script src="/en/cute-game.js?v=beta-0.1.22"></script>
+    <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;:&quot;ce1213c7e62e4829ac111b234aa64707&quot;}"></script>
+  </body>
+</html>

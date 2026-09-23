@@ -17,6 +17,7 @@ The public experience is in Russian. Technical documentation and contribution gu
 | Main experience | [neurodora.com](https://neurodora.com/) | Semantic HTML and responsive CSS |
 | Browser game | [neurodora.com/game](https://neurodora.com/game/) | Canvas 2D, DOM overlays, Web Audio |
 | Article library | [neurodora.com/articles](https://neurodora.com/articles/) | Generated static HTML, JSON index, WebP media |
+| English | [neurodora.com/en/](https://neurodora.com/en/) | Complete English site, articles, game and lyrics translations; native RU/EN navigation |
 | AI atelier | [neurodora.com/atelier/](https://neurodora.com/atelier/) | Static illustrated catalogue; protected contact endpoint |
 | Song lyrics | [neurodora.com/music/nado-tolko-podozhdat/](https://neurodora.com/music/nado-tolko-podozhdat/) | Three complete author-provided song pages |
 | Community | [Telegram](https://t.me/neurodora) | Project updates and feedback |
@@ -208,3 +209,9 @@ Neurodora is an independent fictional/experimental character project. It is not 
 ---
 
 Built and maintained by [@kakosina](https://github.com/kakosina). Project updates: [t.me/neurodora](https://t.me/neurodora).
+
+## Languages
+
+Russian stays at the existing URLs. English pages live under `/en/`, including `/en/atelier/`, all 30 articles, the game and the three song pages. English song pages label the translation and retain the unchanged Russian lyrics in a disclosure. The language links keep the current page; the Atelier also keeps the selected chapter.
+
+Both Atelier pages use the same compiled runtime and media, with the HTML language selecting labels and canvas text. The mobile book fits a single portrait scene between paper margins to avoid the old mismatched side strips. English has its own vector hero lettering and small layout adjustments for longer copy. Language selection uses ordinary links; it does not add cookies or language storage.

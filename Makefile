@@ -2,7 +2,7 @@ PYTHON ?= python3
 NODE ?= node
 PORT ?= 8000
 
-JS_FILES := cute-game.js script.js articles/library.js
+JS_FILES := cute-game.js script.js articles/library.js ui/baseline-hero.js ui/atelier-entry.js ui/song-page.js ui/language.js en/cute-game.js
 PY_FILES := scripts/build_articles.py scripts/validate_site.py
 
 .PHONY: serve check check-js check-python check-site
