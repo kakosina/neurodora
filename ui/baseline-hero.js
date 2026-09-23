@@ -15,7 +15,7 @@ if(hero&&character){
    character.style.removeProperty('width');character.style.removeProperty('top');character.style.removeProperty('bottom');character.style.removeProperty('transform');
    hero.dataset.imageFit='original';
    // The published narrow layout already separates the two blocks vertically.
-   if(innerWidth<=880){character.style.removeProperty('transition');return;}
+   if(innerWidth<=1600){hero.dataset.imageFit=innerWidth>880?'stacked':'original';character.style.removeProperty('transition');return;}
    const baseWidth=character.offsetWidth,baseTop=character.offsetTop;
    const originalTransform=getComputedStyle(character).transform;
    const matrix=new DOMMatrix(originalTransform==='none'?undefined:originalTransform);

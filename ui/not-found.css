@@ -1,0 +1,15 @@
+.not-found-page{min-height:100svh;display:flex;flex-direction:column}
+.nf-header{display:flex;align-items:center;justify-content:space-between;gap:24px;width:min(1120px,calc(100% - 48px));margin:auto;padding-block:24px;border-bottom:1px solid var(--line)}
+.nf-main{width:min(1120px,calc(100% - 48px));margin:auto;flex:1;display:grid;grid-template-columns:minmax(0,1fr) 280px;align-items:center;gap:70px;padding-block:55px 80px}
+.nf-code{font:600 clamp(110px,16vw,185px)/.92 'Oswald',sans-serif;color:var(--coral-deep);margin:0 0 25px;letter-spacing:-.04em}
+.nf-copy h1{font:400 clamp(36px,4vw,58px)/1.04 'Neucha',cursive;max-width:650px;margin:0 0 24px}
+.nf-copy>p:not(.nf-code){max-width:40ch;font-size:18px;line-height:1.65;margin:0 0 29px;color:var(--muted)}
+.nf-copy .social-button{display:inline-flex;min-width:220px;max-width:100%}
+.nf-copy .social-button svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nf-picture{position:relative;padding:17px 17px 20px;margin:0;background:var(--paper-light);border:2px solid var(--ink);border-radius:16px 4px 19px 6px;box-shadow:var(--shadow);transform:rotate(3deg)}
+.nf-picture img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:7px}
+.nf-picture figcaption{font:28px/1.25 'Neucha',cursive;text-align:center;color:var(--coral-deep);padding-top:15px}
+.nf-picture .tape{width:98px;height:26px;top:-15px;left:31%;transform:rotate(-4deg)}
+.nf-footer{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;padding:22px 24px;border-top:1px solid var(--line);font-size:11px;font-weight:700;color:var(--muted)}
+.nf-footer a{text-decoration:underline;text-underline-offset:4px}
+@media(max-width:760px){.nf-main{grid-template-columns:minmax(0,1fr);gap:42px;padding-block:42px 60px}.nf-copy>p:not(.nf-code){font-size:17px}.nf-code{font-size:125px}.nf-picture{width:190px;justify-self:end;transform:rotate(2deg)}.nf-picture figcaption{font-size:24px}.nf-header .brand{font-size:30px}.nf-footer{gap:13px 21px;font-size:10px}}
