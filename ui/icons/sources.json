@@ -1,0 +1,32 @@
+[
+  {
+    "path": "next/ui/icons/guitar.svg",
+    "source": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/guitar.svg",
+    "sha256": "ca2026598763ff4c8991912524f8050326e24307ea241ea2a0735af529f7e67f"
+  },
+  {
+    "path": "next/ui/icons/tv.svg",
+    "source": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/tv.svg",
+    "sha256": "0ef7db17794919d11c241d7f12e23c4cfd3f9e536c0d59fc282657666ed0b39f"
+  },
+  {
+    "path": "next/ui/icons/gamepad-2.svg",
+    "source": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/gamepad-2.svg",
+    "sha256": "b0671de7afbebdafc4d655d867d9851947170b906fb187e749410039df867509"
+  },
+  {
+    "path": "next/ui/icons/book-open.svg",
+    "source": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/book-open.svg",
+    "sha256": "9b9bed0ff057283d5c5c5a1c71f8d3e927db26a56639603a92fdf7b25961510e"
+  },
+  {
+    "path": "next/ui/icons/star.svg",
+    "source": "https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/star.svg",
+    "sha256": "c59da86b889569387db28e69ad00a89f96af22863ad9eea9aa12c4876a14338c"
+  },
+  {
+    "path": "next/ui/icons/LUCIDE-LICENSE.txt",
+    "source": "https://raw.githubusercontent.com/lucide-icons/lucide/main/LICENSE",
+    "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57"
+  }
+]
