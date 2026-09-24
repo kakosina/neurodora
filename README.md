@@ -6,7 +6,7 @@
 
 **Neurodora is an open-source web stack and public reference implementation for an AI-native fictional artist universe.** It combines a hand-built editorial website, a zero-dependency Canvas game, a static article library, and repeatable content tooling in one repository.
 
-The public experience is in Russian. Technical documentation and contribution guidance are in English so that the implementation can be studied and extended by a wider developer community.
+The public experience is available in Russian and English. Technical documentation and contribution guidance are in English so that the implementation can be studied and extended by a wider developer community.
 
 > Project status: actively maintained, experimental, and pre-1.0. The website is public; the browser game is in beta.
 
@@ -17,6 +17,7 @@ The public experience is in Russian. Technical documentation and contribution gu
 | Main experience | [neurodora.com](https://neurodora.com/) | Semantic HTML and responsive CSS |
 | Browser game | [neurodora.com/game](https://neurodora.com/game/) | Canvas 2D, DOM overlays, Web Audio |
 | Article library | [neurodora.com/articles](https://neurodora.com/articles/) | Generated static HTML, JSON index, WebP media |
+| English | [neurodora.com/en/](https://neurodora.com/en/) | Complete English site, articles, game and lyrics translations; native RU/EN navigation |
 | AI atelier | [neurodora.com/atelier/](https://neurodora.com/atelier/) | Static illustrated catalogue; protected contact endpoint |
 | Song lyrics | [neurodora.com/music/nado-tolko-podozhdat/](https://neurodora.com/music/nado-tolko-podozhdat/) | Three complete author-provided song pages |
 | Community | [Telegram](https://t.me/neurodora) | Project updates and feedback |
@@ -208,3 +209,11 @@ Neurodora is an independent fictional/experimental character project. It is not 
 ---
 
 Built and maintained by [@kakosina](https://github.com/kakosina). Project updates: [t.me/neurodora](https://t.me/neurodora).
+
+## Languages
+
+Russian stays at the existing URLs. English pages live under `/en/`, including `/en/atelier/`, all 30 articles, the game and the three song pages. English song pages label the translation and retain the unchanged Russian lyrics in a disclosure. Language links on the artist site keep the current page. The catalogue uses the language of its entry URL and has no language control inside the book.
+
+Both Atelier pages use the same compiled runtime and media, with the HTML language selecting labels and canvas text. The mobile book retains the original central scene and fills the surrounding paper fields with painted continuations of the same rooms. Side artwork is registered separately; it cannot replace the original centre or change its camera scale, objects or animation. English has its own vector hero lettering and small layout adjustments for longer copy. Language selection uses ordinary links; it does not add cookies or language storage.
+
+The book's inner page edges share one spine profile and consistent shading. During a turn, the image at the joint follows the moving sheet's inner edge, preventing the next pencil page from appearing as a bright gap before the sheet reaches it.

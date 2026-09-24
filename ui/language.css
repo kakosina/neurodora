@@ -1,0 +1,31 @@
+.brand-lockup{display:flex;align-items:center;gap:12px;min-width:0}
+.site-language{display:inline-flex;align-items:center;justify-content:center;flex:none;min-width:37px;min-height:30px;padding:5px 7px;border:1.5px solid #5d5042;border-radius:3px 5px 3px 4px;background:#fff8ec;color:#4c4238;box-shadow:1px 2px 0 #76583e26;font:700 12px/1 'Oswald',sans-serif;letter-spacing:.05em;text-decoration:none;transition:background .15s,color .15s;white-space:nowrap}
+.site-language:hover{background:#f0dcc3;color:#202120}.site-language:focus-visible{outline:3px solid #f3ae2b;outline-offset:4px}
+.baseline-original-lyrics{margin:36px 0 14px;padding-top:23px;border-top:1px solid #bda386}
+.baseline-original-lyrics summary{font:700 15px/1.5 'Manrope',sans-serif;color:#a32f40;cursor:pointer;min-height:34px;list-style-position:outside;margin-left:17px}
+.baseline-original-lyrics>div{padding-top:25px}
+.baseline-original-lyrics .lyric-original{margin:0 0 27px;font-size:17px;line-height:1.85;overflow-wrap:break-word}
+.not-found-locale{min-height:100svh;display:flex;flex-direction:column}
+html[lang=ru] [data-page-language=en],html[lang=en] [data-page-language=ru]{display:none}
+.nf-header .brand-lockup{gap:13px}
+.game-language{position:fixed;z-index:80;top:max(12px,env(safe-area-inset-top));right:max(12px,env(safe-area-inset-right));min-width:42px;min-height:38px;background:#fff5df;color:#332925}
+.game-language[hidden]{display:none}
+@media(max-width:1180px){.site-header .brand-lockup{gap:8px}.site-header .brand-lockup .brand{font-size:30px}}
+@media(max-width:600px){.baseline-original-lyrics .lyric-original{font-size:16px;line-height:1.8}}
+@media(max-width:480px){
+ .site-header .brand-lockup{flex-direction:column;align-items:flex-start;justify-content:center;gap:2px;height:62px}
+ .site-header .brand-lockup .brand{font-size:clamp(22px,6vw,27px);letter-spacing:-2px}
+ .site-header .site-language{min-height:25px;min-width:38px;padding:4px 8px;font-size:11px;box-shadow:1px 1px 0 #76583e26}
+ .nf-header{width:calc(100% - 32px)}.nf-header .brand-lockup{flex-direction:column;align-items:flex-start;gap:6px}.nf-header .brand{font-size:25px}
+}
+@media(prefers-reduced-motion:reduce){.site-language{transition:none}}
+/* English captions need breathing room below the tilted library photos. */
+@media(min-width:521px){html[lang=en] .article-photo-card{margin-bottom:24px}}
+
+@media(max-width:600px){html[lang=en] .dossier .dossier-portrait{top:34px}}
+@media(max-width:600px){
+ html[lang=en] .reading-inner{grid-template-columns:minmax(0,1fr)}
+ html[lang=en] .reading-copy,html[lang=en] .reading-stack{min-width:0}
+ html[lang=en] .reading-copy .eyebrow{width:auto;max-width:100%;white-space:normal;line-height:1.25}
+ html[lang=en] .inode-1{top:28%}
+}
