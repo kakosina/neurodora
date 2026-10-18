@@ -1,5 +1,5 @@
 {
-  "source_revision": "11fd013de21985fc5fdbb0007c966d14437bc2ed",
+  "source_revision": "c576dc1fdfd048fd2fe9144adfaec880936b33c9",
   "published_target": "https://neurodora.com/monogatari/",
   "languages": [
     "ru",
@@ -903,39 +903,39 @@
     },
     "en.html": {
       "bytes": 20575,
-      "sha256": "01687fd57c3bfe93caa46e7a60ff68ba3a39ae8d38cf5a2807afc6ad9601eea8"
+      "sha256": "3236d63b025485f4d762795615672716ae7bdb5a0a823c105a5c71ff5a550d56"
     },
     "index.html": {
       "bytes": 21219,
-      "sha256": "89120e58d4d53fa6ef60793cf250aa8ab3a501d0db7bb4b0f9931c1b4cce1a07"
+      "sha256": "9d52c250d46df038b22181005770a3b9a6f20187fbb57c98d9cd589cc7651fe6"
     },
     "ja.html": {
       "bytes": 20900,
-      "sha256": "09904ebc9c9968afd547b31125395410bcb82e86d454425091a8a1904d9bdf48"
+      "sha256": "0288cbc0f4926ddc0f7ee0a7ae29d5fe2d2270be74c7ebfa92b48a183882c802"
     },
     "main-en.css": {
-      "bytes": 170388,
-      "sha256": "4e716fedb0e95825afc1c1f1a393d94c82a99b3231ad2fb2e8b6a5b88148e103"
+      "bytes": 170141,
+      "sha256": "9b728ac9f7d6df48ca43c5a4649e61273df46553887745ec28e2bcab46591fc9"
     },
     "main-en.js": {
-      "bytes": 603089,
-      "sha256": "0dea97026707379b871a7d369d393b23a79c1fdf70f6d0f35d4e6316d2dadf9c"
+      "bytes": 603027,
+      "sha256": "389c2d6db50b28617951ad492a9e8c9966b6a30c8268ff73667a6c039d54dbd1"
     },
     "main-ja.css": {
-      "bytes": 170388,
-      "sha256": "4e716fedb0e95825afc1c1f1a393d94c82a99b3231ad2fb2e8b6a5b88148e103"
+      "bytes": 170141,
+      "sha256": "9b728ac9f7d6df48ca43c5a4649e61273df46553887745ec28e2bcab46591fc9"
     },
     "main-ja.js": {
-      "bytes": 709734,
-      "sha256": "10d5a36f93fc1cc1b4792236d51a65d29bf652e3607bfc6160577bbd42f5dc64"
+      "bytes": 709672,
+      "sha256": "021488a593003ac05279c82e70b25ea1d07a4e1cf0d46bc7067334e4b47cdd9e"
     },
     "main.css": {
-      "bytes": 170388,
-      "sha256": "4e716fedb0e95825afc1c1f1a393d94c82a99b3231ad2fb2e8b6a5b88148e103"
+      "bytes": 170141,
+      "sha256": "9b728ac9f7d6df48ca43c5a4649e61273df46553887745ec28e2bcab46591fc9"
     },
     "main.js": {
-      "bytes": 912732,
-      "sha256": "81f069954bdcb6046c853af6fa226446d1c4bcd9fd74955917b9a53b68756dea"
+      "bytes": 912670,
+      "sha256": "c4e8932fcc76b416e9ceac2598b858a59e44495f96d9ee61a9fbfddc85ca61f7"
     }
   }
 }
