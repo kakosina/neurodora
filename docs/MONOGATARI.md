@@ -6,8 +6,8 @@ Each document loads a single language bundle. All media and fonts are local
 hashed assets shared between languages. It has no account service or analytics.
 
 The catalogue covers 60 stories, 31 original Japanese print volumes, 30 character
-profiles and 213 profile facts. It retains spoiler controls, search, bookmarks,
-three story orders and character comparisons. Estimates retain the ≈ marker;
+profiles, 213 profile facts and 16 fan notes/theories. Search, bookmarks,
+three story orders and general character comparisons remain available. The spoiler mode and its controls are removed. Estimates retain the ≈ marker;
 forms and periods remain distinct. Comparisons describe this catalogue's indexed
 relationships, not exhaustive screen-time or episode counts.
 
@@ -23,6 +23,7 @@ Monogatari characters, anime stills, book covers and official character artwork
 remain the property of their respective rightsholders. Character artwork used
 for comparison includes both official references and generated interpretations;
 it does not imply that each of the 30 characters has official full-body art.
+All 31 print books have verified publisher covers. Every character has an image;30 of 31 comparison forms have full-body illustrations, while Uroko uses a VOFAN portrait with a measurement marker. Three rare novel-only characters use explicitly noncanonical generated fan concepts; Mitome uses credited fanart.
 The existing copyright notices remain visible. Original image/source mappings
 and generation provenance remain in the maintained source data and bundles.
 No audio or song lyrics are included.
@@ -32,5 +33,6 @@ SIL Open Font Licenses. Each HTML entry embeds the license notices as JSON.
 Third-party media and character designs are excluded from the repository's
 Apache-2.0 grant, as stated in LICENSE_POLICY.md.
 
-Atelier links point to the corresponding Russian or English reference entry;
-the reference links back to the Atelier. The artist site's home page is unchanged.
+A paper-style expandable Working projects tab on the left of the Atelier contains two project cards. The reference has a single Atelier link in its main chronology navigation. The artist site's home page is unchanged.
+
+The opening title screen uses a shared title/subtitle/action composition and a continuous thread flight that exits the viewport. The four original narrative cards remain intact. Reduced-motion settings keep a static thread.

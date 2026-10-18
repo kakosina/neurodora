@@ -1,5 +1,5 @@
 {
-  "source_revision": "b0f52d5152b1ba1edb66ed97ce14ea4fa7f565b7",
+  "source_revision": "11fd013de21985fc5fdbb0007c966d14437bc2ed",
   "published_target": "https://neurodora.com/monogatari/",
   "languages": [
     "ru",
@@ -10,7 +10,21 @@
   "printVolumes": 31,
   "characters": 30,
   "profileFacts": 213,
+  "fanNotes": 16,
+  "comparisonMetrics": 13,
   "files": {
+    "assets/amari-WN2WJ2PU.jpg": {
+      "bytes": 66199,
+      "sha256": "a097e2dba730f64ae5b56a7dc6cae25025219175727580045b438ada938c4f05"
+    },
+    "assets/bake-1-TOHQ2QZW.jpg": {
+      "bytes": 53192,
+      "sha256": "582a198870b8d6faafb3399c24b2cba07ddb8617b3a092c8d13fc5fb4ddd5ebf"
+    },
+    "assets/bake-2-5ZNFMVX2.jpg": {
+      "bytes": 54172,
+      "sha256": "775e7b8587aa8b36811a0e1aa1d20c544d3e013eac969ecf590066f6bee0c2b1"
+    },
     "assets/cat-FKZFMSYK.jpg": {
       "bytes": 103274,
       "sha256": "1bc97bdd5201ac91afe1e738b5015d86f581fbef3ccfa99a3aa74ff8402bad35"
@@ -58,6 +72,10 @@
     "assets/guillotine-IRIY2CBA.jpg": {
       "bytes": 17625,
       "sha256": "2e4df679d8fa7c48f5c08cb8c4dd0f0642c4a6c2a470b991d2ac2110c2808e1d"
+    },
+    "assets/hana-54XLD37B.jpg": {
+      "bytes": 77016,
+      "sha256": "c09265fe3c065bff110661e235b8bf524fd57ccc42096ad42c7e57bcc3a31147"
     },
     "assets/hitagi-BGL7ZLDX.gif": {
       "bytes": 113779,
@@ -115,6 +133,10 @@
       "bytes": 49374,
       "sha256": "eca6ce1493c7ac1240cd9dbc75582bc4941db99c2ab5a1a2a0311297d2c47511"
     },
+    "assets/ikusa-NTLVKSDL.jpg": {
+      "bytes": 59503,
+      "sha256": "50c67ec237f5fe66155806ede320d0728b81953f7183a015c78a44ce0c19b7ae"
+    },
     "assets/izuko-LNHJURAM.jpg": {
       "bytes": 39017,
       "sha256": "ced52b8c050e94223e4e3f99b741c839ff5161463d91d66019ff86a33d9b0f7a"
@@ -123,9 +145,13 @@
       "bytes": 1411099,
       "sha256": "ba5c7a42c6175ce5709b20c87f95e406cd98df59feea438159fe78b262acd031"
     },
-    "assets/ja-mincho-500-YYSF52JL.woff": {
-      "bytes": 296408,
-      "sha256": "f676073800b46e283d3b6a49d9cdbb0659867d2aa471d0ae0d89c1c05894c023"
+    "assets/ja-mincho-500-MUII2JEQ.woff": {
+      "bytes": 300900,
+      "sha256": "bed017241efa32c57f3b4a0bda4c15415033dc7150e25df86c4e3327e955997a"
+    },
+    "assets/kabuki-OUYBY4CZ.jpg": {
+      "bytes": 78192,
+      "sha256": "09e7a996cad167c294b984eb99c9cd914f5ca0adc60798a04300e9f533abd04b"
     },
     "assets/kaiki-KUHI4RBB.gif": {
       "bytes": 128514,
@@ -175,13 +201,25 @@
       "bytes": 273553,
       "sha256": "6fce4658d87558f1a5e610a2b22d7358da6a45bc2df67204386501d48c0b9d61"
     },
+    "assets/kizu-QA2LFUNI.jpg": {
+      "bytes": 76695,
+      "sha256": "7dc7fce497584584c6b54f012802216751a8d99aaf91dbae94e30423c775ec3c"
+    },
     "assets/kizu-SWM3ZMGR.jpg": {
       "bytes": 37967,
       "sha256": "53dda742f92ff004e2f8269fe04ef44f5baa6bd627bdd49d5c2fc912e81a7b84"
     },
+    "assets/koi-URA5JMKH.jpg": {
+      "bytes": 73643,
+      "sha256": "e90cb4121a341195e8e2610f13f43fe0c4574ceed7d88bba62f508970347667d"
+    },
     "assets/koyomi-LMU46VQ7.jpg": {
       "bytes": 55821,
       "sha256": "5f2b8d02d3d73db489a707215812acfc677c8a2f05fca2cee3c408e3ca6956ae"
+    },
+    "assets/koyomi-N7MSTBUL.jpg": {
+      "bytes": 58586,
+      "sha256": "a2a1e1b26ae571060ce1720d5c45e84fe08b7060ab06df70768ad08ba0b7cffa"
     },
     "assets/koyomi-O2GMJKMU.png": {
       "bytes": 38666,
@@ -323,6 +361,18 @@
       "bytes": 93848,
       "sha256": "49f472a77a784084634f06b3361d24a817cf986f47820c45ff6648018eaa0c80"
     },
+    "assets/mitome-wingrush-ECWKOR6P.jpg": {
+      "bytes": 124675,
+      "sha256": "1cdb96e26392ccca3bf999391de929ef8881f23fb1feb2774ee49f61b2be5f6a"
+    },
+    "assets/musubi-QXVVDHDB.jpg": {
+      "bytes": 63738,
+      "sha256": "12ccf5982daf5881750db9264b8f8bbd1c52b2dfc16de50bff2ef4b775d5f582"
+    },
+    "assets/nade-YXA5JWXW.jpg": {
+      "bytes": 58805,
+      "sha256": "0c674b48399207fd9f9c753872c3d8b798074e2a2b0f90550173a967a0a2d1f4"
+    },
     "assets/nadeko-HG7TDOWV.png": {
       "bytes": 58291,
       "sha256": "34f76e5aa8adefaac3718cc86c2282c7076f427865491bb1c1ec41047e27fb0c"
@@ -375,9 +425,29 @@
       "bytes": 326427,
       "sha256": "cc235a14a3e631b4bb2a6195df7c20dd56405073222ce9ee8c59ea29dc467825"
     },
+    "assets/neko-kuro-GKYWGYRN.jpg": {
+      "bytes": 70596,
+      "sha256": "66d30d12adf2334ac98a404a3b5e7c4d8555742a77bc3d3560580aa6241a6b5e"
+    },
     "assets/neko-kuro-KGZGEJAI.jpg": {
       "bytes": 86222,
       "sha256": "a60aec39acf54055face2ebced8dba550ef1f61234a11b489a44214f584981c4"
+    },
+    "assets/neko-shiro-LH5GVMNS.jpg": {
+      "bytes": 81229,
+      "sha256": "40acdcd509b25f754a2836e090ee588808fc8e02611c63b42668f4d4548237c8"
+    },
+    "assets/nise-1-4PQIQ5TI.jpg": {
+      "bytes": 74675,
+      "sha256": "8ee59665bee480baec95492be481bcb51a2575bf1831a448da6069cb78d750ad"
+    },
+    "assets/nise-2-3VGCQBQF.jpg": {
+      "bytes": 78784,
+      "sha256": "8d1f0e5cc01ef7eeb332e3366756c485379eb14ca0c8b422bc0d57240f89939d"
+    },
+    "assets/nozomi-v1-YD72BFKA.png": {
+      "bytes": 1182868,
+      "sha256": "7d7c89cb24a71c2e38811be5c6ebb6848bb145b6487e059ce30e90e9b52c6fb9"
     },
     "assets/numachi-CPXTW6NW.jpg": {
       "bytes": 31532,
@@ -447,6 +517,14 @@
       "bytes": 43424,
       "sha256": "eae0c2255d1180c4f120cd9a58cbf914f14b41b61f5f64ef31bb3b7f670b60b5"
     },
+    "assets/oni-CLLBRFIG.jpg": {
+      "bytes": 75393,
+      "sha256": "5069caaadaa355836d448c5b0b68782274723937dd3b7c2f1d1bbb40889689bd"
+    },
+    "assets/oroka-LVPBVOKD.jpg": {
+      "bytes": 73533,
+      "sha256": "38765f284c262745ce98865977f475d80449e6e8ccdcaa4637094d8d8b4c839b"
+    },
     "assets/oswald-500-EF22ALZG.woff": {
       "bytes": 26500,
       "sha256": "1994cf3e5fc24ae230ddea399a9bba52315f733a499283fcd21da0e2136c6004"
@@ -455,6 +533,10 @@
       "bytes": 26296,
       "sha256": "4c121fc96c8fdc9bc680ed7af191867689ab94a376ccc32cf01625e8c875d136"
     },
+    "assets/otori-Q2RS2O6L.jpg": {
+      "bytes": 77409,
+      "sha256": "98fb1fd2ee4e74be6660dc3989ca8066452b047a7996bd7f7f03fde0b1d944d0"
+    },
     "assets/ougi-BMMFUKSY.png": {
       "bytes": 83028,
       "sha256": "011a959f968ec9ff40539af8447baf3b205b20705e147f9149f70278684cb595"
@@ -462,6 +544,10 @@
     "assets/ougi-OWJ3QQVN.jpg": {
       "bytes": 31094,
       "sha256": "fbde550d397dd697fcd31193963112007c989d487e9eac7119c1dc09b672843a"
+    },
+    "assets/ougi-TSRPH6RQ.jpg": {
+      "bytes": 55953,
+      "sha256": "1bb443134c5b9343407e4d2647b7b8f163344d557165d0d1e92ac309b8ff9099"
     },
     "assets/ougi-dark-1-ROFVOARY.jpg": {
       "bytes": 26305,
@@ -495,6 +581,18 @@
       "bytes": 29410,
       "sha256": "29fe5ce684c15726aa5b5643eacadf531ca17f6b474173ac26293b117fd15b92"
     },
+    "assets/owari-1-FXR2COFN.jpg": {
+      "bytes": 59159,
+      "sha256": "088f0eb3cc6d78d7d278bc4aa89be65426a03bef9156aa6ef258f7df9ac1aac1"
+    },
+    "assets/owari-2-6ZDVGMVL.jpg": {
+      "bytes": 66802,
+      "sha256": "8d421da7dac0b800840d4336fb86d698d9ad590df2b8309056d3aab19233270c"
+    },
+    "assets/owari-3-GHITHCXP.jpg": {
+      "bytes": 62843,
+      "sha256": "5660727749e324d9c080b9af00cef4a7250d887341d75fd4fa157c4cb781588d"
+    },
     "assets/plex-400-6JHEUXSI.woff": {
       "bytes": 27012,
       "sha256": "0a76d74551b13ebd42f9982375f6210afe074bbee5f8ea0811868767c7557d6e"
@@ -515,9 +613,21 @@
       "bytes": 23517,
       "sha256": "d9df7b8f4a3b64ccff2ee34284fdbd32d02de6cfa6c6d76e83b71904a1df4484"
     },
+    "assets/shino-1-4LT5NTXX.jpg": {
+      "bytes": 68044,
+      "sha256": "56f9fe513dca54d71c0bf9f568c7c9f334a65f4f15daf4e92868cbd37f38c22e"
+    },
+    "assets/shino-2-33256SZZ.jpg": {
+      "bytes": 73825,
+      "sha256": "834ed8a6f181ee91231b8a31f1cefb8018bdb367873d7b519503a802966fc8b9"
+    },
     "assets/shinobu-J2DXNEEP.png": {
       "bytes": 72365,
       "sha256": "50b28122116fb24ae7b2dc91b8995a5149d837efa8101e40cb2c55b71ad21ced"
+    },
+    "assets/shinobu-N3CFNAYP.jpg": {
+      "bytes": 69705,
+      "sha256": "b0bb9a249bcfdd330b7a00be35a855f3f171ef1d97c328acd0c33ba23702b5d2"
     },
     "assets/shinobu-ZU2IEAYJ.jpg": {
       "bytes": 37220,
@@ -651,6 +761,10 @@
       "bytes": 30890,
       "sha256": "45bcdcce3d0c1efa1af8872b8a7d036cf6c0b5c9fd63bf06090db4e59ee5c8fb"
     },
+    "assets/tori-7LRT2AAW.jpg": {
+      "bytes": 61672,
+      "sha256": "6bc39d51c3ac5b06a1d944b2b4c48565fcf7f8a58d452aec8869299edb95a558"
+    },
     "assets/tropicalesque-I4BLDGSY.png": {
       "bytes": 106132,
       "sha256": "f51ebbb31b7c87c04e4809ab9116fc091758e1286fb012bcbbe783758e93bb73"
@@ -695,6 +809,14 @@
       "bytes": 37640,
       "sha256": "09074a8c6aed2394b39dbbec932273d4ccce3a56057961ec129bf49defcbe0f1"
     },
+    "assets/tsugi-IIPSX44Y.jpg": {
+      "bytes": 58204,
+      "sha256": "42d76bce1179030a04e5af2d2f5d59ef979d073d062e1c7dad0a37c5bceff943"
+    },
+    "assets/tsuki-MOHF6G5K.jpg": {
+      "bytes": 75001,
+      "sha256": "75c6b5041e1eb2b0fdd71d7ad260087c62ee6d5c961e38cfa394af7947a78c0e"
+    },
     "assets/tsukihi-2UJMEILJ.png": {
       "bytes": 99334,
       "sha256": "ce36e4fd507921a0493514f3d745e4a7fa38ed99f3896ad6e080ed3ea568b13f"
@@ -719,9 +841,25 @@
       "bytes": 40050,
       "sha256": "dbafb502e8b5198855aaef0fb7c4af7202839ab659f746dfe573599b63ca30f2"
     },
+    "assets/tsuzura-v1-3DW3UBI7.png": {
+      "bytes": 1172566,
+      "sha256": "8333f325dc73570c72afa21ca5474a486d5e22d549e2453b1f33715d714eebae"
+    },
+    "assets/uroko-vofan-HWRRZSBC.png": {
+      "bytes": 65787,
+      "sha256": "d1ed4bd455f554d390f6430d54f18998c707f38d9d4348e0858f29692b319718"
+    },
+    "assets/waza-HNRN4I7N.jpg": {
+      "bytes": 56147,
+      "sha256": "ee0d272f169be9b64d2e417e2b7f6a4e99c1bb94c0eb88b65f86a3c51cae114e"
+    },
     "assets/wires-WPGNJC6Y.jpg": {
       "bytes": 187367,
       "sha256": "b14f42009cb15d8d6af6fad4105083ae688256fe11189be08ba458ac348d14d4"
+    },
+    "assets/yoi-U3QZM5ER.jpg": {
+      "bytes": 56174,
+      "sha256": "921c16b197b5da81515f713bb6e75203220df0c43d56e87d230e15698ac91452"
     },
     "assets/yotsugi-OWE6QA5Q.jpg": {
       "bytes": 32657,
@@ -755,41 +893,49 @@
       "bytes": 1284854,
       "sha256": "eeeb386de6773a5ec32be1ba38e9dd897b8d7eefb8453a4c2e58bff917d1a2f8"
     },
+    "assets/zenka-v1-Q6U4LHMF.png": {
+      "bytes": 1204466,
+      "sha256": "64c1b5588b8540fbe7a040462c49a5deeeebca87abf01203750297dd630c300e"
+    },
+    "assets/zoku-owari-UL7S77SM.jpg": {
+      "bytes": 64893,
+      "sha256": "02a85db0fa60da697f78675969b9dc7e4ee2f0fa68e0123b5219c2d3139ca3a8"
+    },
     "en.html": {
-      "bytes": 20600,
-      "sha256": "28bc7e31ecd099a7829e81305ac762317090f865e677595b883aed4852e2cb81"
+      "bytes": 20575,
+      "sha256": "01687fd57c3bfe93caa46e7a60ff68ba3a39ae8d38cf5a2807afc6ad9601eea8"
     },
     "index.html": {
-      "bytes": 21264,
-      "sha256": "03a602da56d808eee05fff4f71ba0a5d86d25f396d1e71fdf386054967bb18c4"
+      "bytes": 21219,
+      "sha256": "89120e58d4d53fa6ef60793cf250aa8ab3a501d0db7bb4b0f9931c1b4cce1a07"
     },
     "ja.html": {
-      "bytes": 20933,
-      "sha256": "fce54a0adc3990ab5922e590c4f70d59f0a749fcb88dd001df8e39a2458d856f"
+      "bytes": 20900,
+      "sha256": "09904ebc9c9968afd547b31125395410bcb82e86d454425091a8a1904d9bdf48"
     },
     "main-en.css": {
-      "bytes": 167085,
-      "sha256": "591457d251326f5ae4e7eef3fb3a4954ae70c8abfc607f1629d1d1fa80069da7"
+      "bytes": 170388,
+      "sha256": "4e716fedb0e95825afc1c1f1a393d94c82a99b3231ad2fb2e8b6a5b88148e103"
     },
     "main-en.js": {
-      "bytes": 587183,
-      "sha256": "5eae058f0c07c3d936a52898ff25e0b8e76435b14d3207334fe52fddc279f64b"
+      "bytes": 603089,
+      "sha256": "0dea97026707379b871a7d369d393b23a79c1fdf70f6d0f35d4e6316d2dadf9c"
     },
     "main-ja.css": {
-      "bytes": 167085,
-      "sha256": "591457d251326f5ae4e7eef3fb3a4954ae70c8abfc607f1629d1d1fa80069da7"
+      "bytes": 170388,
+      "sha256": "4e716fedb0e95825afc1c1f1a393d94c82a99b3231ad2fb2e8b6a5b88148e103"
     },
     "main-ja.js": {
-      "bytes": 691531,
-      "sha256": "6021c0fd0fe6ffbea226a069d462fba569eda57b88c7b86e3a3440330e451d07"
+      "bytes": 709734,
+      "sha256": "10d5a36f93fc1cc1b4792236d51a65d29bf652e3607bfc6160577bbd42f5dc64"
     },
     "main.css": {
-      "bytes": 167085,
-      "sha256": "591457d251326f5ae4e7eef3fb3a4954ae70c8abfc607f1629d1d1fa80069da7"
+      "bytes": 170388,
+      "sha256": "4e716fedb0e95825afc1c1f1a393d94c82a99b3231ad2fb2e8b6a5b88148e103"
     },
     "main.js": {
-      "bytes": 889978,
-      "sha256": "94b48673e4463a181ef72447061d1d3a40eac99dd781c9ae70132000d0d652d8"
+      "bytes": 912732,
+      "sha256": "81f069954bdcb6046c853af6fa226446d1c4bcd9fd74955917b9a53b68756dea"
     }
   }
 }
