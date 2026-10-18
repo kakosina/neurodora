@@ -1,0 +1,795 @@
+{
+  "source_revision": "b0f52d5152b1ba1edb66ed97ce14ea4fa7f565b7",
+  "published_target": "https://neurodora.com/monogatari/",
+  "languages": [
+    "ru",
+    "en",
+    "ja"
+  ],
+  "stories": 60,
+  "printVolumes": 31,
+  "characters": 30,
+  "profileFacts": 213,
+  "files": {
+    "assets/cat-FKZFMSYK.jpg": {
+      "bytes": 103274,
+      "sha256": "1bc97bdd5201ac91afe1e738b5015d86f581fbef3ccfa99a3aa74ff8402bad35"
+    },
+    "assets/classroom-VZ62WVJY.jpg": {
+      "bytes": 226374,
+      "sha256": "8e9b0ccdb2ec5a2eea174dbbdd11630b7293a49bf4a5c9d2df553eccae82e8d8"
+    },
+    "assets/court-WBRT5ISD.jpg": {
+      "bytes": 216139,
+      "sha256": "6f0828d9f9ce4a7d8b4fe7ee6b2f328471e10c6ea51a0417e640d04fb7766d10"
+    },
+    "assets/cram-ECK27NZP.jpg": {
+      "bytes": 183463,
+      "sha256": "3e8d4f41b43b7f58c84db211c51ce0f7be8d022b29b5df2d4408edddd5a661cf"
+    },
+    "assets/deathtopia-PADJ6KLQ.jpg": {
+      "bytes": 15255,
+      "sha256": "12a581fcc732c94cf335acd2f3b5827436f00c973710ce866c34208469edbcf7"
+    },
+    "assets/deathtopia-PO4UX74B.png": {
+      "bytes": 103314,
+      "sha256": "d43a2149a0b386f9d6730f92b4a77b1520f4d812c6142f92439a4c3f08f6da95"
+    },
+    "assets/dramaturgy-3OWDXXMW.png": {
+      "bytes": 1352137,
+      "sha256": "0292fad5e6fc200f8e330553c801801f377aff95ce5387a69faecc384ce3dd0c"
+    },
+    "assets/dramaturgy-ZZ2SJF2V.jpg": {
+      "bytes": 18428,
+      "sha256": "803dc79768fa807ac0b4ba1441c1a7b8341f7dd80c5a21190395a6aadd7bce79"
+    },
+    "assets/episode-W2H5B5HK.png": {
+      "bytes": 1294203,
+      "sha256": "a5ef2bb0b28ab167ef80e1a7650e3155dfc6292d2e8a506825dd9be0741a2c10"
+    },
+    "assets/episode-ZOPI44LF.jpg": {
+      "bytes": 33034,
+      "sha256": "c4d83efa12512ddd9a94d39ca190d4d8c53821536136be2880747bac7288d367"
+    },
+    "assets/guillotine-FVO2DE7Q.png": {
+      "bytes": 1126588,
+      "sha256": "4e7420c727c23bc5e9a75b78ec4aeb5aedcdaa6d9bce5cbf13c9a43af97cc382"
+    },
+    "assets/guillotine-IRIY2CBA.jpg": {
+      "bytes": 17625,
+      "sha256": "2e4df679d8fa7c48f5c08cb8c4dd0f0642c4a6c2a470b991d2ac2110c2808e1d"
+    },
+    "assets/hitagi-BGL7ZLDX.gif": {
+      "bytes": 113779,
+      "sha256": "e4f7380e950fd6bf89e3a1ff69de61d1a290fb4d81a0067e675ec7a58f215828"
+    },
+    "assets/hitagi-E7YIVYJP.png": {
+      "bytes": 71869,
+      "sha256": "17460c04284a688ab4ba4fa64575200fff6e79bfb8648b8ad8be391a6e64558a"
+    },
+    "assets/hitagi-crab-1-PX4TWXBU.jpg": {
+      "bytes": 129937,
+      "sha256": "1b59908dbfbd8f256564617cc6164fd6df4b3112119d63290c1ba9f344f32f4b"
+    },
+    "assets/hitagi-crab-2-6R2EGDVC.jpg": {
+      "bytes": 110342,
+      "sha256": "4dc4689c923f60fddea86c529d9c595aba01e1bf200fea0a99806115a8857660"
+    },
+    "assets/hitagi-crab-3-A5ZYWN54.jpg": {
+      "bytes": 75392,
+      "sha256": "18ebeabf7a9988d8eb316d0036631a6c9957a99d0a2449d1901c863f071abeab"
+    },
+    "assets/hitagi-crab-ICVROGHD.jpg": {
+      "bytes": 31129,
+      "sha256": "a81700901f7c14234367f3d3a05d7bab7ac0b7a1726265350cd880c857eb8864"
+    },
+    "assets/hitagi-end-1-L44A73BT.jpg": {
+      "bytes": 265109,
+      "sha256": "1111b1993c37289a2250649e8b002dca4d409628d33dfcd54cd27cea6e5feb80"
+    },
+    "assets/hitagi-end-2-BK3MXQJL.jpg": {
+      "bytes": 314987,
+      "sha256": "589c0bf4db9d7f9f3fe50c845694df03a81c1109d2f1281b66082e65982767d6"
+    },
+    "assets/hitagi-end-3-GTI76HU2.jpg": {
+      "bytes": 382519,
+      "sha256": "275856f2b76a3ac3001b21bcd01cd6b61c295021a4a1b9ce105a0a24d3716a5c"
+    },
+    "assets/hitagi-end-B46SOWHL.jpg": {
+      "bytes": 42659,
+      "sha256": "9f53c7dbc3e7b9a04365e8289790e4ca807c7c5b020a0ef1c282a763954e6abf"
+    },
+    "assets/hitagi-rendezvous-1-Q6PFCLPS.jpg": {
+      "bytes": 13869,
+      "sha256": "886dbee5359bfcbef55eab98e3d7e0069fefbd731cb3967aa76c700f256d435d"
+    },
+    "assets/hitagi-rendezvous-2-BAUV36LB.jpg": {
+      "bytes": 49374,
+      "sha256": "eca6ce1493c7ac1240cd9dbc75582bc4941db99c2ab5a1a2a0311297d2c47511"
+    },
+    "assets/hitagi-rendezvous-3-53ZUTVFU.jpg": {
+      "bytes": 18189,
+      "sha256": "87e02a845002d5ab7f56cd74ac733a7b8814c52ef3d06e2ff6a93cf9fbc6bacf"
+    },
+    "assets/hitagi-rendezvous-BAUV36LB.jpg": {
+      "bytes": 49374,
+      "sha256": "eca6ce1493c7ac1240cd9dbc75582bc4941db99c2ab5a1a2a0311297d2c47511"
+    },
+    "assets/izuko-LNHJURAM.jpg": {
+      "bytes": 39017,
+      "sha256": "ced52b8c050e94223e4e3f99b741c839ff5161463d91d66019ff86a33d9b0f7a"
+    },
+    "assets/izuko-LU3GYC2I.png": {
+      "bytes": 1411099,
+      "sha256": "ba5c7a42c6175ce5709b20c87f95e406cd98df59feea438159fe78b262acd031"
+    },
+    "assets/ja-mincho-500-YYSF52JL.woff": {
+      "bytes": 296408,
+      "sha256": "f676073800b46e283d3b6a49d9cdbb0659867d2aa471d0ae0d89c1c05894c023"
+    },
+    "assets/kaiki-KUHI4RBB.gif": {
+      "bytes": 128514,
+      "sha256": "8700ccc8f7814071f029255676b6ba91a56268497d08de8b5ef8f46ea179d794"
+    },
+    "assets/kaiki-YG7DH3SL.png": {
+      "bytes": 1150724,
+      "sha256": "eb8f85f8ee5501c57f0057d2f9bfa3783c4bf1204a9100f5fbd2bea1e148c259"
+    },
+    "assets/karen-B547RJVM.gif": {
+      "bytes": 123392,
+      "sha256": "de8ac863f2ff5997fba3ff709530772f7c24ea1e04fbce1ac7aa5dd79715c56b"
+    },
+    "assets/karen-DD44XVUK.png": {
+      "bytes": 50838,
+      "sha256": "d9fc6090ac6be2a786fe971159bb19129e523b168191aae57fc22c662550a1a0"
+    },
+    "assets/karen-bee-1-XF32EWHD.jpg": {
+      "bytes": 63377,
+      "sha256": "c85d38fb1386896ee337539363a6d8270d7b3110903c194e7aaf5ab896b8c434"
+    },
+    "assets/karen-bee-2-FWAJXEJH.jpg": {
+      "bytes": 113734,
+      "sha256": "876eb63f58c517cc8a8d66cd87ef9e12ed9fe67f1c7d5008936c14028c2d51e2"
+    },
+    "assets/karen-bee-3-GDYXY4PY.jpg": {
+      "bytes": 181172,
+      "sha256": "ab5c9a5bdf3858984a94af98a67bd533a4ad6e9cb6f34dc38fee3998b23317d7"
+    },
+    "assets/karen-bee-WB24UGRY.jpg": {
+      "bytes": 56516,
+      "sha256": "1d86a386c7a645073be4c52de476ea6d84846c9cd699f80067c1c9bc4b2a0320"
+    },
+    "assets/kissshot-OQRQZEFH.png": {
+      "bytes": 1700362,
+      "sha256": "a859014e15217ac70f6b271eedf64343c0974e94823d58774cafe74271399acd"
+    },
+    "assets/kizu-1-SWM3ZMGR.jpg": {
+      "bytes": 37967,
+      "sha256": "53dda742f92ff004e2f8269fe04ef44f5baa6bd627bdd49d5c2fc912e81a7b84"
+    },
+    "assets/kizu-2-NJT5BLK4.jpg": {
+      "bytes": 92489,
+      "sha256": "3d679268399a55084d1bd833d4b586c72dbcde953a3d8af550a66639e2bf321c"
+    },
+    "assets/kizu-3-VBEW3AAC.jpg": {
+      "bytes": 273553,
+      "sha256": "6fce4658d87558f1a5e610a2b22d7358da6a45bc2df67204386501d48c0b9d61"
+    },
+    "assets/kizu-SWM3ZMGR.jpg": {
+      "bytes": 37967,
+      "sha256": "53dda742f92ff004e2f8269fe04ef44f5baa6bd627bdd49d5c2fc912e81a7b84"
+    },
+    "assets/koyomi-LMU46VQ7.jpg": {
+      "bytes": 55821,
+      "sha256": "5f2b8d02d3d73db489a707215812acfc677c8a2f05fca2cee3c408e3ca6956ae"
+    },
+    "assets/koyomi-O2GMJKMU.png": {
+      "bytes": 38666,
+      "sha256": "30c11a217f4913170ff7113d71f8ef0c44e5371cd4451a0774331bc371907270"
+    },
+    "assets/koyomi-reverse-1-PWZSDU3J.jpg": {
+      "bytes": 101097,
+      "sha256": "5211e561fd42f1b778f8789c27c77a60d6e07fde402ae889eb1afe2c267e0547"
+    },
+    "assets/koyomi-reverse-2-PUWMRNTK.jpg": {
+      "bytes": 72317,
+      "sha256": "b5690c3ee245a175d0fce31936fa04a378e5b9b77e83497feaec2809f873db53"
+    },
+    "assets/koyomi-reverse-3-WCFFQSC4.jpg": {
+      "bytes": 81246,
+      "sha256": "2f2daec295aae54931940cb96dbe86d2f32da469a2ad600059b39c0db6d8caf1"
+    },
+    "assets/koyomi-reverse-4RSKAIMA.jpg": {
+      "bytes": 34013,
+      "sha256": "a9b7fdf83682aa13a89a834d5f4e45543c7b8dc3e6a4da282350a85bbfed72f1"
+    },
+    "assets/m-dead-APBXPUZB.jpg": {
+      "bytes": 30919,
+      "sha256": "16790fb96188e3149c0051289d52b969f8757b3e79d67a001c72dbb01e54dc33"
+    },
+    "assets/m-flower-ZH3NKEAV.jpg": {
+      "bytes": 33912,
+      "sha256": "35fee8f4f73527912253419e8b73e98debc3de435a0e4080020dfc1f85d118ac"
+    },
+    "assets/m-mountain-Q7XL3D4F.jpg": {
+      "bytes": 31206,
+      "sha256": "8b2fb0b4b4f84744e216caf172457dc6c3a3ce5d8f075642c4cb6fa1ca1a7f6e"
+    },
+    "assets/m-nothing-DO6RMSM6.jpg": {
+      "bytes": 26063,
+      "sha256": "c7dc57d0464d7623410d17cbccf67396c2f470562b4997f7cebbe497dcb43848"
+    },
+    "assets/m-sand-T3CEGWJ2.jpg": {
+      "bytes": 57574,
+      "sha256": "cbf4b954d71a48eab6fdf8cbb2841e9bdeb2322808747e64559ca3aaa680f4f5"
+    },
+    "assets/m-seed-6FPQS5VV.jpg": {
+      "bytes": 41824,
+      "sha256": "efcabeb86823f565d500e27a8529d13a44c5ec3df33d6c8ae85513907ad01143"
+    },
+    "assets/m-stone-E5ERNZPM.jpg": {
+      "bytes": 35407,
+      "sha256": "1378e552df6aff79353bdff6bfc8e1c0b415a8989fc932a507bdbc8f70f794d1"
+    },
+    "assets/m-tea-JQVSQH6M.jpg": {
+      "bytes": 25433,
+      "sha256": "7e4913f0abeeb1cf0ab7f0f8de09938f0161895028710f517e2d9125ab6e92ec"
+    },
+    "assets/m-torus-7TYACHMO.jpg": {
+      "bytes": 54819,
+      "sha256": "e8a8a609aafaaf8fd41a7b908147d5bd8d67ef559bdf12de9140cfa92ec15157"
+    },
+    "assets/m-tree-6JTK6IR7.jpg": {
+      "bytes": 24307,
+      "sha256": "07bb6f0ec9415cc9a7ed8143cd4843f254447e35ac6b00ffdee92127bd7c1a13"
+    },
+    "assets/m-water-PQDW4FI2.jpg": {
+      "bytes": 34884,
+      "sha256": "fb7834f3244f0753f8f6f71bbb1b7e787db2338d1bba0b2beb2f3555bd1572e2"
+    },
+    "assets/m-wind-UBHDRRYX.jpg": {
+      "bytes": 31583,
+      "sha256": "43b32d34871809d9720f0224e10959265be6059eaa3e0d862b299924ef04555e"
+    },
+    "assets/mayoi-K53KIKFE.gif": {
+      "bytes": 111750,
+      "sha256": "631c4287742d9b8d42b85f16009dc598a9f013636ccc608467e21f7da0e6f2e5"
+    },
+    "assets/mayoi-WBZHXC6K.png": {
+      "bytes": 63858,
+      "sha256": "ba12ca86b1284362275d6a233c150652824904c6d729121bb642a2ada1749a5f"
+    },
+    "assets/mayoi-hell-1-BB6WU52Q.jpg": {
+      "bytes": 26890,
+      "sha256": "1e58c746406aeeffc734798231e3857ccbad90a06e95dd55f7f9df4428a1a7ca"
+    },
+    "assets/mayoi-hell-2-MAU7GEE4.jpg": {
+      "bytes": 263124,
+      "sha256": "a30c22af800eacafa0ab14fe26c35e02ee6ae5ef7acfcddf459c3dceed48e73a"
+    },
+    "assets/mayoi-hell-3-ZTCE5JO7.jpg": {
+      "bytes": 22938,
+      "sha256": "e5b53179833965660b2e773f4eb807ad0aca3f36cc44d5e2dc06de472ad88c26"
+    },
+    "assets/mayoi-hell-DAR5KK6J.jpg": {
+      "bytes": 44503,
+      "sha256": "6f77097b220492f96b544a840f97bbf40d0f40cb52d469d22bede28ebceb9564"
+    },
+    "assets/mayoi-jiangshi-1-VBK6UMAY.jpg": {
+      "bytes": 335752,
+      "sha256": "4af44fb6df83ec251408d7eb80497e6c9ecf293c734a94a6e0a99756a8790324"
+    },
+    "assets/mayoi-jiangshi-2-Q6G5BG3J.jpg": {
+      "bytes": 353311,
+      "sha256": "774c45db0b05dd63c88fd63f84361463d2e08331e0347493d9f9b14a7c4cd333"
+    },
+    "assets/mayoi-jiangshi-3-2G2UTKH6.jpg": {
+      "bytes": 327669,
+      "sha256": "9471a944e1eec4173f3edd4c3dd4998420442ba82047de5cb3ecc84867cb3284"
+    },
+    "assets/mayoi-jiangshi-LKYFBVIV.jpg": {
+      "bytes": 40650,
+      "sha256": "33875d8d3950de221f583663f409a342774e9324d0fe2eca6e568c849812b2ae"
+    },
+    "assets/mayoi-snail-1-7NS3MVFC.jpg": {
+      "bytes": 168776,
+      "sha256": "ade4e2bee125b9f217619794579fd93d21c00cdfe5aa7c5354e05f2cf7f2c807"
+    },
+    "assets/mayoi-snail-2-GHBPJAYU.jpg": {
+      "bytes": 158081,
+      "sha256": "9d090c53a539c7e771a130097033d25bce7fe0f45d9d980c01a80200fb310d33"
+    },
+    "assets/mayoi-snail-3-TFFBR735.jpg": {
+      "bytes": 185207,
+      "sha256": "7ac5120572110da5cf40c1a53e8ecf76a0c11b9c463e40735e33187656e644bd"
+    },
+    "assets/mayoi-snail-SLHQ3JIV.jpg": {
+      "bytes": 31762,
+      "sha256": "5ac03d1831bddf2e60990f618b07cd7b151ad67eb89b2ad195ccbdf388ca2853"
+    },
+    "assets/meme-5XWOKS3Y.png": {
+      "bytes": 55220,
+      "sha256": "8d2361d0248a30fecd07f24e93aa1c63b70f3d8af7312b58ac1f7ae659abc199"
+    },
+    "assets/meniko-WJPX4NHN.png": {
+      "bytes": 151018,
+      "sha256": "040db99cca42a4fa580033816fc670a361d3a92eb18938df01cdae06068504aa"
+    },
+    "assets/mincho-500-RYNVP3HK.woff": {
+      "bytes": 96204,
+      "sha256": "a4e0ed450b0628bd39a5a09f3a4f51c771b666a1fb52df2910566e7cfd853b3f"
+    },
+    "assets/mincho-900-RS2KBRDL.woff": {
+      "bytes": 93848,
+      "sha256": "49f472a77a784084634f06b3361d24a817cf986f47820c45ff6648018eaa0c80"
+    },
+    "assets/nadeko-HG7TDOWV.png": {
+      "bytes": 58291,
+      "sha256": "34f76e5aa8adefaac3718cc86c2282c7076f427865491bb1c1ec41047e27fb0c"
+    },
+    "assets/nadeko-OPCPUPRU.gif": {
+      "bytes": 107379,
+      "sha256": "c09586ce179e5991ef0b36057eb8f4e18939da53d3f6188af6757e3c645cfd39"
+    },
+    "assets/nadeko-medusa-1-HKVZ3FOM.jpg": {
+      "bytes": 304753,
+      "sha256": "8be5132d3cb29f3b34c7b78f8f049d7da36db76e744d3a3026004933e02ec61e"
+    },
+    "assets/nadeko-medusa-2-Z6HXQVDP.jpg": {
+      "bytes": 280226,
+      "sha256": "b936fd41bd73f9a8d608dce55aa6994d7c0b51ee8f7f15b3bd0c2f7566a2a385"
+    },
+    "assets/nadeko-medusa-3-M5BGSEF2.jpg": {
+      "bytes": 234052,
+      "sha256": "4153389518821e6840337c90f6e40e739b9c12e95b87ecbd856f1e6916921946"
+    },
+    "assets/nadeko-medusa-ETPNDAJA.jpg": {
+      "bytes": 28112,
+      "sha256": "e676149916367eeca03c9923d788b3cd8df6c1cf1e1bb246dbc3480aebba0fbf"
+    },
+    "assets/nadeko-snake-1-64P3O2YY.jpg": {
+      "bytes": 165073,
+      "sha256": "345474f4283e0bbf79dec253995bc00f83a416f8dac60b0b331da756809e0492"
+    },
+    "assets/nadeko-snake-2-3GH362E6.jpg": {
+      "bytes": 172153,
+      "sha256": "384a14c16ec12cd3f91ae42015fc90a3c170772fc3ac1b390e219b360a0c6e5e"
+    },
+    "assets/nadeko-snake-3-L67XNNLH.jpg": {
+      "bytes": 110772,
+      "sha256": "23803e5bd8d4779c876b51c1845e7b0da50d6f115ee17165c247699f6d0263d1"
+    },
+    "assets/nadeko-snake-OCZKL7P5.jpg": {
+      "bytes": 21426,
+      "sha256": "ee573edd9945566a032eaa982a4b4b9f3a180ea63c38927931c6fd6ba4f18d25"
+    },
+    "assets/neko-kuro-1-GEQMZIIZ.jpg": {
+      "bytes": 337961,
+      "sha256": "34eef5cc376a64a283293ade2c238c1fa49cb1360b47d3b54104f00ccfe6203c"
+    },
+    "assets/neko-kuro-2-XZ4MPJ26.jpg": {
+      "bytes": 330437,
+      "sha256": "af75a0bbf7a5df9ca1c2adf8ddf954c0e031c8a58c139835ab493907534bcb06"
+    },
+    "assets/neko-kuro-3-WRDOCCG4.jpg": {
+      "bytes": 326427,
+      "sha256": "cc235a14a3e631b4bb2a6195df7c20dd56405073222ce9ee8c59ea29dc467825"
+    },
+    "assets/neko-kuro-KGZGEJAI.jpg": {
+      "bytes": 86222,
+      "sha256": "a60aec39acf54055face2ebced8dba550ef1f61234a11b489a44214f584981c4"
+    },
+    "assets/numachi-CPXTW6NW.jpg": {
+      "bytes": 31532,
+      "sha256": "1dfad7dfdafab8c9cfdb522acd0855ea5396c10766cac45520a8d6290d6cf84f"
+    },
+    "assets/numachi-ZFGSZQGH.png": {
+      "bytes": 1314621,
+      "sha256": "e992f3a5f4d63fc749176502e852652084cf85fe6e26a0c970dba70126fc677c"
+    },
+    "assets/oms-01-01-3ZZO4EXG.webp": {
+      "bytes": 38220,
+      "sha256": "ca9da0524d3224c228fd7afd3fc563c31bf024074c27b2fdf953714e74334050"
+    },
+    "assets/oms-01-02-GDJCXZU4.webp": {
+      "bytes": 54530,
+      "sha256": "9ed0d716744fb7e1e76c4d9c8587753221cefb16532ac39ba42de6c50d94ea3b"
+    },
+    "assets/oms-01-03-WHMHQSFH.webp": {
+      "bytes": 63596,
+      "sha256": "0ea0a286c4dab8164c8a23de3a3337c0e7d06796703430d62814fbd1e73b54a1"
+    },
+    "assets/oms-01-04-AQ2BPZ4X.webp": {
+      "bytes": 39976,
+      "sha256": "bc4d3617a2848c3c9e0faa61ef8bbf3daeb5413fae36d93cb059cd188938572a"
+    },
+    "assets/oms-02-02-LQZYU5D3.webp": {
+      "bytes": 25194,
+      "sha256": "e11c4ae687b11c00e13ffbbfaf9d4c47b9a50782ffd0d1d9880e7fa4300f4ee9"
+    },
+    "assets/oms-02-03-JDQ74GUF.webp": {
+      "bytes": 36976,
+      "sha256": "d686bb646155aee36654e7ae6b32f6133840d7714883288c6773d9a362be4b3a"
+    },
+    "assets/oms-03-01-X5CHN62N.webp": {
+      "bytes": 25132,
+      "sha256": "19afefd3ad41c4464597650a3e77b777c7fe90313b5cab4f9d6041181e57de31"
+    },
+    "assets/oms-07-01-GPMHNA7H.webp": {
+      "bytes": 17478,
+      "sha256": "9bdf94892d0051ec30a57d693a4e10a1bea169a5a4769d0f5c8c78834f448f26"
+    },
+    "assets/oms-07-02-DFKF5FXA.webp": {
+      "bytes": 59690,
+      "sha256": "9a0418b770083d2dc888b5c0c4914956d8ba7ec9689765add8a3e5260b1c6df7"
+    },
+    "assets/oms-08-03-HLP4BMFF.webp": {
+      "bytes": 39030,
+      "sha256": "014d08517f9fed1bf1280747bb05780c6da0248d628fd7b12a315442acfe557b"
+    },
+    "assets/oms-09-01-KYI33RPU.webp": {
+      "bytes": 19490,
+      "sha256": "71532a5e8132f2067ce6b8c663c4585697c938ac8efb58a0952b4834df418924"
+    },
+    "assets/oms-10-02-5BPJ4BGB.webp": {
+      "bytes": 29502,
+      "sha256": "503dc0440b9232573aa8040af8c86ab960e5b5389b8afa8b53a20d50c471e0f6"
+    },
+    "assets/oms-10-03-CVBO45UH.webp": {
+      "bytes": 38196,
+      "sha256": "6e9e5cfa69271bac22341ab325a732955472d40c69a6583113e5c55e2f7a0f5e"
+    },
+    "assets/oms-11-02-N6MOENLR.webp": {
+      "bytes": 47068,
+      "sha256": "09e289c2cd0d47cd6d4668f12b0974175e5baeb9bfe8a9ba47cdf1cde1a8a2ba"
+    },
+    "assets/oms-ex-01-MB4NXWSC.webp": {
+      "bytes": 43424,
+      "sha256": "eae0c2255d1180c4f120cd9a58cbf914f14b41b61f5f64ef31bb3b7f670b60b5"
+    },
+    "assets/oswald-500-EF22ALZG.woff": {
+      "bytes": 26500,
+      "sha256": "1994cf3e5fc24ae230ddea399a9bba52315f733a499283fcd21da0e2136c6004"
+    },
+    "assets/oswald-700-377RCTBP.woff": {
+      "bytes": 26296,
+      "sha256": "4c121fc96c8fdc9bc680ed7af191867689ab94a376ccc32cf01625e8c875d136"
+    },
+    "assets/ougi-BMMFUKSY.png": {
+      "bytes": 83028,
+      "sha256": "011a959f968ec9ff40539af8447baf3b205b20705e147f9149f70278684cb595"
+    },
+    "assets/ougi-OWJ3QQVN.jpg": {
+      "bytes": 31094,
+      "sha256": "fbde550d397dd697fcd31193963112007c989d487e9eac7119c1dc09b672843a"
+    },
+    "assets/ougi-dark-1-ROFVOARY.jpg": {
+      "bytes": 26305,
+      "sha256": "a242ec7e6cd58c5d81e71b31e384f2739ab24888cfc1ca22e16310c7616e079f"
+    },
+    "assets/ougi-dark-2-42O7HACL.jpg": {
+      "bytes": 9096,
+      "sha256": "8a34ab22da4f849fcfc213a6bbaa5c11b557038c9d001db104964050c2580c67"
+    },
+    "assets/ougi-dark-3-G2JIN7Q5.jpg": {
+      "bytes": 12994,
+      "sha256": "3f9ac6c8012cfa7e94f14485d92bf5ce5fd315d4562f89dfa7467b832b9d61d7"
+    },
+    "assets/ougi-dark-MJUPICMS.jpg": {
+      "bytes": 30268,
+      "sha256": "17e3d61b66a3d33d9f149cf1b639c52c8baf1dcb884d3bc57b7741ccdf254349"
+    },
+    "assets/ougi-formula-1-P6TBFCZU.jpg": {
+      "bytes": 130539,
+      "sha256": "8aff37806ff46187822f0b1981cb693a65454f673f01cb96de21393c78ead80a"
+    },
+    "assets/ougi-formula-2-T2EHOHAZ.jpg": {
+      "bytes": 151098,
+      "sha256": "13886df7541fe205eabf6ca61bf9c2277b0b72ca1657f86053b1f7fba68f7552"
+    },
+    "assets/ougi-formula-3-QOTZXKMB.jpg": {
+      "bytes": 76980,
+      "sha256": "a495741f0a4034ba924fbb6d4b11abb91a50c3aaac0ef42edba2fadd4f533a2c"
+    },
+    "assets/ougi-formula-4DX6JDJ6.jpg": {
+      "bytes": 29410,
+      "sha256": "29fe5ce684c15726aa5b5643eacadf531ca17f6b474173ac26293b117fd15b92"
+    },
+    "assets/plex-400-6JHEUXSI.woff": {
+      "bytes": 27012,
+      "sha256": "0a76d74551b13ebd42f9982375f6210afe074bbee5f8ea0811868767c7557d6e"
+    },
+    "assets/plex-600-42GESMVE.woff": {
+      "bytes": 28800,
+      "sha256": "f1112cc2eb923956e969a9f0c5b1aec8301ded839ad8d8bba72b63d3330edd33"
+    },
+    "assets/rooftop-W7LIC4ZW.jpg": {
+      "bytes": 118875,
+      "sha256": "d7a38115cd501af9775eb238e92737c7edb63b0a9dc84e059311f6871c95e9cc"
+    },
+    "assets/seiu-FNOU5BBL.png": {
+      "bytes": 1166996,
+      "sha256": "016dcb827b9ecce2ec07bfbe438e3af82a21b22d1a5f351eb18dc03d914f70bd"
+    },
+    "assets/seiu-JQTROONG.jpg": {
+      "bytes": 23517,
+      "sha256": "d9df7b8f4a3b64ccff2ee34284fdbd32d02de6cfa6c6d76e83b71904a1df4484"
+    },
+    "assets/shinobu-J2DXNEEP.png": {
+      "bytes": 72365,
+      "sha256": "50b28122116fb24ae7b2dc91b8995a5149d837efa8101e40cb2c55b71ad21ced"
+    },
+    "assets/shinobu-ZU2IEAYJ.jpg": {
+      "bytes": 37220,
+      "sha256": "25b84650cca57c47329c864e486ecf69116eee779a4a84bd133798d78533c71d"
+    },
+    "assets/shinobu-mail-1-ROIPBXKT.jpg": {
+      "bytes": 52445,
+      "sha256": "4c6ce7005781e6db41c2a70974b4d7887fcc90ea2efc3b7b67eed3476395b2ce"
+    },
+    "assets/shinobu-mail-2-LM6LE22D.jpg": {
+      "bytes": 56044,
+      "sha256": "f1b26dec711b3a946326eead0ee95a75227c5b9c143c670ae957cf4e3920fb74"
+    },
+    "assets/shinobu-mail-3-SNOTVUGX.jpg": {
+      "bytes": 51880,
+      "sha256": "872807403a827bf9aca888a9fe942badee25878c7e83fbe72c826ca995499836"
+    },
+    "assets/shinobu-mail-HIKGOS2T.jpg": {
+      "bytes": 52851,
+      "sha256": "2f97308bdbb285e0401c88999f55e055a1201c703617e20a20d2886ca7ba33b5"
+    },
+    "assets/shinobu-time-1-J2HMHJRH.jpg": {
+      "bytes": 343171,
+      "sha256": "d7ce584633dfc16431bd14c2932d1a4ff1332f0f8927fbd1ed08e7a22f002931"
+    },
+    "assets/shinobu-time-2-KAOJ4XWG.jpg": {
+      "bytes": 404922,
+      "sha256": "d8a4ab67fc4f32f709d29fb385353a5fe5f5fc2b4c1f980a771de356b9214bb0"
+    },
+    "assets/shinobu-time-3-OZFM7J7V.jpg": {
+      "bytes": 265908,
+      "sha256": "b7706a7b7ea2ef340168e10af9de069115ece47bc39e356d0192c67240e4610b"
+    },
+    "assets/shinobu-time-MRVCF5OL.jpg": {
+      "bytes": 32212,
+      "sha256": "9d2fbdb4ec8f5883d2ffe28acd7cf9d75478eab109f2ce4f0643dc235ad46f2c"
+    },
+    "assets/shrine-LUBIC44J.jpg": {
+      "bytes": 253377,
+      "sha256": "5121f86303ab617b3862985fac3df3ebf429557aea33b0991373146ad4af018d"
+    },
+    "assets/sodachi-ZDC2N6MP.jpg": {
+      "bytes": 34433,
+      "sha256": "2fcc57ad0c0c00fbf41c7a1cc77ede727f834bd1bd6f452415d7a73694499fc9"
+    },
+    "assets/sodachi-lost-1-AQAYAJUN.jpg": {
+      "bytes": 44890,
+      "sha256": "02af0118d546d3e8e22a872a6de31ae4adde9d5b40e5b2afd8aa1d181fe2a3e0"
+    },
+    "assets/sodachi-lost-2-LGMD2SCP.jpg": {
+      "bytes": 58684,
+      "sha256": "8e589d3d6f16702e21cc5ed99320845f0220d959d7826fbeeed8947fcabdad39"
+    },
+    "assets/sodachi-lost-3-AV7DXI5X.jpg": {
+      "bytes": 67692,
+      "sha256": "1f1fe1aa4f7dd3cbe94c1caaaa14b921992d9d9406a2268780b2d99fa5fc429b"
+    },
+    "assets/sodachi-lost-6XWQLT33.jpg": {
+      "bytes": 45690,
+      "sha256": "6e421b37f5a1593ea78066184f8256fa884d3abbafe04fff773c214dbcbf2a09"
+    },
+    "assets/sodachi-riddle-1-RSPREQBZ.jpg": {
+      "bytes": 85120,
+      "sha256": "e37656bc7753db7175a63ad0142343faf1558b03f57cff24d1dbc240daf116bd"
+    },
+    "assets/sodachi-riddle-2-GM64CG3R.jpg": {
+      "bytes": 92801,
+      "sha256": "454f74bccbfd5d9192484701f3608cd8c8f41a1aae7ac30185da0e6378c9ac4e"
+    },
+    "assets/sodachi-riddle-3-45EJL6IC.jpg": {
+      "bytes": 75237,
+      "sha256": "9ce76a422d455a3a5d4274856771a00d666bc364ebe0a4271651da241a453c1d"
+    },
+    "assets/sodachi-riddle-EAAKVHFF.jpg": {
+      "bytes": 39025,
+      "sha256": "44f9fe945d212a4672d13ccdaa7e488ca17a6c391af5ed4f885ceeed6b04b287"
+    },
+    "assets/sodachi-v2-7JZ3G53R.png": {
+      "bytes": 1248790,
+      "sha256": "75b48660c947d3edd123cdf7a6ab50ed10ca7c7b393d526d183760212e4e2c54"
+    },
+    "assets/stapler-KMBYWIV7.jpg": {
+      "bytes": 176022,
+      "sha256": "465d81205a3becc045b2d2fe4d48f542224d90fb836eae17e08a79b2bac53cbb"
+    },
+    "assets/suruga-4LNH3RL5.png": {
+      "bytes": 50940,
+      "sha256": "b5346d9aaf34a4d64d50bd3bc708b6041e13a61c7730e76daaca938f40f7f123"
+    },
+    "assets/suruga-KHN6SD6M.jpg": {
+      "bytes": 33690,
+      "sha256": "a1f86c39208705bff02d2d8aaae3ebdfa4488ab3d71d1440b5a675ad8367842d"
+    },
+    "assets/suruga-devil-1-NVXK3GUM.jpg": {
+      "bytes": 336163,
+      "sha256": "642a2e929beb4577b05f382184536268db096236b202bbcd51f6d50bca686028"
+    },
+    "assets/suruga-devil-2-DDJSLVW7.jpg": {
+      "bytes": 71854,
+      "sha256": "723edcc2c5b3a652971f52336568df8f57ecec8368b46951102ca3dc4d18f60b"
+    },
+    "assets/suruga-devil-3-LC3NGJYV.jpg": {
+      "bytes": 531527,
+      "sha256": "56c0e13d2020606d6f5800d10111d7524bef5c40f79ced2328791ed2c79bd335"
+    },
+    "assets/suruga-devil-3XZPUTET.jpg": {
+      "bytes": 41557,
+      "sha256": "4c6f4aee4905a9efbe98ff0ff9033374d17222d4c65c744ade3530b426a77b2f"
+    },
+    "assets/suruga-monkey-1-UGVWYKWK.jpg": {
+      "bytes": 161313,
+      "sha256": "333cc612bec31c0944fc97d9ec0b15f68f1a800e99fdf402a84c9c19f4192c6b"
+    },
+    "assets/suruga-monkey-2-ISR6EDL4.jpg": {
+      "bytes": 232069,
+      "sha256": "d0f79bfd8cd84a2accd6e65e2430f9aa3fb60a61c450fb7bbe19bdc76f8bf633"
+    },
+    "assets/suruga-monkey-3-HW7LR2VE.jpg": {
+      "bytes": 125398,
+      "sha256": "bdd201d01f7145ece11d004a908c5176f76405022f14afbeaa2d571c23623263"
+    },
+    "assets/suruga-monkey-44SXWVKW.jpg": {
+      "bytes": 31623,
+      "sha256": "c0a9c69ca6025b6e131800ec3ebacf2cb2bf3774fd2551f0bdc5f1ade70e38eb"
+    },
+    "assets/tadatsuru-HPHV25CN.png": {
+      "bytes": 1445351,
+      "sha256": "3eba4c109db23061946bbe0a6dfa032866921e5b208cd1a71c111b1239a4b86c"
+    },
+    "assets/tadatsuru-UF7K2IA3.jpg": {
+      "bytes": 30890,
+      "sha256": "45bcdcce3d0c1efa1af8872b8a7d036cf6c0b5c9fd63bf06090db4e59ee5c8fb"
+    },
+    "assets/tropicalesque-I4BLDGSY.png": {
+      "bytes": 106132,
+      "sha256": "f51ebbb31b7c87c04e4809ab9116fc091758e1286fb012bcbbe783758e93bb73"
+    },
+    "assets/tsubasa-KFC7D7KF.png": {
+      "bytes": 84085,
+      "sha256": "e46628d1a45ec3c4e153c4f75e209814fd1b467130b9612459519cdbdd9e443a"
+    },
+    "assets/tsubasa-LPMD7EFL.gif": {
+      "bytes": 108855,
+      "sha256": "aa61f48cc332cc95a8b2ff7876d710b82525b7f896b207277ea42eda9a0767bd"
+    },
+    "assets/tsubasa-cat-1-UX2EGS3W.jpg": {
+      "bytes": 116772,
+      "sha256": "f214596de7eade2bd4f1cd9005df6ba5b885b7c70a600c4a9ff894a315523a3d"
+    },
+    "assets/tsubasa-cat-2-Q7HGOWGH.jpg": {
+      "bytes": 160365,
+      "sha256": "3ed3d7a679e8c5fbff5cd59a5cbf0b275772fc85e7289bb4816a6bd1bea097bb"
+    },
+    "assets/tsubasa-cat-3-S3NZF2V6.jpg": {
+      "bytes": 261857,
+      "sha256": "080c17c0ed10d344a9d6ef918f0583bd3eefd21f14d2499e8f0ed3c612f34051"
+    },
+    "assets/tsubasa-cat-KQR7JNMG.jpg": {
+      "bytes": 51007,
+      "sha256": "cc4297e0c909c32f45c1cb84fb7649b40d90f9d6a092cccc40bc2c23d53e8b01"
+    },
+    "assets/tsubasa-tiger-1-ZVJLQPDV.jpg": {
+      "bytes": 85546,
+      "sha256": "bc188a45cba883354bc4591ecee02e568bc6a63b7bf45a644f643270490b32d8"
+    },
+    "assets/tsubasa-tiger-2-2P3JH7Z3.jpg": {
+      "bytes": 281692,
+      "sha256": "bd25c9b8788cd57fe5adbe6f39f0e40ff20b576d54c169353bec2c8238ffdb99"
+    },
+    "assets/tsubasa-tiger-3-W6CFPBCV.jpg": {
+      "bytes": 382865,
+      "sha256": "cffe8d2fd17694364fdc25721ceab6f35783fd706579c31f979cebb2f3fab0e2"
+    },
+    "assets/tsubasa-tiger-UN3VDZLU.jpg": {
+      "bytes": 37640,
+      "sha256": "09074a8c6aed2394b39dbbec932273d4ccce3a56057961ec129bf49defcbe0f1"
+    },
+    "assets/tsukihi-2UJMEILJ.png": {
+      "bytes": 99334,
+      "sha256": "ce36e4fd507921a0493514f3d745e4a7fa38ed99f3896ad6e080ed3ea568b13f"
+    },
+    "assets/tsukihi-GZ5OBSNL.gif": {
+      "bytes": 109641,
+      "sha256": "1622bafbc077dfb86fccb23d423e042a99fc0338fa57a5055bd28feca8d89a1a"
+    },
+    "assets/tsukihi-phoenix-1-PKM3WMWE.jpg": {
+      "bytes": 122724,
+      "sha256": "a4404a305bcbf4d6ccbbbcfa20e67b1a3404ead878dd656efebbc67ae8fe1668"
+    },
+    "assets/tsukihi-phoenix-2-JJTKKK22.jpg": {
+      "bytes": 108681,
+      "sha256": "2d82e06993bc32cfdf607ff76ae6622478961de875fff596339fbd5f8e7be054"
+    },
+    "assets/tsukihi-phoenix-3-DPE6WFIK.jpg": {
+      "bytes": 120449,
+      "sha256": "e2304c61ee2a249cd517254c39ca22f0e8a2b7d38341d053ee9b03161904694c"
+    },
+    "assets/tsukihi-phoenix-EJP5OTBY.jpg": {
+      "bytes": 40050,
+      "sha256": "dbafb502e8b5198855aaef0fb7c4af7202839ab659f746dfe573599b63ca30f2"
+    },
+    "assets/wires-WPGNJC6Y.jpg": {
+      "bytes": 187367,
+      "sha256": "b14f42009cb15d8d6af6fad4105083ae688256fe11189be08ba458ac348d14d4"
+    },
+    "assets/yotsugi-OWE6QA5Q.jpg": {
+      "bytes": 32657,
+      "sha256": "8512c234f7161d9a09044b7b732796e482811851e067cf84c985107c3bd7dea6"
+    },
+    "assets/yotsugi-XI66ZPH5.png": {
+      "bytes": 123499,
+      "sha256": "f8f9d108cce0ddf3bbf3cf3f56582f0dce5b0a19b192d609451fe2a1df02a7d6"
+    },
+    "assets/yotsugi-doll-1-NM26OMCH.jpg": {
+      "bytes": 52391,
+      "sha256": "0c14e7b552fefcaedcdd610bf7894f18d57689003a3136dd6585e4d70e67a1de"
+    },
+    "assets/yotsugi-doll-2-PF6P7IGO.jpg": {
+      "bytes": 44498,
+      "sha256": "02f295a2209f9a21a0b440014ea59f5c587e99012fe136236ed2ab4badaf25b3"
+    },
+    "assets/yotsugi-doll-3-WONAMRCU.jpg": {
+      "bytes": 61728,
+      "sha256": "11a9463cfc0be16534003510bbba07004773cfb4c0f24d90b5bf9200da50f703"
+    },
+    "assets/yotsugi-doll-K72UUMJC.jpg": {
+      "bytes": 30517,
+      "sha256": "9824740b754647a6cd99ec6b7044427fea130221a87ddde284fb81b8136eb067"
+    },
+    "assets/yozuru-CXOLABOH.gif": {
+      "bytes": 102299,
+      "sha256": "ce5bac209aa4277843957f7e5faf02ee7ca7aabdaab83f1e951596198554cca5"
+    },
+    "assets/yozuru-OUIFKSXW.png": {
+      "bytes": 1284854,
+      "sha256": "eeeb386de6773a5ec32be1ba38e9dd897b8d7eefb8453a4c2e58bff917d1a2f8"
+    },
+    "en.html": {
+      "bytes": 20600,
+      "sha256": "28bc7e31ecd099a7829e81305ac762317090f865e677595b883aed4852e2cb81"
+    },
+    "index.html": {
+      "bytes": 21264,
+      "sha256": "03a602da56d808eee05fff4f71ba0a5d86d25f396d1e71fdf386054967bb18c4"
+    },
+    "ja.html": {
+      "bytes": 20933,
+      "sha256": "fce54a0adc3990ab5922e590c4f70d59f0a749fcb88dd001df8e39a2458d856f"
+    },
+    "main-en.css": {
+      "bytes": 167085,
+      "sha256": "591457d251326f5ae4e7eef3fb3a4954ae70c8abfc607f1629d1d1fa80069da7"
+    },
+    "main-en.js": {
+      "bytes": 587183,
+      "sha256": "5eae058f0c07c3d936a52898ff25e0b8e76435b14d3207334fe52fddc279f64b"
+    },
+    "main-ja.css": {
+      "bytes": 167085,
+      "sha256": "591457d251326f5ae4e7eef3fb3a4954ae70c8abfc607f1629d1d1fa80069da7"
+    },
+    "main-ja.js": {
+      "bytes": 691531,
+      "sha256": "6021c0fd0fe6ffbea226a069d462fba569eda57b88c7b86e3a3440330e451d07"
+    },
+    "main.css": {
+      "bytes": 167085,
+      "sha256": "591457d251326f5ae4e7eef3fb3a4954ae70c8abfc607f1629d1d1fa80069da7"
+    },
+    "main.js": {
+      "bytes": 889978,
+      "sha256": "94b48673e4463a181ef72447061d1d3a40eac99dd781c9ae70132000d0d652d8"
+    }
+  }
+}
