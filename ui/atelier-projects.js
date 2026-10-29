@@ -9,10 +9,15 @@
   const duration = 420;
   let expanded = projects.open;
   let unfolding;
+  const chapterHashes = new Set(['#anime', '#artists', '#web', '#apps', '#agents', '#integration']);
+  let pendingChapterHash = chapterHashes.has(location.hash);
+  let hiddenForCatalogue;
+  let book;
 
   // Measure the actual paper even while native details is closed. The temporary
   // measurement is hidden and synchronous, so no paper or toggle is painted.
   const matchHeight = () => {
+    if (projects.hidden) return;
     const wasOpen = projects.open;
     if (!wasOpen) {
       projects.dataset.measuring = 'true';
@@ -31,6 +36,7 @@
   };
 
   const setExpanded = (next, returnFocus = false) => {
+    if (next && projects.hidden) return;
     expanded = next;
     summary.setAttribute('aria-expanded', String(next));
     // Keep the sheet mounted until its reverse animation finishes, but remove
@@ -68,11 +74,65 @@
     unfolding.play();
   };
 
+  const syncCatalogueVisibility = () => {
+    const renderedScroll = Number(book?.dataset.position || 0) * innerHeight;
+    if (scrollY > 24 || renderedScroll > 24) pendingChapterHash = false;
+    const hidden = pendingChapterHash || scrollY > 24 || renderedScroll > 24;
+    if (hidden === hiddenForCatalogue) return;
+    hiddenForCatalogue = hidden;
+    if (hidden) {
+      // Leave no active control in the disappearing widget, without moving
+      // the catalogue. Letter remains the existing reachable page control.
+      if (projects.contains(document.activeElement)) {
+        const fallback = document.querySelector('.letter-trigger');
+        if (fallback) fallback.focus({preventScroll: true});
+        else document.activeElement.blur();
+      }
+      expanded = false;
+      unfolding?.cancel();
+      unfolding = undefined;
+      summary.setAttribute('aria-expanded', 'false');
+      sheet.inert = true;
+      sheet.setAttribute('aria-hidden', 'true');
+      settle();
+    }
+    projects.inert = hidden;
+    projects.setAttribute('aria-hidden', String(hidden));
+    projects.hidden = hidden;
+    if (!hidden) matchHeight();
+  };
+
+  const observeBook = () => {
+    book = document.querySelector('.scroll-book');
+    if (!book) return false;
+    new MutationObserver(syncCatalogueVisibility).observe(book, {
+      attributes: true, attributeFilter: ['data-position']
+    });
+    syncCatalogueVisibility();
+    return true;
+  };
+
   summary.setAttribute('aria-expanded', String(expanded));
   sheet.inert = !expanded;
   sheet.setAttribute('aria-hidden', String(!expanded));
   matchHeight();
   settle();
+  syncCatalogueVisibility();
+  if (!observeBook()) {
+    const root = document.getElementById('root');
+    if (root) {
+      const mountObserver = new MutationObserver(() => {
+        if (observeBook()) mountObserver.disconnect();
+      });
+      mountObserver.observe(root, {childList: true, subtree: true});
+    }
+  }
+  window.addEventListener('scroll', syncCatalogueVisibility, {passive: true});
+  window.addEventListener('pageshow', syncCatalogueVisibility);
+  window.addEventListener('hashchange', () => {
+    pendingChapterHash = chapterHashes.has(location.hash);
+    syncCatalogueVisibility();
+  });
 
   summary.addEventListener('click', event => {
     event.preventDefault();

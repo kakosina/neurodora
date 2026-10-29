@@ -220,7 +220,7 @@ The book's inner page edges share one spine profile and consistent shading. Duri
 
 ## Current site content
 
-The original first screen retains its copy, character artwork and composition; only its two social buttons receive a new paper treatment. A separate Telegram section contains five direct function links, without explanatory paragraphs. The character article at `/articles/kak-ustroena-neirodora/` and its English counterpart contains the six original visual sections: universe ribbon, creative process, RPG profile, identity diagram, music introduction and manifesto. These blocks were relocated rather than rewritten as prose.
+The original first screen retains its copy, character artwork and composition, apart from the requested removal of its trailing heart; its three social buttons share the same paper treatment and labels as the closing section. A separate Telegram section contains five direct function links, without explanatory paragraphs. The character article at `/articles/kak-ustroena-neirodora/` and its English counterpart contains the six original visual sections: universe ribbon, creative process, RPG profile, identity diagram, music introduction and manifesto. These blocks were relocated rather than rewritten as prose.
 
 The music section shows only the five Neurodora songs. `music/tracks.json` records their checked YouTube links, thumbnails and durations. Reinterpretations, Shorts and unlisted entries are excluded from the site catalogue. Existing lyrics remain unchanged.
 
@@ -229,3 +229,10 @@ Interface icons use local SVG paths, including game controls and Atelier links. 
 Keep the original expressive section headings. Do not add explanatory labels, duplicate subtitles or scrolling text strips. The first screen is an explicit exception: its original text and labels are preserved at the owner's request. The imported article templates remove their old labels and ribbons and retain metadata for separately authored articles.
 
 Atelier's Projects menu keeps its green vertical bookmark and original paper cards. The bookmark extends to the full height of the revealed menu. The paper emerges smoothly to its right instead of pivoting like a door. Repeated taps reverse in place; keyboard focus, Escape, outside clicks, touch and reduced-motion preferences are supported. The implementation is in `ui/atelier-projects.js` and `.css`; the book's camera and performance geometry are unchanged.
+
+The shared social rows use the same links and order: YouTube, Telegram channel, private Neurodora chat. Russian labels are “YouTube”, “Телега”, “Личка”; English labels are “YouTube”, “Telegram”, “DM”.
+
+
+Margin drawings appear throughout Neurodora’s main sections, library, articles and lyric pages. They use native SVG paths and deterministic free-space placement, respond to nearby pointer/touch/focus, and avoid text and controls. Animation stops after settling and remains static with reduced motion. Atelier, Monogatari and the game runtime retain their own visual systems.
+
+The Atelier Projects menu now uses three compact rows: Monogatari, Neurodora and Gabriel Dropout (linking to https://kakosina.itch.io/). It hides when catalogue browsing begins, closes any expanded sheet and leaves keyboard navigation; returning to the cover restores it. The Gabriel thumbnail is a typographic/vector preview, not a screenshot of the game.
