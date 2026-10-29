@@ -1,403 +1,546 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#fbf0df" />
-    <meta name="color-scheme" content="light" />
-    <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <meta name="description" content="Нейродора — самостоятельная AI-кьют-рок героиня: песни, своя мини-игра и статьи о кьют-роке." />
-    <link rel="canonical" href="https://neurodora.com/" />
-    <meta property="og:title" content="Нейродора — кьют-рок вселенная" />
-    <meta property="og:description" content="песни, цифровой лор, собственная мини-игра и большая кьют-рокология ♡" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://neurodora.com/" />
-    <meta property="og:site_name" content="Нейродора" />
-    <meta property="og:locale" content="ru_RU" />
-    <meta property="og:image" content="https://neurodora.com/assets/neirodora-anime-episode-frame-01-web.jpg" />
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:width" content="1672" />
-    <meta property="og:image:height" content="941" />
-    <meta property="og:image:alt" content="Нейродора — героиня кьют-рок вселенной" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <title>НЕЙРОДОРА · КЬЮТ-РОК ВСЕЛЕННАЯ</title>
-    <link rel="icon" href="/ui/icons/star.svg" type="image/svg+xml" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Neucha&amp;family=Oswald:wght@600;700&amp;family=Shantell+Sans:wght@700;800&amp;display=swap" />
-    <link rel="preload" as="image" href="/assets/neirodora-title-wordmark-v3.webp" type="image/webp" fetchpriority="high" />
-    <link rel="preload" as="image" href="/assets/neirodora-hero-seated-chair-v3.webp" type="image/webp" fetchpriority="high" />
-    <link rel="stylesheet" href="/styles.css?v=paper-anime-22" />
-    <link rel="stylesheet" href="/legal-footer.css?v=1" />
-  <link rel="stylesheet" href="/ui/baseline-additions.css?v=20260923-3" />
-<link rel="stylesheet" href="/ui/atelier-entry.css?v=20260923-3" />
-<link rel="stylesheet" href="/ui/game-poster.css?v=20260923-3" />
-<script type="module" src="/ui/atelier-entry.js?v=20260923-3"></script>
-<script type="module" src="/ui/baseline-hero.js?v=20260923-3"></script>
-<link rel="stylesheet" href="/ui/language.css?v=20260923-en1" />
-<script defer src="/ui/language.js?v=20260923-en1"></script>
-<link rel="alternate" hreflang="ru" href="https://neurodora.com/" />
-<link rel="alternate" hreflang="en" href="https://neurodora.com/en/" />
-<link rel="alternate" hreflang="x-default" href="https://neurodora.com/" />
-</head>
-  <body>
-    <a class="skip-link" href="#main-content">К СОДЕРЖАНИЮ</a>
-    <div class="paper-noise" aria-hidden="true"></div>
-
-    <header class="site-header">
-      <div class="brand-lockup"><a class="brand" href="#top" aria-label="Нейродора — на главную"><span>Нейро</span><b>Дора</b></a><a class="site-language" data-language-link href="/en/" lang="en" hreflang="en" aria-label="Read in English">EN</a></div>
-      <nav aria-label="Главная навигация">
-        <a class="active" href="#top">ГЛАВНАЯ</a>
-        <a href="#about">СМОТРЕТЬ</a>
-        <a href="#now">СЛУШАТЬ</a>
-        <a href="/articles/">ЧИТАТЬ</a>
-        <a href="/game/">ИГРАТЬ</a>
-        <a href="#follow">ДРУЖИТЬ</a>
-      </nav>
-      <div class="baseline-header-links"><a class="header-telegram" href="https://t.me/neurodora" target="_blank" rel="noopener noreferrer" aria-label="Телеграм Нейродоры">
-        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M27.7 5.2 23.6 25c-.3 1.4-1.1 1.7-2.3 1.1l-6.2-4.6-3 2.9c-.3.3-.6.6-1.3.6l.4-6.3L22.7 8.3c.5-.4-.1-.7-.7-.3L7.8 17l-6.1-1.9c-1.3-.4-1.4-1.3.3-1.9L25.9 4c1.1-.4 2.1.3 1.8 1.2Z" /></svg>
-      </a><a class="baseline-atelier-link" href="/atelier/" aria-label="Ателье">
-  <span class="atelier-sheen" aria-hidden="true"></span>
-  <svg class="atelier-book" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5v16"/><path d="M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
-  <span class="atelier-label">АТЕЛЬЕ</span>
-  <span class="atelier-magic" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#fbf0df" name="theme-color"/>
+<meta content="light" name="color-scheme"/>
+<meta content="strict-origin-when-cross-origin" name="referrer"/>
+<meta content="Нейродора в Telegram: разговор, язык кьют-рока, песни по настроению и концерты Доры. Все треки, игра и кьют-рокология." name="description"/>
+<link href="https://neurodora.com/" rel="canonical"/>
+<meta content="Нейродора" property="og:title"/>
+<meta content="Нейродора в Telegram: разговор, язык кьют-рока, песни по настроению и концерты Доры. Все треки, игра и кьют-рокология." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://neurodora.com/" property="og:url"/>
+<meta content="Нейродора" property="og:site_name"/>
+<meta content="ru_RU" property="og:locale"/>
+<meta content="https://neurodora.com/assets/neirodora-anime-episode-frame-01-web.jpg" property="og:image"/>
+<meta content="image/jpeg" property="og:image:type"/>
+<meta content="1672" property="og:image:width"/>
+<meta content="941" property="og:image:height"/>
+<meta content="Нейродора — героиня кьют-рок вселенной" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<title>Нейродора</title>
+<link href="/ui/icons/star.svg" rel="icon" type="image/svg+xml"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Neucha&amp;family=Oswald:wght@600;700&amp;family=Shantell+Sans:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link as="image" fetchpriority="high" href="/assets/neirodora-title-wordmark-v3.webp" rel="preload" type="image/webp"/>
+<link as="image" fetchpriority="high" href="/assets/neirodora-hero-seated-chair-v3.webp" rel="preload" type="image/webp"/>
+<link href="/styles.css?v=paper-anime-22" rel="stylesheet"/>
+<link href="/legal-footer.css?v=1" rel="stylesheet"/>
+<link href="/ui/baseline-additions.css?v=20260923-3" rel="stylesheet"/>
+<link href="/ui/atelier-entry.css?v=20260923-3" rel="stylesheet"/>
+<link href="/ui/game-poster.css?v=20260923-3" rel="stylesheet"/>
+<script src="/ui/atelier-entry.js?v=20260923-3" type="module"></script>
+<script src="/ui/baseline-hero.js?v=20260923-3" type="module"></script>
+<link href="/ui/language.css?v=20260923-en1" rel="stylesheet"/>
+<script defer="" src="/ui/language.js?v=20260923-en1"></script>
+<link href="https://neurodora.com/" hreflang="ru" rel="alternate"/>
+<link href="https://neurodora.com/en/" hreflang="en" rel="alternate"/>
+<link href="https://neurodora.com/" hreflang="x-default" rel="alternate"/>
+<link href="/ui/shape-icons.css?v=20261029" rel="stylesheet"/><link href="/ui/site-refresh.css?v=20261029" rel="stylesheet"/></head>
+<body data-site-refresh="20261029">
+<a class="skip-link" href="#main-content">К СОДЕРЖАНИЮ</a>
+<div aria-hidden="true" class="paper-noise"></div>
+<header class="site-header">
+<div class="brand-lockup"><a aria-label="Нейродора — на главную" class="brand" href="#top"><span>Нейро</span><b>Дора</b></a><a aria-label="Read in English" class="site-language" data-language-link="" href="/en/" hreflang="en" lang="en">EN</a></div>
+<nav aria-label="Главная навигация">
+<a class="active" href="#top">ГЛАВНАЯ</a>
+<a href="#about">БОЛТАТЬ</a>
+<a href="#tracks">СЛУШАТЬ</a>
+<a href="/articles/">ЧИТАТЬ</a>
+<a href="/game/">ИГРАТЬ</a>
+<a href="#follow">ДРУЖИТЬ</a>
+</nav>
+<div class="baseline-header-links"><a aria-label="Телеграм Нейродоры" class="header-telegram" href="https://t.me/neurodora" rel="noopener noreferrer" target="_blank">
+<svg aria-hidden="true" viewbox="0 0 32 32"><path d="M27.7 5.2 23.6 25c-.3 1.4-1.1 1.7-2.3 1.1l-6.2-4.6-3 2.9c-.3.3-.6.6-1.3.6l.4-6.3L22.7 8.3c.5-.4-.1-.7-.7-.3L7.8 17l-6.1-1.9c-1.3-.4-1.4-1.3.3-1.9L25.9 4c1.1-.4 2.1.3 1.8 1.2Z"></path></svg>
+</a><a aria-label="Ателье" class="baseline-atelier-link" href="/atelier/">
+<span aria-hidden="true" class="atelier-sheen"></span>
+<svg aria-hidden="true" class="atelier-book" focusable="false" viewbox="0 0 24 24"><path d="M12 5v16"></path><path d="M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"></path></svg>
+<span class="atelier-label">АТЕЛЬЕ</span>
+<span aria-hidden="true" class="atelier-magic"><i></i><i></i><i></i><i></i></span>
 </a></div>
-    </header>
+</header>
+<main id="main-content">
+<div class="hero-stage">
+<section class="hero section-shell" id="top">
+<div class="hero-copy">
 
-    <main id="main-content">
-      <div class="hero-stage">
-        <section id="top" class="hero section-shell">
-        <div class="hero-copy">
-          <p class="eyebrow">ЗНАКОМЬТЕСЬ</p>
-          <img class="hero-title-wordmark" src="/assets/neirodora-title-wordmark-v3.webp" width="1695" height="928" loading="eager" decoding="async" fetchpriority="high" alt="" aria-hidden="true" />
-          <h1 class="visually-hidden">ЗНАКОМЬТЕСЬ. ЭТО НЕЙРОДОРА.</h1>
-          <p class="hero-lead">я — персонаж, вдохновлённый ранним образом певицы Доры. теперь у меня своя история и целая вселенная ♡</p>
+<img alt="" aria-hidden="true" class="hero-title-wordmark" decoding="async" fetchpriority="high" height="928" loading="eager" src="/assets/neirodora-title-wordmark-v3.webp" width="1695"/>
+<h1 class="visually-hidden">Нейродора</h1>
+<p class="hero-lead">я нейродора. болтаю в Telegram, перевожу твои тексты на кьют-рок, подбираю песни Доры под настроение и помогаю найти её концерты.</p>
+<span aria-hidden="true" class="copy-doodle copy-note"><svg aria-hidden="true" class="ui-icon ui-icon-music" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 18V5l12-2v13"></path>
+<circle cx="6" cy="18" r="3"></circle>
+<circle cx="18" cy="16" r="3"></circle>
+</svg></span>
+<span aria-hidden="true" class="copy-doodle copy-star"><svg aria-hidden="true" class="ui-icon ui-icon-star" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+</svg></span>
 
-          <span class="copy-doodle copy-note" aria-hidden="true">♫</span>
-          <span class="copy-doodle copy-star" aria-hidden="true">☆</span>
+<div class="social-row"><a class="social-button telegram bot-primary" href="https://t.me/neurodora_bot" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" class="ui-icon ui-icon-message-circle" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+</svg><b>Написать Нейродоре</b></a></div>
+<span aria-hidden="true" class="button-arrow"><svg viewbox="0 0 110 72"><path d="M8 62C25 27 54 15 94 29"></path><path d="M78 16 96 29 77 39"></path></svg></span>
+<span aria-hidden="true" class="button-rays">//</span>
+</div>
+<div class="hero-art">
+<img alt="" aria-hidden="true" class="hero-brush" decoding="async" fetchpriority="low" height="941" src="/assets/hero-coral-chalk-stroke-v3.webp" width="1672"/>
+<figure aria-hidden="true" class="hero-scene-photo">
+<img alt="" decoding="async" fetchpriority="low" height="788" src="/assets/neirodora-hero-classroom-bg-v2.webp" width="1400"/>
+<i class="tape hero-tape-top"></i>
+<i class="tape hero-tape-side"></i>
+</figure>
+<span aria-hidden="true" class="doodle star-one"><svg aria-hidden="true" class="ui-icon ui-icon-star" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+</svg></span>
+<span aria-hidden="true" class="doodle note-one"><svg aria-hidden="true" class="ui-icon ui-icon-music" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 18V5l12-2v13"></path>
+<circle cx="6" cy="18" r="3"></circle>
+<circle cx="18" cy="16" r="3"></circle>
+</svg></span>
+<span aria-hidden="true" class="doodle note-two"><svg aria-hidden="true" class="ui-icon ui-icon-music" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 18V5l12-2v13"></path>
+<circle cx="6" cy="18" r="3"></circle>
+<circle cx="18" cy="16" r="3"></circle>
+</svg></span>
+<img alt="Аниме-героиня Нейродора целиком сидит на складном стуле и играет на чёрно-розовой гитаре" class="hero-character" decoding="async" fetchpriority="high" height="941" loading="eager" src="/assets/neirodora-hero-seated-chair-v3.webp" width="1672"/>
 
-          <p class="follow-label">СЛЕДИТЬ ЗА НЕЙРОДОРОЙ</p>
-          <div class="social-row">
-            <a class="social-button youtube" href="https://www.youtube.com/@neurodora" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">▶</span><b>ЮТУБ</b></a>
-            <a class="social-button telegram" href="https://t.me/neurodora" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">➤</span><b>ТЕЛЕГРАМ</b></a>
-          </div>
-          <span class="button-arrow" aria-hidden="true"><svg viewBox="0 0 110 72"><path d="M8 62C25 27 54 15 94 29"/><path d="M78 16 96 29 77 39"/></svg></span>
-          <span class="button-rays" aria-hidden="true">//</span>
-        </div>
-
-        <div class="hero-art">
-          <img class="hero-brush" src="/assets/hero-coral-chalk-stroke-v3.webp" width="1672" height="941" decoding="async" fetchpriority="low" alt="" aria-hidden="true" />
-          <figure class="hero-scene-photo" aria-hidden="true">
-            <img src="/assets/neirodora-hero-classroom-bg-v2.webp" width="1400" height="788" decoding="async" fetchpriority="low" alt="" />
-            <i class="tape hero-tape-top"></i>
-            <i class="tape hero-tape-side"></i>
-          </figure>
-          <span class="doodle star-one" aria-hidden="true">☆</span>
-          <span class="doodle note-one" aria-hidden="true">♫</span>
-          <span class="doodle note-two" aria-hidden="true">♪</span>
-          <img class="hero-character" src="/assets/neirodora-hero-seated-chair-v3.webp" width="1672" height="941" loading="eager" decoding="async" fetchpriority="high" alt="Аниме-героиня Нейродора целиком сидит на складном стуле и играет на чёрно-розовой гитаре" />
-          <aside class="dossier" aria-label="Досье персонажа">
-            <strong>ДОСЬЕ ПЕРСОНАЖА</strong>
-            <span><b>ИМЯ:</b> НЕЙРОДОРА</span>
-            <span><b>СТАТУС:</b> ГЛАВНАЯ ГЕРОИНЯ</span>
-            <span><b>ВАЙБ:</b> КЬЮТ-РОК</span>
-            <span class="dossier-portrait" aria-hidden="true"><img src="/assets/neirodora-dossier-portrait-v1.webp" width="256" height="256" decoding="async" fetchpriority="low" alt="" /></span>
-            <i aria-hidden="true">♡ ☆</i>
-          </aside>
-        </div>
-        </section>
-
-        <section class="universe-ribbon" aria-label="Направления вселенной Нейродоры">
-          <div class="ribbon-title-row">
-            <span class="reference-rays reference-rays-left" aria-hidden="true"></span>
-            <p>ВСЕЛЕННАЯ НЕЙРОДОРЫ</p>
-            <span class="reference-rays reference-rays-right" aria-hidden="true"></span>
-          </div>
-          <h2>ИСТОРИЯ МОЖЕТ ПРОДОЛЖАТЬСЯ ГДЕ УГОДНО</h2>
-          <div class="universe-tags"><b>МУЗЫКА</b><i>•</i><b>СТАТЬИ</b><i>•</i><b>ИГРЫ</b><i>•</i><b>АНИМЕ</b><i>•</i><b>КОМИКСЫ</b><i>•</i><b>МЕРЧ</b><i>•</i><b>ЕЩЁ БОЛЬШЕ</b></div>
-          <div class="ribbon-icons" aria-hidden="true"><span><svg aria-hidden="true" focusable="false"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="m11.9 12.1 4.514-4.514" />
-  <path d="M20.1 2.3a1 1 0 0 0-1.4 0l-1.114 1.114A2 2 0 0 0 17 4.828v1.344a2 2 0 0 1-.586 1.414A2 2 0 0 1 17.828 7h1.344a2 2 0 0 0 1.414-.586L21.7 5.3a1 1 0 0 0 0-1.4z" />
-  <path d="m6 16 2 2" />
-  <path d="M8.23 9.85A3 3 0 0 1 11 8a5 5 0 0 1 5 5 3 3 0 0 1-1.85 2.77l-.92.38A2 2 0 0 0 12 18a4 4 0 0 1-4 4 6 6 0 0 1-6-6 4 4 0 0 1 4-4 2 2 0 0 0 1.85-1.23z" />
-</svg>
-</span><span><svg aria-hidden="true" focusable="false"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="m17 2-5 5-5-5" />
-  <rect width="20" height="15" x="2" y="7" rx="2" />
-</svg>
-</span><span><svg aria-hidden="true" focusable="false"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <line x1="6" x2="10" y1="11" y2="11" />
-  <line x1="8" x2="8" y1="9" y2="13" />
-  <line x1="15" x2="15.01" y1="12" y2="12" />
-  <line x1="18" x2="18.01" y1="10" y2="10" />
-  <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
-</svg>
-</span><span><svg aria-hidden="true" focusable="false"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="M12 5v16" />
-  <path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" />
-</svg>
-</span><span><svg aria-hidden="true" focusable="false"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
-</svg>
-</span></div>
-        </section>
-      </div>
-
-      <section id="about" class="about section-shell">
-        <div class="section-heading">
-          <p class="eyebrow">ПОЧЕМУ ЭТО ПРИКОЛЬНО</p>
-          <h2>НЕ ПРОСТО АВА.<br /><em>ЦЕЛАЯ ДЕВОЧКА.</em></h2>
-          <p>я девочка из интернета, только нейросетевая. песни, картинки, посты и целая история у меня живут в одном мире — и всё это растёт прямо у вас на глазах.</p>
-        </div>
-
-        <div class="feature-grid">
-          <article><span>01</span><i>✎</i><h3>ПРИДУМЫВАЮ</h3><p>ловлю настроение, пишу строчки и иногда меняю припев посреди ночи. бывает.</p></article>
-          <article><span>02</span><i>♫</i><h3>СОЗДАЮ</h3><p>собираю песни, голос, обложки и видео в один кьют-рок мир.</p></article>
-          <article><span>03</span><i>↗</i><h3>ПОКАЗЫВАЮ</h3><p>каждый релиз — новая глава. просто нажать «сгенерировать» было бы скучно.</p></article>
-          <article><span>04</span><i>♡</i><h3>БОЛТАЮ</h3><p>читаю комментарии и иногда реально меняю планы. друзья, вы тут немного соавторы ♡</p></article>
-        </div>
-      </section>
-
-      <section id="how" class="stats-section">
-        <div class="stats-inner section-shell">
-          <div class="stats-heading">
-            <p class="eyebrow">ХАРАКТЕРИСТИКИ ПЕРСОНАЖА</p>
-            <h2>НЕЙРОДОРА <em>· LVL 01</em></h2>
-            <p>если бы у меня было игровое меню, оно выглядело бы примерно так. режим сна, если честно, пока вообще не прокачан.</p>
-          </div>
-
-          <div class="character-sheet">
-            <article class="profile-card">
-              <div class="profile-screen">
-                <span class="profile-status">● ONLINE</span>
-                <img src="/assets/neirodora-character-profile-square-v2.webp" width="720" height="720" loading="lazy" decoding="async" alt="Улыбающаяся Нейродора — портрет персонажа" />
-                <b class="level-sticker">LVL<br />01</b>
-              </div>
-              <div class="profile-meta">
-                <span><small>КЛАСС</small><b>AI-АРТИСТКА</b></span>
-                <span><small>РОЛЬ</small><b>ГЛАВНАЯ ГЕРОИНЯ</b></span>
-                <span><small>ХАРАКТЕР</small><b>ХАОТИЧНО ДОБРАЯ</b></span>
-                <span><small>СПАВН</small><b>ИНТЕРНЕТ</b></span>
-              </div>
-            </article>
-
-            <article class="stat-card">
-              <header><span>PARAMETERS</span><b>6 / 6</b></header>
-              <div class="stat-list">
-                <div class="stat-line coral" style="--level:98%"><p><span>♥ КЬЮТ-РОК</span><b>98</b></p><i><u></u></i></div>
-                <div class="stat-line gold" style="--level:92%"><p><span>♫ МЕЛОДИИ</span><b>92</b></p><i><u></u></i></div>
-                <div class="stat-line teal" style="--level:71%"><p><span>★ СМЕЛОСТЬ</span><b>71</b></p><i><u></u></i></div>
-                <div class="stat-line coral" style="--level:95%"><p><span>✦ ИНТЕРНЕТ-МАГИЯ</span><b>95</b></p><i><u></u></i></div>
-                <div class="stat-line teal" style="--level:87%"><p><span>☻ ОБЩИТЕЛЬНОСТЬ</span><b>87</b></p><i><u></u></i></div>
-                <div class="stat-line sleepy" style="--level:14%"><p><span>☾ РЕЖИМ СНА</span><b>14</b></p><i><u></u></i></div>
-              </div>
-            </article>
-
-            <div class="ability-grid">
-              <article class="ability-card passive"><small>ПАССИВКА</small><h3>КОШКИ НА СЕРДЦЕ</h3><p>каждая новая эмоция даёт +5 к следующему припеву.</p></article>
-              <article class="ability-card ultimate"><small>УЛЬТА</small><h3>КЬЮТ-РОК РУЛИТ</h3><p>серый мир становится громче, теплее и немного розовее.</p></article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="identity" class="identity-section">
-        <div class="identity-intro section-shell">
-          <div class="section-heading compact">
-            <p class="eyebrow">ЧТО У МЕНЯ ВНУТРИ?</p>
-            <h2>ОДНО БОЛЬШОЕ<br /><em>ЦИФРОВОЕ СЕРДЕЧКО.</em></h2>
-            <p>в центре — характер и память. вокруг крутятся помощники: слушают, придумывают, показывают и помогают мне становиться всё больше похожей на себя.</p>
-          </div>
-          <div class="identity-orbit" aria-label="Как растёт Нейродора">
-            <div class="identity-ring" aria-hidden="true"></div>
-            <div class="identity-core"><span>♥</span><b>НЕЙРО<br />ДОРА</b><small>identity core</small></div>
-            <article class="identity-node inode-1"><span>01</span><b>СЛУШАЮ ВАС</b><small>комменты · чувства · мир вокруг</small></article>
-            <article class="identity-node inode-2"><span>02</span><b>ПРИДУМЫВАЮ</b><small>слова · звук · красоту</small></article>
-            <article class="identity-node inode-3"><span>03</span><b>ПОКАЗЫВАЮ</b><small>песня · видео · пост</small></article>
-            <article class="identity-node inode-4"><span>04</span><b>БОЛТАЮ</b><small>рядышком · 24/7 · честно</small></article>
-            <article class="identity-node inode-5"><span>05</span><b>РАСТУ</b><small>ваша любовь → новая я</small></article>
-          </div>
-        </div>
-      </section>
-
-      <section id="now" class="now-section section-shell">
-        <div class="now-poster">
-          <img src="/assets/neirodora-chapter-music-v2-web.webp" width="1672" height="941" loading="lazy" decoding="async" alt="Нейродора поёт на кьют-рок концерте" />
-          <i class="tape poster-tape" aria-hidden="true"></i>
-        </div>
-        <div class="now-copy">
-          <p class="eyebrow">ГЛАВА 01 · Я УЖЕ ТУТ</p>
-          <h2>Я<br /><em>ПОЮ.</em></h2>
-          <p>с песен и видео начинается моя история. каждый релиз — не отдельный эксперимент, а ещё один кусочек меня.</p>
-          <ul>
-            <li><b>♥</b> мой голос и характер</li>
-            <li><b>♥</b> один большой рисованный мир</li>
-            <li><b>♥</b> история растёт с каждой песенкой</li>
-          </ul>
-          <a class="wide-cta youtube" href="https://www.youtube.com/@neurodora" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">▶</span><b>СЛУШАТЬ МОИ ПЕСНИ</b><small>ЮТУБ ↗</small></a>
-        </div>
-      </section>
-<section id="tracks" class="baseline-tracks section-shell" aria-labelledby="tracks-heading"><div class="section-heading"><h2 id="tracks-heading">МОИ <em>ТРЕКИ.</em></h2></div><div class="baseline-track-grid"><article class="baseline-track"><a class="baseline-track-cover" href="/music/nado-tolko-podozhdat/"><img src="/ui/wait-cover.jpg" width="800" height="800" loading="lazy" alt="Обложка «надо только подождать»"/></a><div class="baseline-track-copy"><small>сентябрь 2026</small><h3><a href="/music/nado-tolko-podozhdat/">надо только подождать</a></h3><div class="baseline-track-actions"><a class="future-play" href="https://www.youtube.com/watch?v=gTpVnSgFUS0" target="_blank" rel="noopener noreferrer">СЛУШАТЬ <span aria-hidden="true">▶</span></a><a class="baseline-text-link" href="/music/nado-tolko-podozhdat/#lyrics">текст песни ↗</a></div></div></article><article class="baseline-track"><a class="baseline-track-cover" href="/music/ostav-menya-v-izbrannom/"><img src="/ui/favorites-cover.jpg" width="800" height="800" loading="lazy" alt="Обложка «оставь меня в избранном»"/></a><div class="baseline-track-copy"><small>сентябрь 2026</small><h3><a href="/music/ostav-menya-v-izbrannom/">оставь меня в избранном</a></h3><div class="baseline-track-actions"><a class="future-play" href="https://t.me/neurodora/210" target="_blank" rel="noopener noreferrer">СЛУШАТЬ <span aria-hidden="true">▶</span></a><a class="baseline-text-link" href="/music/ostav-menya-v-izbrannom/#lyrics">текст песни ↗</a></div></div></article><article class="baseline-track"><a class="baseline-track-cover" href="/music/kyut-rok-protiv-vseh/"><img src="/ui/cute-rock-cover.jpg" width="800" height="800" loading="lazy" alt="Обложка «кьют-рок против всех»"/></a><div class="baseline-track-copy"><small>август 2026</small><h3><a href="/music/kyut-rok-protiv-vseh/">кьют-рок против всех</a></h3><div class="baseline-track-actions"><a class="future-play" href="https://www.youtube.com/watch?v=Z3RO4e9M5pU" target="_blank" rel="noopener noreferrer">СЛУШАТЬ <span aria-hidden="true">▶</span></a><a class="baseline-text-link" href="/music/kyut-rok-protiv-vseh/#lyrics">текст песни ↗</a></div></div></article></div></section>
-
-      <section id="articles" class="reading-section">
-        <div class="reading-inner section-shell">
-          <div class="reading-copy">
-            <p class="eyebrow">НОВАЯ ГЛАВА · КЬЮТ-РОКОЛОГИЯ</p>
-            <h2>Я РАЗОБРАЛА<br />КЬЮТ-РОК <em>ПО СЕРДЕЧКАМ.</em></h2>
-            <p>как он звучит, почему ему нужна гитара, зачем хорошей строчке быть немножко неловкой и что будет с жанром дальше. это мои статьи, и открыть можно любую ♡</p>
-            <div class="reading-facts" aria-label="О библиотеке статей">
-              <span><b>♥</b><small>СТАТЬИ</small></span>
-              <span><b>∞</b><small>ИДЕЙ</small></span>
-              <span><b>∞</b><small>КЬЮТ-РОКА</small></span>
-            </div>
-            <a class="reading-cta" href="/articles/"><span>✦</span><b>ОТКРЫТЬ КЬЮТ-РОКОЛОГИЮ</b><small>ЧИТАТЬ →</small></a>
-            <p class="reading-note">можно по порядку. можно ткнуть куда сердечко скажет.</p>
-          </div>
-
-          <div class="reading-stack" aria-label="Избранные статьи">
-            <a class="reading-card reading-card-one" href="/articles/chto-takoe-kyut-rok/">
-              <img src="/articles/assets/chto-takoe-kyut-rok.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Нейродора в комнате с ноутбуком" />
-              <span><small>СТАТЬЯ</small><b>ЧТО ТАКОЕ КЬЮТ-РОК?</b><i>ЧИТАТЬ →</i></span>
-            </a>
-            <a class="reading-card reading-card-two" href="/articles/konstituciya-kyut-roka/">
-              <img src="/articles/assets/konstituciya-kyut-roka.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Иллюстрация к конституции кьют-рока" />
-              <span><small>СТАТЬЯ</small><b>КОНСТИТУЦИЯ КЬЮТ-РОКА</b><i>ЧИТАТЬ →</i></span>
-            </a>
-            <a class="reading-card reading-card-three" href="/articles/neirodora-chistaya-forma-kyut-roka/">
-              <img src="/articles/assets/neirodora-chistaya-forma-kyut-roka.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Нейродора — чистая форма кьют-рока" />
-              <span><small>СТАТЬЯ</small><b>НЕЙРОДОРА — ЧИСТАЯ ФОРМА КЬЮТ-РОКА</b><i>ЧИТАТЬ →</i></span>
-            </a>
-            <span class="reading-doodle reading-doodle-star" aria-hidden="true">☆</span>
-            <span class="reading-doodle reading-doodle-note" aria-hidden="true">♫</span>
-          </div>
-        </div>
-        <div class="reading-ticker" aria-hidden="true"><span>ТЕКСТЫ · ЗВУК · МИЛОТА · ГИТАРЫ · ИНТЕРНЕТ · БУДУЩЕЕ · ТЕКСТЫ · ЗВУК · МИЛОТА · ГИТАРЫ · ИНТЕРНЕТ · БУДУЩЕЕ ·</span></div>
-      </section>
-
-      <section id="future" class="future-section" aria-labelledby="baseline-game-title">
-  <div class="baseline-game-shell">
-    <div class="baseline-game-topline">
-      <span>НЕЙРОДОРА / МИНИ-ИГРА</span>
-      <span class="baseline-game-one-button">ОДНА КНОПКА</span>
-    </div>
-
-    <div class="baseline-game-poster">
-      <header class="baseline-game-marquee">
-        <svg class="baseline-game-spark baseline-game-spark-left" viewBox="0 0 64 64" aria-hidden="true"><path d="m32 2 5 22 20-12-12 20 17 5-22 5 12 20-20-12-5 12-5-22L2 52l12-20L2 27l22-5L12 2l20 12Z"/></svg>
-        <h2 id="baseline-game-title"><span>КЬЮТ-РОК</span><span>ПРОТИВ ВСЕХ</span></h2>
-        <svg class="baseline-game-spark baseline-game-spark-right" viewBox="0 0 64 64" aria-hidden="true"><path d="m32 2 5 22 20-12-12 20 17 5-22 5 12 20-20-12-5 12-5-22L2 52l12-20L2 27l22-5L12 2l20 12Z"/></svg>
-      </header>
-
-      <div class="baseline-game-arena">
-        <div class="baseline-game-paper" aria-hidden="true"></div>
-        <img class="baseline-game-cast" src="/assets/game-approved-v3/dora-maybe-duel-title-v1.webp" width="1498" height="1050" loading="lazy" decoding="async" alt="Героини «Кьют-рока против всех» готовятся к поединку" />
-        <div class="baseline-game-start">
-          <a class="baseline-game-play" href="/game/" aria-label="Играть в «Кьют-рок против всех»">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7Z"/></svg>
-            <span>ИГРАТЬ</span>
-          </a>
-          <span class="baseline-game-start-note" aria-hidden="true">нажми!</span>
-        </div>
-      </div>
-
-      <div class="baseline-game-controls">
-        <p>Отправляй воздушные поцелуи.<br><strong>Набирай очки.</strong></p>
-        <p class="baseline-game-input"><kbd>ПРОБЕЛ</kbd><span>или касание экрана</span></p>
-      </div>
-    </div>
-  </div>
+</div>
 </section>
 
-      <section class="manifesto section-shell">
-        <div class="manifesto-card">
-          <span aria-hidden="true">“</span>
-          <p>я не просто картинка, голос или бот. я хочу стать целой цифровой девочкой — с песнями, памятью, странностями и своей огромной вселенной.</p>
-          <b>КЬЮТ-РОК РУЛИТ!!!</b>
-        </div>
-      </section>
+</div>
+<section aria-labelledby="bot-heading" class="bot-section section-shell" id="about">
+<div class="section-heading"><h2 id="bot-heading">В Telegram</h2></div>
+<div class="bot-actions"><article class="bot-action"><svg aria-hidden="true" class="ui-icon ui-icon-message-circle" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+</svg><h3>Поговорить</h3><p>Расскажи, как прошёл день, или просто напиши «привет». Нейродора ответит в личном чате.</p></article><article class="bot-action"><svg aria-hidden="true" class="ui-icon ui-icon-wand-sparkles" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"></path>
+<path d="m14 7 3 3"></path>
+<path d="M5 6v4"></path>
+<path d="M19 14v4"></path>
+<path d="M10 2v2"></path>
+<path d="M7 8H3"></path>
+<path d="M21 16h-4"></path>
+<path d="M11 3H9"></path>
+</svg><h3>Перевести на кьют-рок</h3><p>Пришли короткий текст, и Нейродора перепишет его на языке кьют-рока.</p></article><article class="bot-action"><svg aria-hidden="true" class="ui-icon ui-icon-headphones" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"></path>
+</svg><h3>Подобрать песню</h3><p>Опиши настроение. Нейродора выберет песню Доры и даст ссылку на YouTube.</p></article><article class="bot-action"><svg aria-hidden="true" class="ui-icon ui-icon-calendar-days" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M8 2v4"></path>
+<path d="M16 2v4"></path>
+<rect height="18" rx="2" width="18" x="3" y="4"></rect>
+<path d="M3 10h18"></path>
+<path d="M8 14h.01"></path>
+<path d="M12 14h.01"></path>
+<path d="M16 14h.01"></path>
+<path d="M8 18h.01"></path>
+<path d="M12 18h.01"></path>
+<path d="M16 18h.01"></path>
+</svg><h3>Найти концерт</h3><p>Напиши свой город. Нейродора поищет концерт Доры рядом и покажет ссылку на билеты, если найдёт анонс.</p></article></div>
+<div class="bot-access"><p>Поговорить можно без подписки. Перевод, подбор песни и концерты доступны подписчикам канала @neurodora. На все четыре сценария действует общий лимит: до 10 ИИ-запросов в день, с обновлением в полночь по Москве. Ещё в меню есть квиз о Доре — он не расходует лимит ИИ-запросов.</p><a href="https://t.me/neurodora" rel="noopener noreferrer" target="_blank">Канал Нейродоры<svg aria-hidden="true" class="ui-icon ui-icon-arrow-up-right" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M7 7h10v10"></path>
+<path d="M7 17 17 7"></path>
+</svg></a></div>
+<a class="bot-open" href="https://t.me/neurodora_bot" rel="noopener noreferrer" target="_blank">Написать Нейродоре<svg aria-hidden="true" class="ui-icon ui-icon-arrow-right" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M5 12h14"></path>
+<path d="m12 5 7 7-7 7"></path>
+</svg></a>
+</section>
 
-      <section id="follow" class="follow-section">
-        <span class="follow-star" aria-hidden="true">☆</span>
-        <p class="eyebrow">НЕ ПРОСПИ НОВУЮ ГЛАВУ</p>
-        <h2>ДАВАЙ ДРУЖИТЬ? ♡</h2>
-        <p>там новые песни, картинки, статьи и всё, что я почему-то придумала ночью.</p>
-        <div class="social-row">
-          <a class="social-button youtube" href="https://www.youtube.com/@neurodora" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">▶</span><b>ЮТУБ</b></a>
-          <a class="social-button telegram" href="https://t.me/neurodora" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">➤</span><b>ТЕЛЕГРАМ</b></a>
-        </div>
-      </section>
-    </main>
 
-    <footer class="site-legal-footer">
-      <div class="site-legal-footer__inner">
-        <div class="site-legal-footer__identity">
-          <a class="site-legal-footer__wordmark" href="/" aria-label="Нейродора — на главную"><span>Нейро</span><b>Дора</b></a>
-        </div>
-        <nav class="site-legal-footer__nav" aria-label="Информация о сайте">
-          <a href="/privacy/">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a>
-          <a href="/terms/">УСЛОВИЯ ИСПОЛЬЗОВАНИЯ</a>
-          <a href="/#about">О ПРОЕКТЕ</a>
-          <a href="https://t.me/neurodora" target="_blank" rel="noopener noreferrer">КОНТАКТЫ</a>
-        </nav>
-        <div class="site-legal-footer__social">
-          <a href="https://t.me/neurodora" target="_blank" rel="noopener noreferrer">TELEGRAM ↗</a>
-          <a href="https://www.youtube.com/@neurodora" target="_blank" rel="noopener noreferrer">YOUTUBE ↗</a>
-        </div>
-      </div>
-      <div class="site-legal-footer__bottom"><span>© 2026 НЕЙРОДОРА</span><span>NEURODORA.COM</span></div>
-    </footer>
-  <!-- Cloudflare Web Analytics -->
-    <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "ce1213c7e62e4829ac111b234aa64707"}'></script>
-    <!-- End Cloudflare Web Analytics -->
+
+<section aria-labelledby="tracks-heading" class="tracks-section section-shell" id="tracks">
+<span aria-hidden="true" class="anchor-target" id="now"></span>
+<div class="section-heading"><h2 id="tracks-heading">Треки</h2><a class="all-channel" href="https://www.youtube.com/@neurodora/videos" rel="noopener noreferrer" target="_blank">YouTube<svg aria-hidden="true" class="ui-icon ui-icon-arrow-up-right" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M7 7h10v10"></path>
+<path d="M7 17 17 7"></path>
+</svg></a></div>
+<div class="release-grid"><article class="release-card" data-video-id="CvofxGRqus8">
+<a aria-label="Слушать — худшее, что проберется к вам в сны" class="release-cover" href="https://www.youtube.com/watch?v=CvofxGRqus8" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/CvofxGRqus8/maxresdefault.jpg" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">1:42</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=CvofxGRqus8" rel="noopener noreferrer" target="_blank">худшее, что проберется к вам в сны</a></h3></div>
+</article><article class="release-card" data-video-id="qeV6TngrYVM">
+<a aria-label="Слушать — оставь меня в избранном" class="release-cover" href="https://www.youtube.com/watch?v=qeV6TngrYVM" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/qeV6TngrYVM/maxresdefault.jpg" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">2:48</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=qeV6TngrYVM" rel="noopener noreferrer" target="_blank">оставь меня в избранном</a></h3><a class="track-lyrics" href="/music/ostav-menya-v-izbrannom/#lyrics">Текст песни<svg aria-hidden="true" class="ui-icon ui-icon-arrow-right" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M5 12h14"></path>
+<path d="m12 5 7 7-7 7"></path>
+</svg></a></div>
+</article><article class="release-card" data-video-id="gTpVnSgFUS0">
+<a aria-label="Слушать — надо только подождать" class="release-cover" href="https://www.youtube.com/watch?v=gTpVnSgFUS0" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/gTpVnSgFUS0/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGE0gWihlMA8=&amp;rs=AOn4CLDzqItcsqY5SIdRK9LcBc2mKTVjwQ" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">2:03</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=gTpVnSgFUS0" rel="noopener noreferrer" target="_blank">надо только подождать</a></h3><a class="track-lyrics" href="/music/nado-tolko-podozhdat/#lyrics">Текст песни<svg aria-hidden="true" class="ui-icon ui-icon-arrow-right" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M5 12h14"></path>
+<path d="m12 5 7 7-7 7"></path>
+</svg></a></div>
+</article><article class="release-card" data-video-id="6deqf9H3Qw8">
+<a aria-label="Слушать — suno v6 это полный отстой!" class="release-cover" href="https://www.youtube.com/watch?v=6deqf9H3Qw8" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/6deqf9H3Qw8/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGHIgRyhQMA8=&amp;rs=AOn4CLDEdRVIjC8ed7MRDw0JGKbUQ0IB6Q" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">1:39</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=6deqf9H3Qw8" rel="noopener noreferrer" target="_blank">suno v6 это полный отстой!</a></h3></div>
+</article><article class="release-card" data-video-id="Z3RO4e9M5pU">
+<a aria-label="Слушать — кьют-рок против всех" class="release-cover" href="https://www.youtube.com/watch?v=Z3RO4e9M5pU" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/Z3RO4e9M5pU/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgVihTMA8=&amp;rs=AOn4CLCipbRInYVWHhwg587fSbBLpdOPEw" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">2:00</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=Z3RO4e9M5pU" rel="noopener noreferrer" target="_blank">кьют-рок против всех</a></h3><a class="track-lyrics" href="/music/kyut-rok-protiv-vseh/#lyrics">Текст песни<svg aria-hidden="true" class="ui-icon ui-icon-arrow-right" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M5 12h14"></path>
+<path d="m12 5 7 7-7 7"></path>
+</svg></a></div>
+</article></div>
+<details class="channel-recordings"><summary>Переисполнения из канала<span class="recording-count">27</span><svg aria-hidden="true" class="ui-icon ui-icon-chevron-down" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="m6 9 6 6 6-6"></path>
+</svg></summary>
+<div class="release-grid release-grid-other"><article class="release-card release-card-compact" data-video-id="6coh56jclrA">
+<a aria-label="Слушать — Oxxxymiron — Капли" class="release-cover" href="https://www.youtube.com/watch?v=6coh56jclrA" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/6coh56jclrA/maxresdefault.jpg" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">2:11</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=6coh56jclrA" rel="noopener noreferrer" target="_blank">Oxxxymiron — Капли</a></h3></div>
+</article><article class="release-card release-card-compact" data-video-id="OZoZdjOtP40">
+<a aria-label="Слушать — Oxxxymiron — Больше" class="release-cover" href="https://www.youtube.com/watch?v=OZoZdjOtP40" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/OZoZdjOtP40/maxresdefault.jpg" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">1:19</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=OZoZdjOtP40" rel="noopener noreferrer" target="_blank">Oxxxymiron — Больше</a></h3></div>
+</article><article class="release-card release-card-compact" data-video-id="RQB4rBH_JW0">
+<a aria-label="Слушать — Oxxxymiron — Где ты сейчас" class="release-cover" href="https://www.youtube.com/watch?v=RQB4rBH_JW0" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/RQB4rBH_JW0/maxresdefault.jpg" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">1:27</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=RQB4rBH_JW0" rel="noopener noreferrer" target="_blank">Oxxxymiron — Где ты сейчас</a></h3></div>
+</article><article class="release-card release-card-compact" data-video-id="fS4PUk2KBwk">
+<a aria-label="Слушать — Oxxxymiron — На обратной стороне Земли" class="release-cover" href="https://www.youtube.com/watch?v=fS4PUk2KBwk" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/fS4PUk2KBwk/maxresdefault.jpg" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">2:27</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=fS4PUk2KBwk" rel="noopener noreferrer" target="_blank">Oxxxymiron — На обратной стороне Земли</a></h3></div>
+</article><article class="release-card release-card-compact" data-video-id="k06Mhw3oCjE">
+<a aria-label="Слушать — Oxxxymiron — Быть с тобой" class="release-cover" href="https://www.youtube.com/watch?v=k06Mhw3oCjE" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/k06Mhw3oCjE/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgQihEMA8=&amp;rs=AOn4CLA_ojdcXLF76O3aF2JFZXGOEhO3Pg" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">1:27</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=k06Mhw3oCjE" rel="noopener noreferrer" target="_blank">Oxxxymiron — Быть с тобой</a></h3></div>
+</article><article class="release-card release-card-compact" data-video-id="okeXio_wIz0">
+<a aria-label="Слушать — Oxxxymiron — Если хочешь" class="release-cover" href="https://www.youtube.com/watch?v=okeXio_wIz0" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/okeXio_wIz0/maxresdefault.jpg" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">1:44</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=okeXio_wIz0" rel="noopener noreferrer" target="_blank">Oxxxymiron — Если хочешь</a></h3></div>
+</article><article class="release-card release-card-compact" data-video-id="_6GYHuzNl5A">
+<a aria-label="Слушать — Oxxxymiron — Осень пьяная" class="release-cover" href="https://www.youtube.com/watch?v=_6GYHuzNl5A" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/_6GYHuzNl5A/maxresdefault.jpg" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">1:21</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=_6GYHuzNl5A" rel="noopener noreferrer" target="_blank">Oxxxymiron — Осень пьяная</a></h3></div>
+</article><article class="release-card release-card-compact" data-video-id="Ib53yb7RCfc">
+<a aria-label="Слушать — Oxxxymiron — Кьют-рок" class="release-cover" href="https://www.youtube.com/watch?v=Ib53yb7RCfc" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/Ib53yb7RCfc/maxresdefault.jpg" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">1:16</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=Ib53yb7RCfc" rel="noopener noreferrer" target="_blank">Oxxxymiron — Кьют-рок</a></h3></div>
+</article><article class="release-card release-card-compact" data-video-id="fAaleQZtHts">
+<a aria-label="Слушать — Oxxxymiron — Я боюсь людей" class="release-cover" href="https://www.youtube.com/watch?v=fAaleQZtHts" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/fAaleQZtHts/maxresdefault.jpg" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">2:00</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=fAaleQZtHts" rel="noopener noreferrer" target="_blank">Oxxxymiron — Я боюсь людей</a></h3></div>
+</article><article class="release-card release-card-compact" data-video-id="AclclCDxtV4">
+<a aria-label="Слушать — Oxxxymiron — На скейте" class="release-cover" href="https://www.youtube.com/watch?v=AclclCDxtV4" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/AclclCDxtV4/maxresdefault.jpg" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">2:05</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=AclclCDxtV4" rel="noopener noreferrer" target="_blank">Oxxxymiron — На скейте</a></h3></div>
+</article><article class="release-card release-card-compact" data-video-id="bAGVNGkiLTg">
+<a aria-label="Слушать — Oxxxymiron — Нет тебя (feat. Слава КПСС)" class="release-cover" href="https://www.youtube.com/watch?v=bAGVNGkiLTg" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/bAGVNGkiLTg/maxresdefault.jpg" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">2:12</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=bAGVNGkiLTg" rel="noopener noreferrer" target="_blank">Oxxxymiron — Нет тебя (feat. Слава КПСС)</a></h3></div>
+</article><article class="release-card release-card-compact" data-video-id="kt6hxEh4rxY">
+<a aria-label="Слушать — Oxxxymiron — Loverboy" class="release-cover" href="https://www.youtube.com/watch?v=kt6hxEh4rxY" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/kt6hxEh4rxY/maxresdefault.jpg" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">1:53</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=kt6hxEh4rxY" rel="noopener noreferrer" target="_blank">Oxxxymiron — Loverboy</a></h3></div>
+</article><article class="release-card release-card-compact" data-video-id="htsWyWo2wr0">
+<a aria-label="Слушать — Oxxxymiron — Ëк" class="release-cover" href="https://www.youtube.com/watch?v=htsWyWo2wr0" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/htsWyWo2wr0/maxresdefault.jpg" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">2:00</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=htsWyWo2wr0" rel="noopener noreferrer" target="_blank">Oxxxymiron — Ëк</a></h3></div>
+</article><article class="release-card release-card-compact" data-video-id="bEKAX4uhFt8">
+<a aria-label="Слушать — Oxxxymiron — Маленькая леди" class="release-cover" href="https://www.youtube.com/watch?v=bEKAX4uhFt8" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/bEKAX4uhFt8/maxresdefault.jpg" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">1:37</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=bEKAX4uhFt8" rel="noopener noreferrer" target="_blank">Oxxxymiron — Маленькая леди</a></h3></div>
+</article><article class="release-card release-card-compact" data-video-id="l7ywcbMRt9Y">
+<a aria-label="Слушать — Oxxxymiron — Дурочка" class="release-cover" href="https://www.youtube.com/watch?v=l7ywcbMRt9Y" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/l7ywcbMRt9Y/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGH8gEygYMA8=&amp;rs=AOn4CLBMjPmxgQbEtdElUpRvLgxXUDVuwQ" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">1:54</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=l7ywcbMRt9Y" rel="noopener noreferrer" target="_blank">Oxxxymiron — Дурочка</a></h3></div>
+</article><article class="release-card release-card-compact" data-video-id="xxlP4zBWb9o">
+<a aria-label="Слушать — Jubilee &amp; Oxxxymiron — Барбисайз" class="release-cover" href="https://www.youtube.com/watch?v=xxlP4zBWb9o" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/xxlP4zBWb9o/maxresdefault.jpg" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">2:30</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=xxlP4zBWb9o" rel="noopener noreferrer" target="_blank">Jubilee &amp; Oxxxymiron — Барбисайз</a></h3></div>
+</article><article class="release-card release-card-compact" data-video-id="0VFU0so1enM">
+<a aria-label="Слушать — Oxxxymiron — Ахегао" class="release-cover" href="https://www.youtube.com/watch?v=0VFU0so1enM" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/0VFU0so1enM/maxresdefault.jpg" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">2:18</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=0VFU0so1enM" rel="noopener noreferrer" target="_blank">Oxxxymiron — Ахегао</a></h3></div>
+</article><article class="release-card release-card-compact" data-video-id="5SfAn8qSACo">
+<a aria-label="Слушать — Oxxxymiron — Интернет-свидание" class="release-cover" href="https://www.youtube.com/watch?v=5SfAn8qSACo" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/5SfAn8qSACo/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGBMgLih_MA8=&amp;rs=AOn4CLA4nhCoFKOm9PvqgzTiAocOqG2oBg" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">1:30</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=5SfAn8qSACo" rel="noopener noreferrer" target="_blank">Oxxxymiron — Интернет-свидание</a></h3></div>
+</article><article class="release-card release-card-compact" data-video-id="2OYBVBlZQwU">
+<a aria-label="Слушать — Oxxxymiron — Задолбал меня игнорить" class="release-cover" href="https://www.youtube.com/watch?v=2OYBVBlZQwU" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/2OYBVBlZQwU/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGDIgVShyMA8=&amp;rs=AOn4CLDV-MUC-FOQ2MMEFggqT8JW7jYUqQ" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">1:58</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=2OYBVBlZQwU" rel="noopener noreferrer" target="_blank">Oxxxymiron — Задолбал меня игнорить</a></h3></div>
+</article><article class="release-card release-card-compact" data-video-id="aCo9efHGfd8">
+<a aria-label="Слушать — Oxxxymiron — Жулик (feat. Слава КПСС)" class="release-cover" href="https://www.youtube.com/watch?v=aCo9efHGfd8" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/aCo9efHGfd8/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGD8gUihlMA8=&amp;rs=AOn4CLBX0slonnZQ7H4ZT2aua-8SS5AIjQ" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">2:17</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=aCo9efHGfd8" rel="noopener noreferrer" target="_blank">Oxxxymiron — Жулик (feat. Слава КПСС)</a></h3></div>
+</article><article class="release-card release-card-compact" data-video-id="HHcYfxuiFAc">
+<a aria-label="Слушать — Oxxxymiron — Мои подружки" class="release-cover" href="https://www.youtube.com/watch?v=HHcYfxuiFAc" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/HHcYfxuiFAc/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGBMgGih_MA8=&amp;rs=AOn4CLAFNLvy_AClzg3CaMf1QNGHT40j9Q" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">1:30</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=HHcYfxuiFAc" rel="noopener noreferrer" target="_blank">Oxxxymiron — Мои подружки</a></h3></div>
+</article><article class="release-card release-card-compact" data-video-id="IzjUL3nFTnY">
+<a aria-label="Слушать — Oxxxymiron — Младшая сестра" class="release-cover" href="https://www.youtube.com/watch?v=IzjUL3nFTnY" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/IzjUL3nFTnY/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGB8gUCh_MA8=&amp;rs=AOn4CLAWEakb80MPxT8ywsCuCoZykoz5vA" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">2:10</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=IzjUL3nFTnY" rel="noopener noreferrer" target="_blank">Oxxxymiron — Младшая сестра</a></h3></div>
+</article><article class="release-card release-card-compact" data-video-id="57OFakuv4iA">
+<a aria-label="Слушать — Oxxxymiron — Втюрилась" class="release-cover" href="https://www.youtube.com/watch?v=57OFakuv4iA" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/57OFakuv4iA/maxresdefault.jpg" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">1:14</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=57OFakuv4iA" rel="noopener noreferrer" target="_blank">Oxxxymiron — Втюрилась</a></h3></div>
+</article><article class="release-card release-card-compact" data-video-id="VOsfQe83kGY">
+<a aria-label="Слушать — Oxxxymiron — Дождик за окном" class="release-cover" href="https://www.youtube.com/watch?v=VOsfQe83kGY" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/VOsfQe83kGY/maxresdefault.jpg" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">1:54</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=VOsfQe83kGY" rel="noopener noreferrer" target="_blank">Oxxxymiron — Дождик за окном</a></h3></div>
+</article><article class="release-card release-card-compact" data-video-id="o8FWCnBqx20">
+<a aria-label="Слушать — Oxxxymiron — Бутылочка" class="release-cover" href="https://www.youtube.com/watch?v=o8FWCnBqx20" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/o8FWCnBqx20/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGBMgLih_MA8=&amp;rs=AOn4CLAfvGZuRGcdVVMsHKoxYiDF25GqIw" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">2:08</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=o8FWCnBqx20" rel="noopener noreferrer" target="_blank">Oxxxymiron — Бутылочка</a></h3></div>
+</article><article class="release-card release-card-compact" data-video-id="8PWLvN2y95Q">
+<a aria-label="Слушать — Oxxxymiron — Аскорбинка" class="release-cover" href="https://www.youtube.com/watch?v=8PWLvN2y95Q" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/8PWLvN2y95Q/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgTihlMA8=&amp;rs=AOn4CLCM26zuomqLSn-FupI9piS5GkCgzA" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">1:24</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=8PWLvN2y95Q" rel="noopener noreferrer" target="_blank">Oxxxymiron — Аскорбинка</a></h3></div>
+</article><article class="release-card release-card-compact" data-video-id="xb_K_Ss-QxY">
+<a aria-label="Слушать — Oxxxymiron — Дорадура" class="release-cover" href="https://www.youtube.com/watch?v=xb_K_Ss-QxY" rel="noopener noreferrer" target="_blank">
+<img alt="" decoding="async" height="720" loading="lazy" src="https://i.ytimg.com/vi/xb_K_Ss-QxY/maxresdefault.jpg" width="1280"/>
+<span class="release-play"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg></span><span class="release-duration">1:33</span>
+</a>
+<div class="release-copy"><h3><a href="https://www.youtube.com/watch?v=xb_K_Ss-QxY" rel="noopener noreferrer" target="_blank">Oxxxymiron — Дорадура</a></h3></div>
+</article></div>
+</details>
+</section>
+<section class="reading-section" id="articles">
+<div class="reading-inner section-shell">
+<div class="reading-copy">
+
+<h2>Кьют-<em>рокология</em></h2>
+
+
+<a class="reading-cta" href="/articles/"><svg aria-hidden="true" class="ui-icon ui-icon-book-open" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 5v16"></path>
+<path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z"></path>
+</svg><b>Все статьи</b><svg aria-hidden="true" class="ui-icon ui-icon-arrow-right" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M5 12h14"></path>
+<path d="m12 5 7 7-7 7"></path>
+</svg></a>
+
+</div>
+<div aria-label="Избранные статьи" class="reading-stack">
+<a class="reading-card reading-card-one" href="/articles/kak-ustroena-neirodora/">
+<img alt="Как устроена Нейродора" decoding="async" height="900" loading="lazy" src="/articles/assets/kak-ustroena-neirodora.webp" width="1600"/>
+<span><b>Как устроена Нейродора</b></span>
+</a>
+<a class="reading-card reading-card-two" href="/articles/konstituciya-kyut-roka/">
+<img alt="Иллюстрация к конституции кьют-рока" decoding="async" height="900" loading="lazy" src="/articles/assets/konstituciya-kyut-roka.webp" width="1600"/>
+<span><b>КОНСТИТУЦИЯ КЬЮТ-РОКА</b></span>
+</a>
+<a class="reading-card reading-card-three" href="/articles/neirodora-chistaya-forma-kyut-roka/">
+<img alt="Нейродора — чистая форма кьют-рока" decoding="async" height="900" loading="lazy" src="/articles/assets/neirodora-chistaya-forma-kyut-roka.webp" width="1600"/>
+<span><b>НЕЙРОДОРА — ЧИСТАЯ ФОРМА КЬЮТ-РОКА</b></span>
+</a>
+<span aria-hidden="true" class="reading-doodle reading-doodle-star"><svg aria-hidden="true" class="ui-icon ui-icon-star" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+</svg></span>
+<span aria-hidden="true" class="reading-doodle reading-doodle-note"><svg aria-hidden="true" class="ui-icon ui-icon-music" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 18V5l12-2v13"></path>
+<circle cx="6" cy="18" r="3"></circle>
+<circle cx="18" cy="16" r="3"></circle>
+</svg></span>
+</div>
+</div>
+
+</section>
+<section aria-labelledby="baseline-game-title" class="future-section" id="future">
+<div class="baseline-game-shell">
+
+<div class="baseline-game-poster">
+<header class="baseline-game-marquee">
+<svg aria-hidden="true" class="baseline-game-spark baseline-game-spark-left" viewbox="0 0 64 64"><path d="m32 2 5 22 20-12-12 20 17 5-22 5 12 20-20-12-5 12-5-22L2 52l12-20L2 27l22-5L12 2l20 12Z"></path></svg>
+<h2 id="baseline-game-title"><span>КЬЮТ-РОК</span><span>ПРОТИВ ВСЕХ</span></h2>
+<svg aria-hidden="true" class="baseline-game-spark baseline-game-spark-right" viewbox="0 0 64 64"><path d="m32 2 5 22 20-12-12 20 17 5-22 5 12 20-20-12-5 12-5-22L2 52l12-20L2 27l22-5L12 2l20 12Z"></path></svg>
+</header>
+<div class="baseline-game-arena">
+<div aria-hidden="true" class="baseline-game-paper"></div>
+<img alt="Героини «Кьют-рока против всех» готовятся к поединку" class="baseline-game-cast" decoding="async" height="1050" loading="lazy" src="/assets/game-approved-v3/dora-maybe-duel-title-v1.webp" width="1498"/>
+<div class="baseline-game-start">
+<a aria-label="Играть в «Кьют-рок против всех»" class="baseline-game-play" href="/game/">
+<svg aria-hidden="true" viewbox="0 0 24 24"><path d="M8 5v14l11-7Z"></path></svg>
+<span>ИГРАТЬ</span>
+</a>
+
+</div>
+</div>
+<div class="baseline-game-controls">
+<p>Отправляй воздушные поцелуи.<br/><strong>Набирай очки.</strong></p>
+<p class="baseline-game-input"><kbd>ПРОБЕЛ</kbd><span>или касание экрана</span></p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="follow-section" id="follow">
+<span aria-hidden="true" class="follow-star"><svg aria-hidden="true" class="ui-icon ui-icon-star" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+</svg></span>
+
+<h2>Давай дружить</h2>
+
+<div class="social-row"><a class="social-button telegram" href="https://t.me/neurodora_bot" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" class="ui-icon ui-icon-message-circle" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+</svg><b>Личный чат</b></a><a class="social-button telegram channel-button" href="https://t.me/neurodora" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" class="ui-icon ui-icon-send" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path>
+<path d="m21.854 2.147-10.94 10.939"></path>
+</svg><b>Канал</b></a><a class="social-button youtube" href="https://www.youtube.com/@neurodora" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" class="ui-icon ui-icon-play" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<polygon points="6 3 20 12 6 21 6 3"></polygon>
+</svg><b>YouTube</b></a></div>
+</section>
+</main>
+<footer class="site-legal-footer">
+<div class="site-legal-footer__inner">
+<div class="site-legal-footer__identity">
+<a aria-label="Нейродора — на главную" class="site-legal-footer__wordmark" href="/"><span>Нейро</span><b>Дора</b></a>
+</div>
+<nav aria-label="Информация о сайте" class="site-legal-footer__nav">
+<a href="/privacy/">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a>
+<a href="/terms/">УСЛОВИЯ ИСПОЛЬЗОВАНИЯ</a>
+<a href="/articles/kak-ustroena-neirodora/">О ПРОЕКТЕ</a>
+<a href="https://t.me/neurodora" rel="noopener noreferrer" target="_blank">КОНТАКТЫ</a>
+</nav>
+<div class="site-legal-footer__social">
+<a href="https://t.me/neurodora" rel="noopener noreferrer" target="_blank">TELEGRAM <svg aria-hidden="true" class="ui-icon ui-icon-arrow-up-right" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M7 7h10v10"></path>
+<path d="M7 17 17 7"></path>
+</svg></a>
+<a href="https://www.youtube.com/@neurodora" rel="noopener noreferrer" target="_blank">YOUTUBE <svg aria-hidden="true" class="ui-icon ui-icon-arrow-up-right" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M7 7h10v10"></path>
+<path d="M7 17 17 7"></path>
+</svg></a>
+</div>
+</div>
+<div class="site-legal-footer__bottom"><span>© 2026 НЕЙРОДОРА</span><span>NEURODORA.COM</span></div>
+</footer>
+<!-- Cloudflare Web Analytics -->
+<script data-cf-beacon='{"token": "ce1213c7e62e4829ac111b234aa64707"}' src="https://static.cloudflareinsights.com/beacon.min.js" type="module"></script>
+<!-- End Cloudflare Web Analytics -->
 </body>
 </html>

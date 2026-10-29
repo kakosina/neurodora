@@ -1,109 +1,141 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <meta name="theme-color" content="#a9dcf4" />
-    <meta name="description" content="Neurodora: Cute Rock vs. Everyone — a one-button anime game about blowing kisses." />
-    <link rel="canonical" href="https://neurodora.com/en/game/" />
-    <meta property="og:title" content="Neurodora · Cute Rock vs. Everyone" />
-    <meta property="og:description" content="A one-button anime game about blowing kisses and the power of cute rock." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://neurodora.com/en/game/" />
-    <meta property="og:image" content="https://neurodora.com/assets/game-approved-v3/dora-maybe-pat-4.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <title>Neurodora · Cute Rock vs. Everyone</title>
-    <base href="/" />
-    <link rel="preload" as="image" href="/assets/game-approved-v3/dora-maybe-duel-title-v1.webp" type="image/webp" />
-    <link rel="stylesheet" href="/cute-game.css?v=beta-0.1.22" />
-  <link rel="stylesheet" href="/ui/language.css?v=20260923-en1" />
-<script defer src="/ui/language.js?v=20260923-en1"></script>
-<link rel="alternate" hreflang="ru" href="https://neurodora.com/game/" />
-<link rel="alternate" hreflang="en" href="https://neurodora.com/en/game/" />
-<link rel="alternate" hreflang="x-default" href="https://neurodora.com/game/" />
-</head>
-  <body><a class="site-language game-language" data-language-link href="/game/" lang="ru" hreflang="ru" aria-label="Читать по-русски">RU</a>
-    <main class="game-page">
-      <section id="stage" class="stage" aria-label="Neurodora: Cute Rock vs. Everyone game">
-        <canvas id="gameCanvas" tabindex="0" aria-label="Neurodora blows kisses at approaching characters"></canvas>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+<meta content="#a9dcf4" name="theme-color"/>
+<meta content="Neurodora: Cute Rock vs. Everyone — a one-button anime game about blowing kisses." name="description"/>
+<link href="https://neurodora.com/en/game/" rel="canonical"/>
+<meta content="Neurodora · Cute Rock vs. Everyone" property="og:title"/>
+<meta content="A one-button anime game about blowing kisses and the power of cute rock." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://neurodora.com/en/game/" property="og:url"/>
+<meta content="https://neurodora.com/assets/game-approved-v3/dora-maybe-pat-4.png" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<title>Neurodora · Cute Rock vs. Everyone</title>
+<base href="/"/>
+<link as="image" href="/assets/game-approved-v3/dora-maybe-duel-title-v1.webp" rel="preload" type="image/webp"/>
+<link href="/cute-game.css?v=beta-0.1.22" rel="stylesheet"/>
+<link href="/ui/language.css?v=20260923-en1" rel="stylesheet"/>
+<script defer="" src="/ui/language.js?v=20260923-en1"></script>
+<link href="https://neurodora.com/game/" hreflang="ru" rel="alternate"/>
+<link href="https://neurodora.com/en/game/" hreflang="en" rel="alternate"/>
+<link href="https://neurodora.com/game/" hreflang="x-default" rel="alternate"/>
+<link href="/ui/shape-icons.css?v=20261029" rel="stylesheet"/></head>
+<body><a aria-label="Читать по-русски" class="site-language game-language" data-language-link="" href="/game/" hreflang="ru" lang="ru">RU</a>
+<main class="game-page">
+<section aria-label="Neurodora: Cute Rock vs. Everyone game" class="stage" id="stage">
+<canvas aria-label="Neurodora blows kisses at approaching characters" id="gameCanvas" tabindex="0"></canvas>
+<div aria-live="polite" class="hud hidden" id="hud">
+<div class="score"><small>SCORE</small><b id="scoreValue">000000</b></div>
+<div aria-label="Three lives" class="lives" id="lives"><i><svg aria-hidden="true" class="ui-icon ui-icon-heart" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+</svg></i><i><svg aria-hidden="true" class="ui-icon ui-icon-heart" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+</svg></i><i><svg aria-hidden="true" class="ui-icon ui-icon-heart" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+</svg></i></div>
+</div>
+<div aria-label="Opponent’s health" class="enemy-bar hidden" id="enemyBar">
+<b id="enemyName">NEUROMIRON</b>
+<i><span id="enemyBarFill"></span></i>
+</div>
+<div aria-live="polite" class="level-card hidden" id="levelCard">
+<strong id="levelTitle">NEUROMIRON</strong>
+</div>
+<section class="screen title-screen" id="titleScreen">
+<div aria-hidden="true" class="title-clouds">
+<i></i><i></i><i></i><i></i>
+</div>
+<div aria-hidden="true" class="title-meadow"></div>
+<div aria-hidden="true" class="title-cast" id="titleCast">
+<img alt="" class="title-cast-frame" src="/assets/game-approved-v3/dora-maybe-duel-title-v1.webp"/>
+</div>
+<div class="title-copy">
 
-        <div id="hud" class="hud hidden" aria-live="polite">
-          <div class="score"><small>SCORE</small><b id="scoreValue">000000</b></div>
-          <div id="lives" class="lives" aria-label="Three lives"><i>♥</i><i>♥</i><i>♥</i></div>
-        </div>
+<h1 aria-label="Cute Rock vs. Everyone">
+<span class="title-logo-main">CUTE ROCK</span>
+<span class="title-logo-vs">VS.</span>
+<span class="title-logo-all">EVERYONE</span>
+</h1>
+<button class="main-button start-button" id="startButton" type="button">
+<span>PLAY</span><b><svg aria-hidden="true" class="ui-icon ui-icon-heart" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+</svg></b>
+</button>
+<nav aria-label="Neurodora’s links" class="title-links">
+<a href="/en/" rel="noopener noreferrer" target="_blank">
+                MAIN SITE <b><svg aria-hidden="true" class="ui-icon ui-icon-arrow-up-right" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M7 7h10v10"></path>
+<path d="M7 17 17 7"></path>
+</svg></b>
+</a>
+<a href="https://t.me/neurodora" rel="noopener noreferrer" target="_blank">
+                TELEGRAM <b><svg aria-hidden="true" class="ui-icon ui-icon-arrow-up-right" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M7 7h10v10"></path>
+<path d="M7 17 17 7"></path>
+</svg></b>
+</a>
+</nav>
+</div>
+</section>
+<section aria-live="polite" class="novel-overlay hidden" id="novelOverlay">
+<div class="novel-shade"></div>
+<img alt="" class="novel-person left hidden" id="novelLeft"/>
+<img alt="" class="novel-person right hidden" id="novelRight"/>
+<button class="novel-box" id="novelNext" type="button">
+<b id="novelSpeaker">NEURODORA</b>
+<span id="novelText">Cute Rock vs. Everyone.</span>
+<small>SPACE / CLICK <i><svg aria-hidden="true" class="ui-icon ui-icon-chevron-down" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="m6 9 6 6 6-6"></path>
+</svg></i></small>
+</button>
+</section>
+<section aria-live="polite" class="screen result-screen hidden" id="resultScreen">
+<div aria-hidden="true" class="result-clouds"><i></i><i></i><i></i></div>
+<div aria-hidden="true" class="result-meadow"></div>
+<div aria-hidden="true" class="result-decor"><i><svg aria-hidden="true" class="ui-icon ui-icon-heart" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+</svg></i><i><svg aria-hidden="true" class="ui-icon ui-icon-sparkles" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path>
+<path d="M20 3v4"></path>
+<path d="M22 5h-4"></path>
+<path d="M4 17v2"></path>
+<path d="M5 18H3"></path>
+</svg></i><i><svg aria-hidden="true" class="ui-icon ui-icon-heart" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>
+</svg></i><i><svg aria-hidden="true" class="ui-icon ui-icon-sparkles" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path>
+<path d="M20 3v4"></path>
+<path d="M22 5h-4"></path>
+<path d="M4 17v2"></path>
+<path d="M5 18H3"></path>
+</svg></i></div>
+<img alt="" aria-hidden="true" class="screen-cast result-cast" id="resultCast" src="/assets/game-approved-v3/dora-maybe-pat-4.webp"/>
+<div class="result-copy">
 
-        <div id="enemyBar" class="enemy-bar hidden" aria-label="Opponent’s health">
-          <b id="enemyName">NEUROMIRON</b>
-          <i><span id="enemyBarFill"></span></i>
-        </div>
-
-        <div id="levelCard" class="level-card hidden" aria-live="polite">
-          <strong id="levelTitle">NEUROMIRON</strong>
-        </div>
-
-        <section id="titleScreen" class="screen title-screen">
-          <div class="title-clouds" aria-hidden="true">
-            <i></i><i></i><i></i><i></i>
-          </div>
-          <div class="title-meadow" aria-hidden="true"></div>
-          <div id="titleCast" class="title-cast" aria-hidden="true">
-            <img class="title-cast-frame" src="/assets/game-approved-v3/dora-maybe-duel-title-v1.webp" alt="" />
-          </div>
-          <div class="title-copy">
-            <p class="beta-tag">v0.1 beta</p>
-            <h1 aria-label="Cute Rock vs. Everyone">
-              <span class="title-logo-main">CUTE ROCK</span>
-              <span class="title-logo-vs">VS.</span>
-              <span class="title-logo-all">EVERYONE</span>
-            </h1>
-            <button id="startButton" class="main-button start-button" type="button">
-              <span>PLAY</span><b>♥</b>
-            </button>
-            <nav class="title-links" aria-label="Neurodora’s links">
-              <a href="/en/" target="_blank" rel="noopener noreferrer">
-                MAIN SITE <b>↗</b>
-              </a>
-              <a href="https://t.me/neurodora" target="_blank" rel="noopener noreferrer">
-                TELEGRAM <b>↗</b>
-              </a>
-            </nav>
-          </div>
-        </section>
-
-        <section id="novelOverlay" class="novel-overlay hidden" aria-live="polite">
-          <div class="novel-shade"></div>
-          <img id="novelLeft" class="novel-person left hidden" alt="" />
-          <img id="novelRight" class="novel-person right hidden" alt="" />
-          <button id="novelNext" class="novel-box" type="button">
-            <b id="novelSpeaker">NEURODORA</b>
-            <span id="novelText">Cute Rock vs. Everyone.</span>
-            <small>SPACE / CLICK <i>▼</i></small>
-          </button>
-        </section>
-
-        <section id="resultScreen" class="screen result-screen hidden" aria-live="polite">
-          <div class="result-clouds" aria-hidden="true"><i></i><i></i><i></i></div>
-          <div class="result-meadow" aria-hidden="true"></div>
-          <div class="result-decor" aria-hidden="true"><i>♥</i><i>✦</i><i>♥</i><i>✦</i></div>
-          <img id="resultCast" class="screen-cast result-cast" src="/assets/game-approved-v3/dora-maybe-pat-4.webp" alt="" aria-hidden="true" />
-          <div class="result-copy">
-            <p id="resultKicker">CUTE ROCK VS. EVERYONE</p>
-            <h2 id="resultTitle">VICTORY</h2>
-            <p id="resultText">GAME COMPLETE.</p>
-            <div class="result-score"><small>SCORE</small><b id="finalScore">0</b></div>
-            <div class="result-actions">
-              <a id="resultTelegram" class="telegram-button" href="https://t.me/neurodora" target="_blank" rel="noopener noreferrer">TELEGRAM <b>↗</b></a>
-              <button id="restartButton" class="main-button" type="button">BACK TO HOME</button>
-            </div>
-          </div>
-        </section>
-
-        <button id="soundButton" class="sound-button" type="button" aria-label="Mute sound">♪</button>
-        <audio id="backgroundMusic" src="/assets/audio/kute-rock-instrumental.m4a" preload="auto" loop></audio>
-      </section>
-    </main>
-
-    <script src="/en/cute-game.js?v=beta-0.1.22"></script>
-    <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;:&quot;ce1213c7e62e4829ac111b234aa64707&quot;}"></script>
-  </body>
+<h2 id="resultTitle">VICTORY</h2>
+<p id="resultText">GAME COMPLETE.</p>
+<div class="result-score"><small>SCORE</small><b id="finalScore">0</b></div>
+<div class="result-actions">
+<a class="telegram-button" href="https://t.me/neurodora" id="resultTelegram" rel="noopener noreferrer" target="_blank">TELEGRAM <b><svg aria-hidden="true" class="ui-icon ui-icon-arrow-up-right" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M7 7h10v10"></path>
+<path d="M7 17 17 7"></path>
+</svg></b></a>
+<button class="main-button" id="restartButton" type="button">BACK TO HOME</button>
+</div>
+</div>
+</section>
+<button aria-label="Mute sound" class="sound-button" id="soundButton" type="button"><svg aria-hidden="true" class="ui-icon ui-icon-music" fill="none" focusable="false" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 18V5l12-2v13"></path>
+<circle cx="6" cy="18" r="3"></circle>
+<circle cx="18" cy="16" r="3"></circle>
+</svg></button>
+<audio id="backgroundMusic" loop="" preload="auto" src="/assets/audio/kute-rock-instrumental.m4a"></audio>
+</section>
+</main>
+<script src="/en/cute-game.js?v=20261029"></script>
+<script data-cf-beacon='{"token":"ce1213c7e62e4829ac111b234aa64707"}' src="https://static.cloudflareinsights.com/beacon.min.js" type="module"></script>
+</body>
 </html>

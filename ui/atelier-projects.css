@@ -1,10 +1,141 @@
-.atelier-projects{position:fixed;left:12px;top:50%;transform:translateY(-50%);z-index:60;color:#453c30;font-family:Georgia,"Times New Roman",serif;filter:drop-shadow(2px 5px 9px #20140955)}
-.atelier-projects>summary{box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:16px;writing-mode:vertical-rl;transform:rotate(180deg);padding:18px 12px;min-height:185px;background:#e8dfc6;border:1px solid #817259;border-right:4px solid #b09a72;cursor:pointer;font-size:13px;letter-spacing:.08em;list-style:none}
-.atelier-projects>summary::-webkit-details-marker{display:none}.atelier-projects>summary>span{font-size:22px;line-height:1}.atelier-projects>summary:focus-visible,.atelier-projects a:focus-visible{outline:2px solid #a5303a;outline-offset:4px}
-.atelier-projects[open]{width:min(318px,calc(100vw - 28px));max-height:calc(100dvh - 44px);overflow:auto;background:#eee5cf;border:1px solid #8d7a59}
-.atelier-projects[open]>summary{writing-mode:horizontal-tb;transform:none;min-height:0;padding:16px 18px;border:0;border-bottom:1px solid #9d8a6755;border-right:4px solid #b09a72;font-size:14px;letter-spacing:.02em}
-.atelier-projects[open]>summary>span{transform:rotate(45deg)}.atelier-project-list{display:grid;gap:14px;padding:16px}
-.atelier-project{display:block;color:inherit;text-decoration:none;border:1px solid #8f7b5455;background:#f8f1df;transition:transform .2s ease,border-color .2s ease}.atelier-project:hover{transform:translateX(3px);border-color:#a5303a}.project-preview{position:relative;display:block;height:136px;overflow:hidden}.project-preview img{width:100%;height:100%;display:block;object-fit:cover;object-position:center 34%}
-.project-monogatari .project-preview{background:#111114;color:#efe9dc;border-top:5px solid #c91d37}.project-monogatari .project-preview>i{position:absolute;right:8px;top:-22px;writing-mode:horizontal-tb;font:112px/1.5 "Yu Mincho",serif;opacity:.62;letter-spacing:-.12em}.project-monogatari .project-preview>b{position:absolute;bottom:18px;left:15px;font:700 24px/1 "Arial Narrow",sans-serif;letter-spacing:-.06em;border-left:3px solid #db2440;padding-left:9px}
-.project-label{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px 13px;font-size:14px;line-height:1.25}.project-label>i{font-style:normal;color:#a5303a;font-size:19px}.project-neurodora .project-label{border-top:3px solid #ce7184}
-@media(max-width:600px){.atelier-projects{left:7px}.atelier-projects>summary{padding:14px 8px;font-size:11px;min-height:160px}.atelier-projects[open]{width:min(294px,calc(100vw - 24px))}.project-preview{height:126px}.project-label{font-size:13px}}@media(prefers-reduced-motion:reduce){.atelier-project{transition:none}}
+.atelier-projects {
+  --tab-width: 46px;
+  --page-width: 294px;
+  --edge-space: 14px;
+  --top-space: 24px;
+  --bottom-space: 24px;
+  position: fixed;
+  z-index: 60;
+  left: var(--edge-space);
+  top: var(--top-space);
+  bottom: var(--bottom-space);
+  width: var(--tab-width);
+  color: #51432e;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  pointer-events: none;
+}
+
+.atelier-projects > summary {
+  box-sizing: border-box;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  width: var(--tab-width);
+  height: min(230px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 15px 8px;
+  transform: translateY(-50%);
+  color: #ead7a7;
+  background: linear-gradient(90deg, #23392b, #36503b 45%, #293e2e);
+  border: 1px solid #a48a51;
+  border-right: 3px solid #b0965c;
+  box-shadow: 2px 4px 9px #1b1a1266, inset 0 0 0 3px #2b4132, inset 0 0 0 4px #b4a06b66;
+  cursor: pointer;
+  list-style: none;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.atelier-projects > summary::-webkit-details-marker { display: none; }
+.project-tab-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 17px;
+  line-height: 1;
+  letter-spacing: .035em;
+  white-space: nowrap;
+}
+.atelier-projects svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+.project-toggle-icon { transition: transform .35s ease; }
+.atelier-projects[open] .project-toggle-icon { transform: rotate(45deg); }
+.atelier-projects[data-state="closing"] .project-toggle-icon { transform: rotate(0); }
+
+.project-sheet {
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: calc(var(--tab-width) - 3px);
+  width: min(var(--page-width), calc(100vw - var(--tab-width) - var(--edge-space) * 2));
+  max-height: calc(100dvh - var(--top-space) - var(--bottom-space));
+  border: 1px solid #b7a27a;
+  background: linear-gradient(90deg, #cabb99 0, #e4d5b4 10px, #f2e7ce 28px, #f4ead2 85%, #eadbb9);
+  box-shadow: 1px 1px 0 #d9c9a4, 3px 3px 0 #a38c63, 9px 13px 24px #21180e55;
+  transform: translateY(-50%) perspective(1000px) rotateY(0deg);
+  transform-origin: 0 50%;
+  backface-visibility: hidden;
+  pointer-events: auto;
+}
+.project-sheet::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 19px;
+  height: 19px;
+  background: linear-gradient(135deg, transparent 47%, #b5a17d 49%, #e5d5ae 54%, #f7edcf 76%, #bba67e 100%);
+  pointer-events: none;
+}
+.atelier-projects[data-state="opening"] .project-sheet,
+.atelier-projects[data-state="closing"] .project-sheet { will-change: transform, opacity; }
+.atelier-projects[data-state="closing"] .project-sheet { pointer-events: none; }
+
+.atelier-project-list {
+  box-sizing: border-box;
+  display: grid;
+  gap: 19px;
+  max-height: calc(100dvh - var(--top-space) - var(--bottom-space) - 2px);
+  padding: 20px 18px 21px 23px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #aa936b transparent;
+  -webkit-overflow-scrolling: touch;
+}
+.atelier-project {
+  display: block;
+  min-width: 0;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid #9e89605c;
+  background: #fbf4e2;
+  box-shadow: 1px 2px 3px #59483120;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.project-preview { position: relative; display: block; height: 134px; overflow: hidden; }
+.project-preview img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center 34%; }
+.project-monogatari .project-preview { background: #17171a; color: #eee8d8; border-top: 4px solid #b72941; }
+.project-monogatari .project-preview > i { position: absolute; right: 5px; top: -19px; font: 105px/1.5 "Yu Mincho", serif; opacity: .6; letter-spacing: -.12em; }
+.project-monogatari .project-preview > b { position: absolute; bottom: 16px; left: 13px; font: 700 21px/1 "Arial Narrow", sans-serif; letter-spacing: -.06em; border-left: 2px solid #ce3550; padding-left: 8px; }
+.project-label { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 45px; padding: 8px 12px; font-size: 22px; line-height: 1.15; }
+.project-label svg { width: 17px; height: 17px; color: #77623f; }
+.project-neurodora .project-preview { border-bottom: 2px solid #bc7c7a; }
+.atelier-projects > summary:focus-visible { outline: 2px solid #f4e7c0; outline-offset: 4px; }
+.atelier-project:focus-visible { outline: 2px solid #37543e; outline-offset: 3px; }
+.atelier-project:active { background: #ecdfbf; }
+
+@media (hover: hover) {
+  .atelier-project:hover { transform: translateY(-2px); border-color: #8e754a; box-shadow: 1px 4px 6px #59483130; }
+  .atelier-projects > summary:hover { color: #fff0c7; }
+}
+@media (max-width: 600px), (max-height: 600px) {
+  .atelier-projects { --tab-width: 44px; --edge-space: 9px; --top-space: max(104px, calc(env(safe-area-inset-top) + 90px)); --bottom-space: max(16px, env(safe-area-inset-bottom)); }
+  .atelier-projects > summary { height: min(214px, 100%); gap: 14px; }
+  .project-tab-label { font-size: 16px; }
+  .atelier-project-list { gap: 16px; padding: 15px 13px 17px 18px; }
+  .project-preview { height: 125px; }
+  .project-label { font-size: 21px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .atelier-project, .project-toggle-icon { transition: none; }
+}

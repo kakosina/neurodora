@@ -212,8 +212,20 @@ Built and maintained by [@kakosina](https://github.com/kakosina). Project update
 
 ## Languages
 
-Russian stays at the existing URLs. English pages live under `/en/`, including `/en/atelier/`, all 30 articles, the game and the three song pages. English song pages label the translation and retain the unchanged Russian lyrics in a disclosure. Language links on the artist site keep the current page. The catalogue uses the language of its entry URL and has no language control inside the book.
+Russian stays at the existing URLs. English pages live under `/en/`, including `/en/atelier/`, all 31 articles, the game and the three lyric pages. English lyric pages label the translation and retain the unchanged Russian originals in a disclosure. Language links on the artist site keep the current page. The catalogue uses the language of its entry URL and has no language control inside the book.
 
 Both Atelier pages use the same compiled runtime and media, with the HTML language selecting labels and canvas text. The mobile book retains the original central scene and fills the surrounding paper fields with painted continuations of the same rooms. Side artwork is registered separately; it cannot replace the original centre or change its camera scale, objects or animation. English has its own vector hero lettering and small layout adjustments for longer copy. Language selection uses ordinary links; it does not add cookies or language storage.
 
 The book's inner page edges share one spine profile and consistent shading. During a turn, the image at the joint follows the moving sheet's inner edge, preventing the next pencil page from appearing as a bright gap before the sheet reaches it.
+
+## Current site content
+
+The main page links directly to [Neurodora's Telegram bot](https://t.me/neurodora_bot) and describes its existing chat, text rewrite, song selection and concert lookup features. Character and production background lives in the article `/articles/kak-ustroena-neirodora/` and its English counterpart.
+
+The music section includes all 32 full public videos listed by the Neurodora YouTube channel on October 29, 2026: five Neurodora songs and 27 reinterpretations in an expandable list. `music/tracks.json` records the exact video URLs, thumbnails, durations and checked date. Shorts and unlisted videos are not counted as public track releases. Existing lyrics remain unchanged.
+
+Interface icons use local SVG paths, including game controls and Atelier links. Do not restore Unicode hearts, play symbols or stars as UI graphics: iOS can render them with its emoji font. Lucide provenance is in `ui/icons/refresh-sources.json` and the license beside it.
+
+Section titles stand alone. Do not add eyebrow labels, duplicate subtitles or scrolling text strips. Descriptive paragraphs should explain a real action or contain the article itself. The historical article importer removes its source packs' labels and ribbons and preserves metadata for separately authored articles.
+
+Atelier's Projects tab unfolds a paper sheet. It supports reversible opening/closing, keyboard focus, Escape, outside clicks, touch and reduced-motion preferences. It is implemented in `ui/atelier-projects.js` and `.css`; the book's camera and performance geometry remain unchanged.
