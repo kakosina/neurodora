@@ -36,7 +36,6 @@
 .telegram-function:focus-visible { outline:3px solid var(--ink); outline-offset:7px; }
 @media (hover:hover) {
   .telegram-function:hover { transform:translateY(-5px) rotate(0deg); filter:drop-shadow(5px 11px 0 #62482d26); }
-  .telegram-function:hover .function-label { text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:5px; }
 }
 @media (max-width:1100px) and (min-width:701px) {
   .telegram-functions-heading { padding-right:170px; }
