@@ -32,6 +32,7 @@
 @media (hover: hover) {
   .social-links .hero-paper-button:hover { transform: translateY(-3px) rotate(-1.7deg); filter: drop-shadow(4px 7px 0 #20212026); }
   .social-links .hero-paper-button.telegram:hover { transform: translateY(-3px) rotate(1.7deg); }
+  .social-links .hero-paper-button.dm:hover { transform: translateY(-3px) rotate(-1.7deg); }
 }
 @media (max-width:600px) {
   .social-links .hero-paper-button > svg, .social-links .hero-paper-button > span > svg { width: 20px; height: 20px; }
