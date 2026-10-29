@@ -220,12 +220,12 @@ The book's inner page edges share one spine profile and consistent shading. Duri
 
 ## Current site content
 
-The main page links directly to [Neurodora's Telegram bot](https://t.me/neurodora_bot) and describes its existing chat, text rewrite, song selection and concert lookup features. Character and production background lives in the article `/articles/kak-ustroena-neirodora/` and its English counterpart.
+The original first screen retains its copy, character artwork and composition; only its two social buttons receive a new paper treatment. A separate Telegram section contains five direct function links, without explanatory paragraphs. The character article at `/articles/kak-ustroena-neirodora/` and its English counterpart contains the six original visual sections: universe ribbon, creative process, RPG profile, identity diagram, music introduction and manifesto. These blocks were relocated rather than rewritten as prose.
 
-The music section includes all 32 full public videos listed by the Neurodora YouTube channel on October 29, 2026: five Neurodora songs and 27 reinterpretations in an expandable list. `music/tracks.json` records the exact video URLs, thumbnails, durations and checked date. Shorts and unlisted videos are not counted as public track releases. Existing lyrics remain unchanged.
+The music section shows only the five Neurodora songs. `music/tracks.json` records their checked YouTube links, thumbnails and durations. Reinterpretations, Shorts and unlisted entries are excluded from the site catalogue. Existing lyrics remain unchanged.
 
 Interface icons use local SVG paths, including game controls and Atelier links. Do not restore Unicode hearts, play symbols or stars as UI graphics: iOS can render them with its emoji font. Lucide provenance is in `ui/icons/refresh-sources.json` and the license beside it.
 
-Section titles stand alone. Do not add eyebrow labels, duplicate subtitles or scrolling text strips. Descriptive paragraphs should explain a real action or contain the article itself. The historical article importer removes its source packs' labels and ribbons and preserves metadata for separately authored articles.
+Keep the original expressive section headings. Do not add explanatory labels, duplicate subtitles or scrolling text strips. The first screen is an explicit exception: its original text and labels are preserved at the owner's request. The imported article templates remove their old labels and ribbons and retain metadata for separately authored articles.
 
-Atelier's Projects tab unfolds a paper sheet. It supports reversible opening/closing, keyboard focus, Escape, outside clicks, touch and reduced-motion preferences. It is implemented in `ui/atelier-projects.js` and `.css`; the book's camera and performance geometry remain unchanged.
+Atelier's Projects menu keeps its green vertical bookmark and original paper cards. The bookmark extends to the full height of the revealed menu. The paper emerges smoothly to its right instead of pivoting like a door. Repeated taps reverse in place; keyboard focus, Escape, outside clicks, touch and reduced-motion preferences are supported. The implementation is in `ui/atelier-projects.js` and `.css`; the book's camera and performance geometry are unchanged.

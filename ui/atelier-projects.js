@@ -6,8 +6,24 @@
   if (!summary || !sheet) return;
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const duration = 420;
   let expanded = projects.open;
   let unfolding;
+
+  // Measure the actual paper even while native details is closed. The temporary
+  // measurement is hidden and synchronous, so no paper or toggle is painted.
+  const matchHeight = () => {
+    const wasOpen = projects.open;
+    if (!wasOpen) {
+      projects.dataset.measuring = 'true';
+      projects.open = true;
+    }
+    projects.style.setProperty('--project-height', `${sheet.offsetHeight}px`);
+    if (!wasOpen) {
+      projects.open = false;
+      delete projects.dataset.measuring;
+    }
+  };
 
   const settle = () => {
     projects.open = expanded;
@@ -24,7 +40,10 @@
     }
     sheet.inert = !next;
     sheet.setAttribute('aria-hidden', String(!next));
-    if (next) projects.open = true;
+    if (next) {
+      projects.open = true;
+      matchHeight();
+    }
 
     if (reducedMotion.matches || !sheet.animate) {
       unfolding?.cancel();
@@ -35,19 +54,16 @@
 
     if (!unfolding) {
       unfolding = sheet.animate([
-        {transform: 'translateY(-50%) perspective(1000px) rotateY(88deg)', opacity: 0, filter: 'brightness(.68)'},
-        {transform: 'translateY(-50%) perspective(1000px) rotateY(86deg)', opacity: 1, filter: 'brightness(.7)', offset: .04},
-        {transform: 'translateY(-50%) perspective(1000px) rotateY(58deg)', opacity: 1, filter: 'brightness(.82)', offset: .3},
-        {transform: 'translateY(-50%) perspective(1000px) rotateY(16deg)', opacity: 1, filter: 'brightness(.96)', offset: .7},
-        {transform: 'translateY(-50%) perspective(1000px) rotateY(0deg)', opacity: 1, filter: 'brightness(1)'}
-      ], {duration: 620, easing: 'cubic-bezier(.3,0,.2,1)', fill: 'both'});
+        {clipPath: 'inset(-32px calc(100% + 24px) -40px -24px)'},
+        {clipPath: 'inset(-32px -40px -40px -24px)'}
+      ], {duration, easing: 'cubic-bezier(.25,.1,.25,1)', fill: 'both'});
       unfolding.pause();
-      unfolding.currentTime = next ? 0 : 620;
+      unfolding.currentTime = next ? 0 : duration;
       unfolding.onfinish = settle;
     }
 
     projects.dataset.state = next ? 'opening' : 'closing';
-    // One timeline changes direction in place, including repeated taps mid-fold.
+    // One timeline changes direction in place, including repeated taps mid-reveal.
     unfolding.playbackRate = next ? 1 : -1;
     unfolding.play();
   };
@@ -55,6 +71,7 @@
   summary.setAttribute('aria-expanded', String(expanded));
   sheet.inert = !expanded;
   sheet.setAttribute('aria-hidden', String(!expanded));
+  matchHeight();
   settle();
 
   summary.addEventListener('click', event => {
@@ -86,4 +103,9 @@
       settle();
     }
   });
+  window.addEventListener('resize', matchHeight, {passive: true});
+  document.fonts.ready.then(matchHeight);
+  new ResizeObserver(() => {
+    if (projects.open) matchHeight();
+  }).observe(sheet);
 })();

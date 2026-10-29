@@ -1,0 +1,41 @@
+/* Keep the original hero layout; add hero-paper-button to its two original links. */
+.hero .social-button.hero-paper-button {
+  position: relative;
+  isolation: isolate;
+  color: var(--ink);
+  border-color: transparent;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  transform: rotate(-1deg);
+  transition: transform .18s ease, filter .18s ease;
+  filter: drop-shadow(3px 4px 0 #20212030);
+}
+.hero .hero-paper-button::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -2px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 210 70' preserveAspectRatio='none'%3E%3Cpath d='m3 5 30-2 36 1 42-2 32 2 36-1 28 2-1 17 2 16-2 28-41 1-26-1-36 2-29-2-37 1L2 65l2-20-2-22Z' fill='%23ee5e66' stroke='%23202120' stroke-width='2.5' stroke-linejoin='round'/%3E%3Cpath d='m10 11 63-2 58 1 68-1M10 55l-1-35m187 29 1-30M13 61l51-1m102 1 31-2' fill='none' stroke='%23fff8ec' stroke-width='1.3' opacity='.7'/%3E%3Cpath d='m8 6 1 7m194 42-1 9m-82-3 24 1' stroke='%23202120' opacity='.45'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+}
+.hero .hero-paper-button.telegram { transform: rotate(1deg); }
+.hero .hero-paper-button.telegram::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 210 70' preserveAspectRatio='none'%3E%3Cpath d='m3 5 31-2 31 1 36-2 36 2 35-1 35 2-2 18 2 21-2 22-32 1-39-2-30 3-35-2-36 1L2 64l2-22-2-21Z' fill='%2343b4c3' stroke='%23202120' stroke-width='2.5' stroke-linejoin='round'/%3E%3Cpath d='m10 11 70-2 62 1 57-1M10 52l-1-31m187 28 1-29M13 60l44-1m113 2 27-2' fill='none' stroke='%23fff8ec' stroke-width='1.3' opacity='.75'/%3E%3Cpath d='m8 6 1 7m194 42-1 9m-82-3 24 1' stroke='%23202120' opacity='.45'/%3E%3C/svg%3E");
+}
+.hero .hero-paper-button b { position: relative; text-shadow: 0 1px 0 #fff8ec38; }
+.hero .hero-paper-button > svg, .hero .hero-paper-button > span > svg {
+  width: 25px;
+  height: 25px;
+  flex: none;
+}
+.hero .hero-paper-button:focus-visible { outline: 3px solid var(--ink); outline-offset: 6px; }
+@media (hover: hover) {
+  .hero .hero-paper-button:hover { transform: translateY(-3px) rotate(-1.7deg); filter: drop-shadow(4px 7px 0 #20212026); }
+  .hero .hero-paper-button.telegram:hover { transform: translateY(-3px) rotate(1.7deg); }
+}
+@media (max-width:600px) {
+  .hero .hero-paper-button > svg, .hero .hero-paper-button > span > svg { width: 20px; height: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero .social-button.hero-paper-button { transition: none; }
+}
