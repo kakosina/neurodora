@@ -598,3 +598,6 @@ a {
     column-count: 2;
   }
 }
+
+/* Leave room for tilted photos and margin drawings on multi-column layouts. */
+@media(min-width:521px){body.library-index .article-collage{width:min(1370px,calc(100% - 110px))}}

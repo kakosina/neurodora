@@ -25,8 +25,15 @@ from PIL import Image, ImageOps
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def svg_icon(name: str) -> str:
+    """A local path icon avoids emoji-font substitution on iOS."""
+    svg = (ROOT / "ui" / "icons" / f"{name}.svg").read_text(encoding="utf-8").strip()
+    svg = re.sub(r'\s+(?:width|height)="24"', "", svg)
+    return svg.replace("<svg", '<svg class="ui-icon" aria-hidden="true" focusable="false"', 1)
+
+
 def site_footer() -> str:
-    return '''<footer class="site-legal-footer">
+    return f'''<footer class="site-legal-footer">
       <div class="site-legal-footer__inner">
         <div class="site-legal-footer__identity">
           <a class="site-legal-footer__wordmark" href="/" aria-label="Нейродора — на главную"><span>Нейро</span><b>Дора</b></a>
@@ -34,12 +41,12 @@ def site_footer() -> str:
         <nav class="site-legal-footer__nav" aria-label="Информация о сайте">
           <a href="/privacy/">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</a>
           <a href="/terms/">УСЛОВИЯ ИСПОЛЬЗОВАНИЯ</a>
-          <a href="/#about">О ПРОЕКТЕ</a>
+          <a href="/articles/kak-ustroena-neirodora/">О ПРОЕКТЕ</a>
           <a href="https://t.me/neurodora" target="_blank" rel="noopener noreferrer">КОНТАКТЫ</a>
         </nav>
         <div class="site-legal-footer__social">
-          <a href="https://t.me/neurodora" target="_blank" rel="noopener noreferrer">TELEGRAM ↗</a>
-          <a href="https://www.youtube.com/@neurodora" target="_blank" rel="noopener noreferrer">YOUTUBE ↗</a>
+          <a href="https://t.me/neurodora" target="_blank" rel="noopener noreferrer">TELEGRAM {svg_icon("arrow-up-right")}</a>
+          <a href="https://www.youtube.com/@neurodora" target="_blank" rel="noopener noreferrer">YOUTUBE {svg_icon("arrow-up-right")}</a>
         </div>
       </div>
       <div class="site-legal-footer__bottom"><span>© 2026 НЕЙРОДОРА</span><span>NEURODORA.COM</span></div>
@@ -239,18 +246,15 @@ def body_fragment(source_html: str, supremacy: bool) -> tuple[str, str]:
     fragment = fragment.replace("NEURODORA.COMM", "NEURODORA.COM")
     fragment = fragment.replace("neurodora.comm", "neurodora.com")
 
-    # The last ten source articles ship a static strip. Repeat its text so the
-    # shared CSS can animate it as a continuous marquee.
-    def repeat_strip(match: re.Match[str]) -> str:
-        strip_text = strip_tags(match.group(1)).rstrip(" ·")
-        repeated = " · ".join([strip_text] * 4) + " ·"
-        return f'<div class="crx-strip"><span>{html_module.escape(repeated)}</span></div>'
-
+    # Owner's site policy: headings stand alone, without editorial labels,
+    # duplicate decks or animated text strips from the historical ZIP packs.
     fragment = re.sub(
-        r'<div class="crx-strip"[^>]*>\s*<span>(.*?)</span>\s*</div>',
-        repeat_strip,
-        fragment,
-        flags=re.IGNORECASE | re.DOTALL,
+        r'<(?:span|p) class="(?:cr-chip|cr-dek|crx-kicker|crx-deck)"[^>]*>.*?</(?:span|p)>',
+        "", fragment, flags=re.IGNORECASE | re.DOTALL,
+    )
+    fragment = re.sub(
+        r'<div class="cr-ribbon"[^>]*>\s*<div>.*?</div>\s*</div>|<div class="crx-strip"[^>]*>\s*<span>.*?</span>\s*</div>',
+        "", fragment, flags=re.IGNORECASE | re.DOTALL,
     )
     return fragment, body_class
 
@@ -331,7 +335,7 @@ def article_page(
     def pager_link(item: dict | None, direction: str) -> str:
         if not item:
             return '<span class="article-pager-empty" aria-hidden="true"></span>'
-        arrow = "←" if direction == "prev" else "→"
+        arrow = svg_icon("arrow-left" if direction == "prev" else "arrow-right")
         label = "ПРЕДЫДУЩАЯ" if direction == "prev" else "СЛЕДУЮЩАЯ"
         visual = f"{arrow} {label}" if direction == "prev" else f"{label} {arrow}"
         return (
@@ -358,13 +362,14 @@ def article_page(
     <meta property="og:image:height" content="{height}" />
     <meta name="twitter:card" content="summary_large_image" />
     <title>{html_module.escape(title)} · Кьют-рокология Нейродоры</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⭐</text></svg>" />
+    <link rel="icon" href="/ui/icons/star.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;family=Neucha&amp;family=Oswald:wght@600;700&amp;family=Shantell+Sans:wght@700;800&amp;display=swap" />
     <link rel="stylesheet" href="../{series_css}?v=3" />
     <link rel="stylesheet" href="../article-shell.css?v=5" />
     <link rel="stylesheet" href="/legal-footer.css?v=1" />
+    <link rel="stylesheet" href="/ui/shape-icons.css?v=20261029" />
     <script type="application/ld+json">{json_ld}</script>
   </head>
   <body class="{html_module.escape(classes, quote=True)}">
@@ -373,8 +378,8 @@ def article_page(
       <a class="brand" href="/#top" aria-label="Нейродора — на главную"><span>Нейро</span><b>Дора</b></a>
       <nav aria-label="Главная навигация">
         <a href="/#top">ГЛАВНАЯ</a>
-        <a href="/#about">СМОТРЕТЬ</a>
-        <a href="/#now">СЛУШАТЬ</a>
+        <a href="/#about">БОЛТАТЬ</a>
+        <a href="/#tracks">СЛУШАТЬ</a>
         <a class="active" href="/articles/">ЧИТАТЬ</a>
         <a href="/game/">ИГРАТЬ</a>
         <a href="/#follow">ДРУЖИТЬ</a>
@@ -388,7 +393,7 @@ def article_page(
     </main>
     <nav class="article-pager" aria-label="Другие статьи">
       {pager_link(previous_article, "prev")}
-      <a class="article-pager-home" href="/articles/"><span>✦</span><b>КЬЮТ-РОКОЛОГИЯ</b></a>
+      <a class="article-pager-home" href="/articles/">{svg_icon("book-open")}<b>КЬЮТ-РОКОЛОГИЯ</b></a>
       {pager_link(next_article, "next")}
     </nav>
     {site_footer()}
@@ -402,7 +407,7 @@ def article_index(records: list[dict]) -> str:
     turns = (-3.4, 2.2, -1.1, 3.7, -2.5, 1.4, -4.1, 2.9, -1.8, 4.0)
     shifts = (-12, 18, 3, -20, 14, -6, 21, -14, 8, -2)
     drops = (0, 14, 5, 19, 8, 2, 16, 9, 22, 4)
-    doodles = ("♡", "☆", "♫", "✦", "♡", "♪")
+    doodles = ("heart", "star", "music", "sparkles", "heart", "music")
     # A deterministic shuffle keeps archive packs from appearing as three groups.
     shuffled = [records[(index * 11) % len(records)] for index in range(len(records))]
 
@@ -412,7 +417,7 @@ def article_index(records: list[dict]) -> str:
           data-doodle="{doodles[index % len(doodles)]}">
           <figure>
             <img src="assets/{record["slug"]}.webp" width="{record["image_width"]}" height="{record["image_height"]}" loading="{("eager" if index < 4 else "lazy")}" decoding="async" alt="" />
-            <figcaption><h2>{html_module.escape(record["title"])}</h2><span>ЧИТАТЬ →</span></figcaption>
+            <figcaption><h2>{html_module.escape(record["title"])}</h2><span>ЧИТАТЬ {svg_icon("arrow-right")}</span></figcaption>
           </figure>
         </a>'''
         for index, record in enumerate(shuffled)
@@ -435,12 +440,13 @@ def article_index(records: list[dict]) -> str:
     <meta property="og:image" content="https://neurodora.com/articles/assets/neirodora-chistaya-forma-kyut-roka.webp" />
     <meta name="twitter:card" content="summary_large_image" />
     <title>КЬЮТ-РОКОЛОГИЯ НЕЙРОДОРЫ</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⭐</text></svg>" />
+    <link rel="icon" href="/ui/icons/star.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Neucha&amp;family=Oswald:wght@600;700&amp;family=Shantell+Sans:wght@700;800&amp;display=swap" />
     <link rel="stylesheet" href="library.css?v=4" />
     <link rel="stylesheet" href="/legal-footer.css?v=1" />
+    <link rel="stylesheet" href="/ui/shape-icons.css?v=20261029" />
   </head>
   <body>
     <a class="library-skip" href="#library">К СТАТЬЯМ</a>
@@ -448,8 +454,8 @@ def article_index(records: list[dict]) -> str:
       <a class="brand" href="/#top" aria-label="Нейродора — на главную"><span>Нейро</span><b>Дора</b></a>
       <nav aria-label="Главная навигация">
         <a href="/#top">ГЛАВНАЯ</a>
-        <a href="/#about">СМОТРЕТЬ</a>
-        <a href="/#now">СЛУШАТЬ</a>
+        <a href="/#about">БОЛТАТЬ</a>
+        <a href="/#tracks">СЛУШАТЬ</a>
         <a class="active" href="/articles/">ЧИТАТЬ</a>
         <a href="/game/">ИГРАТЬ</a>
         <a href="/#follow">ДРУЖИТЬ</a>
@@ -462,8 +468,7 @@ def article_index(records: list[dict]) -> str:
       <section class="library-hero">
         <div class="library-hero-copy">
           <h1>КЬЮТ-<em>РОКОЛОГИЯ</em></h1>
-          <p>мои статьи о кьют-роке ♡</p>
-          <i class="doodle-heart" aria-hidden="true">♡</i><i class="doodle-star" aria-hidden="true">☆</i>
+          <i class="doodle-heart" aria-hidden="true">{svg_icon("heart")}</i><i class="doodle-star" aria-hidden="true">{svg_icon("star")}</i>
         </div>
       </section>
 
@@ -472,7 +477,7 @@ def article_index(records: list[dict]) -> str:
       </section>
 
       <section class="library-cta">
-        <span aria-hidden="true">♫</span><div><small>ДОЧИТАЛА ДО КОНЦА?</small><h2>ТЕПЕРЬ МОЖНО<br />СДЕЛАТЬ ПОГРОМЧЕ.</h2></div><a href="https://www.youtube.com/@neurodora" target="_blank" rel="noopener noreferrer">СЛУШАТЬ НЕЙРОДОРУ ↗</a>
+        <span aria-hidden="true">{svg_icon("music")}</span><div><h2>ТЕПЕРЬ МОЖНО<br />СДЕЛАТЬ ПОГРОМЧЕ.</h2></div><a href="https://www.youtube.com/@neurodora" target="_blank" rel="noopener noreferrer">СЛУШАТЬ НЕЙРОДОРУ {svg_icon("arrow-up-right")}</a>
       </section>
     </main>
     {site_footer()}
@@ -504,6 +509,15 @@ def sitemap(records: list[dict]) -> str:
   </url>'''
         for url, frequency, priority in urls
     )
+    # Rebuilding imported articles must not drop independently published
+    # English pages, song pages, Atelier or other site projects.
+    current_sitemap = ROOT / "sitemap.xml"
+    known_urls = {url for url, _, _ in urls}
+    if current_sitemap.exists():
+        for existing in re.findall(r"<url>.*?</url>", current_sitemap.read_text(encoding="utf-8"), re.DOTALL):
+            location = re.search(r"<loc>(.*?)</loc>", existing)
+            if location and html_module.unescape(location.group(1)) not in known_urls:
+                entries += "\n  " + existing
     return f'''<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {entries}
@@ -526,6 +540,10 @@ def main() -> int:
     article_root.mkdir(exist_ok=True)
     asset_root.mkdir(exist_ok=True)
 
+    metadata_path = article_root / "articles.json"
+    previous_records = json.loads(metadata_path.read_text(encoding="utf-8")) if metadata_path.exists() else []
+    imported_slugs = {source.slug for source in SOURCES}
+    authored_records = [record for record in previous_records if record["slug"] not in imported_slugs]
     archives: dict[str, zipfile.ZipFile] = {}
     try:
         for pack, archive_name in PACK_FILES.items():
@@ -612,6 +630,7 @@ def main() -> int:
             }
             for record in prepared
         ]
+        public_records.extend(authored_records)
         (article_root / "articles.json").write_text(
             json.dumps(public_records, ensure_ascii=False, indent=2) + "\n",
             encoding="utf-8",

@@ -65,7 +65,6 @@
     novelSpeaker: document.querySelector('#novelSpeaker'),
     novelText: document.querySelector('#novelText'),
     result: document.querySelector('#resultScreen'),
-    resultKicker: document.querySelector('#resultKicker'),
     resultTitle: document.querySelector('#resultTitle'),
     resultText: document.querySelector('#resultText'),
     finalScore: document.querySelector('#finalScore'),
@@ -1033,7 +1032,6 @@
       ? ROOT_V3 + 'dora-maybe-pat-4.webp'
       : ROOT_V3 + 'dora-defeat.webp';
     if (won) {
-      ui.resultKicker.textContent = 'КЬЮТ-РОК ПРОТИВ ВСЕХ';
       ui.resultTitle.textContent = 'ПОБЕДА';
       ui.resultText.textContent = 'ИГРА ПРОЙДЕНА.';
       show(ui.telegram);
@@ -1041,7 +1039,6 @@
       tone(880, 0.25, 'sine', 0.025, 0.16);
       tone(1100, 0.35, 'sine', 0.02, 0.34);
     } else {
-      ui.resultKicker.textContent = 'ИГРА ОКОНЧЕНА';
       ui.resultTitle.textContent = 'ПОРАЖЕНИЕ';
       ui.resultText.textContent = 'ПОПРОБУЙ ЕЩЁ РАЗ.';
       hide(ui.telegram);
@@ -1765,11 +1762,11 @@
   }
 
   ui.start.disabled = true;
-  ui.start.innerHTML = '<span>ЗАГРУЖАЕМ</span><b>♥</b>';
+  ui.start.innerHTML = "<span>ЗАГРУЖАЕМ</span><b><svg aria-hidden=\"true\" class=\"ui-icon ui-icon-heart\" fill=\"none\" focusable=\"false\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewbox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z\"></path></svg></b>";
   Promise.all([spritesReady, preloadPortraits(PROLOGUE)]).then(() => {
     ready = true;
     ui.start.disabled = false;
-    ui.start.innerHTML = '<span>ИГРАТЬ</span><b>♥</b>';
+    ui.start.innerHTML = "<span>ИГРАТЬ</span><b><svg aria-hidden=\"true\" class=\"ui-icon ui-icon-heart\" fill=\"none\" focusable=\"false\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewbox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z\"></path></svg></b>";
   });
 
   ui.start.addEventListener('click', startStory);
@@ -1778,7 +1775,7 @@
   ui.sound.addEventListener('click', () => {
     game.muted = !game.muted;
     if (game.muted) stopSoundSamples();
-    ui.sound.textContent = game.muted ? '×' : '♪';
+    ui.sound.innerHTML = game.muted ? "<svg aria-hidden=\"true\" class=\"ui-icon ui-icon-volume-x\" fill=\"none\" focusable=\"false\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewbox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z\"></path><line x1=\"22\" x2=\"16\" y1=\"9\" y2=\"15\"></line><line x1=\"16\" x2=\"22\" y1=\"9\" y2=\"15\"></line></svg>" : "<svg aria-hidden=\"true\" class=\"ui-icon ui-icon-volume-2\" fill=\"none\" focusable=\"false\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewbox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z\"></path><path d=\"M16 9a5 5 0 0 1 0 6\"></path><path d=\"M19.364 18.364a9 9 0 0 0 0-12.728\"></path></svg>";
     ui.sound.setAttribute('aria-label', game.muted ? 'Включить звук' : 'Выключить звук');
     syncBackgroundMusic();
     if (!game.muted) {

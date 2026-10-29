@@ -1,0 +1,85 @@
+/* One function, one link. Native paper silhouettes, ink marks, no supporting copy. */
+.telegram-functions { position:relative; padding-block:80px 95px; scroll-margin-top:40px; }
+.telegram-functions-heading { position:relative; margin:0 0 48px; padding-right:220px; }
+.telegram-functions h2 { margin:0; font:400 clamp(67px,7.4vw,110px)/.91 'Neucha',cursive; letter-spacing:-.025em; text-transform:uppercase; }
+.telegram-functions h2 span { display:block; }
+.telegram-functions h2 span:last-child { color:var(--coral-deep); }
+.telegram-flight { position:absolute; width:210px; height:150px; right:50px; bottom:8px; fill:none; stroke:var(--ink); stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; transform:rotate(-8deg); }
+.telegram-flight .flight-line { stroke:var(--teal-deep); stroke-dasharray:5 8; }
+.function-wall { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:30px 25px; padding:10px 9px 0; }
+.telegram-function { --tilt:-1deg; position:relative; isolation:isolate; display:flex; align-items:center; min-width:0; min-height:180px; padding:32px 82px 35px 34px; color:var(--ink); transform:rotate(var(--tilt)); transition:transform .18s ease,filter .18s ease; filter:drop-shadow(4px 6px 0 #62482d20); }
+.function-paper { position:absolute; z-index:-1; inset:0; width:100%; height:100%; overflow:visible; }
+.function-paper .paper-edge { stroke:var(--ink); stroke-width:2; stroke-linejoin:round; vector-effect:non-scaling-stroke; }
+.function-paper .paper-light { fill:none; stroke:#fff8ec; stroke-width:1.3; opacity:.6; vector-effect:non-scaling-stroke; }
+.function-label { position:relative; font:600 clamp(30px,3.2vw,49px)/1.08 'Oswald',sans-serif; letter-spacing:-.015em; }
+.function-mark { position:absolute; width:68px; height:68px; right:26px; bottom:27px; fill:none; stroke:currentColor; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
+.function-go { position:absolute; right:22px; top:18px; width:27px; height:27px; fill:none; stroke:currentColor; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
+.function-chat { grid-column:span 5; --tilt:-1.2deg; padding-left:35px; }
+.function-chat .function-paper .paper-edge { fill:var(--coral); }
+.function-chat .function-label { font-size:clamp(35px,3.6vw,56px); }
+.function-cute { grid-column:span 7; --tilt:1deg; padding-left:44px; }
+.function-cute .function-paper .paper-edge { fill:#87cdd0; }
+.function-cute .function-label { max-width:420px; }
+.function-cute .function-mark { width:80px; height:80px; right:43px; bottom:23px; }
+.function-song { grid-column:span 5; --tilt:.6deg; min-height:210px; padding-right:125px; }
+.function-song .function-paper .paper-edge { fill:#f2cb71; }
+.function-song .function-mark { width:88px; height:88px; right:28px; bottom:33px; transform:rotate(-9deg); }
+.function-concerts { grid-column:span 4; --tilt:-1.2deg; padding-right:76px; padding-left:27px; }
+.function-concerts .function-paper .paper-edge { fill:#fff8ec; }
+.function-concerts .function-label { font-size:clamp(30px,3.1vw,46px); }
+.function-concerts .function-mark { width:58px; height:58px; right:24px; bottom:30px; color:var(--coral-deep); }
+.function-quiz { grid-column:span 3; --tilt:2deg; color:var(--paper-light); min-height:210px; padding:50px 42px 40px; }
+.function-quiz .function-paper .paper-edge { fill:var(--ink); }
+.function-quiz .function-label { font-size:clamp(29px,2.7vw,40px); max-width:160px; }
+.function-quiz .function-mark { color:#f2cb71; width:41px; height:41px; right:30px; bottom:27px; }
+.function-quiz .function-go { right:35px; top:30px; color:#f2cb71; }
+.telegram-function:focus-visible { outline:3px solid var(--ink); outline-offset:7px; }
+@media (hover:hover) {
+  .telegram-function:hover { transform:translateY(-5px) rotate(0deg); filter:drop-shadow(5px 11px 0 #62482d26); }
+  .telegram-function:hover .function-label { text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:5px; }
+}
+@media (max-width:1100px) and (min-width:701px) {
+  .telegram-functions-heading { padding-right:170px; }
+  .telegram-flight { right:10px; width:160px; }
+  .function-wall { gap:24px 19px; }
+  .telegram-function { padding-left:25px; padding-right:64px; }
+  .function-chat { grid-column:span 6; }
+  .function-cute { grid-column:span 6; }
+  .function-song { grid-column:span 4; padding-right:65px; }
+  .function-concerts { grid-column:span 4; }
+  .function-quiz { grid-column:span 4; padding-left:40px; }
+  .function-mark,.function-cute .function-mark,.function-song .function-mark { width:48px; height:48px; right:20px; }
+}
+@media (max-width:700px) {
+  .telegram-functions { padding-block:65px 70px; }
+  .telegram-functions-heading { margin-bottom:55px; padding-right:0; }
+  .telegram-functions h2 { font-size:clamp(46px,12.8vw,82px); line-height:.95; }
+  .telegram-flight { width:70px; height:50px; right:0; top:calc(100% + 6px); bottom:auto; transform:rotate(-8deg); stroke-width:3; }
+  .telegram-flight .flight-line { display:none; }
+  .function-wall { grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px 17px; padding:9px 4px 0; }
+  .telegram-function { grid-column:span 1; min-height:200px; padding:25px 15px 69px; align-items:flex-start; }
+  .function-chat { grid-column:1 / -1; min-height:135px; align-items:center; padding:24px 85px 30px 25px; }
+  .function-chat .function-label { font-size:clamp(34px,8vw,48px); }
+  .function-label,.function-concerts .function-label,.function-quiz .function-label { font-size:clamp(24px,5.6vw,36px); line-height:1.12; }
+  .function-cute { padding-left:20px; }
+  .function-cute .function-label { max-width:180px; }
+  .function-song { padding-left:20px; }
+  .function-song .function-label { font-size:clamp(21px,5.2vw,36px); }
+  .function-concerts { padding-left:20px; }
+  .function-quiz { padding:31px 25px 68px; align-items:flex-start; }
+  .function-quiz .function-label { max-width:150px; }
+  .function-go { width:22px; height:22px; right:14px; top:auto; bottom:20px; }
+  .function-mark,.function-cute .function-mark,.function-song .function-mark,.function-concerts .function-mark { width:43px; height:43px; right:auto; left:20px; bottom:17px; }
+  .function-chat .function-mark { width:53px; height:53px; left:auto; right:29px; bottom:43px; }
+  .function-chat .function-go { right:22px; bottom:17px; }
+  .function-quiz .function-mark { width:35px; height:35px; left:28px; right:auto; bottom:22px; }
+  .function-quiz .function-go { right:25px; top:auto; bottom:28px; }
+}
+@media (max-width:360px) {
+  .function-wall { gap:20px 15px; }
+  .telegram-function { min-height:184px; padding-top:23px; }
+  .function-chat { min-height:125px; }
+  .function-label,.function-concerts .function-label,.function-quiz .function-label { font-size:23px; }
+  .function-quiz { padding-top:30px; padding-left:23px; }
+}
+@media (prefers-reduced-motion:reduce) { .telegram-function { transition:none; } }

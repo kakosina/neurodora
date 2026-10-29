@@ -1,0 +1,56 @@
+{
+  "channel": "https://www.youtube.com/@neurodora",
+  "checkedAt": "2026-10-29",
+  "tracks": [
+    {
+      "videoId": "CvofxGRqus8",
+      "displayTitleNFC": "худшее, что проберется к вам в сны",
+      "url": "https://www.youtube.com/watch?v=CvofxGRqus8",
+      "thumbnailURL": "https://i.ytimg.com/vi/CvofxGRqus8/maxresdefault.jpg",
+      "duration": "1:42",
+      "actualPublishDate": "2026-10-04",
+      "homepageGroup": "neurodora_songs",
+      "lyricsURL": null
+    },
+    {
+      "videoId": "qeV6TngrYVM",
+      "displayTitleNFC": "оставь меня в избранном",
+      "url": "https://www.youtube.com/watch?v=qeV6TngrYVM",
+      "thumbnailURL": "https://i.ytimg.com/vi/qeV6TngrYVM/maxresdefault.jpg",
+      "duration": "2:48",
+      "actualPublishDate": "2026-09-26",
+      "homepageGroup": "neurodora_songs",
+      "lyricsURL": "/music/ostav-menya-v-izbrannom/"
+    },
+    {
+      "videoId": "gTpVnSgFUS0",
+      "displayTitleNFC": "надо только подождать",
+      "url": "https://www.youtube.com/watch?v=gTpVnSgFUS0",
+      "thumbnailURL": "https://i.ytimg.com/vi/gTpVnSgFUS0/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGE0gWihlMA8=&rs=AOn4CLDzqItcsqY5SIdRK9LcBc2mKTVjwQ",
+      "duration": "2:03",
+      "actualPublishDate": "2026-09-18",
+      "homepageGroup": "neurodora_songs",
+      "lyricsURL": "/music/nado-tolko-podozhdat/"
+    },
+    {
+      "videoId": "6deqf9H3Qw8",
+      "displayTitleNFC": "suno v6 это полный отстой!",
+      "url": "https://www.youtube.com/watch?v=6deqf9H3Qw8",
+      "thumbnailURL": "https://i.ytimg.com/vi/6deqf9H3Qw8/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGHIgRyhQMA8=&rs=AOn4CLDEdRVIjC8ed7MRDw0JGKbUQ0IB6Q",
+      "duration": "1:39",
+      "actualPublishDate": "2026-09-11",
+      "homepageGroup": "neurodora_songs",
+      "lyricsURL": null
+    },
+    {
+      "videoId": "Z3RO4e9M5pU",
+      "displayTitleNFC": "кьют-рок против всех",
+      "url": "https://www.youtube.com/watch?v=Z3RO4e9M5pU",
+      "thumbnailURL": "https://i.ytimg.com/vi/Z3RO4e9M5pU/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgVihTMA8=&rs=AOn4CLCipbRInYVWHhwg587fSbBLpdOPEw",
+      "duration": "2:00",
+      "actualPublishDate": "2026-08-27",
+      "homepageGroup": "neurodora_songs",
+      "lyricsURL": "/music/kyut-rok-protiv-vseh/"
+    }
+  ]
+}

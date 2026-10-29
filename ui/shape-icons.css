@@ -1,0 +1,20 @@
+/* Interface marks are vector paths, never platform-dependent emoji glyphs. */
+.ui-icon{display:inline-block;width:1em;height:1em;flex:none;vertical-align:-.12em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ui-icon-play{fill:currentColor;stroke-width:1.4}
+.social-button>.ui-icon,.social-button>span>.ui-icon{width:1.1em;height:1.1em}
+.doodle .ui-icon,.copy-doodle .ui-icon,.reading-doodle .ui-icon,.follow-star .ui-icon{stroke-width:1.5}
+.lives i .ui-icon{width:1em;height:1em;fill:currentColor;stroke-width:1.4}
+.main-button b .ui-icon,.result-decor i .ui-icon{fill:currentColor}
+.sound-button .ui-icon{width:25px;height:25px;vertical-align:middle}
+.article-pager-home>.ui-icon{width:32px;height:32px}
+.library-hero::before,.library-hero::after,.article-photo-card::after{content:"";width:1em;height:1em;background:currentColor;-webkit-mask:var(--doodle-icon) center/contain no-repeat;mask:var(--doodle-icon) center/contain no-repeat}
+.library-hero::before{--doodle-icon:url('/ui/icons/heart.svg')}
+.library-hero::after{--doodle-icon:url('/ui/icons/music.svg')}
+.article-photo-card{--doodle-icon:url('/ui/icons/heart.svg')}
+.article-photo-card[data-doodle="star"]{--doodle-icon:url('/ui/icons/star.svg')}
+.article-photo-card[data-doodle="music"]{--doodle-icon:url('/ui/icons/music.svg')}
+.article-photo-card[data-doodle="sparkles"]{--doodle-icon:url('/ui/icons/sparkles.svg')}
+/* The descriptive headers and scrolling strips were removed from the HTML. */
+.cr-hero h1,.crx-hero h1{margin-top:0}
+.library-hero-copy{padding-bottom:16px}
+.baseline-song h1{margin-top:0}
